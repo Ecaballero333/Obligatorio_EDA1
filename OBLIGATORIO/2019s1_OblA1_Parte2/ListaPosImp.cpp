@@ -226,7 +226,7 @@ void ListaPosImp<T>::Imprimir(ostream& o) const
 	// en luegar de hacer cout << ... poner o << ...
 	for (int i = 0; i < this->cantElem; i++) {
 		if (i == (cantElem - 1)) {
-			o << this->vec[i] << endl;
+			o << this->vec[i];
 		}
 		else {
 			o << this->vec[i] << " ";
