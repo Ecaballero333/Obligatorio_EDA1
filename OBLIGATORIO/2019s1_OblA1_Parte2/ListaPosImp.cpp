@@ -11,7 +11,7 @@ inline ostream & operator<<(ostream &out, const ListaPosImp<T> &l)
 {
 	l.Imprimir(out);
 	return out;
-} 
+}
 
 template <class T>
 ListaPos<T>* ListaPosImp<T>::CrearVacia() const
