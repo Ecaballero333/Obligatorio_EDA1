@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Clases auxiliares">
+      <UniqueIdentifier>{87ccc1f9-156b-4cb8-ad58-61b5a9aebb86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Filesystem">
+      <UniqueIdentifier>{45011d8c-39bf-4599-8683-85b33f48a400}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework">
+      <UniqueIdentifier>{569827c8-1bdd-4db5-98dd-2a05a665a503}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="InterfazDelSistema">
+      <UniqueIdentifier>{f5e94ae9-8c23-4cf2-a981-3658396386cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Colecciones">
+      <UniqueIdentifier>{f6b3581e-7df9-403a-995e-f9f620cc6a62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Colecciones\Listas">
+      <UniqueIdentifier>{e1aec668-7414-44fe-825e-e52a29764fa2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Colecciones\Pilas">
+      <UniqueIdentifier>{ce463486-1170-4b24-81d2-bc04f2442cc3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pruebas">
+      <UniqueIdentifier>{82aca4fb-ba0f-42f2-84d8-e088fd51a42f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Colecciones\Colas">
+      <UniqueIdentifier>{8956dd65-e525-4adf-8e53-ac305fe29c1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Colecciones\Listas\ListaPos">
+      <UniqueIdentifier>{a674ad76-1b87-4884-bb25-2a457994b70d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Manejadores">
+      <UniqueIdentifier>{0a97e6b1-2dba-4959-8ce0-31a97f351f75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Auxiliares">
+      <UniqueIdentifier>{2a46264b-afcf-4084-aced-b1a5e3216cc1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\ArchivosPrueba">
+      <UniqueIdentifier>{79a4a383-901e-44b3-bc3a-83178fe7707b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Colecciones\Listas\ListaOrd">
+      <UniqueIdentifier>{3f857fc7-297b-43b4-be9f-45e0c40b75eb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Asociacion.h">
+      <Filter>Clases auxiliares</Filter>
+    </ClInclude>
+    <ClInclude Include="Cadena.h">
+      <Filter>Clases auxiliares</Filter>
+    </ClInclude>
+    <ClInclude Include="Iterable.h">
+      <Filter>Clases auxiliares</Filter>
+    </ClInclude>
+    <ClInclude Include="Iterador.h">
+      <Filter>Clases auxiliares</Filter>
+    </ClInclude>
+    <ClInclude Include="Referencia.h">
+      <Filter>Clases auxiliares</Filter>
+    </ClInclude>
+    <ClInclude Include="InterfazDelSistema.h">
+      <Filter>InterfazDelSistema</Filter>
+    </ClInclude>
+    <ClInclude Include="InterfazDelSistemaImp.h">
+      <Filter>InterfazDelSistema</Filter>
+    </ClInclude>
+    <ClInclude Include="NodoLista.h">
+      <Filter>Colecciones\Listas</Filter>
+    </ClInclude>
+    <ClInclude Include="Pila.h">
+      <Filter>Colecciones\Pilas</Filter>
+    </ClInclude>
+    <ClInclude Include="PilaImp.h">
+      <Filter>Colecciones\Pilas</Filter>
+    </ClInclude>
+    <ClInclude Include="PruebasPropias.h">
+      <Filter>Pruebas</Filter>
+    </ClInclude>
+    <ClInclude Include="PruebasEjemploDeUso.h">
+      <Filter>Pruebas</Filter>
+    </ClInclude>
+    <ClInclude Include="PruebasCorreccion.h">
+      <Filter>Pruebas</Filter>
+    </ClInclude>
+    <ClInclude Include="Cola.h">
+      <Filter>Colecciones\Colas</Filter>
+    </ClInclude>
+    <ClInclude Include="Constantes.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="NodoAG.h">
+      <Filter>Clases auxiliares</Filter>
+    </ClInclude>
+    <ClInclude Include="TipoRetorno.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="IteradorListaPosImp.h">
+      <Filter>Colecciones\Listas\ListaPos</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaPos.h">
+      <Filter>Colecciones\Listas\ListaPos</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaPosImp.h">
+      <Filter>Colecciones\Listas\ListaPos</Filter>
+    </ClInclude>
+    <ClInclude Include="ManejadorArchivos.h">
+      <Filter>Framework\Manejadores</Filter>
+    </ClInclude>
+    <ClInclude Include="ManejadorImpresionPrueba.h">
+      <Filter>Framework\Manejadores</Filter>
+    </ClInclude>
+    <ClInclude Include="ManejadorSalidaPrueba.h">
+      <Filter>Framework\Manejadores</Filter>
+    </ClInclude>
+    <ClInclude Include="ColaArray.h">
+      <Filter>Framework\Auxiliares</Filter>
+    </ClInclude>
+    <ClInclude Include="Definiciones.h">
+      <Filter>Framework\Auxiliares</Filter>
+    </ClInclude>
+    <ClInclude Include="FuncAux.h">
+      <Filter>Framework\Auxiliares</Filter>
+    </ClInclude>
+    <ClInclude Include="ConductorPruebaObl2.h">
+      <Filter>Pruebas</Filter>
+    </ClInclude>
+    <ClInclude Include="ConductorPrueba.h">
+      <Filter>Framework\ArchivosPrueba</Filter>
+    </ClInclude>
+    <ClInclude Include="EstadisticaPrueba.h">
+      <Filter>Framework\ArchivosPrueba</Filter>
+    </ClInclude>
+    <ClInclude Include="Prueba.h">
+      <Filter>Framework\ArchivosPrueba</Filter>
+    </ClInclude>
+    <ClInclude Include="ColaImp.h">
+      <Filter>Colecciones\Colas</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaOrdImp.h">
+      <Filter>Colecciones\Listas\ListaOrd</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaOrd.h">
+      <Filter>Colecciones\Listas\ListaOrd</Filter>
+    </ClInclude>
+    <ClInclude Include="IteradorListaOrdImp.h">
+      <Filter>Colecciones\Listas\ListaOrd</Filter>
+    </ClInclude>
+    <ClInclude Include="FileSystem.h">
+      <Filter>Filesystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Archivo.h">
+      <Filter>Filesystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Directorio.h">
+      <Filter>Filesystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Directorios.h">
+      <Filter>Filesystem</Filter>
+    </ClInclude>
+    <ClInclude Include="PruebasTAD.h">
+      <Filter>Pruebas</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Asociacion.cpp">
+      <Filter>Clases auxiliares</Filter>
+    </ClCompile>
+    <ClCompile Include="Cadena.cpp">
+      <Filter>Clases auxiliares</Filter>
+    </ClCompile>
+    <ClCompile Include="Referencia.cpp">
+      <Filter>Clases auxiliares</Filter>
+    </ClCompile>
+    <ClCompile Include="InterfazDelSistemaImp.cpp">
+      <Filter>InterfazDelSistema</Filter>
+    </ClCompile>
+    <ClCompile Include="PilaImp.cpp">
+      <Filter>Colecciones\Pilas</Filter>
+    </ClCompile>
+    <ClCompile Include="PruebasCorreccion.cpp">
+      <Filter>Pruebas</Filter>
+    </ClCompile>
+    <ClCompile Include="PruebasEjemploDeUso.cpp">
+      <Filter>Pruebas</Filter>
+    </ClCompile>
+    <ClCompile Include="PruebasPropias.cpp">
+      <Filter>Pruebas</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="IteradorListaPosImp.cpp">
+      <Filter>Colecciones\Listas\ListaPos</Filter>
+    </ClCompile>
+    <ClCompile Include="ListaPosImp.cpp">
+      <Filter>Colecciones\Listas\ListaPos</Filter>
+    </ClCompile>
+    <ClCompile Include="ManejadorArchivos.cpp">
+      <Filter>Framework\Manejadores</Filter>
+    </ClCompile>
+    <ClCompile Include="ManejadorImpresionPrueba.cpp">
+      <Filter>Framework\Manejadores</Filter>
+    </ClCompile>
+    <ClCompile Include="ManejadorSalidaPrueba.cpp">
+      <Filter>Framework\Manejadores</Filter>
+    </ClCompile>
+    <ClCompile Include="ColaArray.cpp">
+      <Filter>Framework\Auxiliares</Filter>
+    </ClCompile>
+    <ClCompile Include="FuncAux.cpp">
+      <Filter>Framework\Auxiliares</Filter>
+    </ClCompile>
+    <ClCompile Include="ConductorPruebaObl2.cpp">
+      <Filter>Pruebas</Filter>
+    </ClCompile>
+    <ClCompile Include="ConductorPrueba.cpp">
+      <Filter>Framework\ArchivosPrueba</Filter>
+    </ClCompile>
+    <ClCompile Include="EstadisticaPrueba.cpp">
+      <Filter>Framework\ArchivosPrueba</Filter>
+    </ClCompile>
+    <ClCompile Include="Prueba.cpp">
+      <Filter>Framework\ArchivosPrueba</Filter>
+    </ClCompile>
+    <ClCompile Include="ColaImp.cpp">
+      <Filter>Colecciones\Colas</Filter>
+    </ClCompile>
+    <ClCompile Include="ListaOrdImp.cpp">
+      <Filter>Colecciones\Listas\ListaOrd</Filter>
+    </ClCompile>
+    <ClCompile Include="IteradorListaOrdImp.cpp">
+      <Filter>Colecciones\Listas\ListaOrd</Filter>
+    </ClCompile>
+    <ClCompile Include="FileSystem.cpp">
+      <Filter>Filesystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Archivo.cpp">
+      <Filter>Filesystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Directorio.cpp">
+      <Filter>Filesystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Directorios.cpp">
+      <Filter>Filesystem</Filter>
+    </ClCompile>
+    <ClCompile Include="PruebasTAD.cpp">
+      <Filter>Pruebas</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

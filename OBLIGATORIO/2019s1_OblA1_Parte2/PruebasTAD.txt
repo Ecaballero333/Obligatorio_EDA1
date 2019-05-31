@@ -1,0 +1,95 @@
+-!-Ini::PRUEBAS LISTA POS
+5 4
+
+-!-0::0-?-?-Imprimo la lista luego de agregar 2 datos al principio
+5 4 2 1
+
+-!-1::0-?-?-Imprimo la lista luego de agregar 2 datos al final
+5 4 3 2 1
+
+-!-2::0-?-?-Imprimo la lista luego de agregar el dato 3 en la posición 2
+5
+
+-!-3::0-?-?-Imprimo el largo de la lista
+Resultado Original: 
+5 4 3 2 1
+
+Resultado Clon: 
+5 4 3 2 1
+
+-!-4::0-?-?-Imprimo el la lista original y su clon
+[]
+
+-!-5::0-?-?-Imprimo luego de crearvacia
+[5 4 3 2 1]
+
+-!-6::0-?-?-Imprimo luego de =
+La lista original es igual a la lista clon
+
+
+
+-!-7::0-?-?-Imprimo prueba de == sobre listas iguales
+La lista original no es igual a la lista clon
+
+
+Resultado Original: 
+5 4 3 2 1
+
+Resultado Clon: 
+4 3 2 1
+
+-!-8::0-?-?-Imprimo prueba de == sobre listas distintas
+Resultado Clon: 
+5 4 3 2 1
+
+-!-9::0-?-?-Imprimo clon luego de asignarle l
+5
+
+-!-10::0-?-?-Imprimo el principio de la lista
+1
+
+-!-11::0-?-?-Imprimo el fin de la lista
+2
+
+-!-12::0-?-?-Imprimo el elemento de la cuarta posición
+4 3 2 1
+
+-!-13::0-?-?-Imprimo la lista luego de eliminar el principio
+4 3 2
+
+-!-14::0-?-?-Imprimo la lista luego de eliminar el fin
+4 3
+
+-!-15::0-?-?-Imprimo la lista luego de eliminar el tercer elemento
+4
+
+-!-16::0-?-?-Imprimo la lista luego de eliminar el elemento 3
+0
+
+-!-17::0-?-?-Imprimo la posicion del elemento 4
+Elemento 4 pertenece  a la lista
+
+
+
+-!-18::0-?-?-Imprimo si el elemento 4 existe en la lista
+Elemento 6 no pertenece a la lista
+
+
+
+-!-19::0-?-?-Imprimo si el elemento 6 existe en la lista
+La lista no se encuentra vacia
+
+
+
+-!-20::0-?-?-Imprimo si la lista se encuentra vacia
+[]
+
+
+
+-!-21::0-?-?-Imprimo la lista luego de vaciarla
+La lista se encuentra vacia
+
+
+
+-!-22::0-?-?-Imprimo si la lista se encuentra vacia 
+-!-Fin::PRUEBAS LISTA POS

@@ -1,0 +1,879 @@
+-!-Ini::PRUEBAS Mkdir
+
+-!-0::0-OK-OK-Se crea el directorio 'Directorio1'.
+
+-!-1::0-OK-OK-Se crea el directorio 'Directorio2'.
+
+-!-2::0-OK-OK-Se crea el directorio 'Directorio11', dentro de 'Directorio1'.
+
+-!-3::0-OK-OK-Se crea el directorio 'Directorio12', dentro de 'Directorio1'.
+
+-!-4::0-OK-OK-Se crea el directorio 'Directorio21', dentro de 'Directorio2'.
+
+-!-5::0-OK-OK-Se crea el directorio 'Directorio22', dentro de 'Directorio2'.
+
+-!-6::0-OK-OK-Se crea el directorio 'Directorio211', dentro de 'Directorio21'.
+
+-!-7::0-OK-OK-Se crea el directorio 'Directorio2111', dentro de 'Directorio211'.
+/
+/directorio1
+/directorio1/directorio11
+/directorio1/directorio12
+/directorio2
+/directorio2/directorio21
+/directorio2/directorio21/directorio211
+/directorio2/directorio21/directorio211/directorio2111
+/directorio2/directorio22
+
+
+-!-8::0-OK-OK-Se muestran todo el contenido del filesystem.
+-!-Fin::PRUEBAS Mkdir
+-!-Ini::PRUEBAS CreateFile
+
+-!-9::0-OK-OK-Se crea archivo1.txt en /.
+
+-!-10::0-OK-OK-Se crea archivo11.txt en /directorio1/directorio11.
+
+-!-11::0-OK-OK-Se crea archivo12.txt en /directorio1/directorio11.
+
+-!-12::0-OK-OK-Se crea archivo13.txt en /directorio1/directorio11.
+
+-!-13::0-OK-OK-Se crea archivo2111.txt en /directorio2/directorio21/directorio211/directorio2111.
+
+-!-14::0-OK-OK-Se crea archivo211.h en /directorio2/directorio21/directorio211.
+
+-!-15::0-OK-OK-Se crea archivo212.ppt en /directorio2/directorio21/directorio211.
+
+-!-16::0-OK-OK-Se crea archivo22.txt en /directorio2/directorio22.
+
+-!-17::0-OK-OK-Se crea Archivo22.txt en /directorio2/directorio22.
+
+-!-18::0-OK-OK-Se crea Archivo23.txt en /directorio2/directorio22.
+/
+/archivo1.txt
+/directorio1
+/directorio1/directorio11
+/directorio1/directorio11/archivo11.txt
+/directorio1/directorio11/archivo12.txt
+/directorio1/directorio11/archivo13.txt
+/directorio1/directorio12
+/directorio2
+/directorio2/directorio21
+/directorio2/directorio21/directorio211
+/directorio2/directorio21/directorio211/archivo211.h
+/directorio2/directorio21/directorio211/archivo212.ppt
+/directorio2/directorio21/directorio211/directorio2111
+/directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
+/directorio2/directorio22
+/directorio2/directorio22/Archivo22.txt
+/directorio2/directorio22/Archivo23.txt
+/directorio2/directorio22/archivo22.txt
+
+
+-!-19::0-OK-OK-Se muestran todo el contenido del filesystem.
+-!-Fin::PRUEBAS CreateFile
+-!-Ini::PRUEBAS Dir
+/directorio1
+/directorio1/directorio11
+/directorio1/directorio11/archivo11.txt
+/directorio1/directorio11/archivo12.txt
+/directorio1/directorio11/archivo13.txt
+/directorio1/directorio12
+
+
+-!-20::0-OK-OK-Se muestra contenido de /directorio1
+/directorio1/directorio12
+No contiene archivos ni directorios.
+
+
+-!-21::0-OK-OK-Se muestra contenido de /directorio1/directorio12
+/directorio2
+/directorio2/directorio21
+/directorio2/directorio21/directorio211
+/directorio2/directorio21/directorio211/archivo211.h
+/directorio2/directorio21/directorio211/archivo212.ppt
+/directorio2/directorio21/directorio211/directorio2111
+/directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
+/directorio2/directorio22
+/directorio2/directorio22/Archivo22.txt
+/directorio2/directorio22/Archivo23.txt
+/directorio2/directorio22/archivo22.txt
+
+
+-!-22::0-OK-OK-Se muestra contenido de /directorio2
+/directorio2/directorio21/directorio211
+/directorio2/directorio21/directorio211/archivo211.h
+/directorio2/directorio21/directorio211/archivo212.ppt
+/directorio2/directorio21/directorio211/directorio2111
+/directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
+
+
+-!-23::0-OK-OK-Se muestra contenido de /directorio2/directorio21/directorio211
+/directorio2/directorio21/directorio211/directorio2111
+/directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
+
+
+-!-24::0-OK-OK-Se muestra contenido de /directorio2/directorio21/directorio211/directorio2111
+-!-Fin::PRUEBAS Dir
+-!-Ini::PRUEBAS InsertText
+
+-!-25::0-OK-OK-Se inserta texto en archivo1.txt, linea 1, posicion 1.
+
+-!-26::0-OK-OK-Se inserta texto en archivo1.txt, linea 1 posicion 30
+
+-!-27::0-OK-OK-Se inserta texto en archivo1.txt, linea 4, posicion 1
+
+-!-28::0-OK-OK-Se inserta texto en archivo1.txt, en linea 4, posicion 1
+
+-!-29::0-OK-OK-Se inserta texto en /directorio1/directorio11/archivo11.txt, en linea 1, posicion 1
+
+-!-30::0-OK-OK-Se inserta texto en /directorio1/directorio11/archivo11.txt, en linea 1, posicion 1
+
+-!-31::0-OK-OK-Se inserta texto en /directorio1/directorio11/archivo11.txt, en linea 10, posicion 1
+
+-!-32::0-OK-OK-Se inserta texto en /directorio1/directorio11/archivo11.txt, en linea 4, posicion 1
+
+-!-33::0-OK-OK-Se inserta texto en /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt, en linea 1, posicion 1
+
+-!-34::0-OK-OK-Se inserta texto en /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt, en linea 2, posicion 1
+
+-!-35::0-OK-OK-Se inserta texto en /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt, en linea 3, posicion 1
+-!-Fin::PRUEBAS InsertText
+-!-Ini::PRUEBAS Type
+/archivo1.txt
+
+1: An error saepe.              An error saepe.
+2: 
+3: 
+4: Omnesque philosophia eum an, ius tale.Vis omnis legere
+
+
+
+-!-36::0-OK-OK-Se muestra /archivo1.txt
+/directorio1/directorio11/archivo11.txt
+
+1: Eos nibh regione.Ius invidunt convenire at, has in atqui probatus deserunt.
+2: 
+3: 
+4: Mel et illum sententiae, vix inani.
+5: 
+6: 
+7: 
+8: 
+9: 
+10: Sed fabulas laoreet appellantur.
+
+
+
+-!-37::0-OK-OK-Se muestra /directorio1/directorio11/archivo11.txt
+/directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
+
+1: Usu rebum virtute.
+2: Eam habeo.
+3: His no putant vivendo.
+
+
+
+-!-38::0-OK-OK-Se muestra /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
+/directorio1/directorio11/archivo13.txt
+
+El archivo no posee contenido
+
+
+-!-39::0-OK-OK-Se muestra /directorio1/directorio11/archivo13.txt
+
+-!-40::0-OK-OK-Se destruye filesystem y memoria asociada
+-!-Fin::PRUEBAS Type
+-!-Ini::PRUEBAS Rmdir
+/
+/archivo1.txt
+/directorio1
+/directorio1/directorio11
+/directorio1/directorio11/archivo11.txt
+/directorio1/directorio11/archivo12.txt
+/directorio1/directorio11/archivo13.txt
+/directorio1/directorio12
+/directorio2
+/directorio2/directorio21
+/directorio2/directorio21/directorio211
+/directorio2/directorio21/directorio211/archivo211.h
+/directorio2/directorio21/directorio211/archivo212.ppt
+/directorio2/directorio21/directorio211/directorio2111
+/directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
+/directorio2/directorio22
+/directorio2/directorio22/Archivo22.txt
+/directorio2/directorio22/Archivo23.txt
+/directorio2/directorio22/archivo22.txt
+
+
+-!-41::0-OK-OK-Se muestra contenido de todo el filesystem
+
+-!-42::0-OK-OK-Se borra directorio /directorio1/directorio11
+/
+/archivo1.txt
+/directorio1
+/directorio1/directorio12
+/directorio2
+/directorio2/directorio21
+/directorio2/directorio21/directorio211
+/directorio2/directorio21/directorio211/archivo211.h
+/directorio2/directorio21/directorio211/archivo212.ppt
+/directorio2/directorio21/directorio211/directorio2111
+/directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
+/directorio2/directorio22
+/directorio2/directorio22/Archivo22.txt
+/directorio2/directorio22/Archivo23.txt
+/directorio2/directorio22/archivo22.txt
+
+
+-!-43::0-OK-OK-Se muestra contenido de todo el filesystem
+
+-!-44::0-OK-OK-Se borra directorio /directorio2/directorio21/directorio211/directorio2111
+/
+/archivo1.txt
+/directorio1
+/directorio1/directorio12
+/directorio2
+/directorio2/directorio21
+/directorio2/directorio21/directorio211
+/directorio2/directorio21/directorio211/archivo211.h
+/directorio2/directorio21/directorio211/archivo212.ppt
+/directorio2/directorio22
+/directorio2/directorio22/Archivo22.txt
+/directorio2/directorio22/Archivo23.txt
+/directorio2/directorio22/archivo22.txt
+
+
+-!-45::0-OK-OK-Se muestra contenido de todo el filesystem
+
+-!-46::0-OK-OK-Se borra directorio /directorio2
+/
+/archivo1.txt
+/directorio1
+/directorio1/directorio12
+
+
+-!-47::0-OK-OK-Se muestra contenido de todo el filesystem
+-!-Fin::PRUEBAS Rmdir
+-!-Ini::PRUEBAS CopyDir
+/
+/archivo1.txt
+/directorio1
+/directorio1/directorio11
+/directorio1/directorio11/archivo11.txt
+/directorio1/directorio11/archivo12.txt
+/directorio1/directorio11/archivo13.txt
+/directorio1/directorio12
+/directorio2
+/directorio2/directorio21
+/directorio2/directorio21/directorio211
+/directorio2/directorio21/directorio211/archivo211.h
+/directorio2/directorio21/directorio211/archivo212.ppt
+/directorio2/directorio21/directorio211/directorio2111
+/directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
+/directorio2/directorio22
+/directorio2/directorio22/Archivo22.txt
+/directorio2/directorio22/Archivo23.txt
+/directorio2/directorio22/archivo22.txt
+
+
+-!-48::0-OK-OK-Se muestra contenido de todo el filesystem
+
+-!-49::0-OK-OK-Se copia /directorio1/directorio11 en /directorio3
+/
+/archivo1.txt
+/directorio1
+/directorio1/directorio11
+/directorio1/directorio11/archivo11.txt
+/directorio1/directorio11/archivo12.txt
+/directorio1/directorio11/archivo13.txt
+/directorio1/directorio12
+/directorio2
+/directorio2/directorio21
+/directorio2/directorio21/directorio211
+/directorio2/directorio21/directorio211/archivo211.h
+/directorio2/directorio21/directorio211/archivo212.ppt
+/directorio2/directorio21/directorio211/directorio2111
+/directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
+/directorio2/directorio22
+/directorio2/directorio22/Archivo22.txt
+/directorio2/directorio22/Archivo23.txt
+/directorio2/directorio22/archivo22.txt
+/directorio3
+/directorio3/archivo11.txt
+/directorio3/archivo12.txt
+/directorio3/archivo13.txt
+
+
+-!-50::0-OK-OK-Se muestra contenido de todo el filesystem
+
+-!-51::0-OK-OK-Se copia /directorio2/directorio21/directorio211 en /directorio3/directorio4
+/
+/archivo1.txt
+/directorio1
+/directorio1/directorio11
+/directorio1/directorio11/archivo11.txt
+/directorio1/directorio11/archivo12.txt
+/directorio1/directorio11/archivo13.txt
+/directorio1/directorio12
+/directorio2
+/directorio2/directorio21
+/directorio2/directorio21/directorio211
+/directorio2/directorio21/directorio211/archivo211.h
+/directorio2/directorio21/directorio211/archivo212.ppt
+/directorio2/directorio21/directorio211/directorio2111
+/directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
+/directorio2/directorio22
+/directorio2/directorio22/Archivo22.txt
+/directorio2/directorio22/Archivo23.txt
+/directorio2/directorio22/archivo22.txt
+/directorio3
+/directorio3/archivo11.txt
+/directorio3/archivo12.txt
+/directorio3/archivo13.txt
+/directorio3/directorio4
+/directorio3/directorio4/archivo211.h
+/directorio3/directorio4/archivo212.ppt
+/directorio3/directorio4/directorio2111
+/directorio3/directorio4/directorio2111/archivo2111.txt
+
+
+-!-52::0-OK-OK-Se muestra contenido de /directorio
+
+-!-53::0-OK-OK-Se copia directorio /directorio1/directorio12 a /directorio3/directorio5
+/
+/archivo1.txt
+/directorio1
+/directorio1/directorio11
+/directorio1/directorio11/archivo11.txt
+/directorio1/directorio11/archivo12.txt
+/directorio1/directorio11/archivo13.txt
+/directorio1/directorio12
+/directorio2
+/directorio2/directorio21
+/directorio2/directorio21/directorio211
+/directorio2/directorio21/directorio211/archivo211.h
+/directorio2/directorio21/directorio211/archivo212.ppt
+/directorio2/directorio21/directorio211/directorio2111
+/directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
+/directorio2/directorio22
+/directorio2/directorio22/Archivo22.txt
+/directorio2/directorio22/Archivo23.txt
+/directorio2/directorio22/archivo22.txt
+/directorio3
+/directorio3/archivo11.txt
+/directorio3/archivo12.txt
+/directorio3/archivo13.txt
+/directorio3/directorio4
+/directorio3/directorio4/archivo211.h
+/directorio3/directorio4/archivo212.ppt
+/directorio3/directorio4/directorio2111
+/directorio3/directorio4/directorio2111/archivo2111.txt
+/directorio3/directorio5
+
+
+-!-54::0-OK-OK-Se muestra contenido de todo el filesystem
+-!-Fin::PRUEBAS CopyDir
+-!-Ini::PRUEBAS Delete
+/
+/archivo1.txt
+/directorio1
+/directorio1/directorio11
+/directorio1/directorio11/archivo11.txt
+/directorio1/directorio11/archivo12.txt
+/directorio1/directorio11/archivo13.txt
+/directorio1/directorio12
+/directorio2
+/directorio2/directorio21
+/directorio2/directorio21/directorio211
+/directorio2/directorio21/directorio211/archivo211.h
+/directorio2/directorio21/directorio211/archivo212.ppt
+/directorio2/directorio21/directorio211/directorio2111
+/directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
+/directorio2/directorio22
+/directorio2/directorio22/Archivo22.txt
+/directorio2/directorio22/Archivo23.txt
+/directorio2/directorio22/archivo22.txt
+
+
+-!-55::0-OK-OK-Se muestra contenido de todo el filesystem
+
+-!-56::0-OK-OK-Se borra archivo /directorio1/directorio11/archivo11.txt
+
+-!-57::0-OK-OK-Se borra archivo /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
+
+-!-58::0-OK-OK-Se borra archivo /directorio2/directorio21/directorio211/archivo212.ppt
+/
+/archivo1.txt
+/directorio1
+/directorio1/directorio11
+/directorio1/directorio11/archivo12.txt
+/directorio1/directorio11/archivo13.txt
+/directorio1/directorio12
+/directorio2
+/directorio2/directorio21
+/directorio2/directorio21/directorio211
+/directorio2/directorio21/directorio211/archivo211.h
+/directorio2/directorio21/directorio211/directorio2111
+/directorio2/directorio22
+/directorio2/directorio22/Archivo22.txt
+/directorio2/directorio22/Archivo23.txt
+/directorio2/directorio22/archivo22.txt
+
+
+-!-59::0-OK-OK-Se muestra contenido de todo el filesystem
+-!-Fin::PRUEBAS Delete
+-!-Ini::PRUEBAS Attrib
+/
+/archivo1.txt
+/directorio1
+/directorio1/directorio11
+/directorio1/directorio11/archivo11.txt
+/directorio1/directorio11/archivo12.txt
+/directorio1/directorio11/archivo13.txt
+/directorio1/directorio12
+/directorio2
+/directorio2/directorio21
+/directorio2/directorio21/directorio211
+/directorio2/directorio21/directorio211/archivo211.h
+/directorio2/directorio21/directorio211/archivo212.ppt
+/directorio2/directorio21/directorio211/directorio2111
+/directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
+/directorio2/directorio22
+/directorio2/directorio22/Archivo22.txt
+/directorio2/directorio22/Archivo23.txt
+/directorio2/directorio22/archivo22.txt
+
+
+-!-60::0-OK-OK-Se muestra contenido de todo el filesystem
+
+-!-61::0-OK-OK-Se oculta archivo /directorio1/directorio11/archivo11.txt
+
+-!-62::0-OK-OK-Se oculta archivo /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
+
+-!-63::0-OK-OK-Se oculta archivo /directorio2/directorio21/directorio211/archivo212.ppt
+/
+/archivo1.txt
+/directorio1
+/directorio1/directorio11
+/directorio1/directorio11/archivo11.txt (H)
+/directorio1/directorio11/archivo12.txt
+/directorio1/directorio11/archivo13.txt
+/directorio1/directorio12
+/directorio2
+/directorio2/directorio21
+/directorio2/directorio21/directorio211
+/directorio2/directorio21/directorio211/archivo211.h
+/directorio2/directorio21/directorio211/archivo212.ppt (H)
+/directorio2/directorio21/directorio211/directorio2111
+/directorio2/directorio21/directorio211/directorio2111/archivo2111.txt (H)
+/directorio2/directorio22
+/directorio2/directorio22/Archivo22.txt
+/directorio2/directorio22/Archivo23.txt
+/directorio2/directorio22/archivo22.txt
+
+
+-!-64::0-OK-OK-Se muestra contenido de todo el filesystem, incluyendo archivos ocultos
+
+-!-65::0-OK-OK-Se vuelve visible archivo /directorio2/directorio21/directorio211/archivo212.ppt
+/
+/archivo1.txt
+/directorio1
+/directorio1/directorio11
+/directorio1/directorio11/archivo11.txt (H)
+/directorio1/directorio11/archivo12.txt
+/directorio1/directorio11/archivo13.txt
+/directorio1/directorio12
+/directorio2
+/directorio2/directorio21
+/directorio2/directorio21/directorio211
+/directorio2/directorio21/directorio211/archivo211.h
+/directorio2/directorio21/directorio211/archivo212.ppt
+/directorio2/directorio21/directorio211/directorio2111
+/directorio2/directorio21/directorio211/directorio2111/archivo2111.txt (H)
+/directorio2/directorio22
+/directorio2/directorio22/Archivo22.txt
+/directorio2/directorio22/Archivo23.txt
+/directorio2/directorio22/archivo22.txt
+
+
+-!-66::0-OK-OK-Se muestra contenido de todo el filesystem, incluyendo archivos ocultos
+-!-Fin::PRUEBAS Attrib
+-!-Ini::PRUEBAS DeleteText
+/archivo1.txt
+
+1: An error saepe.              An error saepe.
+2: 
+3: 
+4: Omnesque philosophia eum an, ius tale.Vis omnis legere
+
+
+
+-!-67::0-OK-OK-Se muestra /archivo1.txt
+
+-!-68::0-OK-OK-Se borran 10 caracteres, de la linea 1, posicion 3 de /archivo1.txt
+/archivo1.txt
+
+1: Anpe.              An error saepe.
+2: 
+3: 
+4: Omnesque philosophia eum an, ius tale.Vis omnis legere
+
+
+
+-!-69::0-OK-OK-Se muestra /archivo1.txt
+
+-!-70::0-OK-OK-Se borran 100 caracteres, de la linea 2, posicion 1 de /archivo1.txt
+/archivo1.txt
+
+1: Anpe.              An error saepe.
+2: 
+3: Omnesque philosophia eum an, ius tale.Vis omnis legere
+
+
+
+-!-71::0-OK-OK-Se muestra /archivo1.txt
+
+-!-72::0-OK-OK-Se borran 60 caracteres, de la linea 3, posicion 10 de /archivo1.txt
+/archivo1.txt
+
+1: Anpe.              An error saepe.
+2: 
+3: Omnesque 
+
+
+
+-!-73::0-OK-OK-Se muestra /archivo1.txt
+
+-!-74::0-OK-OK-Se borran 60 caracteres, de la linea 3, posicion 1 de /archivo1.txt
+/archivo1.txt
+
+1: Anpe.              An error saepe.
+2: 
+
+
+
+-!-75::0-OK-OK-Se muestra /archivo1.txt
+-!-Fin::PRUEBAS DeleteText
+-!-Ini::PRUEBAS Error Mkdir
+ERROR: La ruta no comienza con /.
+
+
+-!-76::0-ERROR-ERROR-La ruta no comienza con /.
+ERROR: No se encuentra la ruta.
+
+
+-!-77::0-ERROR-ERROR-No se encuentra la ruta.
+ERROR: Ya existe un subdirectorio con el mismo nombre en esa ruta.
+
+
+-!-78::0-ERROR-ERROR-Ya Existe un subdirectorio con el mismo nombre en esa ruta.
+ERROR: Ya existe un subdirectorio con el mismo nombre en esa ruta.
+
+
+-!-79::0-ERROR-ERROR-No se puede volver a crear el directorio raiz.
+-!-Fin::PRUEBAS Error Mkdir
+-!-Ini::PRUEBAS Error Rmdir
+ERROR: La ruta no comienza con /.
+
+
+-!-80::0-ERROR-ERROR-La ruta no comienza con /.
+ERROR: No se encuentra la ruta.
+
+
+-!-81::0-ERROR-ERROR-No se encuentra la ruta.
+-!-Fin::PRUEBAS Error Rmdir
+-!-Ini::PRUEBAS Error CopyDir
+ERROR: La ruta no comienza con /.
+
+
+-!-82::0-ERROR-ERROR-La ruta no comienza con /.
+ERROR: La ruta no comienza con /.
+
+
+-!-83::0-ERROR-ERROR-La ruta no comienza con /.
+ERROR: No se encuentra la ruta origen.
+
+
+-!-84::0-ERROR-ERROR-No se encuentra la ruta de origen.
+ERROR: Ya existe la ruta destino.
+
+
+-!-85::0-ERROR-ERROR-Ya existe la ruta de destino.
+ERROR: Ya existe la ruta destino.
+
+
+-!-86::0-ERROR-ERROR-La ruta de destino no puede ser un subdirectorio de origen.
+ERROR: No se encuentra el padre de la ruta destino.
+
+
+-!-87::0-ERROR-ERROR-No se encuentra el padre de la ruta destino.
+-!-Fin::PRUEBAS Error CopyDir
+-!-Ini::PRUEBAS Error Dir
+ERROR: La ruta no comienza con /.
+
+
+-!-88::0-ERROR-ERROR-La ruta no comienza con /.
+ERROR: No se encuentra la ruta.
+
+
+-!-89::0-ERROR-ERROR-No se encuentra la ruta.
+ERROR: Parametro desconocido.
+
+
+-!-90::0-ERROR-ERROR-Parametro desconocido
+-!-Fin::PRUEBAS Error Dir
+-!-Ini::PRUEBAS Error CreateFile
+ERROR: La ruta no comienza con /.
+
+
+-!-91::0-ERROR-ERROR-La ruta no comienza con /.
+ERROR: No se encuentra la ruta.
+
+
+-!-92::0-ERROR-ERROR-No se encuentra la ruta.
+ERROR: Ya existe un archivo con el mismo nombre en esa ruta.
+
+
+-!-93::0-ERROR-ERROR-Ya existe un archivo con el mismo nombre en esa ruta.
+-!-Fin::PRUEBAS Error CreateFile
+-!-Ini::PRUEBAS Error Delete
+ERROR: La ruta no comienza con /.
+
+
+-!-94::0-ERROR-ERROR-La ruta no comienza con /.
+ERROR: No se encuentra la ruta.
+
+
+-!-95::0-ERROR-ERROR-No se encuentra la ruta.
+ERROR: No existe un archivo con ese nombre en esa ruta.
+
+
+-!-96::0-ERROR-ERROR-No existe un archivo con ese nombre en esa ruta.
+-!-Fin::PRUEBAS Error Delete
+-!-Ini::PRUEBAS Error Attrib
+ERROR: La ruta no comienza con /.
+
+
+-!-97::0-ERROR-ERROR-La ruta no comienza con /.
+ERROR: No se encuentra la ruta.
+
+
+-!-98::0-ERROR-ERROR-No se encuentra la ruta.
+ERROR: No existe un archivo con ese nombre en esa ruta.
+
+
+-!-99::0-ERROR-ERROR-No existe un archivo con ese nombre en esa ruta.
+ERROR: Parametro desconocido.
+
+
+-!-100::0-ERROR-ERROR-Parametro desconocido.
+-!-Fin::PRUEBAS Error Attrib
+-!-Ini::PRUEBAS Error InsertText
+ERROR: La ruta no comienza con /.
+
+
+-!-101::0-ERROR-ERROR-La ruta no comienza con /.
+ERROR: No se encuentra la ruta.
+
+
+-!-102::0-ERROR-ERROR-No se encuentra la ruta.
+ERROR: No existe un archivo con ese nombre en esa ruta.
+
+
+-!-103::0-ERROR-ERROR-No existe un archivo con ese nombre en esa ruta.
+ERROR: La linea cero no es valida.
+
+
+-!-104::0-ERROR-ERROR-La linea 0 no es valida.
+ERROR: La posicion cero no es valida.
+
+
+-!-105::0-ERROR-ERROR-La posicion 0 no es valida.
+-!-Fin::PRUEBAS Error InsertText
+-!-Ini::PRUEBAS Error DeleteText
+ERROR: La ruta no comienza con /.
+
+
+-!-106::0-ERROR-ERROR-La ruta no comienza con /.
+ERROR: No se encuentra la ruta.
+
+
+-!-107::0-ERROR-ERROR-No se encuentra la ruta.
+ERROR: No existe un archivo con ese nombre en esa ruta.
+
+
+-!-108::0-ERROR-ERROR-No existe un archivo con ese nombre en esa ruta.
+ERROR: La linea cero no es valida.
+
+
+-!-109::0-ERROR-ERROR-La linea 0 no es valida.
+ERROR: La posicion cero no es valida.
+
+
+-!-110::0-ERROR-ERROR-La posicion 0 no es valida.
+-!-Fin::PRUEBAS Error DeleteText
+-!-Ini::PRUEBAS Error Type
+ERROR: La ruta no comienza con /.
+
+
+-!-111::0-ERROR-ERROR-La ruta no comienza con /.
+ERROR: No se encuentra la ruta.
+
+
+-!-112::0-ERROR-ERROR-No se encuentra la ruta.
+ERROR: No existe un archivo con ese nombre en esa ruta.
+
+
+-!-113::0-ERROR-ERROR-No existe un archivo con ese nombre en esa ruta.
+-!-Fin::PRUEBAS Error Type
+-!-Ini::PRUEBAS Opcional
+/
+/archivo1.txt
+/directorio1
+/directorio1/directorio11
+/directorio1/directorio11/archivo11.txt
+/directorio1/directorio11/archivo12.txt
+/directorio1/directorio11/archivo13.txt
+/directorio1/directorio12
+/directorio2
+/directorio2/directorio21
+/directorio2/directorio21/directorio211
+/directorio2/directorio21/directorio211/archivo211.h
+/directorio2/directorio21/directorio211/archivo212.ppt
+/directorio2/directorio21/directorio211/directorio2111
+/directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
+/directorio2/directorio22
+/directorio2/directorio22/Archivo22.txt
+/directorio2/directorio22/Archivo23.txt
+/directorio2/directorio22/archivo22.txt
+
+
+-!-114::0-OK-OK-Se muestra contenido de todo el filesystem
+
+-!-115::0-OK-OK-Se borra archivo /archivo1.txt
+/
+/directorio1
+/directorio1/directorio11
+/directorio1/directorio11/archivo11.txt
+/directorio1/directorio11/archivo12.txt
+/directorio1/directorio11/archivo13.txt
+/directorio1/directorio12
+/directorio2
+/directorio2/directorio21
+/directorio2/directorio21/directorio211
+/directorio2/directorio21/directorio211/archivo211.h
+/directorio2/directorio21/directorio211/archivo212.ppt
+/directorio2/directorio21/directorio211/directorio2111
+/directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
+/directorio2/directorio22
+/directorio2/directorio22/Archivo22.txt
+/directorio2/directorio22/Archivo23.txt
+/directorio2/directorio22/archivo22.txt
+
+
+-!-116::0-OK-OK-Se muestra contenido de todo el filesystem
+
+-!-117::0-OK-OK-Se recupera /archivo1.txt
+/archivo1.txt
+
+1: An error saepe.              An error saepe.
+2: 
+3: 
+4: Omnesque philosophia eum an, ius tale.Vis omnis legere
+
+
+
+-!-118::0-OK-OK-Se muestra /archivo1.txt
+/
+/archivo1.txt
+/directorio1
+/directorio1/directorio11
+/directorio1/directorio11/archivo11.txt
+/directorio1/directorio11/archivo12.txt
+/directorio1/directorio11/archivo13.txt
+/directorio1/directorio12
+/directorio2
+/directorio2/directorio21
+/directorio2/directorio21/directorio211
+/directorio2/directorio21/directorio211/archivo211.h
+/directorio2/directorio21/directorio211/archivo212.ppt
+/directorio2/directorio21/directorio211/directorio2111
+/directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
+/directorio2/directorio22
+/directorio2/directorio22/Archivo22.txt
+/directorio2/directorio22/Archivo23.txt
+/directorio2/directorio22/archivo22.txt
+
+
+-!-119::0-OK-OK-Se muestra contenido de todo el filesystem
+
+-!-120::0-OK-OK-Se borra archivo /directorio1/directorio11/archivo11.txt
+/
+/archivo1.txt
+/directorio1
+/directorio1/directorio11
+/directorio1/directorio11/archivo12.txt
+/directorio1/directorio11/archivo13.txt
+/directorio1/directorio12
+/directorio2
+/directorio2/directorio21
+/directorio2/directorio21/directorio211
+/directorio2/directorio21/directorio211/archivo211.h
+/directorio2/directorio21/directorio211/archivo212.ppt
+/directorio2/directorio21/directorio211/directorio2111
+/directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
+/directorio2/directorio22
+/directorio2/directorio22/Archivo22.txt
+/directorio2/directorio22/Archivo23.txt
+/directorio2/directorio22/archivo22.txt
+
+
+-!-121::0-OK-OK-Se muestra contenido de todo el filesystem
+
+-!-122::0-OK-OK-Se recupera /directorio1/directorio11/archivo11.txt
+/
+/archivo1.txt
+/directorio1
+/directorio1/directorio11
+/directorio1/directorio11/archivo11.txt
+/directorio1/directorio11/archivo12.txt
+/directorio1/directorio11/archivo13.txt
+/directorio1/directorio12
+/directorio2
+/directorio2/directorio21
+/directorio2/directorio21/directorio211
+/directorio2/directorio21/directorio211/archivo211.h
+/directorio2/directorio21/directorio211/archivo212.ppt
+/directorio2/directorio21/directorio211/directorio2111
+/directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
+/directorio2/directorio22
+/directorio2/directorio22/Archivo22.txt
+/directorio2/directorio22/Archivo23.txt
+/directorio2/directorio22/archivo22.txt
+
+
+-!-123::0-OK-OK-Se muestra contenido de todo el filesystem
+/directorio1/directorio11/archivo11.txt
+
+1: Eos nibh regione.Ius invidunt convenire at, has in atqui probatus deserunt.
+2: 
+3: 
+4: Mel et illum sententiae, vix inani.
+5: 
+6: 
+7: 
+8: 
+9: 
+10: Sed fabulas laoreet appellantur.
+
+
+
+-!-124::0-OK-OK-Se muestra /directorio1/directorio11/archivo11.txt
+-!-Fin::PRUEBAS Opcional
+-!-Ini::PRUEBAS Error Opcional
+ERROR: No hay archivos para recuperar.
+
+
+-!-125::0-ERROR-ERROR-No hay archivos para recuperar
+-!-Fin::PRUEBAS Error Opcional
