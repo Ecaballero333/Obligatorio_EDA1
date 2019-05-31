@@ -10,7 +10,7 @@ template <class T>
 inline ostream & operator<<(ostream &out, const ListaPosImp<T> &l)
 {
 	l.Imprimir(out);
-	return out;
+	return out; 
 }
 
 template <class T>
