@@ -6,6 +6,8 @@
 #include "InterfazDelSistemaImp.h"
 #include "ListaPosImp.h"
 #include "Asociacion.h"
+#include "Pila.h"
+#include "PilaImp.h"
 
 class PruebasPropias : public Prueba  
 {
@@ -18,9 +20,12 @@ public:
 protected:
 	virtual const char* getNombre() const;
 
-	private:
 
-		void FormarRedBasica(InterfazDelSistema* interfaz);
+private:
+	template <class T>
+	void ProbarPila(Pila<T> *p);
+	ManejadorImpresionPrueba mImpresion;
+	void FormarRedBasica(InterfazDelSistema* interfaz);
 };
 
 #endif

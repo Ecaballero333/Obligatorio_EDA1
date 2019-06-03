@@ -162,6 +162,9 @@
     <ClInclude Include="PruebasTAD.h">
       <Filter>Pruebas</Filter>
     </ClInclude>
+    <ClInclude Include="NodoListaT.h">
+      <Filter>Framework\Auxiliares</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Asociacion.cpp">
@@ -247,6 +250,9 @@
     </ClCompile>
     <ClCompile Include="PruebasTAD.cpp">
       <Filter>Pruebas</Filter>
+    </ClCompile>
+    <ClCompile Include="NodoListaT.cpp">
+      <Filter>Framework\Auxiliares</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

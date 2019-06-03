@@ -66,6 +66,7 @@ void PruebasTAD::pruebaListaPos()
 	
 	
 	ListaPos<int>* clonL = l->Clon();
+
 	cout << "Resultado Original: " << endl << *l<< endl << endl;
 	cout << "Resultado Clon: " << endl << *clonL << endl;
 	ver3("Imprimo el la lista original y su clon");

@@ -2,6 +2,7 @@
 #define PILAIMP_H
 
 #include "Pila.h"
+#include "Definiciones.h"
 
 template <class T>
 class PilaImp : public Pila<T> {
@@ -40,8 +41,20 @@ public:
 
 private:
 	// Atributos de la clase
-	
-	
+	NodoListaT<T>* tope;
+	int cantElementos;
+
+	//PRE: Recibe una lista simplemente encadenada
+	//POS : Copia una lista encadenada de T en una nueva lista encadenada de T. 
+	NodoListaT<T> *copiarListaRec(NodoListaT<T>* nodo);
+
+	//PRE:
+	//POS : Crea y devuelve un nuevo nodo de lista de tipo T
+	NodoListaT<T>* crearNodo(T dato);
+
+	//PRE:
+	//POS : Crea e inserta un nodo al principio de la lista
+	void insertarPrimero(NodoListaT<T>*& lista, T dato);
 };
 
 #include "PilaImp.cpp"

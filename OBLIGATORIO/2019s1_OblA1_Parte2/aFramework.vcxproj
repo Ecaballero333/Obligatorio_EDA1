@@ -23,13 +23,13 @@
     <ProjectGuid>{18640DB1-7DDC-41D4-94DE-010CF88C0BA7}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>aFramework</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -167,6 +167,7 @@
     <ClInclude Include="EstadisticaPrueba.h" />
     <ClInclude Include="FileSystem.h" />
     <ClInclude Include="FuncAux.h" />
+    <ClInclude Include="NodoListaT.h" />
     <ClInclude Include="InterfazDelSistema.h" />
     <ClInclude Include="InterfazDelSistemaImp.h" />
     <ClInclude Include="Iterable.h" />
@@ -205,6 +206,7 @@
     <ClCompile Include="EstadisticaPrueba.cpp" />
     <ClCompile Include="FileSystem.cpp" />
     <ClCompile Include="FuncAux.cpp" />
+    <ClCompile Include="NodoListaT.cpp" />
     <ClCompile Include="InterfazDelSistemaImp.cpp" />
     <ClCompile Include="IteradorListaOrdImp.cpp" />
     <ClCompile Include="IteradorListaPosImp.cpp" />

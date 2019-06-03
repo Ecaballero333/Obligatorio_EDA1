@@ -6,6 +6,12 @@ using namespace std;
 #include <string.h>
 #include <assert.h>
 
+template <class T>
+struct NodoListaT {
+	int dato;
+	NodoListaT *sig;
+	NodoListaT(T d) : dato(d), sig(NULL) {}
+};
 
 struct NodoListaInt {
 	int dato;

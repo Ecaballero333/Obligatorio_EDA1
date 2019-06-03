@@ -14,10 +14,76 @@ const char* PruebasPropias::getNombre() const
 	return "PruebasPropias";
 }
 
+template <class T>
+void PruebasPropias::ProbarPila(Pila<T> *p)
+{
+	this->mImpresion.iniciarSeccion("PRUEBAS PILA IMP");
+
+	this->mImpresion.iniciarSeccion("AGREGO 2 ELEMENTOS");
+	p->Push(5);
+	p->Push(10);
+	p->Push(15);
+	p->Push(20);
+	p->Push(25);
+	cout << *p << endl;
+
+	this->mImpresion.iniciarSeccion("QUITO EL TOPE");
+	p->Pop();
+	cout << *p << endl;
+
+	this->mImpresion.iniciarSeccion("CLONO LA LISTA E IMPRIMO EL CLON");
+	Pila<T>* q = p->Clon();
+	cout <<* q << endl;
+
+	cout <<"Dirección p " << p << endl;
+	cout <<"Dirección q " << q << endl;
+
+	this->mImpresion.iniciarSeccion("MODIFICO Q. IMPRIMO P Y Q");
+	q->Pop();
+	q->Pop();
+	cout << *p << endl;
+	cout << *q << endl;
+
+	this->mImpresion.iniciarSeccion("IGUAL P A Q E IMPRIMO");
+	p = q;
+	cout << *p << endl;
+	cout << *q << endl;
+	cout << "Dirección p " << p << endl;
+	cout << "Dirección q " << q << endl;
+
+
+	this->mImpresion.iniciarSeccion("USO CONSTRCTOR POR COPIA");
+
+
+	Pila<T>* nueva = new PilaImp<T>(*p);// llama a PilaImp<T>::PilaImp(const Pila<T>& p)
+	PilaImp<T>* nuevap = new PilaImp<T>(*p);// llama a PilaImp<T>::PilaImp(const Pila<T>& p)
+	PilaImp<T>* nuevap2 = new PilaImp<T>(*nuevap);// PilaImp<T>::PilaImp(const PilaImp<T>& p)
+
+	
+	cout << *nuevap << endl;
+	p->Push(50);
+	p->Push(69);
+
+	PilaImp<T>* nuevaq = new PilaImp<T>(*p);
+	cout << *nuevaq << endl;
+	cout << "Dirección nuevap " << nuevap << endl;
+	cout << "Dirección nuevaq " << nuevaq << endl;
+
+
+	/*
+	- Cómo puedo ejecutar pruebas tipo las tad, que le diga lo esperado y lo devuelto
+	- Porque uso el asterisco en *p en PilaImp<T>* nuevaq = new PilaImp<T>(*p);
+	- Porque el p = q; de la linea 48 no invocan al Pila<T>& PilaImp<T>::operator=(const Pila<T>& p) ??? El operator = es solo dentro de la clase?
+	*/
+}
+
 void PruebasPropias::correrPruebaConcreta()
 {
 	// Este archivo lo puedo modificar para hacer mis propias pruebas
-	
+
+	Pila<int> * p = new PilaImp<int>();
+	ProbarPila(p);
+
 	// Ejemplo:
 
 	InterfazDelSistema* interfaz = new InterfazDelSistemaImp(4);

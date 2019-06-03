@@ -23,24 +23,25 @@ template <class T>
 ListaPosImp<T>::ListaPosImp()
 {
 	this->tamanoVec = 10;
-	this->vec = new T[this->tamanoVec]();
 	this->cantElem = 0;
+	this->vec = new T[this->tamanoVec]();
 }
 
 template <class T>
 ListaPosImp<T>::ListaPosImp(const ListaPos<T> &l)
 {
 	this->tamanoVec = l.CantidadElementos;
-	this->vec = l;
 	this->cantElem = l.CantidadElementos;
+	this->vec = new T[CantidadElementos]();
+	*this = l;
 }
 
 template <class T>
 ListaPosImp<T>::ListaPosImp(const ListaPosImp<T> &l)
 {
-	this->tamanoVec = l.CantidadElementos;
-	this->vec = l;
-	this->cantElem = l.CantidadElementos;
+	this->tamanoVec = l.tamanoVec;
+	this->cantElem = l.cantElem;
+	this->vec = l.vec;
 }
 
 template <class T>
@@ -107,7 +108,6 @@ template <class T>
 void ListaPosImp<T>::BorrarPpio()
 {
 	BorrarPos(0);
-	this->BorrarFin();
 }
 
 template <class T>

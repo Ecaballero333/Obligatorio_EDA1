@@ -11,40 +11,74 @@ inline ostream &operator<<(ostream& out, const PilaImp<T> &c) {
 
 template <class T>
 PilaImp<T>::PilaImp() {
-	// NO IMPLEMENTADA
+	this->tope = NULL;
+	this->cantElementos = 0;
 }
 
 template<class T>
 PilaImp<T>::PilaImp(const Pila<T>& p) {
-	// NO IMPLEMENTADA
+	this->tope = NULL;
+	this->cantElementos = 0;
+	*this = p;
 }
 
 template<class T>
 PilaImp<T>::PilaImp(const PilaImp<T>& p) {
-	// NO IMPLEMENTADA
+	this->cantElementos = 0;
+	//this->tope = this->copiarListaRec(p.tope);
+	*this = p;
 }
 
 template<class T>
 Pila<T>& PilaImp<T>::operator=(const Pila<T>& p) {
-	// NO IMPLEMENTADA
+	if (this != &p){
+		this->Vaciar();
+		Pila<T>* invertida = CrearVacia();
+		Pila<T>* auxP = p.Clon();
+		while (!auxP->EsVacia()) {
+			invertida->Push(auxP->Top());
+			auxP->Pop();
+		}
+		while (!invertida->EsVacia()) {
+			this->Push(invertida->Top());
+			invertida->Pop();
+		}
+		delete invertida;
+		delete auxP;
+	}
 	return *this;
 }
 
 template<class T>
 Pila<T>& PilaImp<T>::operator=(const PilaImp<T>& p) {
-	// NO IMPLEMENTADA
+	if (this != &p){
+		this->Vaciar();
+		this->tope = this->copiarListaRec(p.tope);
+	}
 	return *this;
 }
 
 template<class T>
 bool PilaImp<T>::operator==(const Pila<T> &p) const{
-	//NO IMPLEMENTADA
-	return false;
+	Pila<T>* l1 = this->Clon();
+	Pila<T>* l2 = p.Clon();
+	bool sonIguales = true;
+	while (!l1->EsVacia() && !l2->EsVacia() && sonIguales) {
+		sonIguales = l1->Top() == l2->Top();
+		l1->Pop();
+		l2->Pop();
+	}
+	if (sonIguales) {
+		sonIguales = l1->EsVacia() && !l2->EsVacia();
+	}
+	delete l1;
+	delete l2;
+	return sonIguales;	
 }
 
 template<class T>
 PilaImp<T>::~PilaImp() {
-	// NO IMPLEMENTADA
+	this->Vaciar();
 }
 
 template<class T>
@@ -54,55 +88,91 @@ Pila<T>* PilaImp<T>::CrearVacia() const {
 
 template<class T>
 void PilaImp<T>::Push(const T& e) {
-	// NO IMPLEMENTADA
+	T aux = e;
+	this->insertarPrimero(this->tope, e);
+	this->cantElementos++;
 }
 
 template<class T>
 T& PilaImp<T>::Top() const {
-	// NO IMPLEMENTADA
-	return *new T();
+	return this->tope->dato;
 }
 
 template<class T>
 T PilaImp<T>::Pop() {
-	// NO IMPLEMENTADA
-	return *new T();
+	NodoListaT<T>* aux = tope;
+	T retorno = tope->dato;
+	tope = tope->sig;
+	delete aux;
+	this->cantElementos--;
+	return retorno;
 }
 
 template<class T>
 void PilaImp<T>::Vaciar() {
-	// NO IMPLEMENTADA
+	while (!EsVacia())
+		Pop();
+	
 }
 
 template<class T>
 unsigned int PilaImp<T>::CantidadElementos() const {
-	// NO IMPLEMENTADA
-	return 0;
+	return this->cantElementos;
 }
 
 template<class T>
 bool PilaImp<T>::EsVacia() const {
-	// NO IMPLEMENTADA
-	return true;
+	return tope == NULL;
 }
 
 template <class T>
 bool PilaImp<T>::EsLlena() const{
-	// NO IMPLEMENTADA
 	return false;
 }
 
 template<class T>
 Pila<T>* PilaImp<T>::Clon() const {
-	// NO IMPLEMENTADA
-	return new PilaImp<T>();
+	return new PilaImp<T>(*this);
 }
 
 template<class T>
 void PilaImp<T>::Imprimir(ostream & o) const
 {
-	// NO IMPLEMENTADA
-	// en luegar de hacer cout << ... poner o << ...
+	Pila<T> * p = Clon();
+	while (!p->EsVacia())
+	{
+		o << p->Top() << " - ";
+		p->Pop();
+	}
+	delete p;
+	o << "Cantidad elementos = "<< this->cantElementos << endl;
+}
+
+template<class T>
+NodoListaT<T> * PilaImp<T>::copiarListaRec(NodoListaT<T>* nodo)
+{
+	if (nodo == NULL)
+		return NULL;
+	else
+	{
+		NodoListaT<T>* ret = new NodoListaT<T>(nodo->dato);
+		ret->sig = copiarListaRec(nodo->sig);
+		this->cantElementos++;
+		return ret;
+	}
+}
+
+template <class T>
+NodoListaT<T>* PilaImp<T>::crearNodo(T dato) {
+	NodoListaT<T>* nuevo = new NodoListaT<T>(dato);
+	return nuevo;
+}
+
+template <class T>
+void PilaImp<T>::insertarPrimero(NodoListaT<T>*& lista, T dato) {
+	NodoListaT<T>* nuevo = crearNodo(dato);
+	nuevo->sig = lista;
+	lista = nuevo;
 }
 
 #endif
