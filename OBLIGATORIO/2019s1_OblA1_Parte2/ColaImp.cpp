@@ -126,7 +126,6 @@ bool ColaImp<T>::EsVacia() const{
 
 template <class T>
 bool ColaImp<T>::EsLlena() const{
-	// NO IMPLEMENTADA
 	return false;
 }
 
