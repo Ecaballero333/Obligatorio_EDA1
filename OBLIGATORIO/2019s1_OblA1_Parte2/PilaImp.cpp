@@ -69,7 +69,7 @@ bool PilaImp<T>::operator==(const Pila<T> &p) const{
 		l2->Pop();
 	}
 	if (sonIguales) {
-		sonIguales = l1->EsVacia() && !l2->EsVacia();
+		sonIguales = !l1->EsVacia() && !l2->EsVacia();
 	}
 	delete l1;
 	delete l2;

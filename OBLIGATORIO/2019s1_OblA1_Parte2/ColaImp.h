@@ -2,7 +2,7 @@
 #define COLAIMP_H
 
 #include "Cola.h"
-
+#include "Definiciones.h"
 template <class T>
 class ColaImp : public Cola<T>{
 
@@ -39,8 +39,17 @@ public:
 
 private:
 	// Atributos de la clase
+	NodoListaT<T>* primero;
+	NodoListaT<T>* ultimo;
+	int cantElementos;
 	
-	
+	//PRE:
+	//POS : Crea y devuelve un nuevo nodo de lista de tipo T
+	NodoListaT<T>* crearNodo(T dato);
+
+	//PRE:
+	//POS : Crea e inserta un nodo al principio de la lista
+	void insertarPrimero(NodoListaT<T>*& lista, T dato);
 };
 
 #include "ColaImp.cpp"

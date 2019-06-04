@@ -1,4 +1,4 @@
-#include "ColaImp.h"
+ #include "ColaImp.h"
 
 #ifndef COLAIMP_CPP
 #define COLAIMP_CPP
@@ -11,22 +11,39 @@ ostream &operator<<(ostream& out, const ColaImp<T> &c) {
 
 template <class T>
 ColaImp<T>::ColaImp(){
-	// NO IMPLEMENTADA
+	this->primero = NULL;
+	this->ultimo = NULL;
+	this->cantElementos = 0;
 }
 
 template <class T>
 ColaImp<T>::ColaImp(const Cola<T> &c){
-	// NO IMPLEMENTADA
+	this->primero = NULL;
+	this->ultimo = NULL;
+	this->cantElementos = 0;
+	*this = c;
 }
 
 template <class T>
 ColaImp<T>::ColaImp(const ColaImp<T> &c){
-	// NO IMPLEMENTADA
+	this->primero = NULL;
+	this->ultimo = NULL;
+	this->cantElementos = 0;
+	*this = c;
 }
 
 template <class T>
 Cola<T> & ColaImp<T>::operator=(const Cola<T> &c){
-	// NO IMPLEMENTADA
+	if (this != &c) {
+		this->Vaciar();
+		Cola<T>* auxC = c.Clon();
+		
+		while (!auxC->EsVacia()) {
+			this->Encolar(auxC->Desencolar());
+		}
+
+		delete auxC;
+	}
 	return *this;
 }
 
@@ -38,13 +55,27 @@ Cola<T> & ColaImp<T>::operator=(const ColaImp<T> &c){
 
 template <class T>
 bool ColaImp<T>::operator==(const Cola<T>& c) const{
-	// NO IMPLEMENTADA
-	return false;
+	
+	bool iguales = true;
+	Cola<T>* l1 = this->Clon();
+	Cola<T>* l2 = p.Clon();
+
+	while (!l1->EsVacia() && !l2->EsVacia() && iguales) {
+		iguales = l1->Desencolar() == l2->Desencolar();
+	}
+
+	if (iguales) {
+		iguales = !l1->EsVacia() && !l2->EsVacia();
+	}
+
+	delete l1;
+	delete l2;
+	return iguales;
 }
 
 template <class T>
 ColaImp<T>::~ColaImp(){
-	// NO IMPLEMENTADA
+	Vaciar();
 }
 
 template<class T>
@@ -54,36 +85,43 @@ Cola<T>* ColaImp<T>::CrearVacia() const {
 
 template <class T>
 void ColaImp<T>::Encolar(const T &e){
-	// NO IMPLEMENTADA
+	T aux = e;
+	this->insertarPrimero(this->primero, e);
+	this->cantElementos++;
 }
 
 template <class T>
 T& ColaImp<T>::Principio()const{
-	// NO IMPLEMENTADA
-	return *new T();
+	
+	return *primero;
 }
 
 template <class T>
 T ColaImp<T>::Desencolar(){
-	// NO IMPLEMENTADA
-	return *new T();
+	NodoListaT<T>* aux = ultimo;
+	T retorno = ultimo->dato;
+	ultimo = ultimo->sig;
+	delete aux;
+	this->cantElementos--;
+	return retorno;
 }
 
 template <class T>
 void ColaImp<T>::Vaciar(){
-	// NO IMPLEMENTADA
+	while (!EsVacia()) {
+		Desencolar();
+	}
 }
 
 template <class T>
 unsigned int ColaImp<T>::CantidadElementos()const{
-	// NO IMPLEMENTADA
-	return 0;
+
+	return cantElementos;
 }
 
 template <class T>
 bool ColaImp<T>::EsVacia() const{
-	// NO IMPLEMENTADA
-	return true;
+	return (primero == NULL && ultimo == NULL);
 }
 
 template <class T>
@@ -94,14 +132,31 @@ bool ColaImp<T>::EsLlena() const{
 
 template <class T>
 Cola<T>* ColaImp<T>::Clon()const{
-	// NO IMPLEMENTADA
-	return new ColaImp<T>();
+	return new ColaImp<T>(*this);
 }
 
 template <class T>
 void ColaImp<T>::Imprimir(ostream& o)const{
-	// NO IMPLEMENTADA
-	// en luegar de hacer cout << ... poner o << ...
+	Cola<T>* p = Clon();
+	while (!p->EsVacia())
+	{
+		o << p->Principio() << " - ";
+		p->Desencolar();
+	}
+	delete p;
+	o << "Cantidad elementos = " << this->cantElementos << endl;
+}
+
+template <class T>
+NodoListaT<T>* ColaImp<T>::crearNodo(T dato) {
+	NodoListaT<T>* nuevo = new NodoListaT<T>(dato);
+	return nuevo;
+}
+template <class T>
+void ColaImp<T>::insertarPrimero(NodoListaT<T>*& lista, T dato) {
+	NodoListaT<T>* nuevo = crearNodo(dato);
+	nuevo->sig = lista;
+	lista = nuevo;
 }
 
 #endif
