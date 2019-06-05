@@ -51,10 +51,8 @@ class Directorios {
 		//POS: Copia el directorio de origen a destino
 		void CopiarDirectorio(Cadena rutaOrigen, Cadena rutaDestino);
 
-
-
     private:
-
+		NodoAG<Directorio>* arbolDirectorios;
 
 };
 

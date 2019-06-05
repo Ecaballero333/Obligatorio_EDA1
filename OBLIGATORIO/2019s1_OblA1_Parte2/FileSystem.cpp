@@ -8,8 +8,6 @@
 FileSystem::FileSystem()
 {
 	this->raiz = new Directorios();
-	raiz-> arbolDirectorios = new NodoAG<Directorio>()
-	// NO IMPLEMENTADA
 }
 
 

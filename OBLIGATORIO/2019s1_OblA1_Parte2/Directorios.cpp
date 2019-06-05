@@ -6,7 +6,7 @@
 
 Directorios::Directorios()
 {
-	//aca creo el nodo en null
+	this->arbolDirectorios = nullptr;
 }
 
 Directorios::~Directorios()

@@ -91,7 +91,6 @@ void PruebasPropias::correrPruebaConcreta()
 	InterfazDelSistema* interfaz = new InterfazDelSistemaImp(4);
 	this->FormarRedBasica(interfaz);
 
-	interfaz->Rmdir
 }
 
 

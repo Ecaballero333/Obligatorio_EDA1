@@ -63,7 +63,9 @@ class Archivo{
 		bool TieneLineas() const;
 
     private:
-
+		Cadena nombre;
+		bool oculto;
+		ListaPos<Cadena>* lineas;
 	
 };
 

@@ -4,8 +4,7 @@
 #include "Constantes.h"
 #include "Cadena.h"
 #include "FuncAux.h"
-#include "NodoAG.h"
-#include "Directorio.h"
+#include "Directorios.h"
 
 class FileSystem {
 	
@@ -55,7 +54,7 @@ class FileSystem {
 
 
     private:
-		NodoAG<Directorio>* raiz;
+		Directorios* raiz;
 
 };
 

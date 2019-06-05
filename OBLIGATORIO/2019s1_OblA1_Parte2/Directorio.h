@@ -82,7 +82,8 @@ class Directorio{
 
 
 private:
-
+	Cadena nombre;
+	ListaOrd<Archivo>* archivos;
 
 };
 
