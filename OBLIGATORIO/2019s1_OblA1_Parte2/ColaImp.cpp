@@ -58,7 +58,7 @@ bool ColaImp<T>::operator==(const Cola<T>& c) const{
 	
 	bool iguales = true;
 	Cola<T>* l1 = this->Clon();
-	Cola<T>* l2 = p.Clon();
+	Cola<T>* l2 = c.Clon();
 
 	while (!l1->EsVacia() && !l2->EsVacia() && iguales) {
 		iguales = l1->Desencolar() == l2->Desencolar();

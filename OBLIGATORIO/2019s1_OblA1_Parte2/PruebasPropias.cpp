@@ -45,7 +45,8 @@ void PruebasPropias::ProbarPila(Pila<T> *p)
 	cout << *q << endl;
 
 	this->mImpresion.iniciarSeccion("IGUAL P A Q E IMPRIMO");
-	p = q;
+	p = q;//Quedan con la misma direccion de memoria
+	//*p = *q;//p queda con los mismos datos que q y no comparten memoria
 	cout << *p << endl;
 	cout << *q << endl;
 	cout << "Dirección p " << p << endl;
@@ -74,6 +75,7 @@ void PruebasPropias::ProbarPila(Pila<T> *p)
 	- Cómo puedo ejecutar pruebas tipo las tad, que le diga lo esperado y lo devuelto
 	- Porque uso el asterisco en *p en PilaImp<T>* nuevaq = new PilaImp<T>(*p);
 	- Porque el p = q; de la linea 48 no invocan al Pila<T>& PilaImp<T>::operator=(const Pila<T>& p) ??? El operator = es solo dentro de la clase?
+	- En la cola: El primero es el ultimo elemento de la lista? cuando desencolo sale el ultimo? cuando encolo inserto primero? 
 	*/
 }
 
@@ -88,6 +90,8 @@ void PruebasPropias::correrPruebaConcreta()
 
 	InterfazDelSistema* interfaz = new InterfazDelSistemaImp(4);
 	this->FormarRedBasica(interfaz);
+
+	interfaz->Rmdir
 }
 
 
@@ -124,4 +128,5 @@ void PruebasPropias::FormarRedBasica(InterfazDelSistema* interfaz){
 	 interfaz->InsertText("/directorio2/directorio1/archivo11.txt",1,1, "Usu rebum virtute."),OK,"Se inserta texto en /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt, en linea 1, posicion 1";
 	 interfaz->InsertText("/directorio2/directorio1/archivo11.txt",2,1, "Eam habeo."),OK,"Se inserta texto en /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt, en linea 2, posicion 1";
 	 interfaz->InsertText("/directorio2/directorio1/archivo11.txt",3,1, "His no putant vivendo."),OK,"Se inserta texto en /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt, en linea 3, posicion 1";
+
 }

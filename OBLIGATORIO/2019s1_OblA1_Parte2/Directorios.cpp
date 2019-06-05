@@ -6,7 +6,7 @@
 
 Directorios::Directorios()
 {
-	// NO IMPLEMENTADA
+	//aca creo el nodo en null
 }
 
 Directorios::~Directorios()
