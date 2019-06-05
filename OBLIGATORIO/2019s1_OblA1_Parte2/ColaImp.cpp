@@ -49,7 +49,16 @@ Cola<T> & ColaImp<T>::operator=(const Cola<T> &c){
 
 template <class T>
 Cola<T> & ColaImp<T>::operator=(const ColaImp<T> &c){
-	// NO IMPLEMENTADA
+	if (this != &c) {
+		this->Vaciar();
+		Cola<T>* auxC = c.Clon();
+
+		while (!auxC->EsVacia()) {
+			this->Encolar(auxC->Desencolar());
+		}
+
+		delete auxC;
+	}
 	return *this;
 }
 
@@ -58,7 +67,7 @@ bool ColaImp<T>::operator==(const Cola<T>& c) const{
 	
 	bool iguales = true;
 	Cola<T>* l1 = this->Clon();
-	Cola<T>* l2 = p.Clon();
+	Cola<T>* l2 = c.Clon();
 
 	while (!l1->EsVacia() && !l2->EsVacia() && iguales) {
 		iguales = l1->Desencolar() == l2->Desencolar();
