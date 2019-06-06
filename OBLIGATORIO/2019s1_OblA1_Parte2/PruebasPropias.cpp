@@ -35,8 +35,8 @@ void PruebasPropias::ProbarPila(Pila<T> *p)
 	Pila<T>* q = p->Clon();
 	cout <<* q << endl;
 
-	cout <<"Dirección p " << p << endl;
-	cout <<"Dirección q " << q << endl;
+	//cout <<"Dirección p " << p << endl;
+	//cout <<"Dirección q " << q << endl;
 
 	this->mImpresion.iniciarSeccion("MODIFICO Q. IMPRIMO P Y Q");
 	q->Pop();

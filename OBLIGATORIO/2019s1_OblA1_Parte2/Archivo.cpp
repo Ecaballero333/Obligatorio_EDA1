@@ -11,7 +11,10 @@ Archivo::Archivo(Cadena nombre)
 
 Archivo::Archivo()
 {
-	// NO IMPLEMENTADA
+	this->nombre = NULL;
+	this->oculto = false;
+	this->lineas = NULL;
+
 }
 
 Archivo::~Archivo()
@@ -21,7 +24,10 @@ Archivo::~Archivo()
 
 Archivo::Archivo(const Archivo &a)
 {
-	// NO IMPLEMENTADA
+	this->nombre = NULL;
+	this->oculto = false;
+	this->lineas = NULL;
+	*this = a;
 }
 
 Archivo &Archivo::operator=(const Archivo &a) 
@@ -41,7 +47,14 @@ bool Archivo::operator==(const Archivo &a) const
 
 void Archivo::ModificarVisibilidad(Cadena nuevaVisibilidad)
 {
-	// NO IMPLEMENTADA
+
+	if (nuevaVisibilidad == "+H") { // en la letra dicen que pasan -H o +H
+		oculto = true;
+	}
+	else {
+		oculto = false;
+	}
+
 }
 
 void Archivo::InsertarTexto(unsigned int nroLinea, unsigned int posLinea, Cadena texto)
@@ -52,8 +65,12 @@ void Archivo::InsertarTexto(unsigned int nroLinea, unsigned int posLinea, Cadena
 
 bool Archivo::TieneLineas() const
 {
-	// NO IMPLEMENTADA
-	return false;
+	if (lineas->EsVacia()) {
+		return false;
+	}
+	else {
+		return true;
+	}
 }
 
 void Archivo::EliminarTexto(unsigned int nroLinea, unsigned int posLinea, unsigned int k)
@@ -68,14 +85,12 @@ void Archivo::MostrarContenido() const
 
 bool Archivo::EstaOculto() const
 {
-	// NO IMPLEMENTADA
-	return false;
+	return oculto;
 }
 
 Cadena Archivo::GetNombre() const
 {
-	// NO IMPLEMENTADA
-	return "";
+	return nombre;
 }
 
 
