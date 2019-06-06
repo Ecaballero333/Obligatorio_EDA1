@@ -6,7 +6,9 @@
 
 Archivo::Archivo(Cadena nombre)
 {
-	// NO IMPLEMENTADA
+	this->nombre = nombre;
+	this->oculto = false;
+	this->lineas = NULL;
 }
 
 Archivo::Archivo()
@@ -48,7 +50,7 @@ bool Archivo::operator==(const Archivo &a) const
 void Archivo::ModificarVisibilidad(Cadena nuevaVisibilidad)
 {
 
-	if (nuevaVisibilidad == "+H") { // en la letra dicen que pasan -H o +H
+	if (nuevaVisibilidad == "+H") { // en la letra dice que pasan -H o +H
 		oculto = true;
 	}
 	else {
@@ -80,7 +82,17 @@ void Archivo::EliminarTexto(unsigned int nroLinea, unsigned int posLinea, unsign
 
 void Archivo::MostrarContenido() const
 {
-	// NO IMPLEMENTADA
+	int n = 1;
+	ListaPos<Cadena>* aux = lineas;
+
+	while (!aux->EsVacia()) {
+
+		cout << n <<": " << aux->ElementoPos(n-1); // empieza en 0 y n en 1
+		aux->BorrarPpio();
+		n++;
+	}
+	
+	delete aux;
 }
 
 bool Archivo::EstaOculto() const
