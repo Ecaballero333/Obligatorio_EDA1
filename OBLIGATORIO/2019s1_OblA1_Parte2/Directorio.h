@@ -82,7 +82,8 @@ class Directorio{
 
 
 private:
-	Cadena nombre;
+	Cadena* nombre;
+	typedef Cadena* ruta;
 	ListaOrd<Archivo>* archivos;
 
 };

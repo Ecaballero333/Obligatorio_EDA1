@@ -3,36 +3,61 @@
 #ifndef DIRECTORIO_CPP
 #define DIRECTORIO_CPP
 
+
 Directorio::Directorio()
 {
-	// NO IMPLEMENTADA
+	this->nombre = nullptr;
+	this->archivos = new ListaOrdImp<Archivo>();
 }
 
 Directorio::Directorio(Cadena nombreDirectorio)
 {
-	// NO IMPLEMENTADA
+	*this->nombre = nombreDirectorio;
+	this->archivos = new ListaOrdImp<Archivo>();
 }
 
 Directorio::~Directorio()
 {
-	// NO IMPLEMENTADA
+	this->nombre = nullptr;
+	this->EliminarArchivos();
 }
 
 Directorio::Directorio(const Directorio &d)
 {
-	// NO IMPLEMENTADA
+	this->nombre = nullptr;
+	this->archivos = nullptr;
+	*this = d;
 }
 
 bool Directorio::operator<(const Directorio &d) const
 {
-	// NO IMPLEMENTADA
-	return false;
+
+	return *this->nombre < *d.nombre;
 }
 
 bool Directorio::operator==(const Directorio &d) const
 {
-	// NO IMPLEMENTADA
-	return false;
+	bool sonIguales = *this->nombre == *d.nombre;
+	if (sonIguales) {
+		//ListaOrd<Archivo>* copiaArchivosThis = this->archivos->Clon();
+		//ListaOrd<Archivo>* copiaArchivosParam = d.archivos->Clon();
+		Iterador<Archivo> itArchivosThis = this->archivos->GetIterador();
+		Iterador<Archivo> itArchivosParam = d.archivos->GetIterador();
+
+		while (!itArchivosThis.EsFin() && !itArchivosParam.EsFin() && sonIguales)
+		{
+			
+			sonIguales = itArchivosThis.Elemento() == itArchivosParam.Elemento();
+			itArchivosThis++;
+			itArchivosParam++;
+		}
+		if (sonIguales) 
+		{
+			sonIguales = itArchivosThis.EsFin() && itArchivosParam.EsFin();
+		}
+		return sonIguales;
+
+	}
 }
 
 Directorio &Directorio::operator=(const Directorio&d) 
