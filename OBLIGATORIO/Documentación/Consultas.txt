@@ -1,3 +1,4 @@
 1- El operador < en "bool operator<(const Directorio &d) const;" es para comparar directorios por nombre?
-
+	R: S
 2- Si uso el atributo Cadena en una clase (por ej: en Directorio o archivo) lo uso como Cadena* ? Por qué?
+	R: No es necesario. lo puedo usar sin *. Si lo uso con * cuando haga el == por ejemplo tengo que hacer *cad1 == *cad2
