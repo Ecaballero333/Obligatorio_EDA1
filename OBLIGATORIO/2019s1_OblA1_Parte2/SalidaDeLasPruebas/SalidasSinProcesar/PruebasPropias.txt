@@ -8,8 +8,6 @@
 -!-Ini::CLONO LA LISTA E IMPRIMO EL CLON
 20 - 15 - 10 - 5 - Cantidad elementos = 4
 
-Dirección p 00DDFB38
-Dirección q 00DDF908
 -!-Ini::MODIFICO Q. IMPRIMO P Y Q
 20 - 15 - 10 - 5 - Cantidad elementos = 4
 
@@ -20,12 +18,12 @@ Dirección q 00DDF908
 
 10 - 5 - Cantidad elementos = 2
 
-Dirección p 00DDF908
-Dirección q 00DDF908
+Dirección p 0015F330
+Dirección q 0015F330
 -!-Ini::USO CONSTRCTOR POR COPIA
 10 - 5 - Cantidad elementos = 2
 
 69 - 50 - 10 - 5 - Cantidad elementos = 4
 
-Dirección nuevap 00DDFAC8
-Dirección nuevaq 00DDBAF0
+Dirección nuevap 0015F560
+Dirección nuevaq 0015F8A8

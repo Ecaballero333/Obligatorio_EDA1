@@ -31,6 +31,15 @@ class Archivo{
 		//Operador de asignación
 		Archivo &operator=(const Archivo &a);
 
+		//Operador que evalúa que sea menor por nombre 
+		bool operator<(const Archivo &a);
+
+		//Operador que evalúa que sea menor o igual por nombre 
+		bool operator<=(const Archivo &a);
+
+		//Operador que evalúa que sea mayor o igual por nombre 
+		bool operator>=(const Archivo &a);
+
 		//Operador igualdad
 		bool operator==(const Archivo &a) const;
 		

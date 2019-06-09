@@ -52,9 +52,9 @@ bool Directorio::operator==(const Directorio &d) const
 		{
 			sonIguales = itArchivosThis.EsFin() && itArchivosParam.EsFin();
 		}
-		return sonIguales;
-
 	}
+
+	return sonIguales;
 }
 
 Directorio &Directorio::operator=(const Directorio&d) 
@@ -126,6 +126,7 @@ bool Directorio::ExisteArchivo(Cadena nombreArchivo) const
 			itArchivosThis++;
 		}
 	}
+	return existe;
 }
 
 bool Directorio::ContieneArchivos() const

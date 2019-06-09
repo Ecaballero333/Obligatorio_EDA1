@@ -47,6 +47,18 @@ bool Archivo::operator==(const Archivo &a) const
 	return false;
 }
 
+bool Archivo::operator<(const Archivo &a) {
+	return this->GetNombre() < a.GetNombre();
+}
+
+bool Archivo::operator<=(const Archivo &a){
+	return this->GetNombre() <= a.GetNombre();
+}
+
+bool Archivo::operator>=(const Archivo &a) {
+	return this->GetNombre() >= a.GetNombre();
+}
+
 void Archivo::ModificarVisibilidad(Cadena nuevaVisibilidad)
 {
 
@@ -104,6 +116,7 @@ Cadena Archivo::GetNombre() const
 {
 	return nombre;
 }
+
 
 
 #endif
