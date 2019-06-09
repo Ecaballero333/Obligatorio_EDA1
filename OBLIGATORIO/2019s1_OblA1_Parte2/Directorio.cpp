@@ -12,7 +12,7 @@ Directorio::Directorio()
 
 Directorio::Directorio(Cadena nombreDirectorio)
 {
-	*this->nombre = nombreDirectorio;
+	this->nombre = nombreDirectorio;
 	this->archivos = new ListaOrdImp<Archivo>();
 }
 
@@ -32,21 +32,18 @@ Directorio::Directorio(const Directorio &d)
 bool Directorio::operator<(const Directorio &d) const
 {
 
-	return *this->nombre < *d.nombre;
+	return this->nombre < d.nombre;
 }
 
 bool Directorio::operator==(const Directorio &d) const
 {
-	bool sonIguales = *this->nombre == *d.nombre;
+	bool sonIguales = this->nombre == d.nombre;
 	if (sonIguales) {
-		//ListaOrd<Archivo>* copiaArchivosThis = this->archivos->Clon();
-		//ListaOrd<Archivo>* copiaArchivosParam = d.archivos->Clon();
 		Iterador<Archivo> itArchivosThis = this->archivos->GetIterador();
 		Iterador<Archivo> itArchivosParam = d.archivos->GetIterador();
 
 		while (!itArchivosThis.EsFin() && !itArchivosParam.EsFin() && sonIguales)
-		{
-			
+		{			
 			sonIguales = itArchivosThis.Elemento() == itArchivosParam.Elemento();
 			itArchivosThis++;
 			itArchivosParam++;
@@ -64,63 +61,115 @@ Directorio &Directorio::operator=(const Directorio&d)
 {
 	if (this != &d) 
 	{
-		// NO IMPLEMENTADA
+		this->EliminarArchivos();
+		this->nombre = d.nombre;
+		Iterador<Archivo> itArchivosACopiar = d.archivos->GetIterador();
+		while (!itArchivosACopiar.EsFin() && !itArchivosACopiar.EsFin());
+		{
+			Archivo archivoCopia = itArchivosACopiar.Elemento();
+			this->archivos->AgregarOrd(archivoCopia);
+			itArchivosACopiar++;
+		}
 	}
 	return *this;
 }
 
 void Directorio::AgregarArchivo(Cadena nombreArchivo)
 {
-	// NO IMPLEMENTADA
+	Archivo* archivo = new Archivo(nombreArchivo);
+	this->AgregarArchivo(*archivo);
 }
 
 void Directorio::AgregarArchivo(const Archivo &archivo)
 {
-	// NO IMPLEMENTADA
+	this->archivos->AgregarOrd(archivo);
 }
 
 void Directorio::EliminarArchivo(Cadena nombreArchivo)
 {
-	// NO IMPLEMENTADA
+	Iterador<Archivo> itArchivosThis = this->archivos->GetIterador();
+	bool encontro = false;
+	while (!itArchivosThis.EsFin() && !encontro)
+	{
+		Archivo archivoCopia = itArchivosThis.Elemento();
+		if (archivoCopia.GetNombre() == nombreArchivo) {
+			encontro = true;
+			delete &archivoCopia;
+		}
+		else {
+			itArchivosThis++;
+		}
+	}
 }
 
 void Directorio::EliminarArchivos()
 {
-	// NO IMPLEMENTADA
+	Iterador<Archivo> itArchivosThis = this->archivos->GetIterador();
+	while (!itArchivosThis.EsFin())
+	{
+		Archivo archivoCopia = itArchivosThis.Elemento();
+		itArchivosThis++;
+		delete &archivoCopia;
+	}
 }
 
 bool Directorio::ExisteArchivo(Cadena nombreArchivo) const
 {
-	// NO IMPLEMENTADA
-	return false;
+	Iterador<Archivo> itArchivosThis = this->archivos->GetIterador();
+	bool existe = false;
+	while (!itArchivosThis.EsFin() && !existe)
+	{
+		if (itArchivosThis.Elemento().GetNombre() == nombreArchivo) {
+			existe = true;
+		}
+		else {
+			itArchivosThis++;
+		}
+	}
 }
 
 bool Directorio::ContieneArchivos() const
 {
-	// NO IMPLEMENTADA
-	return false;
+	return this->archivos->EsVacia();
 }
 
-// DESCOMENTAR FUNCION EN .cpp y .h LUEGO DE IMPLEMENTAR
-//Archivo &Directorio::BuscarArchivo(Cadena nombreArchivo) const
-//{
-	// NO IMPLEMENTADA
-//}
+Archivo &Directorio::BuscarArchivo(Cadena nombreArchivo) const
+{
+	Iterador<Archivo> itArchivosThis = this->archivos->GetIterador();
+	bool encontro = false;
+	Archivo retorno;
+	while (!itArchivosThis.EsFin() && !encontro)
+	{
+		if (itArchivosThis.Elemento().GetNombre() == nombreArchivo) {
+			encontro = true;
+			retorno = itArchivosThis.Elemento();
+		}
+		else {
+			itArchivosThis++;
+		}
+	}
+	return retorno;
+}
 
 Cadena Directorio::GetNombre() const
 {
-	// NO IMPLEMENTADA
-	return "";
+	return this->nombre;
 }
 
 void Directorio::SetNombre(Cadena nombre)
 {
-	// NO IMPLEMENTADA
+	this->nombre = nombre;
 }
 
 void Directorio::ListarArchivos(Cadena ruta, Cadena parametro) const
 {
-	// NO IMPLEMENTADA
+	Iterador<Archivo> itArchivosThis = this->archivos->GetIterador();
+	while (!itArchivosThis.EsFin())
+	{
+		Cadena txtVisibilidad = itArchivosThis.Elemento().EstaOculto() ? " (H) " : "";
+		cout << ruta << "/" << itArchivosThis.Elemento().GetNombre() << txtVisibilidad << endl;
+		itArchivosThis++;
+	}
 }
 
 #endif

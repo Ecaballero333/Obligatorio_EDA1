@@ -65,7 +65,7 @@ class Directorio{
 
 		//PRE: Existe archivo
 		//POS: Retorna Archivo
-		//Archivo &BuscarArchivo(Cadena nombreArchivo) const;
+		Archivo &BuscarArchivo(Cadena nombreArchivo) const;
  
 		//PRE:
 		//POS: Retorna el nombre del directorio
@@ -82,8 +82,7 @@ class Directorio{
 
 
 private:
-	Cadena* nombre;
-	typedef Cadena* ruta;
+	Cadena nombre;
 	ListaOrd<Archivo>* archivos;
 
 };

@@ -6,7 +6,8 @@
 
 Directorios::Directorios()
 {
-	this->arbolDirectorios = nullptr;
+	Cadena* nombreDirectorioRaiz = new Cadena("/");
+	this->arbolDirectorios = new NodoAG<Directorio>(*nombreDirectorioRaiz, nullptr, nullptr);
 }
 
 Directorios::~Directorios()
