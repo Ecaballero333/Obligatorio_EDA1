@@ -49,8 +49,14 @@ FileSystem &FileSystem::operator=(const FileSystem &f)
 
 TipoRetorno FileSystem::Mkdir(Cadena rutaDirectorio)
 {
-	// NO IMPLEMENTADA
-	return NO_IMPLEMENTADA;
+	TipoRetorno retorno = this->ValidacionesPorOperacion(MKDIR,rutaDirectorio);
+	if (retorno==OK) {
+		this->raiz->AgregarDirectorio(rutaDirectorio);
+	}
+	else {
+		retorno = ERROR;		
+	}
+	return retorno;
 }
 
 TipoRetorno FileSystem::Rmdir(Cadena rutaDirectorio)
@@ -116,6 +122,27 @@ TipoRetorno FileSystem::Undelete()
 	return NO_IMPLEMENTADA;
 }
 
+
+
+TipoRetorno FileSystem::ValidacionesPorOperacion(TipoOperacion nombreOperacion, Cadena ruta)
+{
+	TipoRetorno retorno = OK;
+	if (nombreOperacion == MKDIR) {
+		if (this->rutaComienzaMal(ruta)) {
+			retorno = ERROR;
+			ImprimirError(ERROR_RUTA_COMIENZA_MAL);
+		}
+	}
+	return retorno;
+}
+
+bool FileSystem::rutaComienzaMal(Cadena ruta) {
+	return ruta[0] != *barra;
+}
+
+void FileSystem::ImprimirError(TipoError tipoError) {
+	// NO IMPLEMENTADA
+}
 
 
 #endif

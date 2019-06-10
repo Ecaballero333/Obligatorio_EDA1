@@ -64,7 +64,7 @@ Directorio &Directorio::operator=(const Directorio&d)
 		this->EliminarArchivos();
 		this->nombre = d.nombre;
 		Iterador<Archivo> itArchivosACopiar = d.archivos->GetIterador();
-		while (!itArchivosACopiar.EsFin() && !itArchivosACopiar.EsFin());
+		while (!itArchivosACopiar.EsFin());
 		{
 			Archivo archivoCopia = itArchivosACopiar.Elemento();
 			this->archivos->AgregarOrd(archivoCopia);

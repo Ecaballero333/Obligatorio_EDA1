@@ -6,6 +6,8 @@
 #include "FuncAux.h"
 #include "Directorios.h"
 #include "PilaImp.h"
+#include "TipoOperacion.h"
+#include "TipoError.h"
 
 class FileSystem {
 	
@@ -54,12 +56,29 @@ class FileSystem {
 
 
 
-    private:
+    private:	
+
 		Directorios* raiz;
 		int maximoRecupera;
 		typedef Cadena ruta;
 		typedef Asociacion<ruta, Archivo> rutaArchivo;
 		Pila<rutaArchivo> *listaUndeleteArchivos;
+
+		const char* barra = "/";
+
+		//PRE:
+		//POS: Realiza las validaciones de la Operación pasada por parámetro y devuelve 
+		// si encuentra error o no. Si encuentra error imprime el texto correspondiente
+		TipoRetorno ValidacionesPorOperacion(TipoOperacion,Cadena ruta);
+
+		//PRE: !cadenaError.esVacia()
+		//POS: Imprime el error que recibe por parámetro.
+		//Si el error que recibe es vacío, no imprime nada.
+		void ImprimirError(TipoError tipoError);
+
+		//PRE:
+		//POS: Devuelve true si la ruta no comienza con /
+		bool rutaComienzaMal(Cadena ruta);
 
 };
 
