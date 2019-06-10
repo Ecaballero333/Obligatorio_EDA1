@@ -1,4 +1,17 @@
 1- El operador < en "bool operator<(const Directorio &d) const;" es para comparar directorios por nombre?
 	R: S
+	
 2- Si uso el atributo Cadena en una clase (por ej: en Directorio o archivo) lo uso como Cadena* ? Por qué?
 	R: No es necesario. lo puedo usar sin *. Si lo uso con * cuando haga el == por ejemplo tengo que hacer *cad1 == *cad2
+	
+3- En un constructor por copia: 
+	Directorio::Directorio(const Directorio &d)
+	{
+		this->nombre = nullptr;
+		this->archivos = nullptr;
+		*this = d;
+	}
+	en vez de this->nombre = nullptr; hay puede hacer delete this->nombre??? Lo mismo para this->archivos = nullptr;
+	
+4-Quien es el responsable de validar que una ruta sea correcta? FileSystem o Directorios?
+

@@ -12,20 +12,21 @@ Directorios::Directorios()
 
 Directorios::~Directorios()
 {
-	// NO IMPLEMENTADA
+	this->Vaciar();
+	delete this->arbolDirectorios;
 }
 
 Directorios::Directorios(const Directorios &d)
 {
-	// NO IMPLEMENTADA
+	*this = d;
 }
 
 Directorios &Directorios::operator=(const Directorios &d) 
 {
 	if (this != &d)
 	{
-		// NO IMPLEMENTADA
-		assert(false);
+		this->Vaciar();		
+		this->arbolDirectorios = this->CopiarArbolDirectorios(d.arbolDirectorios);
 	}
 	return *this;
 }
@@ -65,6 +66,18 @@ void Directorios::Vaciar()
 void Directorios::CopiarDirectorio(Cadena rutaOrigen, Cadena rutaDestino)
 {
 	// NO IMPLEMENTADA
+}
+
+NodoAG<Directorio>* Directorios::CopiarArbolDirectorios(NodoAG<Directorio>* d) {
+	if (d == NULL) {
+		return NULL;
+	}
+	else {
+		NodoAG<Directorio>* aux = new NodoAG<Directorio>(d->dato,NULL,NULL);
+		aux->ph = CopiarArbolDirectorios(d->ph);
+		aux->sh = CopiarArbolDirectorios(d->sh);
+		return aux;
+	}
 }
 
 

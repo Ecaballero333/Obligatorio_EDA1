@@ -8,23 +8,30 @@
 FileSystem::FileSystem()
 {
 	this->raiz = new Directorios();
+	//this->listaUndeleteArchivos = new PilaImp<rutaArchivo>();
 }
 
 
 FileSystem::FileSystem(unsigned int MAX_RECUPERAR)
 {
-	// NO IMPLEMENTADA
+	this->maximoRecupera = MAX_RECUPERAR;
+	this->raiz = new Directorios();
+	//this->listaUndeleteArchivos = new PilaImp<Asociacion<ruta, Archivo>>();
 }
 
 
 FileSystem::~FileSystem()
 {
-	// NO IMPLEMENTADA
+	this->maximoRecupera = NULL;
+	delete this->raiz;
+	//delete this->listaUndeleteArchivos;
 }
 
 FileSystem::FileSystem(const FileSystem &f)
 {
-	// NO IMPLEMENTADA
+	this->maximoRecupera = NULL;
+	this->raiz = NULL;
+	//this->listaUndeleteArchivos = NULL;
 	*this = f;
 }
 
@@ -32,8 +39,9 @@ FileSystem &FileSystem::operator=(const FileSystem &f)
 {
 	if (this != &f)
 	{
-		// NO IMPLEMENTADA
-		assert(false);
+		this->maximoRecupera = f.maximoRecupera;
+		*this->raiz = *f.raiz;
+		//*this->listaUndeleteArchivos = *f.listaUndeleteArchivos;
 	}
 	return *this;
 }

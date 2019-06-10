@@ -5,6 +5,7 @@
 #include "Cadena.h"
 #include "FuncAux.h"
 #include "Directorios.h"
+#include "PilaImp.h"
 
 class FileSystem {
 	
@@ -55,6 +56,10 @@ class FileSystem {
 
     private:
 		Directorios* raiz;
+		int maximoRecupera;
+		typedef Cadena ruta;
+		typedef Asociacion<ruta, Archivo> rutaArchivo;
+		Pila<rutaArchivo> *listaUndeleteArchivos;
 
 };
 
