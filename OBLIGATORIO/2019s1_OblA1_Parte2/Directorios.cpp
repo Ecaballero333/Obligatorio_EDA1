@@ -33,7 +33,11 @@ Directorios &Directorios::operator=(const Directorios &d)
 
 void Directorios::AgregarDirectorio(Cadena ruta)
 {
-	// NO IMPLEMENTADA
+	NodoLista<char*>* listaRuta = rutaALista(&ruta);
+	const char* nombreRaiz = "/";
+	NodoLista<char*>* directorioRaiz = new NodoLista<char*>(&"/", nullptr, nullptr);
+	NodoAG<Directorio>* directorio = buscarRuta(this->arbolDirectorios,listaRuta);
+
 }
 
 void Directorios::EliminarDirectorio(Cadena ruta)
@@ -77,6 +81,49 @@ NodoAG<Directorio>* Directorios::CopiarArbolDirectorios(NodoAG<Directorio>* d) {
 		aux->ph = CopiarArbolDirectorios(d->ph);
 		aux->sh = CopiarArbolDirectorios(d->sh);
 		return aux;
+	}
+}
+
+NodoLista<char*>* Directorios::rutaALista(Cadena* ruta) {
+	char* copiaS = ruta->GetNewCharPtr();
+	NodoLista<char*>* lista = nullptr;
+	char * token = strtok(copiaS, "/");
+	while (token != NULL) {		
+		this->AgregarNombreDirectorioAlFinal(lista, token);
+		token = strtok(NULL, "/");
+	}
+	delete[] copiaS;
+	return lista;
+}
+
+void Directorios::AgregarNombreDirectorioAlFinal(NodoLista<char*>*& lista, char* nombreDirectorio) {
+	NodoLista<char*>* nuevo = new NodoLista<char*>(nombreDirectorio,nullptr, nullptr);
+	if (lista == nullptr) {
+		lista = nuevo;
+	}
+	else {
+		NodoLista<char*>* copiaLista = lista;
+		while (copiaLista->sig != NULL) {
+			copiaLista = copiaLista->sig;
+		}
+		copiaLista->sig = nuevo;
+	}
+}
+
+NodoAG<Directorio>* Directorios::buscarRuta(NodoAG<Directorio>*& r, NodoLista<char*>* listaRuta){
+	if (r == nullptr) {
+		return r;
+	}
+	else {
+		if (r->dato.GetNombre() == listaRuta->dato) {
+			if (listaRuta->sig == nullptr) {
+				return r;
+			}
+			else {
+				return buscarRuta(r->ph, listaRuta->sig);
+			}
+		}
+		return buscarRuta(r->sh, listaRuta);
 	}
 }
 

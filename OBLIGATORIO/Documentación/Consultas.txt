@@ -13,5 +13,9 @@
 	}
 	en vez de this->nombre = nullptr; hay puede hacer delete this->nombre??? Lo mismo para this->archivos = nullptr;
 	
-4-Quien es el responsable de validar que una ruta sea correcta? FileSystem o Directorios?
+4- Quien es el responsable de validar que una ruta sea correcta? FileSystem o Directorios?
+
+5- Se puede cambiar las precondiciones de un metodo de una clase. Ejemplo la pre de la clase directorios en el metodo argregar directorio sería: "la ruta es válida".
+
+6- Se puede cambiar el retorno de una función, ejemplo el retorno del metodo AgegarDirectorio de la clase Directorios seria un TipoRetorno
 

@@ -173,4 +173,6 @@ bool Cadena::esVacia() {
 	return this->Length() == 0;
 }
 
+
+
 #endif
