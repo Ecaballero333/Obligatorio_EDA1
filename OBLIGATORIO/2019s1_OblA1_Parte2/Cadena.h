@@ -53,7 +53,7 @@ public:
 
 	// PRE: index < Largo()
 	// Retorna el caracter en la posicion index
-	char operator[] (const unsigned int index);
+	Cadena operator[] (const unsigned int index);
 
 	// SE PUEDEN MODIFICAR O AGREGAR NUEVOS METODOS !!!
 

@@ -8,27 +8,33 @@ Archivo::Archivo(Cadena nombre)
 {
 	this->nombre = nombre;
 	this->oculto = false;
-	this->lineas = NULL;
+	this->lineas = nullptr;
+
 }
 
 Archivo::Archivo()
 {
-	this->nombre = NULL;
+	this->nombre = nullptr;
 	this->oculto = false;
-	this->lineas = NULL;
+	this->lineas = nullptr;
+
 
 }
 
 Archivo::~Archivo()
 {
-	// NO IMPLEMENTADA
+	this->nombre = nullptr;
+	this->oculto = false;
+	this->EliminarLineas();
+
 }
 
 Archivo::Archivo(const Archivo &a)
 {
-	this->nombre = NULL;
+	this->nombre = nullptr;
 	this->oculto = false;
-	this->lineas = NULL;
+	this->lineas = nullptr;
+
 	*this = a;
 }
 
@@ -36,15 +42,43 @@ Archivo &Archivo::operator=(const Archivo &a)
 {
 	if (this != &a)
 	{
-		// NO IMPLEMENTADA
+		
+		this->EliminarLineas();
+		this->nombre = a.nombre;
+		
+		Iterador<Cadena> itLineasACopiar = a.lineas->GetIterador();
+		while (!itLineasACopiar.EsFin()){
+		
+			Cadena cadenaCopia = itLineasACopiar.Elemento();
+			this->lineas->AgregarFin(cadenaCopia);
+			itLineasACopiar++;
+			
+		}
+		
 	}
 	return *this;
 }
 
 bool Archivo::operator==(const Archivo &a) const
 {
-	// NO IMPLEMENTADA
-	return false;
+	bool sonIguales = this->nombre == a.nombre;
+	if (sonIguales) {
+		Iterador<Cadena> itCadenaThis = this->lineas->GetIterador();
+		Iterador<Cadena> itCadenaParam = a.lineas->GetIterador();
+
+		while (!itCadenaThis.EsFin() && !itCadenaParam.EsFin() && sonIguales)
+		{
+			sonIguales = itCadenaThis.Elemento() == itCadenaParam.Elemento();
+			itCadenaThis++;
+			itCadenaParam++;
+		}
+		if (sonIguales)
+		{
+			sonIguales = itCadenaThis.EsFin() && itCadenaParam.EsFin();
+		}
+	}
+
+	return sonIguales;
 }
 
 bool Archivo::operator<(const Archivo &a) {
@@ -71,9 +105,33 @@ void Archivo::ModificarVisibilidad(Cadena nuevaVisibilidad)
 
 }
 
+
 void Archivo::InsertarTexto(unsigned int nroLinea, unsigned int posLinea, Cadena texto)
 {
-	// NO IMPLEMENTADA
+	
+	if (nroLinea > lineas->CantidadElementos()) {
+		while (nroLinea > lineas->CantidadElementos()) {
+			lineas->AgregarFin(" ");
+			nroLinea++;
+		}
+	}
+	
+	Cadena nueva = lineas->ElementoPos(nroLinea-1); //nrolinea empieza en 1, lineas en 0
+	
+	if (nueva.Length() < posLinea) {
+		while (nueva.Length() < posLinea){	
+			nueva = nueva + " ";
+		}
+	}
+
+	Cadena primeraMitad = nullptr;
+	Cadena segundaMitad = nullptr;
+	
+	int n = 0;
+	while (posLinea > primeraMitad.Length()) {
+		primeraMitad = primeraMitad + nueva[n];
+	}
+
 }
 
 
@@ -100,11 +158,22 @@ void Archivo::MostrarContenido() const
 	while (!aux->EsVacia()) {
 
 		cout << n <<": " << aux->ElementoPos(n-1); // empieza en 0 y n en 1
-		aux->BorrarPpio();
 		n++;
 	}
 	
 	delete aux;
+}
+
+void Archivo::EliminarLineas(){
+
+	Iterador<Cadena> itCadena= this->lineas->GetIterador();
+	while (!itCadena.EsFin())
+	{
+		Cadena cadenaCopia = itCadena.Elemento();
+		itCadena++;
+		delete& cadenaCopia;
+	}
+
 }
 
 bool Archivo::EstaOculto() const

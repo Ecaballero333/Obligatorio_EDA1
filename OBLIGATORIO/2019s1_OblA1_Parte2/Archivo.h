@@ -71,11 +71,17 @@ class Archivo{
 		//POS: Retorna si el archivo tiene lineas
 		bool TieneLineas() const;
 
+		//metodo propio
+		//PRE:
+		//POS: Elimina todas las lineas de un archivo
+		void EliminarLineas();
+		
+		
+
     private:
 		Cadena nombre;
 		bool oculto;
 		ListaPos<Cadena>* lineas;
-	
 };
 
 #endif 
