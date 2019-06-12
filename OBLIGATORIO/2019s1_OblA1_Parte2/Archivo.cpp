@@ -13,7 +13,7 @@ Archivo::Archivo(Cadena nombre)
 
 Archivo::Archivo()
 {
-	//this->nombre = NULL;
+	this->nombre = *new Cadena();
 	this->oculto = false;
 	this->lineas = NULL;
 

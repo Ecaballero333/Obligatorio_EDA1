@@ -34,25 +34,25 @@ Directorios &Directorios::operator=(const Directorios &d)
 
 TipoError Directorios::AgregarDirectorio(Cadena ruta)
 {
-	TipoError retorno = NO_HAY_ERROR;
-	NodoLista<Cadena>* listaRuta = rutaALista(&ruta);
-	Cadena nombreDirectorioACrear = obtenerYBorrarUltimaCadena(listaRuta);
-	NodoAG<Directorio>* nodoDirectorio = buscarRuta(this->arbolDirectorios,listaRuta);
-	if (nodoDirectorio != NULL) {
-		if (!this->ExisteHijoEnRuta(nodoDirectorio, nombreDirectorioACrear)) {
-			Directorio* nuevoDirectorio = new Directorio(nombreDirectorioACrear);
-			NodoAG<Directorio>* nuevoNodoDirectorio = new NodoAG<Directorio>(*nuevoDirectorio, nullptr, nullptr);
-			if (nodoDirectorio->ph != NULL) {
-				nuevoNodoDirectorio->sh = nodoDirectorio->ph;
+	TipoError retorno = this->ValidacionesPorOperacion(MKDIR, ruta, "");
+	if (retorno == NO_HAY_ERROR) {
+		NodoLista<Cadena>* listaRuta = rutaALista(&ruta);
+		Cadena nombreDirectorioACrear = obtenerYBorrarUltimaCadena(listaRuta);
+		NodoAG<Directorio>* nodoDirectorio = buscarRuta(this->arbolDirectorios, listaRuta);
+		if (nodoDirectorio == NULL) {
+			retorno = ERROR_NO_SE_ENCUENTRA_RUTA;
+		} else {
+			if (this->ExisteHijoEnRuta(nodoDirectorio, nombreDirectorioACrear)) {
+				retorno = ERROR_YA_EXISTE_SUBDIRECTORIO;
+			} else {
+				Directorio* nuevoDirectorio = new Directorio(nombreDirectorioACrear);
+				NodoAG<Directorio>* nuevoNodoDirectorio = new NodoAG<Directorio>(*nuevoDirectorio, nullptr, nullptr);
+				if (nodoDirectorio->ph != NULL) {
+					nuevoNodoDirectorio->sh = nodoDirectorio->ph;
+				}
+				nodoDirectorio->ph = nuevoNodoDirectorio;
 			}
-			nodoDirectorio->ph = nuevoNodoDirectorio;
 		}
-		else {
-			retorno = ERROR_YA_EXISTE_SUBDIRECTORIO;
-		}
-	}
-	else {
-		retorno = ERROR_NO_SE_ENCUENTRA_RUTA;
 	}
 	return retorno;
 }
@@ -74,9 +74,29 @@ bool Directorios::ExisteDirectorio(Cadena ruta) const
 	// NO IMPLEMENTADA
 //}
 
-void Directorios::Dir(Cadena ruta, Cadena parametro) const
+TipoError Directorios::Dir(Cadena ruta, Cadena parametro)
 {
-	// NO IMPLEMENTADA
+	TipoError retorno = this->ValidacionesPorOperacion(DIR, ruta, parametro);
+	if (retorno = NO_HAY_ERROR) {
+		NodoLista<Cadena>* listaRuta = rutaALista(&ruta);
+		NodoAG<Directorio>* nodoDirectorio = buscarRuta(this->arbolDirectorios, listaRuta);
+		if (nodoDirectorio == NULL) {
+			retorno = ERROR_NO_SE_ENCUENTRA_RUTA;
+		} else {
+			this->ImprimirContenidoDirectorio(nodoDirectorio, ruta, parametro);
+			/*
+			-AGREGO UN ATRIBUTO A DIRECTORIO QUE ES NIVEL
+			-EN EL OPERADOR < DE DIRECTORIO IMPLEMENTO QUE SI UN DIR ESTA EN UN NIVEL MENO QUE OTRO SIEMPRE VA A SER MENOR,
+			SI ESTAN EN EL MISMO NIVEL COMPARO POR NOMBRE
+			-HAGO UNA ListaOrdImp<Directorio> que tenga todos los directorios del argbolGeneral<Directorio>
+			-hago un metodo que recorra la listaordenada y imprima su propia ruta y luego llame al ListarArchivos del Directorio 
+			
+			
+			
+			*/
+		}
+	}
+	return retorno;
 }
 
 void Directorios::Vaciar()
@@ -177,5 +197,79 @@ bool Directorios::ExisteHijoEnRuta(NodoAG<Directorio>* nodoDirectorio, Cadena no
 	}
 	return existe;
 }
+
+TipoError Directorios::ValidacionesPorOperacion(TipoOperacion nombreOperacion, Cadena ruta, Cadena parametro)
+{
+	TipoError retorno = NO_HAY_ERROR;
+	if (nombreOperacion == MKDIR) {
+		if (this->rutaComienzaMal(ruta)) {
+			retorno = ERROR_RUTA_COMIENZA_MAL;
+		}
+		else if (this->directorioRaizDuplicado(ruta)) {
+			retorno = ERROR_NO_SE_PUEDE_CREAR_DIR_RAIZ;
+		}
+		else if (this->directorioNombreIncorrecto(ruta)) {
+			retorno = ERROR_DIRECTORIO_NOMBRE_INCORRECTO;
+		}
+	}
+	if (nombreOperacion == DIR) {
+		if (this->rutaComienzaMal(ruta)) {
+			retorno = ERROR_RUTA_COMIENZA_MAL;
+		}
+		if (parametro != "" && parametro != "-H") {
+			retorno = ERROR_PARAMETRO_DESCONOCIDO;
+		}
+	}
+	return retorno;
+}
+
+bool Directorios::rutaComienzaMal(Cadena ruta) {
+	return ruta[0] != *barra;
+}
+
+bool Directorios::directorioRaizDuplicado(Cadena ruta) {
+	return ruta[0] == *barra && ruta.Length() == 1;
+}
+
+bool Directorios::directorioNombreIncorrecto(Cadena ruta) {
+	const char* dobleBarra = "//";
+	Cadena* cadDobleBarra = new Cadena(dobleBarra, true);
+	const char* punto = ".";
+	Cadena* cadPunto = new Cadena(punto, true);
+	bool retorno = ruta.Contains(*cadDobleBarra) || ruta.Contains(*cadPunto);
+	delete[] cadDobleBarra;
+	delete[] cadPunto;
+	return retorno;
+}
+
+void ImprimirContenidoDirectorio(NodoAG<Directorio>* nodoDirectorio, Cadena ruta, Cadena parametro) {
+	cout << "DIR " << ruta <<endl;
+	cout << ruta <<endl;
+
+
+}
+void recorrerArbol(NodoAG<Directorio>* nodoDirectorio) {
+	if (nodoDirectorio != NULL) {
+		ListaOrd<Cadena>* hermanos = listarHermanosOrdenados(nodoDirectorio);
+		imprimirListaNodos(hermanos);
+		recorrerArbol(nodoDirectorio->ph);
+		recorrerArbol(nodoDirectorio->sh);
+	}
+}
+
+void imprimirListaNodos(ListaOrd<Directorio>* hermanos) {
+	//se imprime a si mismo y a sus archivos 
+}
+
+ListaOrd<Directorio>* listarHermanosOrdenados(NodoAG<Directorio>* nodoDirectorio) {
+	ListaOrd<Cadena>* hermanos = new ListaOrdImp<Cadena>();	
+	while (nodoDirectorio != NULL) {
+		Cadena nombreDir = nodoDirectorio->dato.GetNombre();
+		hermanos->AgregarOrd(nombreDir);
+		nodoDirectorio = nodoDirectorio->sh;
+	}
+	return hermanos;
+}
+
 
 #endif

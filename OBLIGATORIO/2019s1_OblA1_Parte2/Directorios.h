@@ -6,6 +6,7 @@ using namespace std;
 #include "Directorio.h"
 #include "NodoAG.h"
 #include "ListaOrdImp.h"
+#include "TipoOperacion.h"
 #include "TipoError.h"
 
 
@@ -43,7 +44,7 @@ class Directorios {
 
 		//PRE: Existe ruta
 		//POS: Imprime la jerarquia de directorios a partir de ruta teniendo en cuenta el parametro que indica la visibilidad.
-		void Dir(Cadena ruta, Cadena parametro) const;
+		TipoError Dir(Cadena ruta, Cadena parametro);
 
 		//PRE: 
 		//POS: Elimina todos los directorios (y sus archivos) excepto el raiz "/".
@@ -55,6 +56,7 @@ class Directorios {
 				
 
     private:
+		const char* barra = "/";
 		NodoAG<Directorio>* arbolDirectorios;
 
 		//PRE:
@@ -79,7 +81,30 @@ class Directorios {
 		//POS: Borra el último nodo y devuelve la cadena de ese último nodo
 		Cadena obtenerYBorrarUltimaCadena(NodoLista<Cadena>* listaRuta);
 
+		//PRE:
+		//POS: Valida que no exista un nodo hijo de nodoDirectorio con nombre: nombreDirectorio
 		bool ExisteHijoEnRuta(NodoAG<Directorio>* nodoDirectorio, Cadena nombreDirectorio);
+
+		//PRE:
+		//POS: Devuelve true si la ruta no comienza con /
+		bool rutaComienzaMal(Cadena ruta);
+
+		//PRE:
+		//POS: Devuelve true si la ruta no comienza con /
+		bool directorioRaizDuplicado(Cadena ruta);
+
+		//PRE:
+		//POS: Devuelve true si la ruta no comienza con /
+		bool directorioNombreIncorrecto(Cadena ruta);
+		
+		//PRE:
+		//POS: Realiza las validaciones de la Operación pasada por parámetro y devuelve 
+		// si encuentra error o no. Si encuentra error imprime el texto correspondiente
+		TipoError ValidacionesPorOperacion(TipoOperacion nombreOperacion, Cadena ruta, Cadena parametro);
+
+		//PRE: Ruta y parámetro válidos
+		//POS: Imprime la jerarquia de directorios a partir de ruta teniendo en cuenta el parametro que indica la visibilidad.
+		void ImprimirContenidoDirectorio(NodoAG<Directorio>* nodoDirectorio, Cadena ruta, Cadena parametro);
 };
 
 #endif 
