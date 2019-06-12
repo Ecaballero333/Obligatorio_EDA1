@@ -23,7 +23,7 @@ class Directorios {
 		//Operador de asignación
 		Directorios &operator=(const Directorios &d);
 
-		//PRE:  
+		//PRE: 
 		//POS: Agregar el directorio
 		void AgregarDirectorio(Cadena ruta);
 		
@@ -50,6 +50,24 @@ class Directorios {
 		//PRE: 
 		//POS: Copia el directorio de origen a destino
 		void CopiarDirectorio(Cadena rutaOrigen, Cadena rutaDestino);
+
+		//PRE:
+		//POS: Copia un arbol general de directorios pasado por parámetro
+		NodoAG<Directorio>* CopiarArbolDirectorios(NodoAG<Directorio>* d);
+
+		//PRE:
+		//POS: Convierte una ruta en una lista de nombres de directorios.
+		//La ruta la separa por / y cada nombrees un nodo de la lista.
+		NodoLista<char*>* rutaALista(Cadena* ruta);
+
+		//PRE:
+		//POS: Agrega un nodo con el nombre de un directorio al final de la lista 
+		void AgregarNombreDirectorioAlFinal(NodoLista<char*>*& lista, char* nombreDirectorio);
+
+		//PRE:
+		//POS:Busca en el NodoAG<Directorio> propio si tiene la ruta pasada por parámetro
+		//como una lista y la devuelve
+		NodoAG<Directorio>* buscarRuta(NodoAG<Directorio>*& r, NodoLista<char*>* listaRuta);
 
     private:
 		NodoAG<Directorio>* arbolDirectorios;

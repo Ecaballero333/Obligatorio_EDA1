@@ -55,7 +55,9 @@ public:
 	// Retorna el caracter en la posicion index
 	Cadena operator[] (const unsigned int index);
 
-	// SE PUEDEN MODIFICAR O AGREGAR NUEVOS METODOS !!!
+	//PRE:
+	//POS: retorna true si el string no tiene caracteres
+	bool esVacia();
 
 protected:
 	char *s;

@@ -168,5 +168,11 @@ Cadena Cadena::operator[] (const unsigned int index)
 	return s[index];
 }
 
+/****************************************************/
+bool Cadena::esVacia() {
+	return this->Length() == 0;
+}
+
+
 
 #endif
