@@ -6,7 +6,7 @@
 
 Directorio::Directorio()
 {
-	this->nombre = nullptr;
+	this->nombre = *new Cadena();
 	this->archivos = new ListaOrdImp<Archivo>();
 }
 
@@ -18,13 +18,13 @@ Directorio::Directorio(Cadena nombreDirectorio)
 
 Directorio::~Directorio()
 {
-	this->nombre = nullptr;
+	//this->nombre = nullptr;
 	this->EliminarArchivos();
 }
 
 Directorio::Directorio(const Directorio &d)
 {
-	this->nombre = nullptr;
+	//this->nombre = nullptr;
 	this->archivos = nullptr;
 	*this = d;
 }
@@ -63,12 +63,14 @@ Directorio &Directorio::operator=(const Directorio&d)
 	{
 		this->EliminarArchivos();
 		this->nombre = d.nombre;
-		Iterador<Archivo> itArchivosACopiar = d.archivos->GetIterador();
-		while (!itArchivosACopiar.EsFin());
-		{
-			Archivo archivoCopia = itArchivosACopiar.Elemento();
-			this->archivos->AgregarOrd(archivoCopia);
-			itArchivosACopiar++;
+		if (d.archivos->CantidadElementos()>0) {
+			Iterador<Archivo> itArchivosACopiar = d.archivos->GetIterador();
+			while (!itArchivosACopiar.EsFin());
+			{
+				Archivo archivoCopia = itArchivosACopiar.Elemento();
+				this->archivos->AgregarOrd(archivoCopia);
+				itArchivosACopiar++;
+			}
 		}
 	}
 	return *this;
@@ -104,12 +106,14 @@ void Directorio::EliminarArchivo(Cadena nombreArchivo)
 
 void Directorio::EliminarArchivos()
 {
-	Iterador<Archivo> itArchivosThis = this->archivos->GetIterador();
-	while (!itArchivosThis.EsFin())
-	{
-		Archivo archivoCopia = itArchivosThis.Elemento();
-		itArchivosThis++;
-		delete &archivoCopia;
+	if (this->archivos != NULL) {
+		Iterador<Archivo> itArchivosThis = this->archivos->GetIterador();
+		while (!itArchivosThis.EsFin())
+		{
+			Archivo archivoCopia = itArchivosThis.Elemento();
+			itArchivosThis++;
+			delete &archivoCopia;
+		}
 	}
 }
 

@@ -13,7 +13,7 @@ Archivo::Archivo(Cadena nombre)
 
 Archivo::Archivo()
 {
-	this->nombre = NULL;
+	//this->nombre = NULL;
 	this->oculto = false;
 	this->lineas = NULL;
 
@@ -26,7 +26,7 @@ Archivo::~Archivo()
 
 Archivo::Archivo(const Archivo &a)
 {
-	this->nombre = NULL;
+	//this->nombre = NULL;
 	this->oculto = false;
 	this->lineas = NULL;
 	*this = a;

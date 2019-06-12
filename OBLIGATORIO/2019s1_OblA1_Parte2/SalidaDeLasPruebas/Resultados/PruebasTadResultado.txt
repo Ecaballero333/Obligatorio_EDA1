@@ -1,0 +1,57 @@
+********* INICIO PRUEBAS LISTA POS*******
+-----------------------------------
+Prueba 0: Imprimo la lista luego de agregar 2 datos al principio -> OK
+-----------------------------------
+Prueba 1: Imprimo la lista luego de agregar 2 datos al final -> OK
+-----------------------------------
+Prueba 2: Imprimo la lista luego de agregar el dato 3 en la posición 2 -> OK
+-----------------------------------
+Prueba 3: Imprimo el largo de la lista -> OK
+-----------------------------------
+Prueba 4: Imprimo el la lista original y su clon -> OK
+-----------------------------------
+Prueba 5: Imprimo luego de crearvacia -> OK
+-----------------------------------
+Prueba 6: Imprimo luego de = -> OK
+-----------------------------------
+Prueba 7: Imprimo prueba de == sobre listas iguales -> OK
+-----------------------------------
+Prueba 8: Imprimo prueba de == sobre listas distintas -> OK
+-----------------------------------
+Prueba 9: Imprimo clon luego de asignarle l -> OK
+-----------------------------------
+Prueba 10: Imprimo el principio de la lista -> OK
+-----------------------------------
+Prueba 11: Imprimo el fin de la lista -> OK
+-----------------------------------
+Prueba 12: Imprimo el elemento de la cuarta posición -> OK
+-----------------------------------
+Prueba 13: Imprimo la lista luego de eliminar el principio -> OK
+-----------------------------------
+Prueba 14: Imprimo la lista luego de eliminar el fin -> OK
+-----------------------------------
+Prueba 15: Imprimo la lista luego de eliminar el tercer elemento -> OK
+-----------------------------------
+Prueba 16: Imprimo la lista luego de eliminar el elemento 3 -> OK
+-----------------------------------
+Prueba 17: Imprimo la posicion del elemento 4 -> OK
+-----------------------------------
+Prueba 18: Imprimo si el elemento 4 existe en la lista -> OK
+-----------------------------------
+Prueba 19: Imprimo si el elemento 6 existe en la lista -> OK
+-----------------------------------
+Prueba 20: Imprimo si la lista se encuentra vacia -> OK
+-----------------------------------
+Prueba 21: Imprimo la lista luego de vaciarla -> OK
+-----------------------------------
+Prueba 22: Imprimo si la lista se encuentra vacia  -> OK
+********* FIN PRUEBAS LISTA POS*******
+
+PRUEBAS FUNCION PRUEBAS LISTA POS                                  PRUEBAS CORRECTAS
+
+
+
+----------------
+PRUEBAS FUNCIONES 
+PRUEBAS FUNCIONES RESULTADO ../PruebasTad.txt                   => CORRECTAS:  1 INCORRECTAS:  0
+PRUEBAS FUNCIONES 

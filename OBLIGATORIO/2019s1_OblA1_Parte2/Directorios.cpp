@@ -1,5 +1,5 @@
 #include "Directorios.h"
-
+#pragma warning(disable : 4996)
 
 #ifndef DIRECTORIOS_CPP
 #define DIRECTORIOS_CPP
@@ -7,7 +7,8 @@
 Directorios::Directorios()
 {
 	Cadena* nombreDirectorioRaiz = new Cadena("/");
-	this->arbolDirectorios = new NodoAG<Directorio>(*nombreDirectorioRaiz, nullptr, nullptr);
+	Directorio* directorioRaiz = new Directorio(*nombreDirectorioRaiz);
+	this->arbolDirectorios = new NodoAG<Directorio>(*directorioRaiz, nullptr, nullptr);
 }
 
 Directorios::~Directorios()
@@ -31,13 +32,29 @@ Directorios &Directorios::operator=(const Directorios &d)
 	return *this;
 }
 
-void Directorios::AgregarDirectorio(Cadena ruta)
+TipoError Directorios::AgregarDirectorio(Cadena ruta)
 {
-	NodoLista<char*>* listaRuta = rutaALista(&ruta);
-	const char* nombreRaiz = "/";
-	NodoLista<char*>* directorioRaiz = new NodoLista<char*>(&"/", nullptr, nullptr);
-	NodoAG<Directorio>* directorio = buscarRuta(this->arbolDirectorios,listaRuta);
-
+	TipoError retorno = NO_HAY_ERROR;
+	NodoLista<Cadena>* listaRuta = rutaALista(&ruta);
+	Cadena nombreDirectorioACrear = obtenerYBorrarUltimaCadena(listaRuta);
+	NodoAG<Directorio>* nodoDirectorio = buscarRuta(this->arbolDirectorios,listaRuta);
+	if (nodoDirectorio != NULL) {
+		if (!this->ExisteHijoEnRuta(nodoDirectorio, nombreDirectorioACrear)) {
+			Directorio* nuevoDirectorio = new Directorio(nombreDirectorioACrear);
+			NodoAG<Directorio>* nuevoNodoDirectorio = new NodoAG<Directorio>(*nuevoDirectorio, nullptr, nullptr);
+			if (nodoDirectorio->ph != NULL) {
+				nuevoNodoDirectorio->sh = nodoDirectorio->ph;
+			}
+			nodoDirectorio->ph = nuevoNodoDirectorio;
+		}
+		else {
+			retorno = ERROR_YA_EXISTE_SUBDIRECTORIO;
+		}
+	}
+	else {
+		retorno = ERROR_NO_SE_ENCUENTRA_RUTA;
+	}
+	return retorno;
 }
 
 void Directorios::EliminarDirectorio(Cadena ruta)
@@ -84,9 +101,10 @@ NodoAG<Directorio>* Directorios::CopiarArbolDirectorios(NodoAG<Directorio>* d) {
 	}
 }
 
-NodoLista<char*>* Directorios::rutaALista(Cadena* ruta) {
+NodoLista<Cadena>* Directorios::rutaALista(Cadena* ruta) {
 	char* copiaS = ruta->GetNewCharPtr();
-	NodoLista<char*>* lista = nullptr;
+	Cadena* raiz = new Cadena("/");
+	NodoLista<Cadena>* lista = new NodoLista<Cadena>(*raiz, nullptr, nullptr);
 	char * token = strtok(copiaS, "/");
 	while (token != NULL) {		
 		this->AgregarNombreDirectorioAlFinal(lista, token);
@@ -96,13 +114,14 @@ NodoLista<char*>* Directorios::rutaALista(Cadena* ruta) {
 	return lista;
 }
 
-void Directorios::AgregarNombreDirectorioAlFinal(NodoLista<char*>*& lista, char* nombreDirectorio) {
-	NodoLista<char*>* nuevo = new NodoLista<char*>(nombreDirectorio,nullptr, nullptr);
+void Directorios::AgregarNombreDirectorioAlFinal(NodoLista<Cadena>*& lista,const char* nombreDirectorio) {
+	Cadena* cadenaDir = new Cadena(nombreDirectorio);
+	NodoLista<Cadena>* nuevo = new NodoLista<Cadena>(*cadenaDir,nullptr, nullptr);
 	if (lista == nullptr) {
 		lista = nuevo;
 	}
 	else {
-		NodoLista<char*>* copiaLista = lista;
+		NodoLista<Cadena>* copiaLista = lista;
 		while (copiaLista->sig != NULL) {
 			copiaLista = copiaLista->sig;
 		}
@@ -110,7 +129,7 @@ void Directorios::AgregarNombreDirectorioAlFinal(NodoLista<char*>*& lista, char*
 	}
 }
 
-NodoAG<Directorio>* Directorios::buscarRuta(NodoAG<Directorio>*& r, NodoLista<char*>* listaRuta){
+NodoAG<Directorio>* Directorios::buscarRuta(NodoAG<Directorio>*& r, NodoLista<Cadena>* listaRuta){
 	if (r == nullptr) {
 		return r;
 	}
@@ -127,5 +146,36 @@ NodoAG<Directorio>* Directorios::buscarRuta(NodoAG<Directorio>*& r, NodoLista<ch
 	}
 }
 
+
+Cadena Directorios::obtenerYBorrarUltimaCadena(NodoLista<Cadena>* listaRuta) {
+	NodoLista<Cadena>* copia = listaRuta;
+	while (copia->sig->sig != NULL) {
+		copia = copia->sig;
+	}
+	NodoLista<Cadena>* aux = copia->sig;
+	Cadena ultimaCadena = aux->dato;
+	copia->sig = NULL;
+	delete aux;
+	return ultimaCadena;
+}
+
+bool Directorios::ExisteHijoEnRuta(NodoAG<Directorio>* nodoDirectorio, Cadena nombreDirectorio) {
+	bool existe = false;
+	if (nodoDirectorio->ph != NULL) {
+		nodoDirectorio = nodoDirectorio->ph;
+		if (nodoDirectorio->dato.GetNombre() == nombreDirectorio) {
+			existe = true;
+		}
+		else {
+			while (nodoDirectorio->sh!=NULL && !existe) {
+				nodoDirectorio = nodoDirectorio->sh;
+				if (nodoDirectorio->dato.GetNombre() == nombreDirectorio) {
+					existe = true;
+				}
+			}
+		}
+	}
+	return existe;
+}
 
 #endif

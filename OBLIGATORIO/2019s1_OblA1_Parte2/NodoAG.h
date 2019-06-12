@@ -11,6 +11,8 @@ class NodoAG {
 		NodoAG<U> *ph;
 		NodoAG<U> *sh;
 
+		NodoAG(): dato(NULL), ph(NULL), sh(NULL) {};
+
 		NodoAG(const U &e, NodoAG<U> *p, NodoAG<U> *s) : dato(e), ph(p), sh(s) {}
 		
 		bool &operator==(const NodoAG<U> &n) { return dato==n.dato; }

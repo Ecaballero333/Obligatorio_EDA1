@@ -83,8 +83,8 @@ void PruebasPropias::correrPruebaConcreta()
 {
 	// Este archivo lo puedo modificar para hacer mis propias pruebas
 
-	Pila<int> * p = new PilaImp<int>();
-	ProbarPila(p);
+	/*Pila<int> * p = new PilaImp<int>();
+	ProbarPila(p);*/
 
 	// Ejemplo:
 

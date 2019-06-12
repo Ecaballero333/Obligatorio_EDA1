@@ -1,10 +1,12 @@
 #ifndef DIRECTORIOS_H
 #define DIRECTORIOS_H
 
+using namespace std;
 #include "Constantes.h"
 #include "Directorio.h"
 #include "NodoAG.h"
 #include "ListaOrdImp.h"
+#include "TipoError.h"
 
 
 class Directorios {
@@ -25,7 +27,7 @@ class Directorios {
 
 		//PRE: 
 		//POS: Agregar el directorio
-		void AgregarDirectorio(Cadena ruta);
+		TipoError AgregarDirectorio(Cadena ruta);
 		
 		//PRE: 
 		//POS: Elimina el directorio.
@@ -50,28 +52,34 @@ class Directorios {
 		//PRE: 
 		//POS: Copia el directorio de origen a destino
 		void CopiarDirectorio(Cadena rutaOrigen, Cadena rutaDestino);
+				
+
+    private:
+		NodoAG<Directorio>* arbolDirectorios;
 
 		//PRE:
-		//POS: Copia un arbol general de directorios pasado por parámetro
+		//POS: Copia un arbol general de directorios pasado por parámetros
 		NodoAG<Directorio>* CopiarArbolDirectorios(NodoAG<Directorio>* d);
 
 		//PRE:
 		//POS: Convierte una ruta en una lista de nombres de directorios.
 		//La ruta la separa por / y cada nombrees un nodo de la lista.
-		NodoLista<char*>* rutaALista(Cadena* ruta);
+		NodoLista<Cadena>* rutaALista(Cadena* ruta);
 
 		//PRE:
 		//POS: Agrega un nodo con el nombre de un directorio al final de la lista 
-		void AgregarNombreDirectorioAlFinal(NodoLista<char*>*& lista, char* nombreDirectorio);
+		void AgregarNombreDirectorioAlFinal(NodoLista<Cadena>*& lista, const char* nombreDirectorio);
 
 		//PRE:
 		//POS:Busca en el NodoAG<Directorio> propio si tiene la ruta pasada por parámetro
 		//como una lista y la devuelve
-		NodoAG<Directorio>* buscarRuta(NodoAG<Directorio>*& r, NodoLista<char*>* listaRuta);
+		NodoAG<Directorio>* buscarRuta(NodoAG<Directorio>*& r, NodoLista<Cadena>* listaRuta);
 
-    private:
-		NodoAG<Directorio>* arbolDirectorios;
+		//PRE: La lista tiene por lo menos 2 nodos
+		//POS: Borra el último nodo y devuelve la cadena de ese último nodo
+		Cadena obtenerYBorrarUltimaCadena(NodoLista<Cadena>* listaRuta);
 
+		bool ExisteHijoEnRuta(NodoAG<Directorio>* nodoDirectorio, Cadena nombreDirectorio);
 };
 
 #endif 
