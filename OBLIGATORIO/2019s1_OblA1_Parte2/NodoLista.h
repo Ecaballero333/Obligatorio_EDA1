@@ -14,6 +14,16 @@ class NodoLista {
 		NodoLista(const U &e, NodoLista<U> *a, NodoLista<U> *s) : dato(e), ant(a), sig(s) {}
 		virtual ~NodoLista() {}
 		
+		int Length() {
+			int largo = 0;
+			NodoLista* l = this;
+			while (l != NULL) {
+				largo++;
+				l = l->sig;
+			}
+			return largo;
+		}
+		
 	private:
 		NodoLista(const NodoLista<U> &n) : dato(n.dato), ant(n.ant), sig(n.sig)  {}
 

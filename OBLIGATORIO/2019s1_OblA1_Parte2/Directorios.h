@@ -103,8 +103,15 @@ class Directorios {
 		TipoError ValidacionesPorOperacion(TipoOperacion nombreOperacion, Cadena ruta, Cadena parametro);
 
 		//PRE: Ruta y parámetro válidos
-		//POS: Imprime la jerarquia de directorios a partir de ruta teniendo en cuenta el parametro que indica la visibilidad.
-		void ImprimirContenidoDirectorio(NodoAG<Directorio>* nodoDirectorio, Cadena ruta, Cadena parametro);
+		//POS: Imprime la jerarquia de directorios a partir de nodoDirectorio teniendo en cuenta el parametro que indica la visibilidad.
+		void ListarDirectorios(NodoAG<Directorio>* nodoDirectorio, Cadena ruta, Cadena parametro);
+		
+		//PRE: listaDirectorios es vacía
+		//POS: Obtiene una lista ordenada de todos los directorios que posee el arbol general.
+		//El orden está definido en el operador < de Directorio. Cuanto menor sea el nivel, antes aparece en la lista.
+		//Los directorios que esten en el mismo nivel se ordenan por nombre
+		ListaOrd<Directorio>* obtenerListaOrdenadaTodoslLosDirectorios(NodoAG<Directorio>* nodoDirectorio, ListaOrd<Directorio>*& listaDirectorios);
+
 };
 
 #endif 

@@ -22,7 +22,7 @@ class Directorio{
 		Directorio();
 
 		//Constructor
-		Directorio(Cadena nombreDirectorio);
+		Directorio(Cadena nombreDirectorio, int nivel);
 		
 		//Destructor
 		virtual ~Directorio();
@@ -33,10 +33,15 @@ class Directorio{
 		//Operador de asignación
 		Directorio &operator=(const Directorio &d);
 
-		//Operador de menor
+		//Operadores de menor, menor igual y mayor igual
+		//Revisa primero el nivel en el que se encuentra el directorio en el arbol de directorios.
+		//Cuanto menor sea el numero de nivel, menor será el directorio.
+		//Si los niveles son iguales, revisa por nombre de directorio
 		bool operator<(const Directorio &d) const;
+		bool operator<=(const Directorio &d) const;
+		bool operator>=(const Directorio &d) const;
 
-		//Operador de igualdad
+		//Operador de igualdad. 
 		bool operator==(const Directorio &d) const;
 
 		//PRE: El archivo no existe
@@ -79,10 +84,21 @@ class Directorio{
 		//POS: Lista todos los archivos en orden alfabetico con prefijo ruta teniendo en cuenta el parametro que indica la visibilidad.
 		void ListarArchivos(Cadena ruta, Cadena parametro) const; 
 
+		//PRE:
+		//POS: Establece el nivel en el que se encuentra el directorio en el arbol de directorios.
+		//El directorio raíz está en el nivel 0.
+		//El resto de directorios estan a partir del nivel 1
+		void setNivel(int nivel);
+
+		//PRE:
+		//POS: Devuelve el nivel en el que se encuentra el directorio en el arbol de directorios.
+		int getNivel();
+
 
 
 private:
 	Cadena nombre;
+	int nivel;
 	ListaOrd<Archivo>* archivos;
 
 };

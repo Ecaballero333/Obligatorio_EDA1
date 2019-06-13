@@ -7,7 +7,7 @@
 Directorios::Directorios()
 {
 	Cadena* nombreDirectorioRaiz = new Cadena("/");
-	Directorio* directorioRaiz = new Directorio(*nombreDirectorioRaiz);
+	Directorio* directorioRaiz = new Directorio(*nombreDirectorioRaiz, 0);
 	this->arbolDirectorios = new NodoAG<Directorio>(*directorioRaiz, nullptr, nullptr);
 }
 
@@ -45,7 +45,8 @@ TipoError Directorios::AgregarDirectorio(Cadena ruta)
 			if (this->ExisteHijoEnRuta(nodoDirectorio, nombreDirectorioACrear)) {
 				retorno = ERROR_YA_EXISTE_SUBDIRECTORIO;
 			} else {
-				Directorio* nuevoDirectorio = new Directorio(nombreDirectorioACrear);
+				int nivelNuevoDirectorio = listaRuta->Length();
+				Directorio* nuevoDirectorio = new Directorio(nombreDirectorioACrear, nivelNuevoDirectorio);
 				NodoAG<Directorio>* nuevoNodoDirectorio = new NodoAG<Directorio>(*nuevoDirectorio, nullptr, nullptr);
 				if (nodoDirectorio->ph != NULL) {
 					nuevoNodoDirectorio->sh = nodoDirectorio->ph;
@@ -77,23 +78,13 @@ bool Directorios::ExisteDirectorio(Cadena ruta) const
 TipoError Directorios::Dir(Cadena ruta, Cadena parametro)
 {
 	TipoError retorno = this->ValidacionesPorOperacion(DIR, ruta, parametro);
-	if (retorno = NO_HAY_ERROR) {
+	if (retorno == NO_HAY_ERROR) {
 		NodoLista<Cadena>* listaRuta = rutaALista(&ruta);
 		NodoAG<Directorio>* nodoDirectorio = buscarRuta(this->arbolDirectorios, listaRuta);
 		if (nodoDirectorio == NULL) {
 			retorno = ERROR_NO_SE_ENCUENTRA_RUTA;
 		} else {
-			this->ImprimirContenidoDirectorio(nodoDirectorio, ruta, parametro);
-			/*
-			-AGREGO UN ATRIBUTO A DIRECTORIO QUE ES NIVEL
-			-EN EL OPERADOR < DE DIRECTORIO IMPLEMENTO QUE SI UN DIR ESTA EN UN NIVEL MENO QUE OTRO SIEMPRE VA A SER MENOR,
-			SI ESTAN EN EL MISMO NIVEL COMPARO POR NOMBRE
-			-HAGO UNA ListaOrdImp<Directorio> que tenga todos los directorios del argbolGeneral<Directorio>
-			-hago un metodo que recorra la listaordenada y imprima su propia ruta y luego llame al ListarArchivos del Directorio 
-			
-			
-			
-			*/
+			this->ListarDirectorios(nodoDirectorio, ruta, parametro);
 		}
 	}
 	return retorno;
@@ -242,34 +233,35 @@ bool Directorios::directorioNombreIncorrecto(Cadena ruta) {
 	return retorno;
 }
 
-void ImprimirContenidoDirectorio(NodoAG<Directorio>* nodoDirectorio, Cadena ruta, Cadena parametro) {
-	cout << "DIR " << ruta <<endl;
-	cout << ruta <<endl;
-
-
+void Directorios::ListarDirectorios(NodoAG<Directorio>* nodoDirectorio, Cadena ruta, Cadena parametro) {
+	cout << "DIR " << ruta << parametro << endl;
+	cout << ruta << endl;
+	nodoDirectorio->dato.ListarArchivos(ruta, parametro);
+	nodoDirectorio = nodoDirectorio->ph;//Lo avanzo uno para que busque solo directorios descendientes, no hermanos
+	ListaOrd<Directorio>* listaDirectorios = new ListaOrdImp<Directorio>();
+	this->obtenerListaOrdenadaTodoslLosDirectorios(nodoDirectorio, listaDirectorios);
+	Iterador<Directorio> itListaDirectorios = listaDirectorios->GetIterador();
+	while (!itListaDirectorios.EsFin()){
+		Cadena rutaNueva = ruta + itListaDirectorios.Elemento().GetNombre() +"/";
+		cout << rutaNueva << endl;
+		itListaDirectorios.Elemento().ListarArchivos(ruta, parametro);
+		itListaDirectorios++;
+	}
+	delete listaDirectorios;
 }
-void recorrerArbol(NodoAG<Directorio>* nodoDirectorio) {
-	if (nodoDirectorio != NULL) {
-		ListaOrd<Cadena>* hermanos = listarHermanosOrdenados(nodoDirectorio);
-		imprimirListaNodos(hermanos);
-		recorrerArbol(nodoDirectorio->ph);
-		recorrerArbol(nodoDirectorio->sh);
+
+
+ListaOrd<Directorio>* Directorios::obtenerListaOrdenadaTodoslLosDirectorios(NodoAG<Directorio>* nodoDirectorio, ListaOrd<Directorio>*& listaDirectorios) {
+	if (nodoDirectorio == NULL) {
+		return NULL;
+	}
+	else {
+		listaDirectorios->AgregarOrd(nodoDirectorio->dato);
+		obtenerListaOrdenadaTodoslLosDirectorios(nodoDirectorio->ph, listaDirectorios);
+		obtenerListaOrdenadaTodoslLosDirectorios(nodoDirectorio->sh, listaDirectorios);
 	}
 }
 
-void imprimirListaNodos(ListaOrd<Directorio>* hermanos) {
-	//se imprime a si mismo y a sus archivos 
-}
-
-ListaOrd<Directorio>* listarHermanosOrdenados(NodoAG<Directorio>* nodoDirectorio) {
-	ListaOrd<Cadena>* hermanos = new ListaOrdImp<Cadena>();	
-	while (nodoDirectorio != NULL) {
-		Cadena nombreDir = nodoDirectorio->dato.GetNombre();
-		hermanos->AgregarOrd(nombreDir);
-		nodoDirectorio = nodoDirectorio->sh;
-	}
-	return hermanos;
-}
 
 
 #endif

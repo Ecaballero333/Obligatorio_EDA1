@@ -74,8 +74,13 @@ TipoRetorno FileSystem::CopyDir (Cadena rutaOrigen, Cadena rutaDestino)
 
 TipoRetorno FileSystem::Dir(Cadena rutaDirectorio, Cadena parametro) const
 {
-	//TipoRetorno retorno = ValidacionTextoRuta(DIR, rutaDirectorio);
-	return NO_IMPLEMENTADA;
+	TipoRetorno retorno = OK;
+	TipoError resultado = this->raiz->Dir(rutaDirectorio, parametro);
+	if (resultado != NO_HAY_ERROR) {
+		retorno = ERROR;
+		this->ImprimirError(resultado);
+	}
+	return retorno;
 }
 
 TipoRetorno FileSystem::CreateFile(Cadena rutaArchivo)
@@ -121,7 +126,7 @@ TipoRetorno FileSystem::Undelete()
 	return NO_IMPLEMENTADA;
 }
 
-void FileSystem::ImprimirError(TipoError tipoError) {
+void FileSystem::ImprimirError(TipoError tipoError) const {
 	switch (tipoError)
 	{
 	case ERROR_RUTA_COMIENZA_MAL:
@@ -137,7 +142,10 @@ void FileSystem::ImprimirError(TipoError tipoError) {
 		cout << "ERROR: No se puede volver a crear el directorio raiz.";
 		break;
 	case ERROR_DIRECTORIO_NOMBRE_INCORRECTO:
-		cout << "ERROR: Directorio con nombre incorrecto";
+		cout << "ERROR: Directorio con nombre incorrecto.";
+		break;
+	case ERROR_PARAMETRO_DESCONOCIDO:
+		cout << "ERROR: Parametro desconocido.";
 		break;
 	default:
 		break;

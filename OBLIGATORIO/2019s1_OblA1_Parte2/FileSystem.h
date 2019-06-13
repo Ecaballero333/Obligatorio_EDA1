@@ -65,7 +65,7 @@ class FileSystem {
 		//PRE: !cadenaError.esVacia()
 		//POS: Imprime el error que recibe por parámetro.
 		//Si el error que recibe es vacío, no imprime nada.
-		void ImprimirError(TipoError tipoError);
+		void ImprimirError(TipoError tipoError) const;
 		
 
 };
