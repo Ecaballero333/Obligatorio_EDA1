@@ -165,7 +165,7 @@ bool Cadena::Contains(const Cadena &substr) const {
 Cadena Cadena::operator[] (const unsigned int index)
 {
 	assert (index < Length());
-	return s[index];
+	return s[index]+"";
 }
 
 /****************************************************/

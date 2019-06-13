@@ -14,7 +14,7 @@ Archivo::Archivo(Cadena nombre)
 
 Archivo::Archivo()
 {
-	this->nombre = nullptr;
+	this->nombre = *new Cadena();
 	this->oculto = false;
 	this->lineas = nullptr;
 
@@ -23,7 +23,7 @@ Archivo::Archivo()
 
 Archivo::~Archivo()
 {
-	this->nombre = nullptr;
+	this->nombre = *new Cadena();
 	this->oculto = false;
 	this->EliminarLineas();
 
@@ -31,7 +31,7 @@ Archivo::~Archivo()
 
 Archivo::Archivo(const Archivo &a)
 {
-	this->nombre = nullptr;
+	this->nombre = *new Cadena();
 	this->oculto = false;
 	this->lineas = nullptr;
 
@@ -116,11 +116,11 @@ void Archivo::InsertarTexto(unsigned int nroLinea, unsigned int posLinea, Cadena
 		}
 	}
 	
-	Cadena nueva = lineas->ElementoPos(nroLinea-1); //nrolinea empieza en 1, lineas en 0
+	Cadena aux = lineas->ElementoPos(nroLinea-1); //nrolinea empieza en 1, lineas en 0
 	
-	if (nueva.Length() < posLinea) {
-		while (nueva.Length() < posLinea){	
-			nueva = nueva + " ";
+	if (aux.Length() < posLinea) {
+		while (aux.Length() < posLinea){	
+			aux = aux + " ";
 		}
 	}
 
@@ -129,8 +129,18 @@ void Archivo::InsertarTexto(unsigned int nroLinea, unsigned int posLinea, Cadena
 	
 	int n = 0;
 	while (posLinea > primeraMitad.Length()) {
-		primeraMitad = primeraMitad + nueva[n];
+		primeraMitad = primeraMitad + aux[n];
+		n++;
 	}
+
+	while (n < aux.Length()) {
+		segundaMitad = segundaMitad + aux[n];
+		n++;
+	}
+
+	Cadena nueva = primeraMitad + texto + segundaMitad;
+
+	lineas->ElementoPos(nroLinea) = nueva;
 
 }
 
@@ -147,7 +157,36 @@ bool Archivo::TieneLineas() const
 
 void Archivo::EliminarTexto(unsigned int nroLinea, unsigned int posLinea, unsigned int k)
 {
-	// NO IMPLEMENTADA
+	bool llegueAlFinal = false;
+	Cadena aux = lineas->ElementoPos(nroLinea);
+
+	if (nroLinea <= lineas->CantidadElementos()) {
+		if (aux.Length() < posLinea) {
+
+			if (k + posLinea > aux.Length()){
+				while (aux[posLinea] != '\0') {
+					delete &aux[posLinea];
+					posLinea++;
+				}
+			}
+			else{
+				while (k != 0){
+					delete &aux[posLinea];
+					k--;
+					posLinea++;
+				}
+
+			}
+
+
+		}
+		if (posLinea == 0 && llegueAlFinal) {
+			lineas->BorrarPos(nroLinea);
+		}
+	}
+	else {
+		//ERROR
+	}
 }
 
 void Archivo::MostrarContenido() const
