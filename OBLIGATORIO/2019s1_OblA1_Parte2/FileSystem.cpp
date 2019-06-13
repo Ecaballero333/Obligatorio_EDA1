@@ -49,12 +49,11 @@ FileSystem &FileSystem::operator=(const FileSystem &f)
 
 TipoRetorno FileSystem::Mkdir(Cadena rutaDirectorio)
 {
-	TipoRetorno retorno = this->ValidacionesPorOperacion(MKDIR,rutaDirectorio);
-	if (retorno==OK) {
-		this->raiz->AgregarDirectorio(rutaDirectorio);
-	}
-	else {
-		retorno = ERROR;		
+	TipoRetorno retorno = OK;
+	TipoError resultado = this->raiz->AgregarDirectorio(rutaDirectorio);
+	if (resultado != NO_HAY_ERROR) {
+		retorno = ERROR;
+		this->ImprimirError(resultado);
 	}
 	return retorno;
 }
@@ -75,8 +74,13 @@ TipoRetorno FileSystem::CopyDir (Cadena rutaOrigen, Cadena rutaDestino)
 
 TipoRetorno FileSystem::Dir(Cadena rutaDirectorio, Cadena parametro) const
 {
-	// NO IMPLEMENTADA
-	return NO_IMPLEMENTADA;
+	TipoRetorno retorno = OK;
+	TipoError resultado = this->raiz->Dir(rutaDirectorio, parametro);
+	if (resultado != NO_HAY_ERROR) {
+		retorno = ERROR;
+		this->ImprimirError(resultado);
+	}
+	return retorno;
 }
 
 TipoRetorno FileSystem::CreateFile(Cadena rutaArchivo)
@@ -122,27 +126,32 @@ TipoRetorno FileSystem::Undelete()
 	return NO_IMPLEMENTADA;
 }
 
-
-
-TipoRetorno FileSystem::ValidacionesPorOperacion(TipoOperacion nombreOperacion, Cadena ruta)
-{
-	TipoRetorno retorno = OK;
-	if (nombreOperacion == MKDIR) {
-		if (this->rutaComienzaMal(ruta)) {
-			retorno = ERROR;
-			ImprimirError(ERROR_RUTA_COMIENZA_MAL);
-		}
+void FileSystem::ImprimirError(TipoError tipoError) const {
+	switch (tipoError)
+	{
+	case ERROR_RUTA_COMIENZA_MAL:
+		cout << "ERROR: La ruta no comienza con /.";
+		break;
+	case ERROR_NO_SE_ENCUENTRA_RUTA:
+		cout << "ERROR: No se encuentra la ruta.";
+		break;
+	case ERROR_YA_EXISTE_SUBDIRECTORIO:
+		cout << "ERROR: Ya existe un subdirectorio con el mismo nombre en esa ruta.";
+		break;
+	case ERROR_NO_SE_PUEDE_CREAR_DIR_RAIZ:
+		cout << "ERROR: No se puede volver a crear el directorio raiz.";
+		break;
+	case ERROR_DIRECTORIO_NOMBRE_INCORRECTO:
+		cout << "ERROR: Directorio con nombre incorrecto.";
+		break;
+	case ERROR_PARAMETRO_DESCONOCIDO:
+		cout << "ERROR: Parametro desconocido.";
+		break;
+	default:
+		break;
 	}
-	return retorno;
 }
 
-bool FileSystem::rutaComienzaMal(Cadena ruta) {
-	return ruta[0] != *barra;
-}
-
-void FileSystem::ImprimirError(TipoError tipoError) {
-	// NO IMPLEMENTADA
-}
 
 
 #endif

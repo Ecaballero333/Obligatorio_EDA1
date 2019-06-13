@@ -6,33 +6,62 @@
 
 Directorio::Directorio()
 {
-	this->nombre = nullptr;
+	this->nombre = *new Cadena();
+	this->nivel = 0;
 	this->archivos = new ListaOrdImp<Archivo>();
 }
 
-Directorio::Directorio(Cadena nombreDirectorio)
+Directorio::Directorio(Cadena nombreDirectorio, int nivel)
 {
 	this->nombre = nombreDirectorio;
+	this->nivel = nivel;
 	this->archivos = new ListaOrdImp<Archivo>();
 }
 
 Directorio::~Directorio()
 {
-	this->nombre = nullptr;
 	this->EliminarArchivos();
 }
 
 Directorio::Directorio(const Directorio &d)
 {
-	this->nombre = nullptr;
-	this->archivos = nullptr;
 	*this = d;
 }
 
 bool Directorio::operator<(const Directorio &d) const
 {
+	bool retorno = false;
+	if (this->nivel != d.nivel) {
+		retorno = this->nivel < d.nivel;
+	}
+	else {
+		retorno = this->nombre < d.nombre;
+	}
+	return retorno;
+}
 
-	return this->nombre < d.nombre;
+bool Directorio::operator<=(const Directorio &d) const
+{
+	bool retorno = false;
+	if (this->nivel != d.nivel) {
+		retorno = this->nivel <= d.nivel;
+	}
+	else {
+		retorno = this->nombre <= d.nombre;
+	}
+	return retorno;
+}
+
+bool Directorio::operator>=(const Directorio &d) const
+{
+	bool retorno = false;
+	if (this->nivel != d.nivel) {
+		retorno = this->nivel >= d.nivel;
+	}
+	else {
+		retorno = this->nombre >= d.nombre;
+	}
+	return retorno;
 }
 
 bool Directorio::operator==(const Directorio &d) const
@@ -63,12 +92,16 @@ Directorio &Directorio::operator=(const Directorio&d)
 	{
 		this->EliminarArchivos();
 		this->nombre = d.nombre;
-		Iterador<Archivo> itArchivosACopiar = d.archivos->GetIterador();
-		while (!itArchivosACopiar.EsFin());
-		{
-			Archivo archivoCopia = itArchivosACopiar.Elemento();
-			this->archivos->AgregarOrd(archivoCopia);
-			itArchivosACopiar++;
+		if (d.archivos != NULL) {
+			if (d.archivos->CantidadElementos() > 0) {
+				Iterador<Archivo> itArchivosACopiar = d.archivos->GetIterador();
+				while (!itArchivosACopiar.EsFin());
+				{
+					Archivo archivoCopia = itArchivosACopiar.Elemento();
+					this->archivos->AgregarOrd(archivoCopia);
+					itArchivosACopiar++;
+				}
+			}
 		}
 	}
 	return *this;
@@ -104,12 +137,14 @@ void Directorio::EliminarArchivo(Cadena nombreArchivo)
 
 void Directorio::EliminarArchivos()
 {
-	Iterador<Archivo> itArchivosThis = this->archivos->GetIterador();
-	while (!itArchivosThis.EsFin())
-	{
-		Archivo archivoCopia = itArchivosThis.Elemento();
-		itArchivosThis++;
-		delete &archivoCopia;
+	if (this->archivos != NULL) {
+		Iterador<Archivo> itArchivosThis = this->archivos->GetIterador();
+		while (!itArchivosThis.EsFin())
+		{
+			Archivo archivoCopia = itArchivosThis.Elemento();
+			itArchivosThis++;
+			delete &archivoCopia;
+		}
 	}
 }
 
@@ -164,13 +199,29 @@ void Directorio::SetNombre(Cadena nombre)
 
 void Directorio::ListarArchivos(Cadena ruta, Cadena parametro) const
 {
-	Iterador<Archivo> itArchivosThis = this->archivos->GetIterador();
-	while (!itArchivosThis.EsFin())
-	{
-		Cadena txtVisibilidad = itArchivosThis.Elemento().EstaOculto() ? " (H) " : "";
-		cout << ruta << "/" << itArchivosThis.Elemento().GetNombre() << txtVisibilidad << endl;
-		itArchivosThis++;
+	if (this->archivos != NULL) {
+		Iterador<Archivo> itArchivosThis = this->archivos->GetIterador();
+		while (!itArchivosThis.EsFin())
+		{
+			if (parametro == "-H") {
+				if (itArchivosThis.Elemento().EstaOculto()) {
+					cout << ruta << "/" << itArchivosThis.Elemento().GetNombre() << " (H)" << endl;
+				}
+			}
+			if (!itArchivosThis.Elemento().EstaOculto()) {
+				cout << ruta << "/" << itArchivosThis.Elemento().GetNombre() << endl;
+			}
+			itArchivosThis++;
+		}
 	}
+}
+
+void Directorio::setNivel(int nivel) {
+	this->nivel = nivel;
+}
+
+int Directorio::getNivel() {
+	return this->nivel;
 }
 
 #endif

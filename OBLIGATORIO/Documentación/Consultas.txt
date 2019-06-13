@@ -19,3 +19,5 @@
 
 6- Se puede cambiar el retorno de una función, ejemplo el retorno del metodo AgegarDirectorio de la clase Directorios seria un TipoRetorno
 
+7- POrque no se puede instanciar cadena en NULL. Porque llama a Cadena cuando hago por ejemplo NodoAG<Directorio> = new... Directorio tiene un nombre que es cadena
+
