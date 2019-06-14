@@ -18,6 +18,8 @@ public:
 	Asociacion<Dominio, Rango> &operator=(const Asociacion<Dominio, Rango> &o);
 
 	const Dominio &GetDominio() const;
+
+	Dominio &GetDominioInseguro() const;
 	//void SetDominio(const Dominio &d);
 
 	const Rango &GetRango() const;

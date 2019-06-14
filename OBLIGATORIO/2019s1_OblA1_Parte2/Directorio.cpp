@@ -13,6 +13,7 @@ Directorio::Directorio()
 
 Directorio::Directorio(Cadena nombreDirectorio, int nivel)
 {
+	nivel = 0;
 	this->nombre = nombreDirectorio;
 	this->nivel = nivel;
 	this->archivos = new ListaOrdImp<Archivo>();
@@ -92,6 +93,7 @@ Directorio &Directorio::operator=(const Directorio&d)
 	{
 		this->EliminarArchivos();
 		this->nombre = d.nombre;
+		this->nivel = d.nivel;
 		if (d.archivos != NULL) {
 			if (d.archivos->CantidadElementos() > 0) {
 				Iterador<Archivo> itArchivosACopiar = d.archivos->GetIterador();
@@ -216,11 +218,11 @@ void Directorio::ListarArchivos(Cadena ruta, Cadena parametro) const
 	}
 }
 
-void Directorio::setNivel(int nivel) {
+void Directorio::SetNivel(int nivel) {
 	this->nivel = nivel;
 }
 
-int Directorio::getNivel() {
+int Directorio::GetNivel() const {
 	return this->nivel;
 }
 

@@ -33,17 +33,16 @@ Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir):
 
 Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
- 1! DIR /
- 2! /
- 3! /directorio1/
- 4! /directorio11/
- 5! /directorio12/
- 6! /directorio2/
- 7! /directorio21/
- 8! /directorio211/
- 9! /directorio2111/
-10! /directorio22/
-11: 
+ 1: /
+ 2! /directorio1/
+ 3! /directorio1/directorio11/
+ 4! /directorio1/directorio12/
+ 5! /directorio2/
+ 6! /directorio2/directorio21/
+ 7! /directorio2/directorio21/directorio211/
+ 8! /directorio2/directorio21/directorio211/directorio2111/
+ 9! /directorio2/directorio22/
+10: 
 ********* FIN PRUEBAS Mkdir*******
 
 PRUEBAS FUNCION PRUEBAS Mkdir                                      HAY 1 PRUEBAS INCORRECTAS
@@ -107,17 +106,16 @@ Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir):
 
 Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! DIR /
-2 ! /
-3 ! /directorio1/
-4 ! /directorio11/
-5 ! /directorio12/
-6 ! /directorio2/
-7 ! /directorio21/
-8 ! /directorio211/
-9 ! /directorio2111/
-10! /directorio22/
-11! 
+1 : /
+2 ! /directorio1/
+3 ! /directorio1/directorio11/
+4 ! /directorio1/directorio12/
+5 ! /directorio2/
+6 ! /directorio2/directorio21/
+7 ! /directorio2/directorio21/directorio211/
+8 ! /directorio2/directorio21/directorio211/directorio2111/
+9 ! /directorio2/directorio22/
+10! 
 ********* FIN PRUEBAS CreateFile*******
 
 PRUEBAS FUNCION PRUEBAS CreateFile                                 HAY 11 PRUEBAS INCORRECTAS
@@ -138,11 +136,10 @@ Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir):
 
 Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! DIR /directorio1
-2 ! /directorio1
-3 ! /directorio1directorio11/
-4 ! /directorio1directorio12/
-5 ! 
+1 : /directorio1
+2 ! /directorio1directorio11/
+3 ! /directorio1directorio12/
+4 ! 
 -----------------------------------
 Prueba 21: Se muestra contenido de /directorio1/directorio12
  -> ERROR impresión incorrecta
@@ -154,9 +151,8 @@ Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir):
 
 Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! DIR /directorio1/directorio12
-2 ! /directorio1/directorio12
-3 : 
+1 : /directorio1/directorio12
+2 ! 
 -----------------------------------
 Prueba 22: Se muestra contenido de /directorio2
  -> ERROR impresión incorrecta
@@ -177,13 +173,12 @@ Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir):
 
 Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! DIR /directorio2
-2 ! /directorio2
-3 ! /directorio2directorio21/
-4 ! /directorio2directorio211/
-5 ! /directorio2directorio2111/
-6 ! /directorio2directorio22/
-7 ! 
+1 : /directorio2
+2 ! /directorio2directorio21/
+3 ! /directorio2directorio21/directorio211/
+4 ! /directorio2directorio21/directorio211/directorio2111/
+5 ! /directorio2directorio22/
+6 ! 
 -----------------------------------
 Prueba 23: Se muestra contenido de /directorio2/directorio21/directorio211
  -> ERROR impresión incorrecta
@@ -198,10 +193,9 @@ Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir):
 
 Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! DIR /directorio2/directorio21/directorio211
-2 ! /directorio2/directorio21/directorio211
-3 ! /directorio2/directorio21/directorio211directorio2111/
-4 ! 
+1 : /directorio2/directorio21/directorio211
+2 ! /directorio2/directorio21/directorio211directorio2111/
+3 ! 
 -----------------------------------
 Prueba 24: Se muestra contenido de /directorio2/directorio21/directorio211/directorio2111
  -> ERROR impresión incorrecta
@@ -213,9 +207,8 @@ Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir):
 
 Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! DIR /directorio2/directorio21/directorio211/directorio2111
-2 ! /directorio2/directorio21/directorio211/directorio2111
-3 : 
+1 : /directorio2/directorio21/directorio211/directorio2111
+2 ! 
 ********* FIN PRUEBAS Dir*******
 
 PRUEBAS FUNCION PRUEBAS Dir                                        HAY 5 PRUEBAS INCORRECTAS
@@ -306,17 +299,16 @@ Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir):
 
 Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! DIR /
-2 ! /
-3 ! /directorio1/
-4 ! /directorio11/
-5 ! /directorio12/
-6 ! /directorio2/
-7 ! /directorio21/
-8 ! /directorio211/
-9 ! /directorio2111/
-10! /directorio22/
-11! 
+1 : /
+2 ! /directorio1/
+3 ! /directorio1/directorio11/
+4 ! /directorio1/directorio12/
+5 ! /directorio2/
+6 ! /directorio2/directorio21/
+7 ! /directorio2/directorio21/directorio211/
+8 ! /directorio2/directorio21/directorio211/directorio2111/
+9 ! /directorio2/directorio22/
+10! 
 -----------------------------------
 Prueba 42: Se borra directorio /directorio1/directorio11
  -> ERROR PRUEBA NO_IMPLEMENTADA
@@ -344,17 +336,16 @@ Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir):
 
 Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! DIR /
-2 ! /
-3 ! /directorio1/
-4 ! /directorio11/
-5 ! /directorio12/
-6 ! /directorio2/
-7 ! /directorio21/
-8 ! /directorio211/
-9 ! /directorio2111/
-10! /directorio22/
-11! 
+1 : /
+2 ! /directorio1/
+3 ! /directorio1/directorio11/
+4 ! /directorio1/directorio12/
+5 ! /directorio2/
+6 ! /directorio2/directorio21/
+7 ! /directorio2/directorio21/directorio211/
+8 ! /directorio2/directorio21/directorio211/directorio2111/
+9 ! /directorio2/directorio22/
+10! 
 -----------------------------------
 Prueba 44: Se borra directorio /directorio2/directorio21/directorio211/directorio2111
  -> ERROR PRUEBA NO_IMPLEMENTADA
@@ -380,17 +371,16 @@ Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir):
 
 Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! DIR /
-2 ! /
-3 ! /directorio1/
-4 ! /directorio11/
-5 ! /directorio12/
-6 ! /directorio2/
-7 ! /directorio21/
-8 ! /directorio211/
-9 ! /directorio2111/
-10! /directorio22/
-11! 
+1 : /
+2 ! /directorio1/
+3 ! /directorio1/directorio11/
+4 ! /directorio1/directorio12/
+5 ! /directorio2/
+6 ! /directorio2/directorio21/
+7 ! /directorio2/directorio21/directorio211/
+8 ! /directorio2/directorio21/directorio211/directorio2111/
+9 ! /directorio2/directorio22/
+10! 
 -----------------------------------
 Prueba 46: Se borra directorio /directorio2
  -> ERROR PRUEBA NO_IMPLEMENTADA
@@ -407,17 +397,16 @@ Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir):
 
 Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! DIR /
-2 ! /
-3 ! /directorio1/
-4 ! /directorio11/
-5 ! /directorio12/
-6 ! /directorio2/
-7 ! /directorio21/
-8 ! /directorio211/
-9 ! /directorio2111/
-10! /directorio22/
-11! 
+1 : /
+2 ! /directorio1/
+3 ! /directorio1/directorio11/
+4 ! /directorio1/directorio12/
+5 ! /directorio2/
+6 ! /directorio2/directorio21/
+7 ! /directorio2/directorio21/directorio211/
+8 ! /directorio2/directorio21/directorio211/directorio2111/
+9 ! /directorio2/directorio22/
+10! 
 ********* FIN PRUEBAS Rmdir*******
 
 PRUEBAS FUNCION PRUEBAS Rmdir                                      HAY 7 PRUEBAS INCORRECTAS
@@ -451,17 +440,16 @@ Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir):
 
 Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! DIR /
-2 ! /
-3 ! /directorio1/
-4 ! /directorio11/
-5 ! /directorio12/
-6 ! /directorio2/
-7 ! /directorio21/
-8 ! /directorio211/
-9 ! /directorio2111/
-10! /directorio22/
-11! 
+1 : /
+2 ! /directorio1/
+3 ! /directorio1/directorio11/
+4 ! /directorio1/directorio12/
+5 ! /directorio2/
+6 ! /directorio2/directorio21/
+7 ! /directorio2/directorio21/directorio211/
+8 ! /directorio2/directorio21/directorio211/directorio2111/
+9 ! /directorio2/directorio22/
+10! 
 -----------------------------------
 Prueba 49: Se copia /directorio1/directorio11 en /directorio3
  -> ERROR PRUEBA NO_IMPLEMENTADA
@@ -497,17 +485,16 @@ Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir):
 
 Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! DIR /
-2 ! /
-3 ! /directorio1/
-4 ! /directorio11/
-5 ! /directorio12/
-6 ! /directorio2/
-7 ! /directorio21/
-8 ! /directorio211/
-9 ! /directorio2111/
-10! /directorio22/
-11! 
+1 : /
+2 ! /directorio1/
+3 ! /directorio1/directorio11/
+4 ! /directorio1/directorio12/
+5 ! /directorio2/
+6 ! /directorio2/directorio21/
+7 ! /directorio2/directorio21/directorio211/
+8 ! /directorio2/directorio21/directorio211/directorio2111/
+9 ! /directorio2/directorio22/
+10! 
 -----------------------------------
 Prueba 51: Se copia /directorio2/directorio21/directorio211 en /directorio3/directorio4
  -> ERROR PRUEBA NO_IMPLEMENTADA
@@ -548,17 +535,16 @@ Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir):
 
 Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! DIR /
-2 ! /
-3 ! /directorio1/
-4 ! /directorio11/
-5 ! /directorio12/
-6 ! /directorio2/
-7 ! /directorio21/
-8 ! /directorio211/
-9 ! /directorio2111/
-10! /directorio22/
-11! 
+1 : /
+2 ! /directorio1/
+3 ! /directorio1/directorio11/
+4 ! /directorio1/directorio12/
+5 ! /directorio2/
+6 ! /directorio2/directorio21/
+7 ! /directorio2/directorio21/directorio211/
+8 ! /directorio2/directorio21/directorio211/directorio2111/
+9 ! /directorio2/directorio22/
+10! 
 -----------------------------------
 Prueba 53: Se copia directorio /directorio1/directorio12 a /directorio3/directorio5
  -> ERROR PRUEBA NO_IMPLEMENTADA
@@ -600,17 +586,16 @@ Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir):
 
 Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! DIR /
-2 ! /
-3 ! /directorio1/
-4 ! /directorio11/
-5 ! /directorio12/
-6 ! /directorio2/
-7 ! /directorio21/
-8 ! /directorio211/
-9 ! /directorio2111/
-10! /directorio22/
-11! 
+1 : /
+2 ! /directorio1/
+3 ! /directorio1/directorio11/
+4 ! /directorio1/directorio12/
+5 ! /directorio2/
+6 ! /directorio2/directorio21/
+7 ! /directorio2/directorio21/directorio211/
+8 ! /directorio2/directorio21/directorio211/directorio2111/
+9 ! /directorio2/directorio22/
+10! 
 ********* FIN PRUEBAS CopyDir*******
 
 PRUEBAS FUNCION PRUEBAS CopyDir                                    HAY 7 PRUEBAS INCORRECTAS
@@ -644,17 +629,16 @@ Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir):
 
 Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! DIR /
-2 ! /
-3 ! /directorio1/
-4 ! /directorio11/
-5 ! /directorio12/
-6 ! /directorio2/
-7 ! /directorio21/
-8 ! /directorio211/
-9 ! /directorio2111/
-10! /directorio22/
-11! 
+1 : /
+2 ! /directorio1/
+3 ! /directorio1/directorio11/
+4 ! /directorio1/directorio12/
+5 ! /directorio2/
+6 ! /directorio2/directorio21/
+7 ! /directorio2/directorio21/directorio211/
+8 ! /directorio2/directorio21/directorio211/directorio2111/
+9 ! /directorio2/directorio22/
+10! 
 -----------------------------------
 Prueba 56: Se borra archivo /directorio1/directorio11/archivo11.txt
  -> ERROR PRUEBA NO_IMPLEMENTADA
@@ -689,17 +673,16 @@ Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir):
 
 Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! DIR /
-2 ! /
-3 ! /directorio1/
-4 ! /directorio11/
-5 ! /directorio12/
-6 ! /directorio2/
-7 ! /directorio21/
-8 ! /directorio211/
-9 ! /directorio2111/
-10! /directorio22/
-11! 
+1 : /
+2 ! /directorio1/
+3 ! /directorio1/directorio11/
+4 ! /directorio1/directorio12/
+5 ! /directorio2/
+6 ! /directorio2/directorio21/
+7 ! /directorio2/directorio21/directorio211/
+8 ! /directorio2/directorio21/directorio211/directorio2111/
+9 ! /directorio2/directorio22/
+10! 
 ********* FIN PRUEBAS Delete*******
 
 PRUEBAS FUNCION PRUEBAS Delete                                     HAY 5 PRUEBAS INCORRECTAS
@@ -733,17 +716,16 @@ Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir):
 
 Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! DIR /-H
-2 ! /
-3 ! /directorio1/
-4 ! /directorio11/
-5 ! /directorio12/
-6 ! /directorio2/
-7 ! /directorio21/
-8 ! /directorio211/
-9 ! /directorio2111/
-10! /directorio22/
-11! 
+1 : /
+2 ! /directorio1/
+3 ! /directorio1/directorio11/
+4 ! /directorio1/directorio12/
+5 ! /directorio2/
+6 ! /directorio2/directorio21/
+7 ! /directorio2/directorio21/directorio211/
+8 ! /directorio2/directorio21/directorio211/directorio2111/
+9 ! /directorio2/directorio22/
+10! 
 -----------------------------------
 Prueba 61: Se oculta archivo /directorio1/directorio11/archivo11.txt
  -> ERROR PRUEBA NO_IMPLEMENTADA
@@ -781,17 +763,16 @@ Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir):
 
 Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! DIR /-H
-2 ! /
-3 ! /directorio1/
-4 ! /directorio11/
-5 ! /directorio12/
-6 ! /directorio2/
-7 ! /directorio21/
-8 ! /directorio211/
-9 ! /directorio2111/
-10! /directorio22/
-11! 
+1 : /
+2 ! /directorio1/
+3 ! /directorio1/directorio11/
+4 ! /directorio1/directorio12/
+5 ! /directorio2/
+6 ! /directorio2/directorio21/
+7 ! /directorio2/directorio21/directorio211/
+8 ! /directorio2/directorio21/directorio211/directorio2111/
+9 ! /directorio2/directorio22/
+10! 
 -----------------------------------
 Prueba 65: Se vuelve visible archivo /directorio2/directorio21/directorio211/archivo212.ppt
  -> ERROR PRUEBA NO_IMPLEMENTADA
@@ -823,17 +804,16 @@ Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir):
 
 Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! DIR /-H
-2 ! /
-3 ! /directorio1/
-4 ! /directorio11/
-5 ! /directorio12/
-6 ! /directorio2/
-7 ! /directorio21/
-8 ! /directorio211/
-9 ! /directorio2111/
-10! /directorio22/
-11! 
+1 : /
+2 ! /directorio1/
+3 ! /directorio1/directorio11/
+4 ! /directorio1/directorio12/
+5 ! /directorio2/
+6 ! /directorio2/directorio21/
+7 ! /directorio2/directorio21/directorio211/
+8 ! /directorio2/directorio21/directorio211/directorio2111/
+9 ! /directorio2/directorio22/
+10! 
 ********* FIN PRUEBAS Attrib*******
 
 PRUEBAS FUNCION PRUEBAS Attrib                                     HAY 7 PRUEBAS INCORRECTAS
@@ -1065,17 +1045,16 @@ Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir):
 
 Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! DIR /
-2 ! /
-3 ! /directorio1/
-4 ! /directorio11/
-5 ! /directorio12/
-6 ! /directorio2/
-7 ! /directorio21/
-8 ! /directorio211/
-9 ! /directorio2111/
-10! /directorio22/
-11! 
+1 : /
+2 ! /directorio1/
+3 ! /directorio1/directorio11/
+4 ! /directorio1/directorio12/
+5 ! /directorio2/
+6 ! /directorio2/directorio21/
+7 ! /directorio2/directorio21/directorio211/
+8 ! /directorio2/directorio21/directorio211/directorio2111/
+9 ! /directorio2/directorio22/
+10! 
 -----------------------------------
 Prueba 115: Se borra archivo /archivo1.txt
  -> ERROR PRUEBA NO_IMPLEMENTADA
@@ -1106,17 +1085,16 @@ Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir):
 
 Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! DIR /
-2 ! /
-3 ! /directorio1/
-4 ! /directorio11/
-5 ! /directorio12/
-6 ! /directorio2/
-7 ! /directorio21/
-8 ! /directorio211/
-9 ! /directorio2111/
-10! /directorio22/
-11! 
+1 : /
+2 ! /directorio1/
+3 ! /directorio1/directorio11/
+4 ! /directorio1/directorio12/
+5 ! /directorio2/
+6 ! /directorio2/directorio21/
+7 ! /directorio2/directorio21/directorio211/
+8 ! /directorio2/directorio21/directorio211/directorio2111/
+9 ! /directorio2/directorio22/
+10! 
 -----------------------------------
 Prueba 117: Se recupera /archivo1.txt
  -> ERROR PRUEBA NO_IMPLEMENTADA
@@ -1151,17 +1129,16 @@ Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir):
 
 Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! DIR /
-2 ! /
-3 ! /directorio1/
-4 ! /directorio11/
-5 ! /directorio12/
-6 ! /directorio2/
-7 ! /directorio21/
-8 ! /directorio211/
-9 ! /directorio2111/
-10! /directorio22/
-11! 
+1 : /
+2 ! /directorio1/
+3 ! /directorio1/directorio11/
+4 ! /directorio1/directorio12/
+5 ! /directorio2/
+6 ! /directorio2/directorio21/
+7 ! /directorio2/directorio21/directorio211/
+8 ! /directorio2/directorio21/directorio211/directorio2111/
+9 ! /directorio2/directorio22/
+10! 
 -----------------------------------
 Prueba 120: Se borra archivo /directorio1/directorio11/archivo11.txt
  -> ERROR PRUEBA NO_IMPLEMENTADA
@@ -1192,17 +1169,16 @@ Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir):
 
 Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! DIR /
-2 ! /
-3 ! /directorio1/
-4 ! /directorio11/
-5 ! /directorio12/
-6 ! /directorio2/
-7 ! /directorio21/
-8 ! /directorio211/
-9 ! /directorio2111/
-10! /directorio22/
-11! 
+1 : /
+2 ! /directorio1/
+3 ! /directorio1/directorio11/
+4 ! /directorio1/directorio12/
+5 ! /directorio2/
+6 ! /directorio2/directorio21/
+7 ! /directorio2/directorio21/directorio211/
+8 ! /directorio2/directorio21/directorio211/directorio2111/
+9 ! /directorio2/directorio22/
+10! 
 -----------------------------------
 Prueba 122: Se recupera /directorio1/directorio11/archivo11.txt
  -> ERROR PRUEBA NO_IMPLEMENTADA
@@ -1234,17 +1210,16 @@ Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir):
 
 Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! DIR /
-2 ! /
-3 ! /directorio1/
-4 ! /directorio11/
-5 ! /directorio12/
-6 ! /directorio2/
-7 ! /directorio21/
-8 ! /directorio211/
-9 ! /directorio2111/
-10! /directorio22/
-11! 
+1 : /
+2 ! /directorio1/
+3 ! /directorio1/directorio11/
+4 ! /directorio1/directorio12/
+5 ! /directorio2/
+6 ! /directorio2/directorio21/
+7 ! /directorio2/directorio21/directorio211/
+8 ! /directorio2/directorio21/directorio211/directorio2111/
+9 ! /directorio2/directorio22/
+10! 
 -----------------------------------
 Prueba 124: Se muestra /directorio1/directorio11/archivo11.txt
  -> ERROR PRUEBA NO_IMPLEMENTADA

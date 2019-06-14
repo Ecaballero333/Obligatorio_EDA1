@@ -88,11 +88,11 @@ class Directorio{
 		//POS: Establece el nivel en el que se encuentra el directorio en el arbol de directorios.
 		//El directorio raíz está en el nivel 0.
 		//El resto de directorios estan a partir del nivel 1
-		void setNivel(int nivel);
+		void SetNivel(int nivel);
 
 		//PRE:
 		//POS: Devuelve el nivel en el que se encuentra el directorio en el arbol de directorios.
-		int getNivel();
+		int GetNivel() const;
 
 
 

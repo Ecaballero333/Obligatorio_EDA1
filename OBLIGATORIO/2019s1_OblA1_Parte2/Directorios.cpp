@@ -234,31 +234,29 @@ bool Directorios::directorioNombreIncorrecto(Cadena ruta) {
 }
 
 void Directorios::ListarDirectorios(NodoAG<Directorio>* nodoDirectorio, Cadena ruta, Cadena parametro) {
-	cout << "DIR " << ruta << parametro << endl;
+	//cout << "DIR " << ruta << parametro << endl;
 	cout << ruta << endl;
 	nodoDirectorio->dato.ListarArchivos(ruta, parametro);
 	nodoDirectorio = nodoDirectorio->ph;//Lo avanzo uno para que busque solo directorios descendientes, no hermanos
-	ListaOrd<Directorio>* listaDirectorios = new ListaOrdImp<Directorio>();
-	this->obtenerListaOrdenadaTodoslLosDirectorios(nodoDirectorio, listaDirectorios);
-	Iterador<Directorio> itListaDirectorios = listaDirectorios->GetIterador();
+	ListaOrd<Asociacion<Cadena, Directorio>>* listaRutasDirectorios = new ListaOrdImp<Asociacion<Cadena, Directorio>>();
+	this->obtenerListaOrdenadaTodoslLosDirectorios(nodoDirectorio, ruta, listaRutasDirectorios);
+	Iterador<Asociacion<Cadena, Directorio>> itListaDirectorios = listaRutasDirectorios->GetIterador();
 	while (!itListaDirectorios.EsFin()){
-		Cadena rutaNueva = ruta + itListaDirectorios.Elemento().GetNombre() +"/";
-		cout << rutaNueva << endl;
-		itListaDirectorios.Elemento().ListarArchivos(ruta, parametro);
+		cout << itListaDirectorios.Elemento().GetDominio() << endl;	
+		itListaDirectorios.Elemento().GetRango().ListarArchivos(ruta, parametro);
 		itListaDirectorios++;
 	}
-	delete listaDirectorios;
+	delete listaRutasDirectorios;
 }
 
-
-ListaOrd<Directorio>* Directorios::obtenerListaOrdenadaTodoslLosDirectorios(NodoAG<Directorio>* nodoDirectorio, ListaOrd<Directorio>*& listaDirectorios) {
-	if (nodoDirectorio == NULL) {
-		return NULL;
-	}
-	else {
-		listaDirectorios->AgregarOrd(nodoDirectorio->dato);
-		obtenerListaOrdenadaTodoslLosDirectorios(nodoDirectorio->ph, listaDirectorios);
-		obtenerListaOrdenadaTodoslLosDirectorios(nodoDirectorio->sh, listaDirectorios);
+void Directorios::obtenerListaOrdenadaTodoslLosDirectorios(NodoAG<Directorio>* nodoDirectorio, Cadena ruta, ListaOrd<Asociacion<Cadena,Directorio>>*& listaRutasDirectorios) {
+	if (nodoDirectorio !=NULL){
+		Cadena nuevaRuta = ruta + nodoDirectorio->dato.GetNombre() + "/";
+		Directorio directorio = nodoDirectorio->dato;
+		Asociacion<Cadena, Directorio>* rutaDirectorio = new Asociacion<Cadena, Directorio>(nuevaRuta, directorio);
+		listaRutasDirectorios->AgregarOrd(*rutaDirectorio);
+		obtenerListaOrdenadaTodoslLosDirectorios(nodoDirectorio->ph, nuevaRuta, listaRutasDirectorios);
+		obtenerListaOrdenadaTodoslLosDirectorios(nodoDirectorio->sh, ruta, listaRutasDirectorios);
 	}
 }
 

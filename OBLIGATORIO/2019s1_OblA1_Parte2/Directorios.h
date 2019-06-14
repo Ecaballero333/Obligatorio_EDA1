@@ -110,7 +110,7 @@ class Directorios {
 		//POS: Obtiene una lista ordenada de todos los directorios que posee el arbol general.
 		//El orden está definido en el operador < de Directorio. Cuanto menor sea el nivel, antes aparece en la lista.
 		//Los directorios que esten en el mismo nivel se ordenan por nombre
-		ListaOrd<Directorio>* obtenerListaOrdenadaTodoslLosDirectorios(NodoAG<Directorio>* nodoDirectorio, ListaOrd<Directorio>*& listaDirectorios);
+		void obtenerListaOrdenadaTodoslLosDirectorios(NodoAG<Directorio>* nodoDirectorio, Cadena ruta, ListaOrd<Asociacion<Cadena, Directorio>>*& listaRutasDirectorios);
 
 };
 

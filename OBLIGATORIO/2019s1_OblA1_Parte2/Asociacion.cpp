@@ -48,6 +48,11 @@ const Dominio &Asociacion<Dominio, Rango>::GetDominio() const {
 	return d;
 }
 
+template <class Dominio, class Rango>
+Dominio &Asociacion<Dominio, Rango>::GetDominioInseguro() const {
+	return d;
+}
+
 //template <class Dominio, class Rango>
 //void Asociacion<Dominio, Rango>::SetDominio(const Dominio &d) {
 //	this->d = d;
