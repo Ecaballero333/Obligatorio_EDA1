@@ -32,7 +32,7 @@ class Directorios {
 		
 		//PRE: 
 		//POS: Elimina el directorio.
-		void EliminarDirectorio(Cadena ruta);
+		TipoError EliminarDirectorio(Cadena ruta);
 
 		//PRE: 
 		//POS: Retorna true si existe directorio correspondiente a ruta.
@@ -53,6 +53,11 @@ class Directorios {
 		//PRE: 
 		//POS: Copia el directorio de origen a destino
 		void CopiarDirectorio(Cadena rutaOrigen, Cadena rutaDestino);
+
+
+		//PRE: 
+		//POS: Elimina un archivo de la ruta especificada sin importar si está oculto o no.
+		void Delete(Cadena rutaArchivo);
 				
 
     private:
@@ -111,6 +116,22 @@ class Directorios {
 		//El orden está definido en el operador < de Directorio. Cuanto menor sea el nivel, antes aparece en la lista.
 		//Los directorios que esten en el mismo nivel se ordenan por nombre
 		void obtenerListaOrdenadaTodoslLosDirectorios(NodoAG<Directorio>* nodoDirectorio, Cadena ruta, ListaOrd<Asociacion<Cadena, Directorio>>*& listaRutasDirectorios);
+
+		//PRE: 
+		//POS:
+		void EliminarFileSystemCompleto();
+
+		//PRE: 
+		//POS:
+		void EliminarDirectorioPrimerHijo(NodoAG<Directorio>* nodoPadre);
+
+		//PRE: 
+		//POS:
+		void EliminarDirectorioSiguienteHermano(NodoAG<Directorio>* nodoPadre, NodoAG<Directorio>* nodoHijo);
+
+		//PRE: 
+		//POS:
+		void EliminarTodo(NodoAG<Directorio>* raiz);
 
 };
 

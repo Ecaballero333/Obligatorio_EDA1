@@ -70,18 +70,21 @@ bool Directorio::operator==(const Directorio &d) const
 {
 	bool sonIguales = this->nombre == d.nombre;
 	if (sonIguales) {
-		Iterador<Archivo> itArchivosThis = this->archivos->GetIterador();
-		Iterador<Archivo> itArchivosParam = d.archivos->GetIterador();
+		bool sonIguales = (this->archivos == NULL && d.archivos == NULL) || (this->archivos != NULL && d.archivos != NULL);
+		if (sonIguales && (this->archivos != NULL && d.archivos != NULL)) {
+			Iterador<Archivo> itArchivosThis = this->archivos->GetIterador();
+			Iterador<Archivo> itArchivosParam = d.archivos->GetIterador();
 
-		while (!itArchivosThis.EsFin() && !itArchivosParam.EsFin() && sonIguales)
-		{			
-			sonIguales = itArchivosThis.Elemento() == itArchivosParam.Elemento();
-			itArchivosThis++;
-			itArchivosParam++;
-		}
-		if (sonIguales) 
-		{
-			sonIguales = itArchivosThis.EsFin() && itArchivosParam.EsFin();
+			while (!itArchivosThis.EsFin() && !itArchivosParam.EsFin() && sonIguales)
+			{
+				sonIguales = itArchivosThis.Elemento() == itArchivosParam.Elemento();
+				itArchivosThis++;
+				itArchivosParam++;
+			}
+			if (sonIguales)
+			{
+				sonIguales = itArchivosThis.EsFin() && itArchivosParam.EsFin();
+			}
 		}
 	}
 

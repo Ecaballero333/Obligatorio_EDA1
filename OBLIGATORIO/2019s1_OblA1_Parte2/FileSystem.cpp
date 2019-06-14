@@ -60,8 +60,13 @@ TipoRetorno FileSystem::Mkdir(Cadena rutaDirectorio)
 
 TipoRetorno FileSystem::Rmdir(Cadena rutaDirectorio)
 {
-	// NO IMPLEMENTADA
-	return NO_IMPLEMENTADA;
+	TipoRetorno retorno = OK;
+	TipoError resultado = this->raiz->EliminarDirectorio(rutaDirectorio);
+	if (resultado != NO_HAY_ERROR) {
+		retorno = ERROR;
+		this->ImprimirError(resultado);
+	}
+	return retorno;
 }
 
 

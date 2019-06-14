@@ -58,9 +58,32 @@ TipoError Directorios::AgregarDirectorio(Cadena ruta)
 	return retorno;
 }
 
-void Directorios::EliminarDirectorio(Cadena ruta)
+TipoError Directorios::EliminarDirectorio(Cadena ruta)
 {
-	// NO IMPLEMENTADA
+	TipoError retorno = this->ValidacionesPorOperacion(RMDIR, ruta, "");
+	NodoLista<Cadena>* listaRuta = rutaALista(&ruta);
+	if (listaRuta->Length() == 1) {
+		//Se eligió eliminar todo el contenido del fileSystem
+		this->EliminarFileSystemCompleto();
+	}
+	else {
+		NodoAG<Directorio>* nodoEliminar = buscarRuta(this->arbolDirectorios, listaRuta);
+		Cadena nombreDirectorioAEliminar = obtenerYBorrarUltimaCadena(listaRuta);
+		NodoAG<Directorio>* nodoPadre = buscarRuta(this->arbolDirectorios, listaRuta);
+		if (nodoEliminar == NULL) {
+			retorno = ERROR_NO_SE_ENCUENTRA_RUTA;
+		}
+		else {
+			//El nodo a eliminar puede ser el primer hijo del nodo padre
+			if (nodoPadre->ph->dato == nodoEliminar->dato) {
+				this->EliminarDirectorioPrimerHijo(nodoPadre);
+			}
+			else {
+				this->EliminarDirectorioSiguienteHermano(nodoPadre, nodoEliminar);
+			}
+		}
+	}
+	return retorno;
 }
 
 bool Directorios::ExisteDirectorio(Cadena ruta) const
@@ -97,6 +120,10 @@ void Directorios::Vaciar()
 
 void Directorios::CopiarDirectorio(Cadena rutaOrigen, Cadena rutaDestino)
 {
+	// NO IMPLEMENTADA
+}
+
+void  Directorios::Delete(Cadena rutaArchivo) {
 	// NO IMPLEMENTADA
 }
 
@@ -211,6 +238,11 @@ TipoError Directorios::ValidacionesPorOperacion(TipoOperacion nombreOperacion, C
 			retorno = ERROR_PARAMETRO_DESCONOCIDO;
 		}
 	}
+	if (nombreOperacion == RMDIR) {
+		if (this->rutaComienzaMal(ruta)) {
+			retorno = ERROR_RUTA_COMIENZA_MAL;
+		}
+	}
 	return retorno;
 }
 
@@ -262,6 +294,30 @@ void Directorios::obtenerListaOrdenadaTodoslLosDirectorios(NodoAG<Directorio>* n
 	}
 }
 
+void Directorios::EliminarFileSystemCompleto() {
+	this->arbolDirectorios->dato.EliminarArchivos();
+	this->EliminarTodo(this->arbolDirectorios->ph);
+}
 
+void Directorios::EliminarDirectorioPrimerHijo(NodoAG<Directorio>* nodoPadre) {
+	NodoAG<Directorio>* aux = nodoPadre->ph;
+	nodoPadre->ph = aux->sh;
+	aux->sh = NULL;
+	this->EliminarTodo(aux->ph);
+	delete aux;
+}
+
+void Directorios::EliminarDirectorioSiguienteHermano(NodoAG<Directorio>* nodoPadre, NodoAG<Directorio>* nodoHijo) {
+
+}
+
+
+void Directorios::EliminarTodo(NodoAG<Directorio>* raiz) {
+	if (raiz != NULL) {
+		this->EliminarTodo(raiz->sh);
+		this->EliminarTodo(raiz->ph);
+		delete raiz;
+	}
+}
 
 #endif
