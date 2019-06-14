@@ -53,11 +53,13 @@ public:
 
 	// PRE: index < Largo()
 	// Retorna el caracter en la posicion index
-	Cadena operator[] (const unsigned int index);
+	char operator[] (const unsigned int index);
 
 	//PRE:
 	//POS: retorna true si el string no tiene caracteres
 	bool esVacia();
+
+	void QuitarUltimoCaracter();
 
 protected:
 	char *s;

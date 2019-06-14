@@ -242,7 +242,9 @@ void Directorios::ListarDirectorios(NodoAG<Directorio>* nodoDirectorio, Cadena r
 	this->obtenerListaOrdenadaTodoslLosDirectorios(nodoDirectorio, ruta, listaRutasDirectorios);
 	Iterador<Asociacion<Cadena, Directorio>> itListaDirectorios = listaRutasDirectorios->GetIterador();
 	while (!itListaDirectorios.EsFin()){
-		cout << itListaDirectorios.Elemento().GetDominio() << endl;	
+		Cadena ruta = itListaDirectorios.Elemento().GetDominio();
+		ruta.QuitarUltimoCaracter();
+		cout << ruta << endl;
 		itListaDirectorios.Elemento().GetRango().ListarArchivos(ruta, parametro);
 		itListaDirectorios++;
 	}

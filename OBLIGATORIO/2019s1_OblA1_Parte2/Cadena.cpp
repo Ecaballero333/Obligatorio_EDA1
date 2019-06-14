@@ -162,7 +162,7 @@ bool Cadena::Contains(const Cadena &substr) const {
 	return false;
 }
 
-Cadena Cadena::operator[] (const unsigned int index)
+char Cadena::operator[] (const unsigned int index)
 {
 	assert (index < Length());
 	return s[index]+"";
@@ -173,6 +173,21 @@ bool Cadena::esVacia() {
 	return this->Length() == 0;
 }
 
-
+/****************************************************/
+void Cadena::QuitarUltimoCaracter() {
+	int largo = Length()-1;
+	char* aux = new char[largo]();
+	for (int i = 0; i < largo; i++)
+	{
+		if (i == largo - 1) {
+			s[i] = '\0';
+		}
+		else {
+			aux[i] = this->s[i];
+		}
+	}
+	this->s = aux;
+	delete[] aux;
+}
 
 #endif
