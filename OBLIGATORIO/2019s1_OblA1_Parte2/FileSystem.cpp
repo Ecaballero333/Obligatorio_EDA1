@@ -23,7 +23,9 @@ FileSystem::FileSystem(unsigned int MAX_RECUPERAR)
 FileSystem::~FileSystem()
 {
 	this->maximoRecupera = NULL;
+	this->raiz->Vaciar();
 	delete this->raiz;
+	this->raiz = NULL;
 	//delete this->listaUndeleteArchivos;
 }
 
