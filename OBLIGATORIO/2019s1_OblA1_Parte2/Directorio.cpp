@@ -172,7 +172,7 @@ bool Directorio::ExisteArchivo(Cadena nombreArchivo) const
 
 bool Directorio::ContieneArchivos() const
 {
-	return this->archivos->EsVacia();
+	return this->archivos != NULL && !this->archivos->EsVacia();
 }
 
 Archivo &Directorio::BuscarArchivo(Cadena nombreArchivo) const

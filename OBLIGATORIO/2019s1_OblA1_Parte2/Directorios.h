@@ -119,10 +119,6 @@ class Directorios {
 
 		//PRE: 
 		//POS:
-		void EliminarFileSystemCompleto();
-
-		//PRE: 
-		//POS:
 		void EliminarDirectorioPrimerHijo(NodoAG<Directorio>* nodoPadre);
 
 		//PRE: 
@@ -131,7 +127,7 @@ class Directorios {
 
 		//PRE: 
 		//POS:
-		void EliminarTodo(NodoAG<Directorio>* raiz);
+		void EliminarTodo(NodoAG<Directorio>*& raiz);
 
 };
 

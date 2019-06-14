@@ -63,8 +63,8 @@ TipoError Directorios::EliminarDirectorio(Cadena ruta)
 	TipoError retorno = this->ValidacionesPorOperacion(RMDIR, ruta, "");
 	NodoLista<Cadena>* listaRuta = rutaALista(&ruta);
 	if (listaRuta->Length() == 1) {
-		//Se eligió eliminar todo el contenido del fileSystem
-		this->EliminarFileSystemCompleto();
+		//Se eligió eliminar todos los directorios (y sus archivos) excepto el raiz "/"
+		this->Vaciar();
 	}
 	else {
 		NodoAG<Directorio>* nodoEliminar = buscarRuta(this->arbolDirectorios, listaRuta);
@@ -115,7 +115,8 @@ TipoError Directorios::Dir(Cadena ruta, Cadena parametro)
 
 void Directorios::Vaciar()
 {
-	// NO IMPLEMENTADA
+	this->arbolDirectorios->dato.EliminarArchivos();
+	this->EliminarTodo(this->arbolDirectorios->ph);
 }
 
 void Directorios::CopiarDirectorio(Cadena rutaOrigen, Cadena rutaDestino)
@@ -268,19 +269,24 @@ bool Directorios::directorioNombreIncorrecto(Cadena ruta) {
 void Directorios::ListarDirectorios(NodoAG<Directorio>* nodoDirectorio, Cadena ruta, Cadena parametro) {
 	//cout << "DIR " << ruta << parametro << endl;
 	cout << ruta << endl;
-	nodoDirectorio->dato.ListarArchivos(ruta, parametro);
-	nodoDirectorio = nodoDirectorio->ph;//Lo avanzo uno para que busque solo directorios descendientes, no hermanos
-	ListaOrd<Asociacion<Cadena, Directorio>>* listaRutasDirectorios = new ListaOrdImp<Asociacion<Cadena, Directorio>>();
-	this->obtenerListaOrdenadaTodoslLosDirectorios(nodoDirectorio, ruta, listaRutasDirectorios);
-	Iterador<Asociacion<Cadena, Directorio>> itListaDirectorios = listaRutasDirectorios->GetIterador();
-	while (!itListaDirectorios.EsFin()){
-		Cadena ruta = itListaDirectorios.Elemento().GetDominio();
-		ruta.QuitarUltimoCaracter();
-		cout << ruta << endl;
-		itListaDirectorios.Elemento().GetRango().ListarArchivos(ruta, parametro);
-		itListaDirectorios++;
+	if (!nodoDirectorio->dato.ContieneArchivos() && nodoDirectorio->ph == NULL) {
+		cout << "No contiene archivos ni directorios." << endl;
 	}
-	delete listaRutasDirectorios;
+	else {
+		nodoDirectorio->dato.ListarArchivos(ruta, parametro);
+		nodoDirectorio = nodoDirectorio->ph;//Lo avanzo uno para que busque solo directorios descendientes, no hermanos
+		ListaOrd<Asociacion<Cadena, Directorio>>* listaRutasDirectorios = new ListaOrdImp<Asociacion<Cadena, Directorio>>();
+		this->obtenerListaOrdenadaTodoslLosDirectorios(nodoDirectorio, ruta, listaRutasDirectorios);
+		Iterador<Asociacion<Cadena, Directorio>> itListaDirectorios = listaRutasDirectorios->GetIterador();
+		while (!itListaDirectorios.EsFin()) {
+			Cadena ruta = itListaDirectorios.Elemento().GetDominio();
+			ruta.QuitarUltimoCaracter();
+			cout << ruta << endl;
+			itListaDirectorios.Elemento().GetRango().ListarArchivos(ruta, parametro);
+			itListaDirectorios++;
+		}
+		delete listaRutasDirectorios;
+	}
 }
 
 void Directorios::obtenerListaOrdenadaTodoslLosDirectorios(NodoAG<Directorio>* nodoDirectorio, Cadena ruta, ListaOrd<Asociacion<Cadena,Directorio>>*& listaRutasDirectorios) {
@@ -294,17 +300,13 @@ void Directorios::obtenerListaOrdenadaTodoslLosDirectorios(NodoAG<Directorio>* n
 	}
 }
 
-void Directorios::EliminarFileSystemCompleto() {
-	this->arbolDirectorios->dato.EliminarArchivos();
-	this->EliminarTodo(this->arbolDirectorios->ph);
-}
-
 void Directorios::EliminarDirectorioPrimerHijo(NodoAG<Directorio>* nodoPadre) {
 	NodoAG<Directorio>* aux = nodoPadre->ph;
 	nodoPadre->ph = aux->sh;
 	aux->sh = NULL;
 	this->EliminarTodo(aux->ph);
 	delete aux;
+	aux = NULL;
 }
 
 void Directorios::EliminarDirectorioSiguienteHermano(NodoAG<Directorio>* nodoPadre, NodoAG<Directorio>* nodoHijo) {
@@ -312,11 +314,12 @@ void Directorios::EliminarDirectorioSiguienteHermano(NodoAG<Directorio>* nodoPad
 }
 
 
-void Directorios::EliminarTodo(NodoAG<Directorio>* raiz) {
+void Directorios::EliminarTodo(NodoAG<Directorio>*& raiz) {
 	if (raiz != NULL) {
 		this->EliminarTodo(raiz->sh);
 		this->EliminarTodo(raiz->ph);
 		delete raiz;
+		raiz = NULL;
 	}
 }
 

@@ -275,8 +275,6 @@ void PruebasEjemploDeUso::PruebasOKRmdir(){
 	InterfazDelSistema* interfaz = new InterfazDelSistemaImp(6);
 	this->FormarRedBasica(interfaz);
 
-	ver2(interfaz->Rmdir("/"), OK, "Se borra directorio /");
-
 	ver2(interfaz->Dir("/", ""),OK,"Se muestra contenido de todo el filesystem");
 
 	ver2(interfaz->Rmdir("/directorio1/directorio11"), OK, "Se borra directorio /directorio1/directorio11");
