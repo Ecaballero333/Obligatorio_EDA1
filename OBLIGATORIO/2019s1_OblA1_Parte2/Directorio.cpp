@@ -13,7 +13,7 @@ Directorio::Directorio()
 
 Directorio::Directorio(Cadena nombreDirectorio, int nivel)
 {
-	nivel = 0;
+	this->nivel = 0;
 	this->nombre = nombreDirectorio;
 	this->nivel = nivel;
 	this->archivos = new ListaOrdImp<Archivo>();
@@ -31,14 +31,15 @@ Directorio::Directorio(const Directorio &d)
 
 bool Directorio::operator<(const Directorio &d) const
 {
-	bool retorno = false;
+	/*bool retorno = false;
 	if (this->nivel != d.nivel) {
 		retorno = this->nivel < d.nivel;
 	}
 	else {
 		retorno = this->nombre < d.nombre;
 	}
-	return retorno;
+	return retorno;*/
+	return this->nombre < d.nombre;
 }
 
 bool Directorio::operator<=(const Directorio &d) const

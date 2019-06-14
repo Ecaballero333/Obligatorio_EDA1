@@ -129,12 +129,12 @@ void Archivo::InsertarTexto(unsigned int nroLinea, unsigned int posLinea, Cadena
 	
 	int n = 0;
 	while (posLinea > primeraMitad.Length()) {
-		primeraMitad = primeraMitad + aux[n];
+		//primeraMitad = primeraMitad + aux[n];
 		n++;
 	}
 
 	while (n < aux.Length()) {
-		segundaMitad = segundaMitad + aux[n];
+		//segundaMitad = segundaMitad + aux[n];
 		n++;
 	}
 
@@ -165,13 +165,13 @@ void Archivo::EliminarTexto(unsigned int nroLinea, unsigned int posLinea, unsign
 
 			if (k + posLinea > aux.Length()){
 				while (aux[posLinea] != '\0') {
-					delete &aux[posLinea];
+					//delete &aux[posLinea];
 					posLinea++;
 				}
 			}
 			else{
 				while (k != 0){
-					delete &aux[posLinea];
+					//delete &aux[posLinea];
 					k--;
 					posLinea++;
 				}
