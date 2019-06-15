@@ -129,12 +129,14 @@ void Archivo::InsertarTexto(unsigned int nroLinea, unsigned int posLinea, Cadena
 	
 	int n = 0;
 	while (posLinea > primeraMitad.Length()) {
-		//primeraMitad = primeraMitad + aux[n];
+		Cadena caracter = aux[n] + "";
+		primeraMitad = primeraMitad + caracter;
 		n++;
 	}
 
 	while (n < aux.Length()) {
-		//segundaMitad = segundaMitad + aux[n];
+		Cadena caracter = aux[n] + ""; 
+		segundaMitad = segundaMitad + caracter;
 		n++;
 	}
 
