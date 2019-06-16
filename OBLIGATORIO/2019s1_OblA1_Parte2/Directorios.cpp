@@ -79,7 +79,7 @@ TipoError Directorios::EliminarDirectorio(Cadena ruta)
 				this->EliminarDirectorioPrimerHijo(nodoPadre);
 			}
 			else {
-				this->EliminarDirectorioSiguienteHermano(nodoPadre, nodoEliminar);
+				this->EliminarDirectorioSiguienteHermano(nodoPadre, nombreDirectorioAEliminar);
 			}
 		}
 	}
@@ -300,7 +300,7 @@ void Directorios::obtenerListaOrdenadaTodoslLosDirectorios(NodoAG<Directorio>* n
 	}
 }
 
-void Directorios::EliminarDirectorioPrimerHijo(NodoAG<Directorio>* nodoPadre) {
+void Directorios::EliminarDirectorioPrimerHijo(NodoAG<Directorio>*& nodoPadre) {
 	NodoAG<Directorio>* aux = nodoPadre->ph;
 	nodoPadre->ph = aux->sh;
 	aux->sh = NULL;
@@ -309,8 +309,17 @@ void Directorios::EliminarDirectorioPrimerHijo(NodoAG<Directorio>* nodoPadre) {
 	aux = NULL;
 }
 
-void Directorios::EliminarDirectorioSiguienteHermano(NodoAG<Directorio>* nodoPadre, NodoAG<Directorio>* nodoHijo) {
-
+void Directorios::EliminarDirectorioSiguienteHermano(NodoAG<Directorio>*& nodoPadre, Cadena nombreNodoEliminar) {
+	NodoAG<Directorio>* auxHermanoAnterior = nodoPadre->ph;
+	while (auxHermanoAnterior->sh->dato.GetNombre() != nombreNodoEliminar) {
+		auxHermanoAnterior = auxHermanoAnterior->sh;
+	}
+	NodoAG<Directorio>* auxEliminar = auxHermanoAnterior->sh;
+	auxHermanoAnterior->sh = auxEliminar->sh;
+	auxEliminar->sh = NULL;
+	this->EliminarTodo(auxEliminar->ph);
+	delete auxEliminar;
+	auxEliminar = NULL;
 }
 
 

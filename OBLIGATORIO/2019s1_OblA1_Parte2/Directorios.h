@@ -118,15 +118,15 @@ class Directorios {
 		void obtenerListaOrdenadaTodoslLosDirectorios(NodoAG<Directorio>* nodoDirectorio, Cadena ruta, ListaOrd<Asociacion<Cadena, Directorio>>*& listaRutasDirectorios);
 
 		//PRE: 
-		//POS:
-		void EliminarDirectorioPrimerHijo(NodoAG<Directorio>* nodoPadre);
+		//POS:Elimina todos los archivos y descendientes del primer hijo de nodoPadre
+		void EliminarDirectorioPrimerHijo(NodoAG<Directorio>*& nodoPadre);
+
+		//PRE: nodoEliminar es un Hijo de nodoPadre. No es el primer hijo
+		//POS: Elimina todos los archivos y descendientes del hijo de nodoPadre que se llama igual a nombreNodoEliminar
+		void EliminarDirectorioSiguienteHermano(NodoAG<Directorio>*& nodoPadre, Cadena nombreNodoEliminar);
 
 		//PRE: 
-		//POS:
-		void EliminarDirectorioSiguienteHermano(NodoAG<Directorio>* nodoPadre, NodoAG<Directorio>* nodoHijo);
-
-		//PRE: 
-		//POS:
+		//POS:Elimina todos el contenido del nodo raíz, de sus descendientes, sus hermanos y de los descendientes de sus hermanos
 		void EliminarTodo(NodoAG<Directorio>*& raiz);
 
 };
