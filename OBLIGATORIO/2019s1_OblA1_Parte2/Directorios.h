@@ -131,9 +131,7 @@ private:
 
 	//PRE: 
 	//POS:
-	NodoAG<Directorio> *ClonarNodoDirectorio(NodoAG<Directorio>* nodoDirectorioOrigen);
-
-	NodoAG<Directorio> *ClonarNodoDirectorioAux(NodoAG<Directorio>* n);
+	NodoAG<Directorio> *ClonarNodoDirectorio(NodoAG<Directorio>* n);
 
 };
 #endif 

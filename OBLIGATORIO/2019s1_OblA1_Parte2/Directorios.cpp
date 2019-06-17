@@ -148,9 +148,15 @@ TipoError Directorios::CopiarDirectorio(Cadena rutaOrigen, Cadena rutaDestino)
 					else {
 						//Se puede hacer la copia
 						//clonar profundo nodoDirectorioOrigen; --> clonarNodoDirectorio
-						NodoAG<Directorio>* nuevo = this->ClonarNodoDirectorio(nodoDirectorioOrigen);
-						nuevo->sh = nodoPadreDestino->ph;
-						nodoPadreDestino->ph = nodoDirectorioOrigen;
+						//NodoAG<Directorio>* nuevo = this->ClonarNodoDirectorio(nodoDirectorioOrigen);
+						Directorio* nuevoDir = new Directorio();
+						*nuevoDir = nodoDirectorioOrigen->dato;
+						nuevoDir->SetNombre(nombreDirectorioACrear);
+						NodoAG<Directorio>* nuevoNodo = new NodoAG<Directorio>(*nuevoDir, NULL, NULL);
+						NodoAG<Directorio>* nodosDescendientes = this->ClonarNodoDirectorio(nodoDirectorioOrigen->ph);
+						nuevoNodo->ph = nodosDescendientes;
+						nuevoNodo->sh = nodoPadreDestino->ph;
+						nodoPadreDestino->ph = nuevoNodo;
 					}
 				}
 			}
@@ -373,21 +379,13 @@ void Directorios::EliminarTodo(NodoAG<Directorio>*& raiz) {
 	}
 }
 
-NodoAG<Directorio> *Directorios::ClonarNodoDirectorio(NodoAG<Directorio>* nodoDirectorioOrigen) {
-	Directorio* nuevoDir = new Directorio();
-	*nuevoDir = nodoDirectorioOrigen->dato;
-	NodoAG<Directorio>* nuevoNodo = new NodoAG<Directorio>(*nuevoDir, NULL, NULL);
-	NodoAG<Directorio>* nodosDescendientes = this->ClonarNodoDirectorioAux(nodoDirectorioOrigen->ph);
-	nuevoNodo->ph = nodosDescendientes;
-	return nuevoNodo;
-};
 
-NodoAG<Directorio> *Directorios::ClonarNodoDirectorioAux(NodoAG<Directorio>* nodo) {
+NodoAG<Directorio> *Directorios::ClonarNodoDirectorio(NodoAG<Directorio>* nodo) {
 	if (nodo == NULL) {
 		return NULL;
 	}
 	else {
-		return new NodoAG<Directorio>(nodo->dato, ClonarNodoDirectorioAux(nodo->ph), ClonarNodoDirectorioAux(nodo->sh));
+		return new NodoAG<Directorio>(nodo->dato, ClonarNodoDirectorio(nodo->ph), ClonarNodoDirectorio(nodo->sh));
 	}
 }
 
