@@ -23,6 +23,22 @@ class NodoLista {
 			}
 			return largo;
 		}
+
+		bool operator<=(NodoLista<U> &l) {
+			NodoLista* auxThis = this;
+			NodoLista* auxL = &l;
+			bool menorIgual = true;
+			while (auxThis != NULL && menorIgual) {
+				if (auxThis->dato != auxL->dato) {
+					menorIgual = false;
+				}
+				else {
+					auxThis = auxThis->sig;
+					auxL = auxL->sig;
+				}
+			}
+			return menorIgual;
+		}
 		
 	private:
 		NodoLista(const NodoLista<U> &n) : dato(n.dato), ant(n.ant), sig(n.sig)  {}
