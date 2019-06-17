@@ -97,10 +97,6 @@ TipoRetorno FileSystem::Dir(Cadena rutaDirectorio, Cadena parametro) const
 
 TipoRetorno FileSystem::CreateFile(Cadena rutaArchivo)
 {
-	return NO_IMPLEMENTADA;
-
-	// no esta terminada
-
 	TipoRetorno retorno = OK;
 	TipoError resultado = this->raiz->AgregarArchivo(rutaArchivo);
 	if (resultado != NO_HAY_ERROR) {
@@ -108,8 +104,6 @@ TipoRetorno FileSystem::CreateFile(Cadena rutaArchivo)
 		this->ImprimirError(resultado);
 	}
 	return retorno;
-
-	
 }
 
 
@@ -189,6 +183,9 @@ void FileSystem::ImprimirError(TipoError tipoError) const {
 		break;
 	case ERROR_NO_EXISTE_ARCHIVO_NOMBRE_EN_RUTA:
 		cout << "No existe un archivo con ese nombre en esa ruta.";
+		break;
+	case ERROR_YA_EXISTE_ARCHIVO:
+		cout << "Ya existe un archivo con el mismo nombre en esa ruta.";
 		break;
 	default:
 		break;

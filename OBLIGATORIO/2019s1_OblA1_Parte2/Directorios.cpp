@@ -36,26 +36,19 @@ TipoError Directorios::AgregarArchivo(Cadena ruta) {
 
 	TipoError retorno = this->ValidacionesPorOperacion(CREATEFILE, ruta, "", "");
 	if (retorno == NO_HAY_ERROR) {
-		
-		Cadena nombreArchivoACrear = "";
-		
-		
-		NodoLista<Cadena>* listaRuta = rutaALista(&ruta);
-		Cadena descarte = this->obtenerYBorrarUltimaCadena(listaRuta);
-		NodoAG<Directorio>* nodoDirectorio = buscarRuta(this->arbolDirectorios, listaRuta);
-
-		if (nodoDirectorio == NULL) {
+				
+		if (!ExisteDirectorio(ruta, true)) {
 			retorno = ERROR_NO_SE_ENCUENTRA_RUTA;
 		}
 		else {
-			if (true) { // si existe archivo
+			Cadena nombreArchivoACrear = "";
+			Directorio* directorio = this->BuscarDirectorio(ruta, true, nombreArchivoACrear);
+			if ((*directorio).ExisteArchivo(nombreArchivoACrear)) {
 				retorno = ERROR_YA_EXISTE_ARCHIVO;
 			}
-			else {
-				Directorio directorioDestino = this->BuscarDirectorio(ruta, true, nombreArchivoACrear);
+			else {				
 				Archivo* nuevoArchivo = new Archivo(nombreArchivoACrear);
-				directorioDestino.AgregarArchivo(*nuevoArchivo);
-
+				(*directorio).AgregarArchivo(*nuevoArchivo);
 			}
 		}
 
@@ -128,14 +121,14 @@ bool Directorios::ExisteDirectorio(Cadena ruta, bool descartarUltimaParte)
 }
 
 
-Directorio &Directorios::BuscarDirectorio(Cadena ruta, bool descartarUltimaParte, Cadena& ultimParte)
+Directorio *Directorios::BuscarDirectorio(Cadena ruta, bool descartarUltimaParte, Cadena& ultimParte)
 {
 	NodoLista<Cadena>* listaRuta = rutaALista(&ruta);
 	if (descartarUltimaParte) {
 		ultimParte = obtenerYBorrarUltimaCadena(listaRuta);
 	}
 	NodoAG<Directorio>* nodoDirectorio = buscarRuta(this->arbolDirectorios, listaRuta);
-	return nodoDirectorio->dato;
+	return &(nodoDirectorio->dato);
 }
 
 TipoError Directorios::Dir(Cadena ruta, Cadena parametro)
@@ -211,15 +204,15 @@ TipoError Directorios::Delete(Cadena rutaArchivo) {
 	}
 	else {
 		Cadena nombreArchivo = "";
-		Directorio directorio = BuscarDirectorio(rutaArchivo, true, nombreArchivo);
-		if (!directorio.ExisteArchivo(nombreArchivo)) {
+		Directorio* directorio = BuscarDirectorio(rutaArchivo, true, nombreArchivo);
+		if (!(*directorio).ExisteArchivo(nombreArchivo)) {
 			retorno = ERROR_NO_EXISTE_ARCHIVO_NOMBRE_EN_RUTA;
 		}
 		else {
-			Archivo archivo = directorio.BuscarArchivo(nombreArchivo);
+			Archivo archivo = (*directorio).BuscarArchivo(nombreArchivo);
 			Asociacion<ruta, Archivo>* asociacionRutaArchivo = new Asociacion<ruta, Archivo>(rutaArchivo, archivo);
 			this->listaUndeleteArchivos->Push(*asociacionRutaArchivo);
-			directorio.EliminarArchivo(nombreArchivo);
+			(*directorio).EliminarArchivo(nombreArchivo);
 		}
 	}
 	return retorno;
@@ -375,8 +368,8 @@ bool Directorios::directorioNombreIncorrecto(Cadena ruta) {
 	const char* punto = ".";
 	Cadena* cadPunto = new Cadena(punto, true);
 	bool retorno = ruta.Contains(*cadDobleBarra) || ruta.Contains(*cadPunto);
-	delete[] cadDobleBarra;
-	delete[] cadPunto;
+	delete cadDobleBarra;
+	delete cadPunto;
 	return retorno;
 }
 

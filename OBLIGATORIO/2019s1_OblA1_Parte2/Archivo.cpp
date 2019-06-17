@@ -8,7 +8,7 @@ Archivo::Archivo(Cadena nombre)
 {
 	this->nombre = nombre;
 	this->oculto = false;
-	this->lineas = nullptr;
+	this->lineas = new ListaPosImp<Cadena>();
 
 }
 
@@ -16,7 +16,7 @@ Archivo::Archivo()
 {
 	this->nombre = *new Cadena();
 	this->oculto = false;
-	this->lineas = nullptr;
+	this->lineas = new ListaPosImp<Cadena>();
 
 
 }
@@ -31,28 +31,24 @@ Archivo::~Archivo()
 
 Archivo::Archivo(const Archivo &a)
 {
-	this->nombre = *new Cadena();
-	this->oculto = false;
-	this->lineas = nullptr;
-
 	*this = a;
 }
 
 Archivo &Archivo::operator=(const Archivo &a) 
 {
 	if (this != &a)
-	{
-		
+	{		
 		this->EliminarLineas();
 		this->nombre = a.nombre;
-		
-		Iterador<Cadena> itLineasACopiar = a.lineas->GetIterador();
-		while (!itLineasACopiar.EsFin()){
-		
-			Cadena cadenaCopia = itLineasACopiar.Elemento();
-			this->lineas->AgregarFin(cadenaCopia);
-			itLineasACopiar++;
-			
+		this->oculto = a.EstaOculto();
+		if(a.lineas!=NULL){
+			Iterador<Cadena> itLineasACopiar = a.lineas->GetIterador();
+			while (!itLineasACopiar.EsFin()) {
+
+				Cadena cadenaCopia = itLineasACopiar.Elemento();
+				this->lineas->AgregarFin(cadenaCopia);
+				itLineasACopiar++;
+			}
 		}
 		
 	}
@@ -63,18 +59,20 @@ bool Archivo::operator==(const Archivo &a) const
 {
 	bool sonIguales = this->nombre == a.nombre;
 	if (sonIguales) {
-		Iterador<Cadena> itCadenaThis = this->lineas->GetIterador();
-		Iterador<Cadena> itCadenaParam = a.lineas->GetIterador();
+		if (this->lineas != NULL) {
+			Iterador<Cadena> itCadenaThis = this->lineas->GetIterador();
+			Iterador<Cadena> itCadenaParam = a.lineas->GetIterador();
 
-		while (!itCadenaThis.EsFin() && !itCadenaParam.EsFin() && sonIguales)
-		{
-			sonIguales = itCadenaThis.Elemento() == itCadenaParam.Elemento();
-			itCadenaThis++;
-			itCadenaParam++;
-		}
-		if (sonIguales)
-		{
-			sonIguales = itCadenaThis.EsFin() && itCadenaParam.EsFin();
+			while (!itCadenaThis.EsFin() && !itCadenaParam.EsFin() && sonIguales)
+			{
+				sonIguales = itCadenaThis.Elemento() == itCadenaParam.Elemento();
+				itCadenaThis++;
+				itCadenaParam++;
+			}
+			if (sonIguales)
+			{
+				sonIguales = itCadenaThis.EsFin() && itCadenaParam.EsFin();
+			}
 		}
 	}
 
@@ -228,15 +226,15 @@ void Archivo::MostrarContenido() const
 }
 
 void Archivo::EliminarLineas(){
-
-	Iterador<Cadena> itCadena= this->lineas->GetIterador();
-	while (!itCadena.EsFin())
-	{
-		Cadena cadenaCopia = itCadena.Elemento();
-		itCadena++;
-		delete& cadenaCopia;
+	if (this->lineas != NULL) {
+		Iterador<Cadena> itCadena = this->lineas->GetIterador();
+		while (!itCadena.EsFin())
+		{
+			Cadena cadenaCopia = itCadena.Elemento();
+			itCadena++;
+			delete& cadenaCopia;
+		}
 	}
-
 }
 
 bool Archivo::EstaOculto() const
