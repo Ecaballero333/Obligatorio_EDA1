@@ -123,9 +123,12 @@ bool Directorios::ExisteDirectorio(Cadena ruta)
 }
 
 
-Directorio &Directorios::BuscarDirectorio(Cadena ruta)
+Directorio &Directorios::BuscarDirectorio(Cadena ruta, bool descartarUltimaParte, Cadena& ultimParte)
 {
 	NodoLista<Cadena>* listaRuta = rutaALista(&ruta);
+	if (descartarUltimaParte) {
+		ultimParte = obtenerYBorrarUltimaCadena(listaRuta);
+	}
 	NodoAG<Directorio>* nodoDirectorio = buscarRuta(this->arbolDirectorios, listaRuta);
 	return nodoDirectorio->dato;
 }
