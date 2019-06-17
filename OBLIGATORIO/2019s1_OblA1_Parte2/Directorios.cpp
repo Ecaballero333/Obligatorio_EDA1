@@ -269,6 +269,8 @@ Cadena Directorios::obtenerYBorrarUltimaCadena(NodoLista<Cadena>* listaRuta) {
 	return ultimaCadena;
 }
 
+
+
 bool Directorios::ExisteHijoEnRuta(NodoAG<Directorio>* nodoDirectorio, Cadena nombreDirectorio) {
 	bool existe = false;
 	if (nodoDirectorio->ph != NULL) {

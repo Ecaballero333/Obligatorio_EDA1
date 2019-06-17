@@ -27,6 +27,10 @@ public:
 	Directorios &operator=(const Directorios &d);
 
 	//PRE: 
+	//POS: Agregar el Archivo
+	TipoError AgregarArchivo(Cadena ruta);
+
+	//PRE: 
 	//POS: Agregar el directorio
 	TipoError AgregarDirectorio(Cadena ruta);
 
@@ -85,6 +89,7 @@ private:
 	//PRE: La lista tiene por lo menos 2 nodos
 	//POS: Borra el último nodo y devuelve la cadena de ese último nodo
 	Cadena obtenerYBorrarUltimaCadena(NodoLista<Cadena>* listaRuta);
+
 
 	//PRE:
 	//POS: Valida que no exista un nodo hijo de nodoDirectorio con nombre: nombreDirectorio
