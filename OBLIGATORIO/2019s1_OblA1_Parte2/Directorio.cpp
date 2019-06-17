@@ -129,19 +129,8 @@ void Directorio::AgregarArchivo(const Archivo &archivo)
 
 void Directorio::EliminarArchivo(Cadena nombreArchivo)
 {
-	Iterador<Archivo> itArchivosThis = this->archivos->GetIterador();
-	bool encontro = false;
-	while (!itArchivosThis.EsFin() && !encontro)
-	{
-		Archivo archivoCopia = itArchivosThis.Elemento();
-		if (archivoCopia.GetNombre() == nombreArchivo) {
-			encontro = true;
-			delete &archivoCopia;
-		}
-		else {
-			itArchivosThis++;
-		}
-	}
+	Archivo archivo = this->BuscarArchivo(nombreArchivo);
+	delete &archivo;
 }
 
 void Directorio::EliminarArchivos()

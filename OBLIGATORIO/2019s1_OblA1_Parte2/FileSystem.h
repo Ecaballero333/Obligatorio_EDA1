@@ -5,7 +5,6 @@
 #include "Cadena.h"
 #include "FuncAux.h"
 #include "Directorios.h"
-#include "PilaImp.h"
 
 class FileSystem {
 	
@@ -58,9 +57,6 @@ class FileSystem {
 
 		Directorios* raiz;
 		int maximoRecupera;
-		typedef Cadena ruta;
-		typedef Asociacion<ruta, Archivo> rutaArchivo;
-		Pila<rutaArchivo> *listaUndeleteArchivos;
 
 		//PRE: !cadenaError.esVacia()
 		//POS: Imprime el error que recibe por parámetro.

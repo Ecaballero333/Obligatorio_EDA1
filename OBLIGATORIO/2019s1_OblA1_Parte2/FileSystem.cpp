@@ -115,8 +115,13 @@ TipoRetorno FileSystem::CreateFile(Cadena rutaArchivo)
 
 TipoRetorno FileSystem::Delete (Cadena rutaArchivo)
 {
-	// NO IMPLEMENTADA
-	return NO_IMPLEMENTADA;
+	TipoRetorno retorno = OK;
+	TipoError resultado = this->raiz->Delete(rutaArchivo);
+	if (resultado != NO_HAY_ERROR) {
+		retorno = ERROR;
+		this->ImprimirError(resultado);
+	}
+	return retorno;
 }
 
 TipoRetorno FileSystem::Attrib(Cadena rutaArchivo, Cadena parametro)
@@ -181,6 +186,9 @@ void FileSystem::ImprimirError(TipoError tipoError) const {
 		break;
 	case ERROR_NO_SE_ENCUENTRA_PADRE_RUTA_DESTINO:
 		cout << "ERROR: No se encuentra el padre de la ruta destino.";
+		break;
+	case ERROR_NO_EXISTE_ARCHIVO_NOMBRE_EN_RUTA:
+		cout << "No existe un archivo con ese nombre en esa ruta.";
 		break;
 	default:
 		break;

@@ -598,13 +598,43 @@ Se imprimio (el numero de linea fue agregado, no se debe imprimir):
 10! 
 -----------------------------------
 Prueba 56: Se borra archivo /directorio1/directorio11/archivo11.txt
- -> ERROR PRUEBA NO_IMPLEMENTADA
+ -> ERROR retorno incorrecto
+	 Se esperaba: OK
+	 Se obtuvo: ERROR
+
+ -> ERROR impresión incorrecta
+Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir): 
+1 : 
+
+Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
+(Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
+1 ! No existe un archivo con ese nombre en esa ruta.
 -----------------------------------
 Prueba 57: Se borra archivo /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
- -> ERROR PRUEBA NO_IMPLEMENTADA
+ -> ERROR retorno incorrecto
+	 Se esperaba: OK
+	 Se obtuvo: ERROR
+
+ -> ERROR impresión incorrecta
+Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir): 
+1 : 
+
+Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
+(Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
+1 ! No existe un archivo con ese nombre en esa ruta.
 -----------------------------------
 Prueba 58: Se borra archivo /directorio2/directorio21/directorio211/archivo212.ppt
- -> ERROR PRUEBA NO_IMPLEMENTADA
+ -> ERROR retorno incorrecto
+	 Se esperaba: OK
+	 Se obtuvo: ERROR
+
+ -> ERROR impresión incorrecta
+Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir): 
+1 : 
+
+Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
+(Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
+1 ! No existe un archivo con ese nombre en esa ruta.
 -----------------------------------
 Prueba 59: Se muestra contenido de todo el filesystem
  -> ERROR impresión incorrecta
@@ -892,16 +922,31 @@ PRUEBAS FUNCION PRUEBAS Error CreateFile                           HAY 3 PRUEBAS
 ********* INICIO PRUEBAS Error Delete*******
 -----------------------------------
 Prueba 94: La ruta no comienza con /.
- -> ERROR PRUEBA NO_IMPLEMENTADA
+ -> ERROR impresión incorrecta
+Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir): 
+1 : ERROR: La ruta no comienza con /.
+2 : 
+3 : 
+
+Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
+(Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
+1 ! No existe un archivo con ese nombre en esa ruta.
 -----------------------------------
-Prueba 95: No se encuentra la ruta.
- -> ERROR PRUEBA NO_IMPLEMENTADA
+Prueba 95: No se encuentra la ruta. -> OK
 -----------------------------------
 Prueba 96: No existe un archivo con ese nombre en esa ruta.
- -> ERROR PRUEBA NO_IMPLEMENTADA
+ -> ERROR impresión incorrecta
+Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir): 
+1 : ERROR: No existe un archivo con ese nombre en esa ruta.
+2 : 
+3 : 
+
+Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
+(Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
+1 ! No existe un archivo con ese nombre en esa ruta.
 ********* FIN PRUEBAS Error Delete*******
 
-PRUEBAS FUNCION PRUEBAS Error Delete                               HAY 3 PRUEBAS INCORRECTAS
+PRUEBAS FUNCION PRUEBAS Error Delete                               HAY 2 PRUEBAS INCORRECTAS
 
 ********* INICIO PRUEBAS Error Attrib*******
 -----------------------------------
@@ -1015,7 +1060,17 @@ Se imprimio (el numero de linea fue agregado, no se debe imprimir):
 10! 
 -----------------------------------
 Prueba 115: Se borra archivo /archivo1.txt
- -> ERROR PRUEBA NO_IMPLEMENTADA
+ -> ERROR retorno incorrecto
+	 Se esperaba: OK
+	 Se obtuvo: ERROR
+
+ -> ERROR impresión incorrecta
+Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir): 
+1 : 
+
+Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
+(Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
+1 ! No existe un archivo con ese nombre en esa ruta.
 -----------------------------------
 Prueba 116: Se muestra contenido de todo el filesystem
  -> ERROR impresión incorrecta
@@ -1099,7 +1154,17 @@ Se imprimio (el numero de linea fue agregado, no se debe imprimir):
 10! 
 -----------------------------------
 Prueba 120: Se borra archivo /directorio1/directorio11/archivo11.txt
- -> ERROR PRUEBA NO_IMPLEMENTADA
+ -> ERROR retorno incorrecto
+	 Se esperaba: OK
+	 Se obtuvo: ERROR
+
+ -> ERROR impresión incorrecta
+Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir): 
+1 : 
+
+Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
+(Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
+1 ! No existe un archivo con ese nombre en esa ruta.
 -----------------------------------
 Prueba 121: Se muestra contenido de todo el filesystem
  -> ERROR impresión incorrecta
