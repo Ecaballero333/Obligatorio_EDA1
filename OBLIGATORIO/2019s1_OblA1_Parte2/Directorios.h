@@ -41,7 +41,8 @@ public:
 
 	//PRE: 
 	//POS: Retorna true si existe directorio correspondiente a ruta.
-	bool ExisteDirectorio(Cadena ruta);
+	//Si el parametro descartarUltimaParte se setea en true, se busca el directorio hasta la última / de la ruta
+	bool ExisteDirectorio(Cadena ruta, bool descartarUltimaParte);
 
 	//PRE: Existe ruta
 	//POS: Retorna Directorio correspondiente a la ruta.
