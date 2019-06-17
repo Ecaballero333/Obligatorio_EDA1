@@ -41,11 +41,11 @@ public:
 
 	//PRE: 
 	//POS: Retorna true si existe directorio correspondiente a ruta.
-	bool ExisteDirectorio(Cadena ruta) const;
+	bool ExisteDirectorio(Cadena ruta);
 
 	//PRE: Existe ruta
 	//POS: Retorna Directorio correspondiente a la ruta.
-	//Directorio &BuscarDirectorio(Cadena ruta) const;
+	Directorio &BuscarDirectorio(Cadena ruta);
 
 	//PRE: Existe ruta
 	//POS: Imprime la jerarquia de directorios a partir de ruta teniendo en cuenta el parametro que indica la visibilidad.

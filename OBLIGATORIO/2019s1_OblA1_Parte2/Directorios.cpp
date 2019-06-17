@@ -115,17 +115,20 @@ TipoError Directorios::EliminarDirectorio(Cadena ruta)
 	return retorno;
 }
 
-bool Directorios::ExisteDirectorio(Cadena ruta) const
+bool Directorios::ExisteDirectorio(Cadena ruta)
 {
-	// NO IMPLEMENTADA
-	return false;
+	NodoLista<Cadena>* listaRuta = rutaALista(&ruta);
+	NodoAG<Directorio>* nodoDirectorio = buscarRuta(this->arbolDirectorios, listaRuta);
+	return(nodoDirectorio != NULL);
 }
 
-// DESCOMENTAR FUNCION EN .cpp y .h LUEGO DE IMPLEMENTAR
-//Directorio &Directorios::BuscarDirectorio(Cadena ruta) const
-//{
-	// NO IMPLEMENTADA
-//}
+
+Directorio &Directorios::BuscarDirectorio(Cadena ruta)
+{
+	NodoLista<Cadena>* listaRuta = rutaALista(&ruta);
+	NodoAG<Directorio>* nodoDirectorio = buscarRuta(this->arbolDirectorios, listaRuta);
+	return nodoDirectorio->dato;
+}
 
 TipoError Directorios::Dir(Cadena ruta, Cadena parametro)
 {
@@ -206,6 +209,9 @@ TipoError Directorios::Delete(Cadena rutaArchivo) {
 			retorno = ERROR_NO_EXISTE_ARCHIVO_NOMBRE_EN_RUTA;
 		}
 		else {
+			Archivo archivo = nodoDirectorio->dato.BuscarArchivo(nombreArchivo);
+			Asociacion<ruta, Archivo>* asociacionRutaArchivo = new Asociacion<ruta, Archivo>(rutaArchivo, archivo);
+			this->listaUndeleteArchivos->Push(*asociacionRutaArchivo);
 			nodoDirectorio->dato.EliminarArchivo(nombreArchivo);
 		}
 	}
