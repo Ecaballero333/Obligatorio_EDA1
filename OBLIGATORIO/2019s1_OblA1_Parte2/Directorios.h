@@ -29,6 +29,10 @@ class Directorios {
 		//PRE: 
 		//POS: Agregar el directorio
 		TipoError AgregarDirectorio(Cadena ruta);
+
+		//PRE: 
+		//POS: Agregar el archivo
+		TipoError AgregarArchivo(Cadena ruta);
 		
 		//PRE: 
 		//POS: Elimina el directorio.

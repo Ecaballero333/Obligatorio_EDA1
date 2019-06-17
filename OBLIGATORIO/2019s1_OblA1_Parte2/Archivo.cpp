@@ -168,12 +168,26 @@ void Archivo::EliminarTexto(unsigned int nroLinea, unsigned int posLinea, unsign
 			if (k + posLinea > aux.Length()){
 				while (aux[posLinea] != '\0') {
 					//delete &aux[posLinea];
+					char* nuevo = aux.GetNewCharPtr();
+					borrarPosicion(nuevo, posLinea);
+					Cadena nuevaAux = *new Cadena(nuevo, false);
+					aux = nuevaAux;
+
+					delete& nuevaAux;
+					delete[] nuevo;
 					posLinea++;
 				}
 			}
 			else{
 				while (k != 0){
 					//delete &aux[posLinea];
+					char* nuevo = aux.GetNewCharPtr();
+					borrarPosicion(nuevo, posLinea);
+					Cadena nuevaAux = *new Cadena(nuevo, false);
+					aux = nuevaAux;
+					
+					delete &nuevaAux;
+					delete[] nuevo;
 					k--;
 					posLinea++;
 				}
@@ -189,6 +203,14 @@ void Archivo::EliminarTexto(unsigned int nroLinea, unsigned int posLinea, unsign
 	else {
 		//ERROR
 	}
+}
+
+void Archivo::borrarPosicion(char str[], int n) {
+	size_t slen = std::strlen(str);
+
+	for (n; n <= slen; n++)
+		str[n] = str[n + 1];
+
 }
 
 void Archivo::MostrarContenido() const

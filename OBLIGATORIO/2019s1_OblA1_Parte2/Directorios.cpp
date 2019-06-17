@@ -32,6 +32,35 @@ Directorios &Directorios::operator=(const Directorios &d)
 	return *this;
 }
 
+TipoError Directorios::AgregarArchivo(Cadena ruta) {
+
+	TipoError retorno = this->ValidacionesPorOperacion(CREATEFILE, ruta, "");
+	if (retorno == NO_HAY_ERROR) {
+		NodoLista<Cadena>* listaRuta = rutaALista(&ruta);
+		Cadena nombreArchivoACrear = obtenerYBorrarUltimaCadena(listaRuta);
+		Cadena nombreDirectorio = obtenerYBorrarUltimaCadena(listaRuta);
+		NodoAG<Directorio>* nodoDirectorio = buscarRuta(this->arbolDirectorios, listaRuta);
+
+
+		if (nodoDirectorio == NULL) {
+			retorno = ERROR_NO_SE_ENCUENTRA_RUTA;
+		}
+		else {
+			if () {
+				retorno = ERROR_YA_EXISTE_ARCHIVO;
+			}
+			else {
+
+				Archivo* nuevoArchivo = new Archivo(nombreArchivoACrear);
+				
+
+			}
+		}
+
+	}
+	return retorno;
+}
+
 TipoError Directorios::AgregarDirectorio(Cadena ruta)
 {
 	TipoError retorno = this->ValidacionesPorOperacion(MKDIR, ruta, "");
@@ -240,6 +269,11 @@ TipoError Directorios::ValidacionesPorOperacion(TipoOperacion nombreOperacion, C
 		}
 	}
 	if (nombreOperacion == RMDIR) {
+		if (this->rutaComienzaMal(ruta)) {
+			retorno = ERROR_RUTA_COMIENZA_MAL;
+		}
+	}
+	if (nombreOperacion == CREATEFILE) {
 		if (this->rutaComienzaMal(ruta)) {
 			retorno = ERROR_RUTA_COMIENZA_MAL;
 		}

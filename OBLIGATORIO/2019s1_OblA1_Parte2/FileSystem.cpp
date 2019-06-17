@@ -92,8 +92,19 @@ TipoRetorno FileSystem::Dir(Cadena rutaDirectorio, Cadena parametro) const
 
 TipoRetorno FileSystem::CreateFile(Cadena rutaArchivo)
 {
-	// NO IMPLEMENTADA
 	return NO_IMPLEMENTADA;
+
+	// no esta terminada
+
+	TipoRetorno retorno = OK;
+	TipoError resultado = this->raiz->AgregarArchivo(rutaArchivo);
+	if (resultado != NO_HAY_ERROR) {
+		retorno = ERROR;
+		this->ImprimirError(resultado);
+	}
+	return retorno;
+
+	
 }
 
 

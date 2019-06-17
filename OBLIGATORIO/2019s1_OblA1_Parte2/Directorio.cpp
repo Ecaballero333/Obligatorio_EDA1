@@ -26,6 +26,9 @@ Directorio::~Directorio()
 
 Directorio::Directorio(const Directorio &d)
 {
+	this->nombre = *new Cadena();
+	this->nivel = 0;
+	this->archivos = new ListaOrdImp<Archivo>();
 	*this = d;
 }
 
