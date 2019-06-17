@@ -237,12 +237,12 @@ No contiene archivos ni directorios.
 /directorio2/directorio22
 
 -!-55::0-OK-OK-Se muestra contenido de todo el filesystem
-
--!-56::0-OK-NO_IMPLEMENTADA-Se borra archivo /directorio1/directorio11/archivo11.txt
-
--!-57::0-OK-NO_IMPLEMENTADA-Se borra archivo /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
-
--!-58::0-OK-NO_IMPLEMENTADA-Se borra archivo /directorio2/directorio21/directorio211/archivo212.ppt
+No existe un archivo con ese nombre en esa ruta.
+-!-56::0-OK-ERROR-Se borra archivo /directorio1/directorio11/archivo11.txt
+No existe un archivo con ese nombre en esa ruta.
+-!-57::0-OK-ERROR-Se borra archivo /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
+No existe un archivo con ese nombre en esa ruta.
+-!-58::0-OK-ERROR-Se borra archivo /directorio2/directorio21/directorio211/archivo212.ppt
 /
 /directorio1
 /directorio1/directorio11
@@ -365,12 +365,12 @@ ERROR: Parametro desconocido.
 -!-93::0-ERROR-NO_IMPLEMENTADA-Ya existe un archivo con el mismo nombre en esa ruta.
 -!-Fin::PRUEBAS Error CreateFile
 -!-Ini::PRUEBAS Error Delete
-
--!-94::0-ERROR-NO_IMPLEMENTADA-La ruta no comienza con /.
-
--!-95::0-ERROR-NO_IMPLEMENTADA-No se encuentra la ruta.
-
--!-96::0-ERROR-NO_IMPLEMENTADA-No existe un archivo con ese nombre en esa ruta.
+No existe un archivo con ese nombre en esa ruta.
+-!-94::0-ERROR-ERROR-La ruta no comienza con /.
+ERROR: No se encuentra la ruta.
+-!-95::0-ERROR-ERROR-No se encuentra la ruta.
+No existe un archivo con ese nombre en esa ruta.
+-!-96::0-ERROR-ERROR-No existe un archivo con ese nombre en esa ruta.
 -!-Fin::PRUEBAS Error Delete
 -!-Ini::PRUEBAS Error Attrib
 
@@ -426,8 +426,8 @@ ERROR: Parametro desconocido.
 /directorio2/directorio22
 
 -!-114::0-OK-OK-Se muestra contenido de todo el filesystem
-
--!-115::0-OK-NO_IMPLEMENTADA-Se borra archivo /archivo1.txt
+No existe un archivo con ese nombre en esa ruta.
+-!-115::0-OK-ERROR-Se borra archivo /archivo1.txt
 /
 /directorio1
 /directorio1/directorio11
@@ -454,8 +454,8 @@ ERROR: Parametro desconocido.
 /directorio2/directorio22
 
 -!-119::0-OK-OK-Se muestra contenido de todo el filesystem
-
--!-120::0-OK-NO_IMPLEMENTADA-Se borra archivo /directorio1/directorio11/archivo11.txt
+No existe un archivo con ese nombre en esa ruta.
+-!-120::0-OK-ERROR-Se borra archivo /directorio1/directorio11/archivo11.txt
 /
 /directorio1
 /directorio1/directorio11

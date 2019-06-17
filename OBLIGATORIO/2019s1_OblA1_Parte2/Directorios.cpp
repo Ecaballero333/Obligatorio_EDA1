@@ -34,7 +34,7 @@ Directorios &Directorios::operator=(const Directorios &d)
 
 TipoError Directorios::AgregarArchivo(Cadena ruta) {
 
-	TipoError retorno = this->ValidacionesPorOperacion(CREATEFILE, ruta, "");
+	TipoError retorno = this->ValidacionesPorOperacion(CREATEFILE, ruta, "", "");
 	if (retorno == NO_HAY_ERROR) {
 		NodoLista<Cadena>* listaRuta = rutaALista(&ruta);
 		Cadena nombreArchivoACrear = obtenerYBorrarUltimaCadena(listaRuta);
@@ -46,7 +46,7 @@ TipoError Directorios::AgregarArchivo(Cadena ruta) {
 			retorno = ERROR_NO_SE_ENCUENTRA_RUTA;
 		}
 		else {
-			if () {
+			if (true) {
 				retorno = ERROR_YA_EXISTE_ARCHIVO;
 			}
 			else {
@@ -193,7 +193,7 @@ TipoError Directorios::CopiarDirectorio(Cadena rutaOrigen, Cadena rutaDestino)
 	return retorno;
 }
 
-TipoError  Directorios::Delete(Cadena rutaArchivo) {
+TipoError Directorios::Delete(Cadena rutaArchivo) {
 	TipoError retorno = this->ValidacionesPorOperacion(DELETE, rutaArchivo, "", "");
 	NodoLista<Cadena>* listaRutaArchivo = rutaALista(&rutaArchivo);
 	Cadena nombreArchivo = obtenerYBorrarUltimaCadena(listaRutaArchivo);
@@ -209,6 +209,7 @@ TipoError  Directorios::Delete(Cadena rutaArchivo) {
 			nodoDirectorio->dato.EliminarArchivo(nombreArchivo);
 		}
 	}
+	return retorno;
 }
 
 NodoAG<Directorio>* Directorios::CopiarArbolDirectorios(NodoAG<Directorio>* d) {
@@ -340,7 +341,7 @@ TipoError Directorios::ValidacionesPorOperacion(TipoOperacion nombreOperacion, C
 		}
 	}
 	if (nombreOperacion == CREATEFILE) {
-		if (this->rutaComienzaMal(ruta)) {
+		if (this->rutaComienzaMal(rutaOrigen)) {
 			retorno = ERROR_RUTA_COMIENZA_MAL;
 		}
 	}
