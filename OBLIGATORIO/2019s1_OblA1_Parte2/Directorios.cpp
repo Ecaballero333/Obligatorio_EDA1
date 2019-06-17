@@ -56,6 +56,36 @@ TipoError Directorios::AgregarArchivo(Cadena ruta) {
 	return retorno;
 }
 
+TipoError Directorios::InsertText(Cadena rutaArchivo, unsigned int linea, unsigned int posicion, Cadena texto) {
+
+	TipoError retorno = this->ValidacionesPorOperacion(INSERTTEXT, rutaArchivo, "", "");
+	if (retorno == NO_HAY_ERROR) {
+		if (!ExisteDirectorio(rutaArchivo, true)) {
+			retorno = ERROR_NO_SE_ENCUENTRA_RUTA;
+		}	
+		if (linea == 0) {
+			retorno = ERROR_LINEA_CERO_NO_VALIDA;
+		}
+		if (posicion == 0) {
+			retorno = ERROR_POSICION_CERO_NO_VALIDA;
+		}
+		if (retorno == NO_HAY_ERROR) {
+
+			Cadena nombreArchivo = "";
+			Directorio* directorio = this->BuscarDirectorio(rutaArchivo, true, nombreArchivo);
+			if ((*directorio).ExisteArchivo(nombreArchivo)) {
+				retorno = ERROR_YA_EXISTE_ARCHIVO;
+			}
+			else {
+				Archivo archivo = directorio->BuscarArchivo(nombreArchivo);
+				archivo.InsertarTexto(linea, posicion, texto);
+
+			}
+		}
+	}
+	return retorno;
+}
+
 TipoError Directorios::AgregarDirectorio(Cadena ruta)
 {
 	TipoError retorno = this->ValidacionesPorOperacion(MKDIR, ruta, "", "");
@@ -347,6 +377,11 @@ TipoError Directorios::ValidacionesPorOperacion(TipoOperacion nombreOperacion, C
 		}
 	}
 	if (nombreOperacion == CREATEFILE) {
+		if (this->rutaComienzaMal(rutaOrigen)) {
+			retorno = ERROR_RUTA_COMIENZA_MAL;
+		}
+	}
+	if (nombreOperacion == INSERTTEXT) {
 		if (this->rutaComienzaMal(rutaOrigen)) {
 			retorno = ERROR_RUTA_COMIENZA_MAL;
 		}

@@ -62,6 +62,9 @@ public:
 	//POS: Copia el directorio de origen a destino
 	TipoError CopiarDirectorio(Cadena rutaOrigen, Cadena rutaDestino);
 
+	//PRE: 
+	//POS: Inserta el texto en determinada linea y posicion
+	TipoError InsertText(Cadena rutaArchivo,unsigned int linea, unsigned int posicion, Cadena texto);
 
 	//PRE: 
 	//POS: Elimina un archivo de la ruta especificada sin importar si está oculto o no.
