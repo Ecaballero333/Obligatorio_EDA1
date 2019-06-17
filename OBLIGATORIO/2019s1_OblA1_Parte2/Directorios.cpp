@@ -40,7 +40,7 @@ TipoError Directorios::AgregarArchivo(Cadena ruta) {
 		Cadena nombreArchivoACrear = obtenerYBorrarUltimaCadena(listaRuta);
 		Cadena nombreDirectorio = obtenerYBorrarUltimaCadena(listaRuta);
 		NodoAG<Directorio>* nodoDirectorio = buscarRuta(this->arbolDirectorios, listaRuta);
-
+		Directorio directorioDestino = *new Directorio(); // aca va el buscar directorio
 
 		if (nodoDirectorio == NULL) {
 			retorno = ERROR_NO_SE_ENCUENTRA_RUTA;
@@ -52,7 +52,7 @@ TipoError Directorios::AgregarArchivo(Cadena ruta) {
 			else {
 
 				Archivo* nuevoArchivo = new Archivo(nombreArchivoACrear);
-				
+				directorioDestino.AgregarArchivo(*nuevoArchivo);
 
 			}
 		}
