@@ -38,10 +38,10 @@ TipoError Directorios::AgregarArchivo(Cadena ruta) {
 	if (retorno == NO_HAY_ERROR) {
 		NodoLista<Cadena>* listaRuta = rutaALista(&ruta);
 		Cadena nombreArchivoACrear = obtenerYBorrarUltimaCadena(listaRuta);
-		Cadena nombreDirectorio = obtenerYBorrarUltimaCadena(listaRuta);
+		
+		
+		Directorio directorioDestino = this->BuscarDirectorio();
 		NodoAG<Directorio>* nodoDirectorio = buscarRuta(this->arbolDirectorios, listaRuta);
-		Directorio directorioDestino = *new Directorio(); // aca va el buscar directorio
-
 		if (nodoDirectorio == NULL) {
 			retorno = ERROR_NO_SE_ENCUENTRA_RUTA;
 		}

@@ -3,7 +3,8 @@
 
 enum _operacion
 {
-	MKDIR, RMDIR, DIR, COPYDIR, DELETE, CREATEFILE
+	MKDIR, RMDIR, DIR, COPYDIR, DELETE, CREATEFILE, INSERTTEXT, TYPE, 
+	ATTRIB, DELETETEXT, UNDELETE
 };
 typedef enum _operacion TipoOperacion;
 
