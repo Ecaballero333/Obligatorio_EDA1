@@ -20,6 +20,7 @@ class NodoAG {
 		bool &operator<(const NodoAG<U> &n) { return dato<n.dato; }
 
 		virtual ~NodoAG() {}
+				
 	private:
 		NodoAG(const NodoAG<U> &n) : dato(n.dato), ph(n.ph), sh(n.sh)  {}
 

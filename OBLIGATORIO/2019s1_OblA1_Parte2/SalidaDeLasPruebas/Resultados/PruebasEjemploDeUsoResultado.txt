@@ -301,14 +301,13 @@ Se imprimio (el numero de linea fue agregado, no se debe imprimir):
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
 1 : /
 2 ! /directorio1
-3 ! /directorio1/directorio11
-4 : /directorio1/directorio12
-5 : /directorio2
-6 : /directorio2/directorio21
-7 : /directorio2/directorio21/directorio211
-8 ! /directorio2/directorio21/directorio211/directorio2111
-9 ! /directorio2/directorio22
-10! 
+3 ! /directorio1/directorio12
+4 ! /directorio2
+5 ! /directorio2/directorio21
+6 ! /directorio2/directorio21/directorio211
+7 ! /directorio2/directorio21/directorio211/directorio2111
+8 ! /directorio2/directorio22
+9 ! 
 -----------------------------------
 Prueba 44: Se borra directorio /directorio2/directorio21/directorio211/directorio2111 -> OK
 -----------------------------------
@@ -335,13 +334,12 @@ Se imprimio (el numero de linea fue agregado, no se debe imprimir):
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
 1 : /
 2 ! /directorio1
-3 ! /directorio1/directorio11
-4 : /directorio1/directorio12
-5 : /directorio2
-6 : /directorio2/directorio21
-7 : /directorio2/directorio21/directorio211
-8 ! /directorio2/directorio22
-9 ! 
+3 ! /directorio1/directorio12
+4 ! /directorio2
+5 ! /directorio2/directorio21
+6 ! /directorio2/directorio21/directorio211
+7 ! /directorio2/directorio22
+8 ! 
 -----------------------------------
 Prueba 46: Se borra directorio /directorio2 -> OK
 -----------------------------------
@@ -359,9 +357,8 @@ Se imprimio (el numero de linea fue agregado, no se debe imprimir):
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
 1 : /
 2 ! /directorio1
-3 ! /directorio1/directorio11
-4 : /directorio1/directorio12
-5 : 
+3 ! /directorio1/directorio12
+4 ! 
 ********* FIN PRUEBAS Rmdir*******
 
 PRUEBAS FUNCION PRUEBAS Rmdir                                      HAY 4 PRUEBAS INCORRECTAS
@@ -406,8 +403,7 @@ Se imprimio (el numero de linea fue agregado, no se debe imprimir):
 9 ! /directorio2/directorio22
 10! 
 -----------------------------------
-Prueba 49: Se copia /directorio1/directorio11 en /directorio3
- -> ERROR PRUEBA NO_IMPLEMENTADA
+Prueba 49: Se copia /directorio1/directorio11 en /directorio3 -> OK
 -----------------------------------
 Prueba 50: Se muestra contenido de todo el filesystem
  -> ERROR impresión incorrecta
@@ -449,10 +445,10 @@ Se imprimio (el numero de linea fue agregado, no se debe imprimir):
 7 ! /directorio2/directorio21/directorio211
 8 ! /directorio2/directorio21/directorio211/directorio2111
 9 ! /directorio2/directorio22
-10! 
+10! /directorio3
+11! 
 -----------------------------------
-Prueba 51: Se copia /directorio2/directorio21/directorio211 en /directorio3/directorio4
- -> ERROR PRUEBA NO_IMPLEMENTADA
+Prueba 51: Se copia /directorio2/directorio21/directorio211 en /directorio3/directorio4 -> OK
 -----------------------------------
 Prueba 52: Se muestra contenido de /directorio
  -> ERROR impresión incorrecta
@@ -499,10 +495,12 @@ Se imprimio (el numero de linea fue agregado, no se debe imprimir):
 7 ! /directorio2/directorio21/directorio211
 8 ! /directorio2/directorio21/directorio211/directorio2111
 9 ! /directorio2/directorio22
-10! 
+10! /directorio3
+11! /directorio3/directorio4
+12! /directorio3/directorio4/directorio2111
+13! 
 -----------------------------------
-Prueba 53: Se copia directorio /directorio1/directorio12 a /directorio3/directorio5
- -> ERROR PRUEBA NO_IMPLEMENTADA
+Prueba 53: Se copia directorio /directorio1/directorio12 a /directorio3/directorio5 -> OK
 -----------------------------------
 Prueba 54: Se muestra contenido de todo el filesystem
  -> ERROR impresión incorrecta
@@ -550,10 +548,14 @@ Se imprimio (el numero de linea fue agregado, no se debe imprimir):
 7 ! /directorio2/directorio21/directorio211
 8 ! /directorio2/directorio21/directorio211/directorio2111
 9 ! /directorio2/directorio22
-10! 
+10! /directorio3
+11! /directorio3/directorio4
+12! /directorio3/directorio4/directorio2111
+13! /directorio3/directorio5
+14! 
 ********* FIN PRUEBAS CopyDir*******
 
-PRUEBAS FUNCION PRUEBAS CopyDir                                    HAY 7 PRUEBAS INCORRECTAS
+PRUEBAS FUNCION PRUEBAS CopyDir                                    HAY 4 PRUEBAS INCORRECTAS
 
 ********* INICIO PRUEBAS Delete*******
 -----------------------------------
@@ -847,26 +849,20 @@ PRUEBAS FUNCION PRUEBAS Error Rmdir                                HAY 1 PRUEBAS
 
 ********* INICIO PRUEBAS Error CopyDir*******
 -----------------------------------
-Prueba 82: La ruta no comienza con /.
- -> ERROR PRUEBA NO_IMPLEMENTADA
+Prueba 82: La ruta no comienza con /. -> OK
 -----------------------------------
-Prueba 83: La ruta no comienza con /.
- -> ERROR PRUEBA NO_IMPLEMENTADA
+Prueba 83: La ruta no comienza con /. -> OK
 -----------------------------------
-Prueba 84: No se encuentra la ruta de origen.
- -> ERROR PRUEBA NO_IMPLEMENTADA
+Prueba 84: No se encuentra la ruta de origen. -> OK
 -----------------------------------
-Prueba 85: Ya existe la ruta de destino.
- -> ERROR PRUEBA NO_IMPLEMENTADA
+Prueba 85: Ya existe la ruta de destino. -> OK
 -----------------------------------
-Prueba 86: La ruta de destino no puede ser un subdirectorio de origen.
- -> ERROR PRUEBA NO_IMPLEMENTADA
+Prueba 86: La ruta de destino no puede ser un subdirectorio de origen. -> OK
 -----------------------------------
-Prueba 87: No se encuentra el padre de la ruta destino.
- -> ERROR PRUEBA NO_IMPLEMENTADA
+Prueba 87: No se encuentra el padre de la ruta destino. -> OK
 ********* FIN PRUEBAS Error CopyDir*******
 
-PRUEBAS FUNCION PRUEBAS Error CopyDir                              HAY 6 PRUEBAS INCORRECTAS
+PRUEBAS FUNCION PRUEBAS Error CopyDir                              PRUEBAS CORRECTAS
 
 ********* INICIO PRUEBAS Error Dir*******
 -----------------------------------
@@ -1201,5 +1197,5 @@ PRUEBAS FUNCION PRUEBAS Error Opcional                             HAY 1 PRUEBAS
 
 ----------------
 PRUEBAS FUNCIONES 
-PRUEBAS FUNCIONES RESULTADO ../PruebasEjemploDeUso.txt          => CORRECTAS:  2 INCORRECTAS: 20
+PRUEBAS FUNCIONES RESULTADO ../PruebasEjemploDeUso.txt          => CORRECTAS:  3 INCORRECTAS: 19
 PRUEBAS FUNCIONES 

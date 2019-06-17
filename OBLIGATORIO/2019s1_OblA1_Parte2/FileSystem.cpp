@@ -74,8 +74,13 @@ TipoRetorno FileSystem::Rmdir(Cadena rutaDirectorio)
 
 TipoRetorno FileSystem::CopyDir (Cadena rutaOrigen, Cadena rutaDestino)
 {
-	// NO IMPLEMENTADA
-	return NO_IMPLEMENTADA;
+	TipoRetorno retorno = OK;
+	TipoError resultado = this->raiz->CopiarDirectorio(rutaOrigen, rutaDestino);
+	if (resultado != NO_HAY_ERROR) {
+		retorno = ERROR;
+		this->ImprimirError(resultado);
+	}
+	return retorno;
 }
 
 
@@ -164,6 +169,18 @@ void FileSystem::ImprimirError(TipoError tipoError) const {
 		break;
 	case ERROR_PARAMETRO_DESCONOCIDO:
 		cout << "ERROR: Parametro desconocido.";
+		break;
+	case ERROR_NO_SE_ENCUENTRA_RUTA_ORIGEN:
+		cout << "ERROR: No se encuentra la ruta origen.";
+		break;
+	case ERROR_YA_EXISTE_RUTA_DESTINO:
+		cout << "ERROR: Ya existe la ruta destino.";
+		break;
+	case ERROR_RUTA_DESTINO_ES_SUBDIR_DE_ORIGEN:
+		cout << "ERROR: La ruta destino no puede ser un subdirectorio de origen.";
+		break;
+	case ERROR_NO_SE_ENCUENTRA_PADRE_RUTA_DESTINO:
+		cout << "ERROR: No se encuentra el padre de la ruta destino.";
 		break;
 	default:
 		break;

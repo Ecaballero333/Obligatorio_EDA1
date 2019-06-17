@@ -63,7 +63,7 @@ TipoError Directorios::AgregarArchivo(Cadena ruta) {
 
 TipoError Directorios::AgregarDirectorio(Cadena ruta)
 {
-	TipoError retorno = this->ValidacionesPorOperacion(MKDIR, ruta, "");
+	TipoError retorno = this->ValidacionesPorOperacion(MKDIR, ruta, "", "");
 	if (retorno == NO_HAY_ERROR) {
 		NodoLista<Cadena>* listaRuta = rutaALista(&ruta);
 		Cadena nombreDirectorioACrear = obtenerYBorrarUltimaCadena(listaRuta);
@@ -89,7 +89,7 @@ TipoError Directorios::AgregarDirectorio(Cadena ruta)
 
 TipoError Directorios::EliminarDirectorio(Cadena ruta)
 {
-	TipoError retorno = this->ValidacionesPorOperacion(RMDIR, ruta, "");
+	TipoError retorno = this->ValidacionesPorOperacion(RMDIR, ruta, "", "");
 	NodoLista<Cadena>* listaRuta = rutaALista(&ruta);
 	if (listaRuta->Length() == 1) {
 		//Se eligió eliminar todos los directorios (y sus archivos) excepto el raiz "/"
@@ -108,7 +108,7 @@ TipoError Directorios::EliminarDirectorio(Cadena ruta)
 				this->EliminarDirectorioPrimerHijo(nodoPadre);
 			}
 			else {
-				this->EliminarDirectorioSiguienteHermano(nodoPadre, nodoEliminar);
+				this->EliminarDirectorioSiguienteHermano(nodoPadre, nombreDirectorioAEliminar);
 			}
 		}
 	}
@@ -129,7 +129,7 @@ bool Directorios::ExisteDirectorio(Cadena ruta) const
 
 TipoError Directorios::Dir(Cadena ruta, Cadena parametro)
 {
-	TipoError retorno = this->ValidacionesPorOperacion(DIR, ruta, parametro);
+	TipoError retorno = this->ValidacionesPorOperacion(DIR, ruta,"",parametro);
 	if (retorno == NO_HAY_ERROR) {
 		NodoLista<Cadena>* listaRuta = rutaALista(&ruta);
 		NodoAG<Directorio>* nodoDirectorio = buscarRuta(this->arbolDirectorios, listaRuta);
@@ -148,9 +148,51 @@ void Directorios::Vaciar()
 	this->EliminarTodo(this->arbolDirectorios->ph);
 }
 
-void Directorios::CopiarDirectorio(Cadena rutaOrigen, Cadena rutaDestino)
+TipoError Directorios::CopiarDirectorio(Cadena rutaOrigen, Cadena rutaDestino)
 {
-	// NO IMPLEMENTADA
+	TipoError retorno = this->ValidacionesPorOperacion(COPYDIR, rutaOrigen, rutaDestino, "");
+	if (retorno == NO_HAY_ERROR) {
+		NodoLista<Cadena>* listaRutaOrigen = rutaALista(&rutaOrigen);
+		NodoAG<Directorio>* nodoDirectorioOrigen = buscarRuta(this->arbolDirectorios, listaRutaOrigen);
+		if (nodoDirectorioOrigen == NULL) {
+			retorno = ERROR_NO_SE_ENCUENTRA_RUTA_ORIGEN;
+		}
+		else {
+			NodoLista<Cadena>* listaRutaDestino = rutaALista(&rutaDestino);
+			NodoAG<Directorio>* nodoDirectorioDestino = buscarRuta(this->arbolDirectorios, listaRutaDestino);
+			if (nodoDirectorioDestino != NULL) {
+				retorno = ERROR_YA_EXISTE_RUTA_DESTINO;
+			}
+			else {
+				//if (this->DestinoEsSubdirectorioOrigen(listaRutaOrigen, listaRutaDestino)) {
+				if(*listaRutaOrigen <= *listaRutaDestino){
+					retorno = ERROR_RUTA_DESTINO_ES_SUBDIR_DE_ORIGEN;
+				}
+				else {
+					Cadena nombreDirectorioACrear = obtenerYBorrarUltimaCadena(listaRutaDestino);
+					NodoAG<Directorio>* nodoPadreDestino = buscarRuta(this->arbolDirectorios, listaRutaDestino);
+					if (nodoPadreDestino == NULL) {
+						retorno = ERROR_NO_SE_ENCUENTRA_PADRE_RUTA_DESTINO;
+					}
+					else {
+						//Se puede hacer la copia
+						//clonar profundo nodoDirectorioOrigen; --> clonarNodoDirectorio
+						//NodoAG<Directorio>* nuevo = this->ClonarNodoDirectorio(nodoDirectorioOrigen);
+						Directorio* nuevoDir = new Directorio();
+						*nuevoDir = nodoDirectorioOrigen->dato;
+						nuevoDir->SetNombre(nombreDirectorioACrear);
+						NodoAG<Directorio>* nuevoNodo = new NodoAG<Directorio>(*nuevoDir, NULL, NULL);
+						NodoAG<Directorio>* nodosDescendientes = this->ClonarNodoDirectorio(nodoDirectorioOrigen->ph);
+						nuevoNodo->ph = nodosDescendientes;
+						nuevoNodo->sh = nodoPadreDestino->ph;
+						nodoPadreDestino->ph = nuevoNodo;
+					}
+				}
+			}
+		}
+
+	}
+	return retorno;
 }
 
 void  Directorios::Delete(Cadena rutaArchivo) {
@@ -246,22 +288,22 @@ bool Directorios::ExisteHijoEnRuta(NodoAG<Directorio>* nodoDirectorio, Cadena no
 	return existe;
 }
 
-TipoError Directorios::ValidacionesPorOperacion(TipoOperacion nombreOperacion, Cadena ruta, Cadena parametro)
+TipoError Directorios::ValidacionesPorOperacion(TipoOperacion nombreOperacion, Cadena rutaOrigen, Cadena rutaDestino="", Cadena parametro= "")
 {
 	TipoError retorno = NO_HAY_ERROR;
 	if (nombreOperacion == MKDIR) {
-		if (this->rutaComienzaMal(ruta)) {
+		if (this->rutaComienzaMal(rutaOrigen)) {
 			retorno = ERROR_RUTA_COMIENZA_MAL;
 		}
-		else if (this->directorioRaizDuplicado(ruta)) {
+		else if (this->directorioRaizDuplicado(rutaOrigen)) {
 			retorno = ERROR_NO_SE_PUEDE_CREAR_DIR_RAIZ;
 		}
-		else if (this->directorioNombreIncorrecto(ruta)) {
+		else if (this->directorioNombreIncorrecto(rutaOrigen)) {
 			retorno = ERROR_DIRECTORIO_NOMBRE_INCORRECTO;
 		}
 	}
 	if (nombreOperacion == DIR) {
-		if (this->rutaComienzaMal(ruta)) {
+		if (this->rutaComienzaMal(rutaOrigen)) {
 			retorno = ERROR_RUTA_COMIENZA_MAL;
 		}
 		if (parametro != "" && parametro != "-H") {
@@ -269,7 +311,12 @@ TipoError Directorios::ValidacionesPorOperacion(TipoOperacion nombreOperacion, C
 		}
 	}
 	if (nombreOperacion == RMDIR) {
-		if (this->rutaComienzaMal(ruta)) {
+		if (this->rutaComienzaMal(rutaOrigen)) {
+			retorno = ERROR_RUTA_COMIENZA_MAL;
+		}
+	}
+	if (nombreOperacion == COPYDIR) {
+		if (this->rutaComienzaMal(rutaOrigen) || this->rutaComienzaMal(rutaDestino)) {
 			retorno = ERROR_RUTA_COMIENZA_MAL;
 		}
 	}
@@ -334,7 +381,7 @@ void Directorios::obtenerListaOrdenadaTodoslLosDirectorios(NodoAG<Directorio>* n
 	}
 }
 
-void Directorios::EliminarDirectorioPrimerHijo(NodoAG<Directorio>* nodoPadre) {
+void Directorios::EliminarDirectorioPrimerHijo(NodoAG<Directorio>*& nodoPadre) {
 	NodoAG<Directorio>* aux = nodoPadre->ph;
 	nodoPadre->ph = aux->sh;
 	aux->sh = NULL;
@@ -343,8 +390,17 @@ void Directorios::EliminarDirectorioPrimerHijo(NodoAG<Directorio>* nodoPadre) {
 	aux = NULL;
 }
 
-void Directorios::EliminarDirectorioSiguienteHermano(NodoAG<Directorio>* nodoPadre, NodoAG<Directorio>* nodoHijo) {
-
+void Directorios::EliminarDirectorioSiguienteHermano(NodoAG<Directorio>*& nodoPadre, Cadena nombreNodoEliminar) {
+	NodoAG<Directorio>* auxHermanoAnterior = nodoPadre->ph;
+	while (auxHermanoAnterior->sh->dato.GetNombre() != nombreNodoEliminar) {
+		auxHermanoAnterior = auxHermanoAnterior->sh;
+	}
+	NodoAG<Directorio>* auxEliminar = auxHermanoAnterior->sh;
+	auxHermanoAnterior->sh = auxEliminar->sh;
+	auxEliminar->sh = NULL;
+	this->EliminarTodo(auxEliminar->ph);
+	delete auxEliminar;
+	auxEliminar = NULL;
 }
 
 
@@ -354,6 +410,16 @@ void Directorios::EliminarTodo(NodoAG<Directorio>*& raiz) {
 		this->EliminarTodo(raiz->ph);
 		delete raiz;
 		raiz = NULL;
+	}
+}
+
+
+NodoAG<Directorio> *Directorios::ClonarNodoDirectorio(NodoAG<Directorio>* nodo) {
+	if (nodo == NULL) {
+		return NULL;
+	}
+	else {
+		return new NodoAG<Directorio>(nodo->dato, ClonarNodoDirectorio(nodo->ph), ClonarNodoDirectorio(nodo->sh));
 	}
 }
 
