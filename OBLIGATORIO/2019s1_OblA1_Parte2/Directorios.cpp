@@ -36,21 +36,23 @@ TipoError Directorios::AgregarArchivo(Cadena ruta) {
 
 	TipoError retorno = this->ValidacionesPorOperacion(CREATEFILE, ruta, "", "");
 	if (retorno == NO_HAY_ERROR) {
+		
+		Cadena nombreArchivoACrear = "";
+		
+		
 		NodoLista<Cadena>* listaRuta = rutaALista(&ruta);
-		Cadena nombreArchivoACrear = obtenerYBorrarUltimaCadena(listaRuta);
-		Cadena nombreDirectorio = obtenerYBorrarUltimaCadena(listaRuta);
+		Cadena descarte = this->obtenerYBorrarUltimaCadena(listaRuta);
 		NodoAG<Directorio>* nodoDirectorio = buscarRuta(this->arbolDirectorios, listaRuta);
-		Directorio directorioDestino = *new Directorio(); // aca va el buscar directorio
 
 		if (nodoDirectorio == NULL) {
 			retorno = ERROR_NO_SE_ENCUENTRA_RUTA;
 		}
 		else {
-			if (true) {
+			if (true) { // si existe archivo
 				retorno = ERROR_YA_EXISTE_ARCHIVO;
 			}
 			else {
-
+				Directorio directorioDestino = this->BuscarDirectorio(ruta, true, nombreArchivoACrear);
 				Archivo* nuevoArchivo = new Archivo(nombreArchivoACrear);
 				directorioDestino.AgregarArchivo(*nuevoArchivo);
 
