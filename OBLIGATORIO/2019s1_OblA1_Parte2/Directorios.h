@@ -45,7 +45,9 @@ public:
 
 	//PRE: Existe ruta
 	//POS: Retorna Directorio correspondiente a la ruta.
-	Directorio &BuscarDirectorio(Cadena ruta);
+	//Si el parametro descartarUltimaParte se setea en true, se busca el directorio hasta la última / de la
+	//ruta y se carga el parámetro ultimParte con el texto que procede la última / de la ruta
+	Directorio &BuscarDirectorio(Cadena ruta, bool descartarUltimaParte, Cadena& ultimParte);
 
 	//PRE: Existe ruta
 	//POS: Imprime la jerarquia de directorios a partir de ruta teniendo en cuenta el parametro que indica la visibilidad.
