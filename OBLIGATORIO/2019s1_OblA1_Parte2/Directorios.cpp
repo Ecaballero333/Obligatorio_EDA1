@@ -147,13 +147,11 @@ TipoError Directorios::CopiarDirectorio(Cadena rutaOrigen, Cadena rutaDestino)
 					}
 					else {
 						//Se puede hacer la copia
-						//clonar profundo nodoDirectorioOrigen; --> clonarNodoDirectorio
-						//NodoAG<Directorio>* nuevo = this->ClonarNodoDirectorio(nodoDirectorioOrigen);
 						Directorio* nuevoDir = new Directorio();
 						*nuevoDir = nodoDirectorioOrigen->dato;
 						nuevoDir->SetNombre(nombreDirectorioACrear);
-						NodoAG<Directorio>* nuevoNodo = new NodoAG<Directorio>(*nuevoDir, NULL, NULL);
 						NodoAG<Directorio>* nodosDescendientes = this->ClonarNodoDirectorio(nodoDirectorioOrigen->ph);
+						NodoAG<Directorio>* nuevoNodo = new NodoAG<Directorio>(*nuevoDir, NULL, NULL);
 						nuevoNodo->ph = nodosDescendientes;
 						nuevoNodo->sh = nodoPadreDestino->ph;
 						nodoPadreDestino->ph = nuevoNodo;
@@ -166,8 +164,22 @@ TipoError Directorios::CopiarDirectorio(Cadena rutaOrigen, Cadena rutaDestino)
 	return retorno;
 }
 
-void  Directorios::Delete(Cadena rutaArchivo) {
-	// NO IMPLEMENTADA
+TipoError  Directorios::Delete(Cadena rutaArchivo) {
+	TipoError retorno = this->ValidacionesPorOperacion(DELETE, rutaArchivo, "", "");
+	NodoLista<Cadena>* listaRutaArchivo = rutaALista(&rutaArchivo);
+	Cadena nombreArchivo = obtenerYBorrarUltimaCadena(listaRutaArchivo);
+	NodoAG<Directorio>* nodoDirectorio = buscarRuta(this->arbolDirectorios, listaRutaArchivo);
+	if (nodoDirectorio == NULL) {
+		retorno = ERROR_NO_SE_ENCUENTRA_RUTA;
+	}
+	else {
+		if (!nodoDirectorio->dato.ExisteArchivo(nombreArchivo)) {
+			retorno = ERROR_NO_EXISTE_ARCHIVO_NOMBRE_EN_RUTA;
+		}
+		else {
+			nodoDirectorio->dato.EliminarArchivo(nombreArchivo);
+		}
+	}
 }
 
 NodoAG<Directorio>* Directorios::CopiarArbolDirectorios(NodoAG<Directorio>* d) {
@@ -288,6 +300,11 @@ TipoError Directorios::ValidacionesPorOperacion(TipoOperacion nombreOperacion, C
 	}
 	if (nombreOperacion == COPYDIR) {
 		if (this->rutaComienzaMal(rutaOrigen) || this->rutaComienzaMal(rutaDestino)) {
+			retorno = ERROR_RUTA_COMIENZA_MAL;
+		}
+	}
+	if (nombreOperacion == DELETE) {
+		if (this->rutaComienzaMal(rutaOrigen)) {
 			retorno = ERROR_RUTA_COMIENZA_MAL;
 		}
 	}

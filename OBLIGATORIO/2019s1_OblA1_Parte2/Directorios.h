@@ -8,6 +8,7 @@ using namespace std;
 #include "ListaOrdImp.h"
 #include "TipoOperacion.h"
 #include "TipoError.h"
+#include "PilaImp.h"
 
 
 class Directorios {
@@ -57,12 +58,15 @@ public:
 
 	//PRE: 
 	//POS: Elimina un archivo de la ruta especificada sin importar si está oculto o no.
-	void Delete(Cadena rutaArchivo);
+	TipoError Delete(Cadena rutaArchivo);
 
 
 private:
 	const char* barra = "/";
 	NodoAG<Directorio>* arbolDirectorios;
+	typedef Cadena ruta;
+	typedef Asociacion<ruta, Archivo> rutaArchivo;
+	Pila<rutaArchivo> *listaUndeleteArchivos;
 
 	//PRE:
 	//POS: Copia un arbol general de directorios pasado por parámetros
