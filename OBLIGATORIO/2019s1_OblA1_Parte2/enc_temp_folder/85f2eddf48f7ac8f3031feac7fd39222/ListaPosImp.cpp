@@ -182,6 +182,7 @@ void ListaPosImp<T>::Vaciar()
 {
 	this->cantElem = 0;
 }
+//dale
 template <class T>
 unsigned int ListaPosImp<T>::CantidadElementos() const
 { 
