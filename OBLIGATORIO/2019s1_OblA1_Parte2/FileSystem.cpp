@@ -145,8 +145,13 @@ TipoRetorno FileSystem::DeleteText(Cadena rutaArchivo, unsigned int nroLinea, un
 
 TipoRetorno FileSystem::Type(Cadena rutaArchivo) const
 {
-	// NO IMPLEMENTADA
-	return NO_IMPLEMENTADA;
+	TipoRetorno retorno = OK;
+	TipoError resultado = this->raiz->Type(rutaArchivo);
+	if (resultado != NO_HAY_ERROR) {
+		retorno = ERROR;
+		this->ImprimirError(resultado);
+	}
+	return retorno;
 }
 
 TipoRetorno FileSystem::Undelete()

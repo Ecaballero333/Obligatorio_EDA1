@@ -56,6 +56,23 @@ TipoError Directorios::AgregarArchivo(Cadena ruta) {
 	return retorno;
 }
 
+TipoError Directorios::Type(Cadena ruta) {
+	TipoError retorno = this->ValidacionesPorOperacion(TYPE, ruta, "", "");
+	if (retorno == NO_HAY_ERROR) {	
+		if (!ExisteDirectorio(ruta, true)) {
+			retorno = ERROR_NO_SE_ENCUENTRA_RUTA;
+		}
+		if (retorno == NO_HAY_ERROR) {
+			Cadena nombreArchivo = "";
+			Directorio* directorio = this->BuscarDirectorio(ruta, true, nombreArchivo);
+			Archivo archivo = directorio->BuscarArchivo(nombreArchivo);
+			archivo.MostrarContenido();
+		}
+
+	}
+	return retorno;
+}
+
 TipoError Directorios::InsertText(Cadena rutaArchivo, unsigned int linea, unsigned int posicion, Cadena texto) {
 
 	TipoError retorno = this->ValidacionesPorOperacion(INSERTTEXT, rutaArchivo, "", "");
@@ -382,6 +399,11 @@ TipoError Directorios::ValidacionesPorOperacion(TipoOperacion nombreOperacion, C
 		}
 	}
 	if (nombreOperacion == INSERTTEXT) {
+		if (this->rutaComienzaMal(rutaOrigen)) {
+			retorno = ERROR_RUTA_COMIENZA_MAL;
+		}
+	}
+	if (nombreOperacion == TYPE) {
 		if (this->rutaComienzaMal(rutaOrigen)) {
 			retorno = ERROR_RUTA_COMIENZA_MAL;
 		}

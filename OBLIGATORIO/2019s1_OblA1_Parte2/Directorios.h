@@ -63,6 +63,10 @@ public:
 	TipoError CopiarDirectorio(Cadena rutaOrigen, Cadena rutaDestino);
 
 	//PRE: 
+	//POS: Se muestra el contenido en unarchivo
+	TipoError Type(Cadena ruta);
+
+	//PRE: 
 	//POS: Inserta el texto en determinada linea y posicion
 	TipoError InsertText(Cadena rutaArchivo,unsigned int linea, unsigned int posicion, Cadena texto);
 
