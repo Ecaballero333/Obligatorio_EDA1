@@ -106,6 +106,16 @@ void Archivo::ModificarVisibilidad(Cadena nuevaVisibilidad)
 
 }
 
+bool Archivo::CantidadValidaLineas(int k){
+
+	if(lineas->CantidadElementos() >= k){
+		return true;
+	}
+	else {
+		return false;
+	}
+
+}
 
 void Archivo::InsertarTexto(unsigned int nroLinea, unsigned int posLinea, Cadena texto)
 {
