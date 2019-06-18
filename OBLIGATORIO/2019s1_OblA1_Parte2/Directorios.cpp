@@ -67,10 +67,42 @@ TipoError Directorios::Type(Cadena ruta) {
 			Directorio* directorio = this->BuscarDirectorio(ruta, true, nombreArchivo);
 			Archivo archivo = directorio->BuscarArchivo(nombreArchivo);
 			archivo.MostrarContenido();
+			//falta mostrar si es oculto
 		}
 
 	}
 	return retorno;
+}
+
+TipoError Directorios::DeleteText(Cadena rutaArchivo, unsigned int linea, unsigned int posicion, unsigned int k) {
+
+	TipoError retorno = this->ValidacionesPorOperacion(DELETETEXT, rutaArchivo, "", "");
+	if (retorno == NO_HAY_ERROR) {
+		if (!ExisteDirectorio(rutaArchivo, true)) {
+			retorno = ERROR_NO_SE_ENCUENTRA_RUTA;
+		}
+		if (linea == 0) {
+			retorno = ERROR_LINEA_CERO_NO_VALIDA;
+		}
+		if (posicion == 0) {
+			retorno = ERROR_POSICION_CERO_NO_VALIDA;
+		}
+		if (retorno == NO_HAY_ERROR) {
+
+			Cadena nombreArchivo = "";
+			Directorio* directorio = this->BuscarDirectorio(rutaArchivo, true, nombreArchivo);
+			if ((*directorio).ExisteArchivo(nombreArchivo)) {
+				retorno = ERROR_YA_EXISTE_ARCHIVO;
+			}
+			else {
+				Archivo archivo = directorio->BuscarArchivo(nombreArchivo);
+				archivo.EliminarTexto(linea, posicion, k);
+				// no esta terminado
+			}
+		}
+	}
+	return retorno;
+
 }
 
 TipoError Directorios::InsertText(Cadena rutaArchivo, unsigned int linea, unsigned int posicion, Cadena texto) {
@@ -404,6 +436,11 @@ TipoError Directorios::ValidacionesPorOperacion(TipoOperacion nombreOperacion, C
 		}
 	}
 	if (nombreOperacion == TYPE) {
+		if (this->rutaComienzaMal(rutaOrigen)) {
+			retorno = ERROR_RUTA_COMIENZA_MAL;
+		}
+	}
+	if (nombreOperacion == DELETETEXT) {
 		if (this->rutaComienzaMal(rutaOrigen)) {
 			retorno = ERROR_RUTA_COMIENZA_MAL;
 		}

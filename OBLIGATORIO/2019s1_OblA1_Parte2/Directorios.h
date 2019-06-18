@@ -67,6 +67,10 @@ public:
 	TipoError Type(Cadena ruta);
 
 	//PRE: 
+	//POS: Borra el texto desde determinada linea y posicion
+	TipoError DeleteText(Cadena rutaArchivo, unsigned int linea, unsigned int posicion, unsigned int k);
+
+	//PRE: 
 	//POS: Inserta el texto en determinada linea y posicion
 	TipoError InsertText(Cadena rutaArchivo,unsigned int linea, unsigned int posicion, Cadena texto);
 
