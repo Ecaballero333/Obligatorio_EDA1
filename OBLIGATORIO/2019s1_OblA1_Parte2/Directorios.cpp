@@ -66,9 +66,19 @@ TipoError Directorios::Type(Cadena ruta) {
 			Cadena nombreArchivo = "";
 			Directorio* directorio = this->BuscarDirectorio(ruta, true, nombreArchivo);
 			Archivo archivo = directorio->BuscarArchivo(nombreArchivo);
-			archivo.MostrarContenido();
-			//falta mostrar si es oculto
-			//test 
+			cout << ruta << endl;
+			cout << "" << endl;
+			if (!archivo.EstaOculto) {
+				if (!archivo.TieneLineas()) {
+					archivo.MostrarContenido();
+				}
+				else {
+					cout << "El archivo no posee contenido" << endl;
+				}
+			}
+			else {
+				cout << "El archivo esta oculto" << endl;
+			}
 
 		}
 
