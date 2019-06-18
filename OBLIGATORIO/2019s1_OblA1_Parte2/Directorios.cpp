@@ -115,7 +115,7 @@ TipoError Directorios::DeleteText(Cadena rutaArchivo, unsigned int linea, unsign
 	}
 	return retorno;
 
-}
+} 
 
 TipoError Directorios::InsertText(Cadena rutaArchivo, unsigned int linea, unsigned int posicion, Cadena texto) {
 
