@@ -30,3 +30,23 @@
 -!-Ini::PRUEBAS CreateFile
 
 -!-9::0-OK-OK-Se crea archivo1.txt en /.
+
+-!-10::0-OK-OK-Se crea archivo11.txt en /directorio1/directorio11.
+
+-!-11::0-OK-OK-Se crea archivo12.txt en /directorio1/directorio11.
+
+-!-12::0-OK-OK-Se crea archivo13.txt en /directorio1/directorio11.
+
+-!-13::0-OK-OK-Se crea archivo2111.txt en /directorio2/directorio21/directorio211/directorio2111.
+
+-!-14::0-OK-OK-Se crea archivo211.h en /directorio2/directorio21/directorio211.
+
+-!-15::0-OK-OK-Se crea archivo212.ppt en /directorio2/directorio21/directorio211.
+
+-!-16::0-OK-OK-Se crea archivo22.txt en /directorio2/directorio22.
+
+-!-17::0-OK-OK-Se crea Archivo22.txt en /directorio2/directorio22.
+
+-!-18::0-OK-OK-Se crea Archivo23.txt en /directorio2/directorio22.
+/
+//archivo1.txt

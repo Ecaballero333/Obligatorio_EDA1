@@ -140,10 +140,8 @@ void Directorio::EliminarArchivos()
 		while (!itArchivosThis.EsFin())
 		{
 			Archivo archivoCopia = itArchivosThis.Elemento();
-			if (&archivoCopia != NULL) {
-				itArchivosThis++;
-				archivos->Borrar(archivoCopia);
-			}
+			itArchivosThis++;
+			delete &archivoCopia;
 		}
 	}
 }
