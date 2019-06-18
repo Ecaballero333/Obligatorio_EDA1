@@ -44,6 +44,11 @@ const T &IteradorListaOrdImp<T>::Elemento() const {
 }
 
 template <class T>
+T &IteradorListaOrdImp<T>::ElementoInseguro() const {
+	return actual->dato;
+}
+
+template <class T>
 void IteradorListaOrdImp<T>::Resto() {
 	actual = actual->sig;
 }

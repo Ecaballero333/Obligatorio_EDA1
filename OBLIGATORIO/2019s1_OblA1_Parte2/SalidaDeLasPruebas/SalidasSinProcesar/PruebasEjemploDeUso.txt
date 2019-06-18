@@ -50,3 +50,88 @@
 -!-18::0-OK-OK-Se crea Archivo23.txt en /directorio2/directorio22.
 /
 //archivo1.txt
+/directorio1
+/directorio1/directorio11
+/directorio1/directorio11/archivo11.txt
+/directorio1/directorio11/archivo12.txt
+/directorio1/directorio11/archivo13.txt
+/directorio1/directorio12
+/directorio2
+/directorio2/directorio21
+/directorio2/directorio21/directorio211
+/directorio2/directorio21/directorio211/archivo211.h
+/directorio2/directorio21/directorio211/archivo212.ppt
+/directorio2/directorio21/directorio211/directorio2111
+/directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
+/directorio2/directorio22
+/directorio2/directorio22/Archivo22.txt
+/directorio2/directorio22/Archivo23.txt
+/directorio2/directorio22/archivo22.txt
+
+-!-19::0-OK-OK-Se muestran todo el contenido del filesystem.
+-!-Fin::PRUEBAS CreateFile
+-!-Ini::PRUEBAS Dir
+/directorio1
+/directorio1directorio11
+/directorio1directorio11/archivo11.txt
+/directorio1directorio11/archivo12.txt
+/directorio1directorio11/archivo13.txt
+/directorio1directorio12
+
+-!-20::0-OK-OK-Se muestra contenido de /directorio1
+/directorio1/directorio12
+No contiene archivos ni directorios.
+
+-!-21::0-OK-OK-Se muestra contenido de /directorio1/directorio12
+/directorio2
+/directorio2directorio21
+/directorio2directorio21/directorio211
+/directorio2directorio21/directorio211/archivo211.h
+/directorio2directorio21/directorio211/archivo212.ppt
+/directorio2directorio21/directorio211/directorio2111
+/directorio2directorio21/directorio211/directorio2111/archivo2111.txt
+/directorio2directorio22
+/directorio2directorio22/Archivo22.txt
+/directorio2directorio22/Archivo23.txt
+/directorio2directorio22/archivo22.txt
+
+-!-22::0-OK-OK-Se muestra contenido de /directorio2
+/directorio2/directorio21/directorio211
+/directorio2/directorio21/directorio211/archivo211.h
+/directorio2/directorio21/directorio211/archivo212.ppt
+/directorio2/directorio21/directorio211directorio2111
+/directorio2/directorio21/directorio211directorio2111/archivo2111.txt
+
+-!-23::0-OK-OK-Se muestra contenido de /directorio2/directorio21/directorio211
+/directorio2/directorio21/directorio211/directorio2111
+/directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
+
+-!-24::0-OK-OK-Se muestra contenido de /directorio2/directorio21/directorio211/directorio2111
+-!-Fin::PRUEBAS Dir
+-!-Ini::PRUEBAS InsertText
+
+-!-25::0-OK-NO_IMPLEMENTADA-Se inserta texto en archivo1.txt, linea 1, posicion 1.
+
+-!-26::0-OK-NO_IMPLEMENTADA-Se inserta texto en archivo1.txt, linea 1 posicion 30
+
+-!-27::0-OK-NO_IMPLEMENTADA-Se inserta texto en archivo1.txt, linea 4, posicion 1
+
+-!-28::0-OK-NO_IMPLEMENTADA-Se inserta texto en archivo1.txt, en linea 4, posicion 1
+
+-!-29::0-OK-NO_IMPLEMENTADA-Se inserta texto en /directorio1/directorio11/archivo11.txt, en linea 1, posicion 1
+
+-!-30::0-OK-NO_IMPLEMENTADA-Se inserta texto en /directorio1/directorio11/archivo11.txt, en linea 1, posicion 1
+
+-!-31::0-OK-NO_IMPLEMENTADA-Se inserta texto en /directorio1/directorio11/archivo11.txt, en linea 10, posicion 1
+
+-!-32::0-OK-NO_IMPLEMENTADA-Se inserta texto en /directorio1/directorio11/archivo11.txt, en linea 4, posicion 1
+
+-!-33::0-OK-NO_IMPLEMENTADA-Se inserta texto en /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt, en linea 1, posicion 1
+
+-!-34::0-OK-NO_IMPLEMENTADA-Se inserta texto en /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt, en linea 2, posicion 1
+
+-!-35::0-OK-NO_IMPLEMENTADA-Se inserta texto en /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt, en linea 3, posicion 1
+-!-Fin::PRUEBAS InsertText
+-!-Ini::PRUEBAS Type
+/archivo1.txt
+

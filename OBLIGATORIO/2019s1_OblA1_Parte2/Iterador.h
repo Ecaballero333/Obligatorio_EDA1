@@ -45,6 +45,10 @@ class Iterador {
 
 		virtual const T &Elemento() const { 
 			return ref->Elemento();
+		}		
+
+		virtual T &ElementoInseguro() const {
+			return ref->ElementoInseguro();
 		}
 
 		virtual void Resto() {

@@ -25,6 +25,7 @@ public:
 	virtual ~IteradorListaOrdImp();
 
 	const T &Elemento() const;
+	T &ElementoInseguro() const;
 	void Resto();
 	bool EsFin() const;
 	void Principio();

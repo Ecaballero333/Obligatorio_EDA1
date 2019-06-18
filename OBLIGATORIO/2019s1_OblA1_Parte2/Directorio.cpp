@@ -130,12 +130,14 @@ void Directorio::AgregarArchivo(const Archivo &archivo)
 void Directorio::EliminarArchivo(Cadena nombreArchivo)
 {
 	Archivo archivo = this->BuscarArchivo(nombreArchivo);
+	this->archivos->Borrar(archivo);
 	delete &archivo;
 }
 
 void Directorio::EliminarArchivos()
 {
-	if (this->archivos != NULL) {
+	this->archivos->Vaciar();
+	/*if (this->archivos != NULL) {
 		Iterador<Archivo> itArchivosThis = this->archivos->GetIterador();
 		while (!itArchivosThis.EsFin())
 		{
@@ -143,7 +145,7 @@ void Directorio::EliminarArchivos()
 			itArchivosThis++;
 			delete &archivoCopia;
 		}
-	}
+	}*/
 }
 
 bool Directorio::ExisteArchivo(Cadena nombreArchivo) const
@@ -171,18 +173,17 @@ Archivo &Directorio::BuscarArchivo(Cadena nombreArchivo) const
 {
 	Iterador<Archivo> itArchivosThis = this->archivos->GetIterador();
 	bool encontro = false;
-	Archivo retorno;
+	//Archivo &retorno = *NULL;
 	while (!itArchivosThis.EsFin() && !encontro)
 	{
-		if (itArchivosThis.Elemento().GetNombre() == nombreArchivo) {
+		if (itArchivosThis.ElementoInseguro().GetNombre() == nombreArchivo) {
 			encontro = true;
-			retorno = itArchivosThis.Elemento();
+			return itArchivosThis.ElementoInseguro();
 		}
 		else {
 			itArchivosThis++;
 		}
 	}
-	return retorno;
 }
 
 Cadena Directorio::GetNombre() const
