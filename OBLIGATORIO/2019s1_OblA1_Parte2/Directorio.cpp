@@ -104,7 +104,7 @@ Directorio &Directorio::operator=(const Directorio&d)
 		if (d.archivos != NULL) {
 			if (d.archivos->CantidadElementos() > 0) {
 				Iterador<Archivo> itArchivosACopiar = d.archivos->GetIterador();
-				while (!itArchivosACopiar.EsFin());
+				while (!itArchivosACopiar.EsFin())
 				{
 					Archivo archivoCopia = itArchivosACopiar.Elemento();
 					this->archivos->AgregarOrd(archivoCopia);
