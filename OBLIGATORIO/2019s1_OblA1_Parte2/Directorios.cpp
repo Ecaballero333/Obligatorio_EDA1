@@ -103,19 +103,23 @@ TipoError Directorios::DeleteText(Cadena rutaArchivo, unsigned int linea, unsign
 
 			Cadena nombreArchivo = "";
 			NodoAG<Directorio> *nodoDirectorio = BuscarNodoDirectorio(rutaArchivo, true, nombreArchivo);
-			if (nodoDirectorio->dato.ExisteArchivo(nombreArchivo)) {
-				retorno = ERROR_YA_EXISTE_ARCHIVO;
+			if (!nodoDirectorio->dato.ExisteArchivo(nombreArchivo)) {
+				retorno = ERROR_NO_EXISTE_ARCHIVO_NOMBRE_EN_RUTA;
 			}
 			else {
 				Archivo archivo = nodoDirectorio->dato.BuscarArchivo(nombreArchivo);
-				archivo.EliminarTexto(linea, posicion, k);
-				// no esta terminado
+				if (archivo.CantidadValidaLineas(k)) {
+					retorno = ERROR_LINEA_NO_EXISTE;
+				}
+				else {
+					archivo.EliminarTexto(linea, posicion, k);
+				}
 			}
 		}
 	}
 	return retorno;
 
-}
+} 
 
 TipoError Directorios::InsertText(Cadena rutaArchivo, unsigned int linea, unsigned int posicion, Cadena texto) {
 

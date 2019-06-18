@@ -71,6 +71,10 @@ class Archivo{
 		//POS: Retorna si el archivo tiene lineas
 		bool TieneLineas() const;
 
+		//PRE:
+		//POS: Retorna si el archivo tiene k o mas lineas
+		bool CantidadValidaLineas(int k);
+
 		//metodo propio
 		//PRE:
 		//POS: Elimina todas las lineas de un archivo

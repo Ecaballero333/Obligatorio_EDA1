@@ -106,12 +106,22 @@ void Archivo::ModificarVisibilidad(Cadena nuevaVisibilidad)
 
 }
 
+bool Archivo::CantidadValidaLineas(int k){
+
+	if(lineas->CantidadElementos() >= k){
+		return true;
+	}
+	else {
+		return false;
+	}
+
+}
 
 void Archivo::InsertarTexto(unsigned int nroLinea, unsigned int posLinea, Cadena texto)
 {
 	
 	if (nroLinea > lineas->CantidadElementos()) {
-		while (nroLinea > lineas->CantidadElementos()) {
+		while (nroLinea < lineas->CantidadElementos()) {
 			lineas->AgregarFin(" ");
 			nroLinea++;
 		}
@@ -175,7 +185,7 @@ void Archivo::EliminarTexto(unsigned int nroLinea, unsigned int posLinea, unsign
 					aux = nuevaAux;
 
 					delete& nuevaAux;
-					delete[] nuevo;
+					delete nuevo;
 					posLinea++;
 				}
 			}
@@ -188,7 +198,7 @@ void Archivo::EliminarTexto(unsigned int nroLinea, unsigned int posLinea, unsign
 					aux = nuevaAux;
 					
 					delete &nuevaAux;
-					delete[] nuevo;
+					delete nuevo;
 					k--;
 					posLinea++;
 				}

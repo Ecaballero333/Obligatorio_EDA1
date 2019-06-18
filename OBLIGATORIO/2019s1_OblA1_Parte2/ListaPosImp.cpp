@@ -30,9 +30,9 @@ ListaPosImp<T>::ListaPosImp()
 template <class T>
 ListaPosImp<T>::ListaPosImp(const ListaPos<T> &l)
 {
-	this->tamanoVec = l.CantidadElementos;
-	this->cantElem = l.CantidadElementos;
-	this->vec = new T[CantidadElementos]();
+	this->tamanoVec = l.CantidadElementos();
+	this->cantElem = l.CantidadElementos();
+	this->vec = new T[l.CantidadElementos()]();
 	*this = l;
 }
 
@@ -182,7 +182,6 @@ void ListaPosImp<T>::Vaciar()
 {
 	this->cantElem = 0;
 }
-
 template <class T>
 unsigned int ListaPosImp<T>::CantidadElementos() const
 { 
