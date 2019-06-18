@@ -31,6 +31,9 @@ Archivo::~Archivo()
 
 Archivo::Archivo(const Archivo &a)
 {
+	this->nombre = *new Cadena();
+	this->oculto = false;
+	this->lineas = new ListaPosImp<Cadena>();
 	*this = a;
 }
 
