@@ -68,6 +68,8 @@ TipoError Directorios::Type(Cadena ruta) {
 			Archivo archivo = directorio->BuscarArchivo(nombreArchivo);
 			archivo.MostrarContenido();
 			//falta mostrar si es oculto
+			//test 
+
 		}
 
 	}
