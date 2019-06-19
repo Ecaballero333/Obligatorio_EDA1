@@ -120,16 +120,16 @@ bool Archivo::CantidadValidaLineas(int k){
 void Archivo::InsertarTexto(unsigned int nroLinea, unsigned int posLinea, Cadena texto)
 {
 	
-	if (nroLinea > lineas->CantidadElementos()) {
-		while (nroLinea < lineas->CantidadElementos()) {
+	//if (nroLinea > lineas->CantidadElementos()) {
+		while (nroLinea > lineas->CantidadElementos()) {
 			lineas->AgregarFin(*(new Cadena()));
-			nroLinea++;
+			//nroLinea++;
 		}
-	}
+	//}
 	
-	Cadena aux = lineas->ElementoPos(nroLinea-1); //nrolinea empieza en 1, lineas en 0
-	aux.InsertarTexto(posLinea, texto);
-	lineas->AgregarPos(aux, posLinea);
+	Cadena &aux = lineas->ElementoPos(nroLinea-1); //nrolinea empieza en 1, lineas en 0
+	(&aux)->InsertarTexto(posLinea, texto);
+	//lineas->AgregarPos(*aux, posLinea);
 
 }
 
@@ -221,7 +221,6 @@ void Archivo::EliminarLineas(){
 		{
 			Cadena cadenaCopia = itCadena.Elemento();
 			itCadena++;
-			delete& cadenaCopia;
 		}
 	}
 }

@@ -219,7 +219,7 @@ void PruebasEjemploDeUso::PruebasOKTipo1()
 
 	this->mImpresion.iniciarSeccion("PRUEBAS InsertText");
 
-	/*ver2(interfaz->InsertText("/archivo1.txt", 1,1, "An error saepe."),OK,"Se inserta texto en archivo1.txt, linea 1, posicion 1.");
+	ver2(interfaz->InsertText("/archivo1.txt", 1,1, "An error saepe."),OK,"Se inserta texto en archivo1.txt, linea 1, posicion 1.");
 	ver2(interfaz->InsertText("/archivo1.txt", 1,30, "An error saepe."),OK,"Se inserta texto en archivo1.txt, linea 1 posicion 30");
 	ver2(interfaz->InsertText("/archivo1.txt", 4,1, "Vis omnis legere"),OK,"Se inserta texto en archivo1.txt, linea 4, posicion 1");
 	ver2(interfaz->InsertText("/archivo1.txt", 4,1, "Omnesque philosophia eum an, ius tale."),OK,"Se inserta texto en archivo1.txt, en linea 4, posicion 1");
@@ -230,7 +230,7 @@ void PruebasEjemploDeUso::PruebasOKTipo1()
 	ver2(interfaz->InsertText("/directorio2/directorio21/directorio211/directorio2111/archivo2111.txt",1,1, "Usu rebum virtute."),OK,"Se inserta texto en /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt, en linea 1, posicion 1");
 	ver2(interfaz->InsertText("/directorio2/directorio21/directorio211/directorio2111/archivo2111.txt",2,1, "Eam habeo."),OK,"Se inserta texto en /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt, en linea 2, posicion 1");
 	ver2(interfaz->InsertText("/directorio2/directorio21/directorio211/directorio2111/archivo2111.txt",3,1, "His no putant vivendo."),OK,"Se inserta texto en /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt, en linea 3, posicion 1");
-	*/
+	
 	this->mImpresion.cerrarSeccion("PRUEBAS InsertText");
 
 
@@ -241,12 +241,12 @@ void PruebasEjemploDeUso::PruebasOKTipo1()
 
 	this->mImpresion.iniciarSeccion("PRUEBAS Type");
 
-	/*ver2(interfaz->Type("/archivo1.txt"),OK,"Se muestra /archivo1.txt");
+	ver2(interfaz->Type("/archivo1.txt"),OK,"Se muestra /archivo1.txt");
 	ver2(interfaz->Type("/directorio1/directorio11/archivo11.txt"),OK,"Se muestra /directorio1/directorio11/archivo11.txt");
 	ver2(interfaz->Type("/directorio2/directorio21/directorio211/directorio2111/archivo2111.txt"),OK,"Se muestra /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt");
 	ver2(interfaz->Type("/directorio1/directorio11/archivo13.txt"),OK,"Se muestra /directorio1/directorio11/archivo13.txt");
 
-	*/
+
 
 	//cout<<"---------------------------------------------------------------------"<<endl;
 	//cout<<"------------------ Pruebas para Destruir filesystem -------------------"<<endl;

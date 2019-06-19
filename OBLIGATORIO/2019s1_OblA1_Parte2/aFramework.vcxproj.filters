@@ -165,6 +165,9 @@
     <ClInclude Include="NodoListaT.h">
       <Filter>Framework\Auxiliares</Filter>
     </ClInclude>
+    <ClInclude Include="PilaImp2.h">
+      <Filter>Colecciones\Pilas</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Asociacion.cpp">
@@ -253,6 +256,9 @@
     </ClCompile>
     <ClCompile Include="NodoListaT.cpp">
       <Filter>Framework\Auxiliares</Filter>
+    </ClCompile>
+    <ClCompile Include="PilaImp2.cpp">
+      <Filter>Colecciones\Pilas</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

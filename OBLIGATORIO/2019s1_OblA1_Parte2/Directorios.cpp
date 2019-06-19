@@ -9,12 +9,14 @@ Directorios::Directorios()
 	Cadena* nombreDirectorioRaiz = new Cadena("/");
 	Directorio* directorioRaiz = new Directorio(*nombreDirectorioRaiz, 0);
 	this->arbolDirectorios = new NodoAG<Directorio>(*directorioRaiz, nullptr, nullptr);
+	this->listaUndeleteArchivos = new PilaImp2<Asociacion<Cadena,Archivo>*>();
 }
 
 Directorios::~Directorios()
 {
 	this->Vaciar();
 	delete this->arbolDirectorios;
+	delete this->listaUndeleteArchivos;
 }
 
 Directorios::Directorios(const Directorios &d)
@@ -142,7 +144,7 @@ TipoError Directorios::InsertText(Cadena rutaArchivo, unsigned int linea, unsign
 				retorno = ERROR_NO_EXISTE_ARCHIVO_NOMBRE_EN_RUTA;
 			}
 			else {
-				Archivo archivo = nodoDirectorio->dato.BuscarArchivo(nombreArchivo);
+				Archivo &archivo = nodoDirectorio->dato.BuscarArchivo(nombreArchivo);
 				archivo.InsertarTexto(linea, posicion, texto);
 			}
 		}
@@ -244,6 +246,7 @@ void Directorios::Vaciar()
 {
 	this->arbolDirectorios->dato.EliminarArchivos();
 	this->EliminarTodo(this->arbolDirectorios->ph);
+	this->listaUndeleteArchivos->Vaciar();
 }
 
 TipoError Directorios::CopiarDirectorio(Cadena rutaOrigen, Cadena rutaDestino)
@@ -304,8 +307,8 @@ TipoError Directorios::Delete(Cadena rutaArchivo) {
 		}
 		else {
 			Archivo archivo = nodoDirectorio->dato.BuscarArchivo(nombreArchivo);
-			Asociacion<ruta, Archivo>* asociacionRutaArchivo = new Asociacion<ruta, Archivo>(rutaArchivo, archivo);
-			this->listaUndeleteArchivos->Push(*asociacionRutaArchivo);
+			Asociacion<Cadena, Archivo>* asociacionRutaArchivo = new Asociacion<Cadena, Archivo>(rutaArchivo, archivo);
+			this->listaUndeleteArchivos->Push(asociacionRutaArchivo);
 			nodoDirectorio->dato.EliminarArchivo(nombreArchivo);
 		}
 	}

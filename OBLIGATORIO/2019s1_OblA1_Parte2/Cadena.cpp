@@ -198,20 +198,48 @@ void Cadena::InsertarTexto(unsigned int posLinea, Cadena texto) {
 	}
 	//Agrando el tamaño de caracteres que va a ocupar el texto a insertar
 	this->AgrandarNPosiciones(texto.Length());
-	//desplazo el texto desde la posición a insertar al final
-	this->desplazar(posLinea-1);
 	//inserto el texto en los lugares que quedaron libres;
-	int hasta = posLinea + texto.Length();
-	int n = 0;
-	for (int i = posLinea-1; i < hasta-1; i++) {
-		s[i] = texto[n];
-		n++;
+	char* aux = this->GetNewCharPtr();
+	int posAux = 0;
+	for (int i = 0; i < posLinea - 1; i++) {
+		s[i] = aux[posAux];
+		posAux++;
 	}
+	int posTexto = 0;
+	int hasta = posLinea + texto.Length();
+	for (int i = posLinea-1; i < hasta-1; i++) {
+		s[i] = texto[posTexto];
+		posTexto++;
+	}
+	for (int i = hasta-1; i < this->Length()-1; i++) {
+		s[i] = aux[posAux];
+		posAux++;
+	}
+	delete[] aux;
 }
 
 void Cadena::AgrandarNPosiciones(int cantPosiciones) {
-	int nuevoTamano = this->Length() + cantPosiciones;
-	char* aux = new char[nuevoTamano]();
+	int tamanoInicial = this->Length();
+	int nuevoTamano = this->Length() + cantPosiciones+1;
+	char* aux = this->GetNewCharPtr();
+	this->s = new char[nuevoTamano];
+	for (int i = 0; i < tamanoInicial; i++)
+	{
+		this->s[i] = aux[i];
+	}
+	for (int i = tamanoInicial; i <= nuevoTamano; i++)
+	{
+		if (i == nuevoTamano) {
+			this->s[i] = '\0';
+		}
+		else {
+
+			this->s[i] = ' ';
+		}
+	}
+
+	delete[] aux;
+	/*char* aux = new char[nuevoTamano-1]();
 	for (int i = 0; i < this->Length(); i++)
 	{
 		aux[i] = this->s[i];
@@ -219,24 +247,16 @@ void Cadena::AgrandarNPosiciones(int cantPosiciones) {
 	for (int i = this->Length(); i <= nuevoTamano; i++)
 	{
 		if (i == nuevoTamano) {
-			aux[i] = *"\0";
+			aux[i] = '\0';
 		}
 		else {
-			aux[i] = *" ";
+			aux[i] = ' ';
 		}
 
 	}
-	this->s = aux;
+	this->s = aux;*/
 	//delete aux;
 }
 
-
-void Cadena::desplazar(int pos)
-{
-	for (int i = this->Length()-1; i > pos; i--)
-	{
-		this->s[i] = this->s[i - 1];
-	}
-}
 
 #endif

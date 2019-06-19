@@ -11,20 +11,20 @@ inline ostream &operator<<(ostream& out, const PilaImp<T> &c) {
 
 template <class T>
 PilaImp<T>::PilaImp() {
-	this->tope = NULL;
+	this->tope = new NodoListaT<T>();
 	this->cantElementos = 0;
 }
 
 template<class T>
 PilaImp<T>::PilaImp(const Pila<T>& p) {
-	this->tope = NULL;
-	this->cantElementos = 0;
+	//this->tope = NULL;
+	//this->cantElementos = 0;
 	*this = p;
 }
 
 template<class T>
 PilaImp<T>::PilaImp(const PilaImp<T>& p) {
-	this->cantElementos = 0;
+	//this->cantElementos = 0;
 	//this->tope = this->copiarListaRec(p.tope);
 	*this = p;
 }

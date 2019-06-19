@@ -8,7 +8,7 @@ using namespace std;
 #include "ListaOrdImp.h"
 #include "TipoOperacion.h"
 #include "TipoError.h"
-#include "PilaImp.h"
+#include "PilaImp2.h"
 
 
 class Directorios {
@@ -82,9 +82,7 @@ public:
 private:
 	const char* barra = "/";
 	NodoAG<Directorio>* arbolDirectorios;
-	typedef Cadena ruta;
-	typedef Asociacion<ruta, Archivo> rutaArchivo;
-	Pila<rutaArchivo> *listaUndeleteArchivos;
+	Pila<Asociacion<Cadena, Archivo>*> *listaUndeleteArchivos;
 
 	//PRE:
 	//POS: Copia un arbol general de directorios pasado por parámetros

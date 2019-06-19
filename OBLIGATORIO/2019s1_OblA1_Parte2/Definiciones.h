@@ -10,6 +10,7 @@ template <class T>
 struct NodoListaT {
 	int dato;
 	NodoListaT *sig;
+	NodoListaT(){};
 	NodoListaT(T d) : dato(d), sig(NULL) {}
 };
 
