@@ -122,38 +122,14 @@ void Archivo::InsertarTexto(unsigned int nroLinea, unsigned int posLinea, Cadena
 	
 	if (nroLinea > lineas->CantidadElementos()) {
 		while (nroLinea < lineas->CantidadElementos()) {
-			lineas->AgregarFin(" ");
+			lineas->AgregarFin(*(new Cadena()));
 			nroLinea++;
 		}
 	}
 	
 	Cadena aux = lineas->ElementoPos(nroLinea-1); //nrolinea empieza en 1, lineas en 0
-	
-	if (aux.Length() < posLinea) {
-		while (aux.Length() < posLinea){	
-			aux = aux + " ";
-		}
-	}
-
-	Cadena primeraMitad = nullptr;
-	Cadena segundaMitad = nullptr;
-	
-	int n = 0;
-	while (posLinea > primeraMitad.Length()) {
-		Cadena caracter = aux[n] + "";
-		primeraMitad = primeraMitad + caracter;
-		n++;
-	}
-
-	while (n < aux.Length()) {
-		Cadena caracter = aux[n] + ""; 
-		segundaMitad = segundaMitad + caracter;
-		n++;
-	}
-
-	Cadena nueva = primeraMitad + texto + segundaMitad;
-
-	lineas->ElementoPos(nroLinea) = nueva;
+	aux.InsertarTexto(posLinea, texto);
+	lineas->AgregarPos(aux, posLinea);
 
 }
 

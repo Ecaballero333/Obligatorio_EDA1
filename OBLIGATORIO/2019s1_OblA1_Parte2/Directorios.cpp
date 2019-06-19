@@ -144,7 +144,6 @@ TipoError Directorios::InsertText(Cadena rutaArchivo, unsigned int linea, unsign
 			else {
 				Archivo archivo = nodoDirectorio->dato.BuscarArchivo(nombreArchivo);
 				archivo.InsertarTexto(linea, posicion, texto);
-
 			}
 		}
 	}

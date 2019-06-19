@@ -190,4 +190,53 @@ void Cadena::QuitarUltimoCaracter() {
 	delete[] aux;
 }
 
+void Cadena::InsertarTexto(unsigned int posLinea, Cadena texto) {
+	//agrando el vector si la posLinea es mayor que el tamaño de la cadena
+	if (posLinea > this->Length()+1) {
+		int dif = posLinea - this->Length();
+		this->AgrandarNPosiciones(dif);
+	}
+	//Agrando el tamaño de caracteres que va a ocupar el texto a insertar
+	this->AgrandarNPosiciones(texto.Length());
+	//desplazo el texto desde la posición a insertar al final
+	this->desplazar(posLinea-1);
+	//inserto el texto en los lugares que quedaron libres;
+	int hasta = posLinea + texto.Length();
+	int n = 0;
+	for (int i = posLinea-1; i < hasta-1; i++) {
+		s[i] = texto[n];
+		n++;
+	}
+}
+
+void Cadena::AgrandarNPosiciones(int cantPosiciones) {
+	int nuevoTamano = this->Length() + cantPosiciones;
+	char* aux = new char[nuevoTamano]();
+	for (int i = 0; i < this->Length(); i++)
+	{
+		aux[i] = this->s[i];
+	}
+	for (int i = this->Length(); i <= nuevoTamano; i++)
+	{
+		if (i == nuevoTamano) {
+			aux[i] = *"\0";
+		}
+		else {
+			aux[i] = *" ";
+		}
+
+	}
+	this->s = aux;
+	//delete aux;
+}
+
+
+void Cadena::desplazar(int pos)
+{
+	for (int i = this->Length()-1; i > pos; i--)
+	{
+		this->s[i] = this->s[i - 1];
+	}
+}
+
 #endif

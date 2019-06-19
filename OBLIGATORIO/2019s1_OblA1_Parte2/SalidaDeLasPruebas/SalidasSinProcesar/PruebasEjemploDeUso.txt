@@ -109,3 +109,9 @@ No contiene archivos ni directorios.
 -!-24::0-OK-OK-Se muestra contenido de /directorio2/directorio21/directorio211/directorio2111
 -!-Fin::PRUEBAS Dir
 -!-Ini::PRUEBAS InsertText
+-!-Fin::PRUEBAS InsertText
+-!-Ini::PRUEBAS Type
+
+-!-25::0-OK-OK-Se destruye filesystem y memoria asociada
+-!-Fin::PRUEBAS Type
+-!-Ini::PRUEBAS Rmdir

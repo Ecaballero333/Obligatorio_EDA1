@@ -61,9 +61,20 @@ public:
 
 	void QuitarUltimoCaracter();
 
+	void InsertarTexto(unsigned int posLinea, Cadena texto);
+
 protected:
 	char *s;
 	bool ignoreCase;
+
+	//PRE: La posición existe dentro del vector.
+	//POS: Desplaza un lugar para adelante todos los elementos a partir de la posición POS
+	void desplazar(int pos);
+
+
+	//PRE: -
+	//POS: Agranda el vector con cantPosiciones más. Las nuevas pocisiónes tendran el valor " "
+	void AgrandarNPosiciones(int cantPosiciones);
 };
 
 #endif
