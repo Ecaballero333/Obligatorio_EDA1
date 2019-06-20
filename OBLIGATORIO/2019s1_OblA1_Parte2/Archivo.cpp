@@ -120,16 +120,12 @@ bool Archivo::CantidadValidaLineas(int k){
 void Archivo::InsertarTexto(unsigned int nroLinea, unsigned int posLinea, Cadena texto)
 {
 	
-	//if (nroLinea > lineas->CantidadElementos()) {
-		while (nroLinea > lineas->CantidadElementos()) {
-			lineas->AgregarFin(*(new Cadena()));
-			//nroLinea++;
-		}
-	//}
+	while (nroLinea > lineas->CantidadElementos()) {
+		lineas->AgregarFin(" ");
+	}
 	
-	Cadena &aux = lineas->ElementoPos(nroLinea-1); //nrolinea empieza en 1, lineas en 0
+	Cadena &aux = lineas->ElementoPos(nroLinea-1);
 	(&aux)->InsertarTexto(posLinea, texto);
-	//lineas->AgregarPos(*aux, posLinea);
 
 }
 
@@ -202,16 +198,12 @@ void Archivo::borrarPosicion(char str[], int n) {
 
 void Archivo::MostrarContenido() const
 {
-	int n = 1;
-	ListaPos<Cadena>* aux = lineas;
-
-	while (!aux->EsVacia()) {
-
-		cout << n <<": " << aux->ElementoPos(n-1); // empieza en 0 y n en 1
-		n++;
-	}
-	
-	delete aux;
+	int n = 1;	
+	for (Iterador<Cadena> i = this->lineas->GetIterador(); !i.EsFin();) {
+		Cadena c = i.Elemento();		
+		cout << n <<": " << c; // empieza en 0 y n en 1
+		i++;
+	}	
 }
 
 void Archivo::EliminarLineas(){

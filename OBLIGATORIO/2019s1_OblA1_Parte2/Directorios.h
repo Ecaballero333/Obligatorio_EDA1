@@ -82,7 +82,7 @@ public:
 private:
 	const char* barra = "/";
 	NodoAG<Directorio>* arbolDirectorios;
-	Pila<Asociacion<Cadena, Archivo>*> *listaUndeleteArchivos;
+	Pila<Asociacion<Cadena, Archivo>> *listaUndeleteArchivos;
 
 	//PRE:
 	//POS: Copia un arbol general de directorios pasado por parámetros

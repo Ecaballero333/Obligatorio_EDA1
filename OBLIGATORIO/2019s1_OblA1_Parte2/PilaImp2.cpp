@@ -31,14 +31,12 @@ Pila<T>& PilaImp2<T>::operator=(const Pila<T>& p)
 	while (!clon->EsVacia()) {
 		this->lista->AgregarFin(clon->Pop());
 	}
-	// TODO: insertar una instrucción return aquí
 	return *this;
 }
 
 template<class T>
 Pila<T>& PilaImp2<T>::operator=(const PilaImp2<T>& p)
 {
-	// TODO: insertar una instrucción return aquí
 	*this->lista = *p.lista;
 	return *this;
 }
@@ -72,7 +70,6 @@ template<class T>
 T & PilaImp2<T>::Top() const
 {
 	return this->lista->ElementoPpio();
-	// TODO: insertar una instrucción return aquí
 }
 
 template<class T>
@@ -110,7 +107,20 @@ bool PilaImp2<T>::EsLlena() const
 template<class T>
 bool PilaImp2<T>::operator==(const Pila<T>& p) const
 {
-	return false;
+	Pila<T>* l1 = this->Clon();
+	Pila<T>* l2 = p.Clon();
+	bool sonIguales = true;
+	while (!l1->EsVacia() && !l2->EsVacia() && sonIguales) {
+		sonIguales = l1->Top() == l2->Top();
+		l1->Pop();
+		l2->Pop();
+	}
+	if (sonIguales) {
+		sonIguales = !l1->EsVacia() && !l2->EsVacia();
+	}
+	delete l1;
+	delete l2;
+	return sonIguales;
 }
 
 template<class T>

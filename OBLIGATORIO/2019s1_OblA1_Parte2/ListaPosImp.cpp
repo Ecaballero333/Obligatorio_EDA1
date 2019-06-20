@@ -22,7 +22,7 @@ ListaPos<T>* ListaPosImp<T>::CrearVacia() const
 template <class T>
 ListaPosImp<T>::ListaPosImp()
 {
-	this->tamanoVec = 10;
+	this->tamanoVec = 1;
 	this->cantElem = 0;
 	this->vec = new T[this->tamanoVec]();
 }
@@ -248,12 +248,16 @@ void ListaPosImp<T>::agrandarSiLleno()
 	if (this->cantElem == this->tamanoVec) {
 		this->tamanoVec++;
 		T* aux = new T[this->tamanoVec]();
-		for (int i = 0; i < this->cantElem; i++)
+		for (int i = 0; i < this->tamanoVec; i++)
+		{
+			aux[i] = *(new T());
+		}
+		for (int i = 0; i < this->tamanoVec - 1; i++)
 		{
 			aux[i] = this->vec[i];
 		}
 		this->vec = aux;
-		delete[] aux;
+		//delete[] aux;
 	}
 }
 

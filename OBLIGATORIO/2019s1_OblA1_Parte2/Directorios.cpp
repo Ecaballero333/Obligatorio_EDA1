@@ -9,7 +9,7 @@ Directorios::Directorios()
 	Cadena* nombreDirectorioRaiz = new Cadena("/");
 	Directorio* directorioRaiz = new Directorio(*nombreDirectorioRaiz, 0);
 	this->arbolDirectorios = new NodoAG<Directorio>(*directorioRaiz, nullptr, nullptr);
-	this->listaUndeleteArchivos = new PilaImp2<Asociacion<Cadena,Archivo>*>();
+	this->listaUndeleteArchivos = new PilaImp2<Asociacion<Cadena,Archivo>>();
 }
 
 Directorios::~Directorios()
@@ -67,19 +67,24 @@ TipoError Directorios::Type(Cadena ruta) {
 		if (retorno == NO_HAY_ERROR) {
 			Cadena nombreArchivo = "";
 			NodoAG<Directorio> *nodoDirectorio = this->BuscarNodoDirectorio(ruta, true, nombreArchivo);
-			Archivo archivo = nodoDirectorio->dato.BuscarArchivo(nombreArchivo);
-			cout << ruta << endl;
-			cout << "" << endl;
-			if (!archivo.EstaOculto()) {
-				if (!archivo.TieneLineas()) {
-					archivo.MostrarContenido();
-				}
-				else {
-					cout << "El archivo no posee contenido" << endl;
-				}
+			if (!nodoDirectorio->dato.ExisteArchivo(nombreArchivo)) {
+				retorno = ERROR_NO_EXISTE_ARCHIVO_NOMBRE_EN_RUTA;
 			}
 			else {
-				cout << "El archivo esta oculto" << endl;
+				Archivo archivo = nodoDirectorio->dato.BuscarArchivo(nombreArchivo);
+				cout << ruta << endl;
+				cout << "" << endl;
+				if (!archivo.EstaOculto()) {
+					if (!archivo.TieneLineas()) {
+						cout << "El archivo no posee contenido" << endl;
+					}
+					else {
+						archivo.MostrarContenido();
+					}
+				}
+				else {
+					cout << "El archivo esta oculto" << endl;
+				}
 			}
 
 		}
@@ -308,7 +313,7 @@ TipoError Directorios::Delete(Cadena rutaArchivo) {
 		else {
 			Archivo archivo = nodoDirectorio->dato.BuscarArchivo(nombreArchivo);
 			Asociacion<Cadena, Archivo>* asociacionRutaArchivo = new Asociacion<Cadena, Archivo>(rutaArchivo, archivo);
-			this->listaUndeleteArchivos->Push(asociacionRutaArchivo);
+			this->listaUndeleteArchivos->Push(*asociacionRutaArchivo);
 			nodoDirectorio->dato.EliminarArchivo(nombreArchivo);
 		}
 	}

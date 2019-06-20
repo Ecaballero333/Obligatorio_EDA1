@@ -131,7 +131,6 @@ void Directorio::EliminarArchivo(Cadena nombreArchivo)
 {
 	Archivo archivo = this->BuscarArchivo(nombreArchivo);
 	this->archivos->Borrar(archivo);
-	delete &archivo;
 }
 
 void Directorio::EliminarArchivos()

@@ -79,8 +79,11 @@ class Archivo{
 		//PRE:
 		//POS: Elimina todas las lineas de un archivo
 		void EliminarLineas();
-		
+
+		//PRE:
+		//POS: Borra posición de la cadena
 		void borrarPosicion(char str[], int n);
+
 
     private:
 		Cadena nombre;
