@@ -8,7 +8,6 @@
 FileSystem::FileSystem()
 {
 	this->raiz = new Directorios();
-	//this->listaUndeleteArchivos = new PilaImp<rutaArchivo>();
 }
 
 
