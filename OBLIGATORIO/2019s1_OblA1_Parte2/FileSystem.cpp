@@ -113,8 +113,13 @@ TipoRetorno FileSystem::Delete (Cadena rutaArchivo)
 
 TipoRetorno FileSystem::Attrib(Cadena rutaArchivo, Cadena parametro)
 {
-	// NO IMPLEMENTADA
-	return NO_IMPLEMENTADA;
+	TipoRetorno retorno = OK;
+	TipoError resultado = this->raiz->Attrib(rutaArchivo, parametro);
+	if (resultado != NO_HAY_ERROR) {
+		retorno = ERROR;
+		this->ImprimirError(resultado);
+	}
+	return retorno;
 }
 
 TipoRetorno FileSystem::InsertText(Cadena rutaArchivo, unsigned int nroLinea, unsigned int posLinea, Cadena texto)
