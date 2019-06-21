@@ -62,6 +62,10 @@ public:
 	void Vaciar();
 
 	//PRE: 
+	//POS: Modifica la visibilidad de un archivo, +H lo oculta y -H lo hace visible
+	TipoError Attrib(Cadena ruta, Cadena parametro);
+
+	//PRE: 
 	//POS: Copia el directorio de origen a destino
 	TipoError CopiarDirectorio(Cadena rutaOrigen, Cadena rutaDestino);
 

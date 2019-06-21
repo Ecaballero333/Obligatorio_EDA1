@@ -310,6 +310,28 @@ TipoError Directorios::CopiarDirectorio(Cadena rutaOrigen, Cadena rutaDestino)
 	return retorno;
 }
 
+TipoError Directorios::Attrib(Cadena ruta, Cadena parametro) {
+	TipoError retorno = this->ValidacionesPorOperacion(ATTRIB, ruta, "", parametro);
+
+	if (retorno == NO_HAY_ERROR) {
+		if (!ExisteDirectorio(ruta, true)) {
+			retorno = ERROR_NO_SE_ENCUENTRA_RUTA;
+		}
+		Cadena nombreArchivo = "";
+		NodoAG<Directorio>* nodoDirectorio = this->BuscarNodoDirectorio(ruta, true, nombreArchivo);
+		
+		if (!nodoDirectorio->dato.ExisteArchivo(nombreArchivo)) {
+			retorno = ERROR_NO_EXISTE_ARCHIVO_NOMBRE_EN_RUTA;
+		}
+		else {
+			Archivo& archivo = nodoDirectorio->dato.BuscarArchivo(nombreArchivo);
+			archivo.ModificarVisibilidad(parametro);
+		}
+	}
+
+	return retorno;
+}
+
 TipoError Directorios::Delete(Cadena rutaArchivo) {
 	TipoError retorno = this->ValidacionesPorOperacion(DELETE, rutaArchivo, "", "");
 	if (!ExisteDirectorio(rutaArchivo,true)) {
@@ -477,6 +499,14 @@ TipoError Directorios::ValidacionesPorOperacion(TipoOperacion nombreOperacion, C
 	if (nombreOperacion == DELETETEXT) {
 		if (this->rutaComienzaMal(rutaOrigen)) {
 			retorno = ERROR_RUTA_COMIENZA_MAL;
+		}
+	}
+	if (nombreOperacion == ATTRIB) {
+		if (this->rutaComienzaMal(rutaOrigen)) {
+			retorno = ERROR_RUTA_COMIENZA_MAL;
+		}
+		if (parametro != "-H" && parametro != "+H") {
+			retorno = ERROR_PARAMETRO_DESCONOCIDO;
 		}
 	}
 	return retorno;
