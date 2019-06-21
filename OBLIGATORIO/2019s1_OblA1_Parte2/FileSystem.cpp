@@ -14,26 +14,21 @@ FileSystem::FileSystem()
 
 FileSystem::FileSystem(unsigned int MAX_RECUPERAR)
 {
-	this->maximoRecupera = MAX_RECUPERAR;
-	this->raiz = new Directorios();
+	this->raiz = new Directorios(MAX_RECUPERAR);
 	//this->listaUndeleteArchivos = new PilaImp<Asociacion<ruta, Archivo>>();
 }
 
 
 FileSystem::~FileSystem()
 {
-	this->maximoRecupera = NULL;
 	this->raiz->Vaciar();
 	delete this->raiz;
 	this->raiz = NULL;
-	//delete this->listaUndeleteArchivos;
 }
 
 FileSystem::FileSystem(const FileSystem &f)
 {
-	this->maximoRecupera = NULL;
 	this->raiz = NULL;
-	//this->listaUndeleteArchivos = NULL;
 	*this = f;
 }
 
@@ -41,9 +36,8 @@ FileSystem &FileSystem::operator=(const FileSystem &f)
 {
 	if (this != &f)
 	{
-		this->maximoRecupera = f.maximoRecupera;
+		//this->maximoRecupera = f.maximoRecupera;
 		*this->raiz = *f.raiz;
-		//*this->listaUndeleteArchivos = *f.listaUndeleteArchivos;
 	}
 	return *this;
 }
@@ -163,9 +157,17 @@ TipoRetorno FileSystem::Type(Cadena rutaArchivo) const
 
 TipoRetorno FileSystem::Undelete()
 {
-	// NO IMPLEMENTADA
 	return NO_IMPLEMENTADA;
+	/*TipoRetorno retorno = OK;
+	//TipoError resultado = this->raiz->Undelete();
+	if (resultado != NO_HAY_ERROR) {
+		retorno = ERROR;
+		this->ImprimirError(resultado);
+	}
+	return retorno;*/
 }
+
+
 
 void FileSystem::ImprimirError(TipoError tipoError) const {
 	switch (tipoError)
@@ -201,10 +203,10 @@ void FileSystem::ImprimirError(TipoError tipoError) const {
 		cout << "ERROR: No se encuentra el padre de la ruta destino.";
 		break;
 	case ERROR_NO_EXISTE_ARCHIVO_NOMBRE_EN_RUTA:
-		cout << "No existe un archivo con ese nombre en esa ruta.";
+		cout << "ERROR: No existe un archivo con ese nombre en esa ruta.";
 		break;
 	case ERROR_YA_EXISTE_ARCHIVO:
-		cout << "Ya existe un archivo con el mismo nombre en esa ruta.";
+		cout << "ERROR: Ya existe un archivo con el mismo nombre en esa ruta.";
 		break;
 	default:
 		break;

@@ -9,7 +9,17 @@ Directorios::Directorios()
 	Cadena* nombreDirectorioRaiz = new Cadena("/");
 	Directorio* directorioRaiz = new Directorio(*nombreDirectorioRaiz, 0);
 	this->arbolDirectorios = new NodoAG<Directorio>(*directorioRaiz, nullptr, nullptr);
+	this->maximoRecupera = 0;
 	this->listaUndeleteArchivos = new PilaImp2<Asociacion<Cadena,Archivo>>();
+}
+
+Directorios::Directorios(unsigned int MAX_RECUPERAR)
+{
+	Cadena* nombreDirectorioRaiz = new Cadena("/");
+	Directorio* directorioRaiz = new Directorio(*nombreDirectorioRaiz, 0);
+	this->arbolDirectorios = new NodoAG<Directorio>(*directorioRaiz, nullptr, nullptr);
+	this->maximoRecupera = MAX_RECUPERAR;
+	this->listaUndeleteArchivos = new PilaImp2<Asociacion<Cadena, Archivo>>();
 }
 
 Directorios::~Directorios()
@@ -18,6 +28,7 @@ Directorios::~Directorios()
 	delete this->arbolDirectorios;
 	delete this->listaUndeleteArchivos;
 }
+
 
 Directorios::Directorios(const Directorios &d)
 {

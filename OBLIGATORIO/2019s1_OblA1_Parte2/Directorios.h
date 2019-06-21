@@ -18,6 +18,9 @@ public:
 	//Constructor por defecto
 	Directorios();
 
+	//Constructor con máximo número de archivos a recuperar
+	Directorios(unsigned int MAX_RECUPERAR);
+
 	//Destructor
 	virtual ~Directorios();
 
@@ -82,6 +85,7 @@ public:
 private:
 	const char* barra = "/";
 	NodoAG<Directorio>* arbolDirectorios;
+	int maximoRecupera;
 	Pila<Asociacion<Cadena, Archivo>> *listaUndeleteArchivos;
 
 	//PRE:

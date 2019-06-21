@@ -206,74 +206,18 @@ PRUEBAS FUNCION PRUEBAS InsertText                                 PRUEBAS CORRE
 
 ********* INICIO PRUEBAS Type*******
 -----------------------------------
-Prueba 36: Se muestra /archivo1.txt
- -> ERROR impresión incorrecta
-Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir): 
-1 : /archivo1.txt
-2 : 
-3 : 1: An error saepe.              An error saepe.
-4 : 2: 
-5 : 3: 
-6 : 4: Omnesque philosophia eum an, ius tale.Vis omnis legere
-7 : 
-8 : 
-9 : 
-
-Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
-(Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 : /archivo1.txt
-2 : 
-3 ! 1: An error saepe.              An error saepe.   1:  1:  1: Omnesque philosophia eum an, ius tale.Vis omnis legere   
+Prueba 36: Se muestra /archivo1.txt -> OK
 -----------------------------------
-Prueba 37: Se muestra /directorio1/directorio11/archivo11.txt
- -> ERROR impresión incorrecta
-Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir): 
-1 : /directorio1/directorio11/archivo11.txt
-2 : 
-3 : 1: Eos nibh regione.Ius invidunt convenire at, has in atqui probatus deserunt.
-4 : 2: 
-5 : 3: 
-6 : 4: Mel et illum sententiae, vix inani.
-7 : 5: 
-8 : 6: 
-9 : 7: 
-10: 8: 
-11: 9: 
-12: 10: Sed fabulas laoreet appellantur.
-13: 
-14: 
-15: 
-
-Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
-(Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 : /directorio1/directorio11/archivo11.txt
-2 : 
-3 ! 1: Eos nibh regione.Ius invidunt convenire at, has in atqui probatus deserunt.   1:  1:  1: Mel et illum sententiae, vix inani.  1:  1:  1:  1:  1:  1: Sed fabulas laoreet appellantur.  
+Prueba 37: Se muestra /directorio1/directorio11/archivo11.txt -> OK
 -----------------------------------
-Prueba 38: Se muestra /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
- -> ERROR impresión incorrecta
-Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir): 
-1 : /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
-2 : 
-3 : 1: Usu rebum virtute.
-4 : 2: Eam habeo.
-5 : 3: His no putant vivendo.
-6 : 
-7 : 
-8 : 
-
-Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
-(Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 : /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
-2 : 
-3 ! 1: Usu rebum virtute.  1: Eam habeo.  1: His no putant vivendo.  
+Prueba 38: Se muestra /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt -> OK
 -----------------------------------
 Prueba 39: Se muestra /directorio1/directorio11/archivo13.txt -> OK
 -----------------------------------
 Prueba 40: Se destruye filesystem y memoria asociada -> OK
 ********* FIN PRUEBAS Type*******
 
-PRUEBAS FUNCION PRUEBAS Type                                       HAY 3 PRUEBAS INCORRECTAS
+PRUEBAS FUNCION PRUEBAS Type                                       PRUEBAS CORRECTAS
 
 ********* INICIO PRUEBAS Rmdir*******
 -----------------------------------
@@ -941,24 +885,7 @@ PRUEBAS FUNCION PRUEBAS Attrib                                     HAY 7 PRUEBAS
 
 ********* INICIO PRUEBAS DeleteText*******
 -----------------------------------
-Prueba 67: Se muestra /archivo1.txt
- -> ERROR impresión incorrecta
-Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir): 
-1 : /archivo1.txt
-2 : 
-3 : 1: An error saepe.              An error saepe.
-4 : 2: 
-5 : 3: 
-6 : 4: Omnesque philosophia eum an, ius tale.Vis omnis legere
-7 : 
-8 : 
-9 : 
-
-Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
-(Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 : /archivo1.txt
-2 : 
-3 ! 1: An error saepe.              An error saepe.   1:  1:  1: Omnesque philosophia eum an, ius tale.Vis omnis legere   
+Prueba 67: Se muestra /archivo1.txt -> OK
 -----------------------------------
 Prueba 68: Se borran 10 caracteres, de la linea 1, posicion 3 de /archivo1.txt
  -> ERROR PRUEBA NO_IMPLEMENTADA
@@ -980,7 +907,11 @@ Se imprimio (el numero de linea fue agregado, no se debe imprimir):
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
 1 : /archivo1.txt
 2 : 
-3 ! 1: An error saepe.              An error saepe.   1:  1:  1: Omnesque philosophia eum an, ius tale.Vis omnis legere   
+3 ! 1: An error saepe.              An error saepe.   
+4 : 2: 
+5 : 3: 
+6 ! 4: Omnesque philosophia eum an, ius tale.Vis omnis legere  
+7 : 
 -----------------------------------
 Prueba 70: Se borran 100 caracteres, de la linea 2, posicion 1 de /archivo1.txt
  -> ERROR PRUEBA NO_IMPLEMENTADA
@@ -1001,7 +932,11 @@ Se imprimio (el numero de linea fue agregado, no se debe imprimir):
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
 1 : /archivo1.txt
 2 : 
-3 ! 1: An error saepe.              An error saepe.   1:  1:  1: Omnesque philosophia eum an, ius tale.Vis omnis legere   
+3 ! 1: An error saepe.              An error saepe.   
+4 : 2: 
+5 ! 3: 
+6 ! 4: Omnesque philosophia eum an, ius tale.Vis omnis legere  
+7 : 
 -----------------------------------
 Prueba 72: Se borran 60 caracteres, de la linea 3, posicion 10 de /archivo1.txt
  -> ERROR PRUEBA NO_IMPLEMENTADA
@@ -1022,7 +957,11 @@ Se imprimio (el numero de linea fue agregado, no se debe imprimir):
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
 1 : /archivo1.txt
 2 : 
-3 ! 1: An error saepe.              An error saepe.   1:  1:  1: Omnesque philosophia eum an, ius tale.Vis omnis legere   
+3 ! 1: An error saepe.              An error saepe.   
+4 : 2: 
+5 ! 3: 
+6 ! 4: Omnesque philosophia eum an, ius tale.Vis omnis legere  
+7 : 
 -----------------------------------
 Prueba 74: Se borran 60 caracteres, de la linea 3, posicion 1 de /archivo1.txt
  -> ERROR PRUEBA NO_IMPLEMENTADA
@@ -1042,10 +981,14 @@ Se imprimio (el numero de linea fue agregado, no se debe imprimir):
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
 1 : /archivo1.txt
 2 : 
-3 ! 1: An error saepe.              An error saepe.   1:  1:  1: Omnesque philosophia eum an, ius tale.Vis omnis legere   
+3 ! 1: An error saepe.              An error saepe.   
+4 : 2: 
+5 ! 3: 
+6 ! 4: Omnesque philosophia eum an, ius tale.Vis omnis legere  
+7 : 
 ********* FIN PRUEBAS DeleteText*******
 
-PRUEBAS FUNCION PRUEBAS DeleteText                                 HAY 9 PRUEBAS INCORRECTAS
+PRUEBAS FUNCION PRUEBAS DeleteText                                 HAY 8 PRUEBAS INCORRECTAS
 
 ********* INICIO PRUEBAS Error Mkdir*******
 -----------------------------------
@@ -1121,19 +1064,10 @@ Prueba 91: La ruta no comienza con /. -> OK
 -----------------------------------
 Prueba 92: No se encuentra la ruta. -> OK
 -----------------------------------
-Prueba 93: Ya existe un archivo con el mismo nombre en esa ruta.
- -> ERROR impresión incorrecta
-Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir): 
-1 : ERROR: Ya existe un archivo con el mismo nombre en esa ruta.
-2 : 
-3 : 
-
-Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
-(Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! Ya existe un archivo con el mismo nombre en esa ruta.
+Prueba 93: Ya existe un archivo con el mismo nombre en esa ruta. -> OK
 ********* FIN PRUEBAS Error CreateFile*******
 
-PRUEBAS FUNCION PRUEBAS Error CreateFile                           HAY 1 PRUEBAS INCORRECTAS
+PRUEBAS FUNCION PRUEBAS Error CreateFile                           PRUEBAS CORRECTAS
 
 ********* INICIO PRUEBAS Error Delete*******
 -----------------------------------
@@ -1146,23 +1080,14 @@ Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir):
 
 Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! No existe un archivo con ese nombre en esa ruta.
+1 ! ERROR: No existe un archivo con ese nombre en esa ruta.
 -----------------------------------
 Prueba 95: No se encuentra la ruta. -> OK
 -----------------------------------
-Prueba 96: No existe un archivo con ese nombre en esa ruta.
- -> ERROR impresión incorrecta
-Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir): 
-1 : ERROR: No existe un archivo con ese nombre en esa ruta.
-2 : 
-3 : 
-
-Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
-(Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! No existe un archivo con ese nombre en esa ruta.
+Prueba 96: No existe un archivo con ese nombre en esa ruta. -> OK
 ********* FIN PRUEBAS Error Delete*******
 
-PRUEBAS FUNCION PRUEBAS Error Delete                               HAY 2 PRUEBAS INCORRECTAS
+PRUEBAS FUNCION PRUEBAS Error Delete                               HAY 1 PRUEBAS INCORRECTAS
 
 ********* INICIO PRUEBAS Error Attrib*******
 -----------------------------------
@@ -1187,16 +1112,7 @@ Prueba 101: La ruta no comienza con /. -> OK
 -----------------------------------
 Prueba 102: No se encuentra la ruta. -> OK
 -----------------------------------
-Prueba 103: No existe un archivo con ese nombre en esa ruta.
- -> ERROR impresión incorrecta
-Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir): 
-1 : ERROR: No existe un archivo con ese nombre en esa ruta.
-2 : 
-3 : 
-
-Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
-(Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! No existe un archivo con ese nombre en esa ruta.
+Prueba 103: No existe un archivo con ese nombre en esa ruta. -> OK
 -----------------------------------
 Prueba 104: La linea 0 no es valida.
  -> ERROR impresión incorrecta
@@ -1221,7 +1137,7 @@ Se imprimio (el numero de linea fue agregado, no se debe imprimir):
 1 ! 
 ********* FIN PRUEBAS Error InsertText*******
 
-PRUEBAS FUNCION PRUEBAS Error InsertText                           HAY 3 PRUEBAS INCORRECTAS
+PRUEBAS FUNCION PRUEBAS Error InsertText                           HAY 2 PRUEBAS INCORRECTAS
 
 ********* INICIO PRUEBAS Error DeleteText*******
 -----------------------------------
@@ -1249,19 +1165,10 @@ Prueba 111: La ruta no comienza con /. -> OK
 -----------------------------------
 Prueba 112: No se encuentra la ruta. -> OK
 -----------------------------------
-Prueba 113: No existe un archivo con ese nombre en esa ruta.
- -> ERROR impresión incorrecta
-Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir): 
-1 : ERROR: No existe un archivo con ese nombre en esa ruta.
-2 : 
-3 : 
-
-Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
-(Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! No existe un archivo con ese nombre en esa ruta.
+Prueba 113: No existe un archivo con ese nombre en esa ruta. -> OK
 ********* FIN PRUEBAS Error Type*******
 
-PRUEBAS FUNCION PRUEBAS Error Type                                 HAY 1 PRUEBAS INCORRECTAS
+PRUEBAS FUNCION PRUEBAS Error Type                                 PRUEBAS CORRECTAS
 
 ********* INICIO PRUEBAS Opcional*******
 -----------------------------------
@@ -1339,7 +1246,7 @@ Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir):
 
 Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! No existe un archivo con ese nombre en esa ruta.
+1 ! ERROR: No existe un archivo con ese nombre en esa ruta.
 -----------------------------------
 Prueba 119: Se muestra contenido de todo el filesystem
  -> ERROR impresión incorrecta
@@ -1509,7 +1416,7 @@ Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir):
 
 Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! No existe un archivo con ese nombre en esa ruta.
+1 ! ERROR: No existe un archivo con ese nombre en esa ruta.
 ********* FIN PRUEBAS Opcional*******
 
 PRUEBAS FUNCION PRUEBAS Opcional                                   HAY 8 PRUEBAS INCORRECTAS
@@ -1526,5 +1433,5 @@ PRUEBAS FUNCION PRUEBAS Error Opcional                             HAY 1 PRUEBAS
 
 ----------------
 PRUEBAS FUNCIONES 
-PRUEBAS FUNCIONES RESULTADO ../PruebasEjemploDeUso.txt          => CORRECTAS:  4 INCORRECTAS: 18
+PRUEBAS FUNCIONES RESULTADO ../PruebasEjemploDeUso.txt          => CORRECTAS:  7 INCORRECTAS: 15
 PRUEBAS FUNCIONES 

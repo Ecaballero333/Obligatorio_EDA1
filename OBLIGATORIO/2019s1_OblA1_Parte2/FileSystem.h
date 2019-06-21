@@ -56,7 +56,6 @@ class FileSystem {
     private:	
 
 		Directorios* raiz;
-		int maximoRecupera;
 
 		//PRE: !cadenaError.esVacia()
 		//POS: Imprime el error que recibe por parámetro.

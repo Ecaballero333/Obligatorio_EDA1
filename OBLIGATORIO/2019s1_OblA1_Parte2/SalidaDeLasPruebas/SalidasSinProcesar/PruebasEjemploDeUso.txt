@@ -135,15 +135,32 @@ No contiene archivos ni directorios.
 -!-Ini::PRUEBAS Type
 /archivo1.txt
 
-1: An error saepe.              An error saepe.   1:  1:  1: Omnesque philosophia eum an, ius tale.Vis omnis legere   
+1: An error saepe.              An error saepe.   
+2: 
+3: 
+4: Omnesque philosophia eum an, ius tale.Vis omnis legere  
+
 -!-36::0-OK-OK-Se muestra /archivo1.txt
 /directorio1/directorio11/archivo11.txt
 
-1: Eos nibh regione.Ius invidunt convenire at, has in atqui probatus deserunt.   1:  1:  1: Mel et illum sententiae, vix inani.  1:  1:  1:  1:  1:  1: Sed fabulas laoreet appellantur.  
+1: Eos nibh regione.Ius invidunt convenire at, has in atqui probatus deserunt.  
+2: 
+3: 
+4: Mel et illum sententiae, vix inani. 
+5: 
+6: 
+7: 
+8: 
+9: 
+10: Sed fabulas laoreet appellantur. 
+
 -!-37::0-OK-OK-Se muestra /directorio1/directorio11/archivo11.txt
 /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
 
-1: Usu rebum virtute.  1: Eam habeo.  1: His no putant vivendo.  
+1: Usu rebum virtute. 
+2: Eam habeo. 
+3: His no putant vivendo. 
+
 -!-38::0-OK-OK-Se muestra /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
 /directorio1/directorio11/archivo13.txt
 
@@ -458,31 +475,51 @@ El archivo no posee contenido
 -!-Ini::PRUEBAS DeleteText
 /archivo1.txt
 
-1: An error saepe.              An error saepe.   1:  1:  1: Omnesque philosophia eum an, ius tale.Vis omnis legere   
+1: An error saepe.              An error saepe.   
+2: 
+3: 
+4: Omnesque philosophia eum an, ius tale.Vis omnis legere  
+
 -!-67::0-OK-OK-Se muestra /archivo1.txt
 
 -!-68::0-OK-NO_IMPLEMENTADA-Se borran 10 caracteres, de la linea 1, posicion 3 de /archivo1.txt
 /archivo1.txt
 
-1: An error saepe.              An error saepe.   1:  1:  1: Omnesque philosophia eum an, ius tale.Vis omnis legere   
+1: An error saepe.              An error saepe.   
+2: 
+3: 
+4: Omnesque philosophia eum an, ius tale.Vis omnis legere  
+
 -!-69::0-OK-OK-Se muestra /archivo1.txt
 
 -!-70::0-OK-NO_IMPLEMENTADA-Se borran 100 caracteres, de la linea 2, posicion 1 de /archivo1.txt
 /archivo1.txt
 
-1: An error saepe.              An error saepe.   1:  1:  1: Omnesque philosophia eum an, ius tale.Vis omnis legere   
+1: An error saepe.              An error saepe.   
+2: 
+3: 
+4: Omnesque philosophia eum an, ius tale.Vis omnis legere  
+
 -!-71::0-OK-OK-Se muestra /archivo1.txt
 
 -!-72::0-OK-NO_IMPLEMENTADA-Se borran 60 caracteres, de la linea 3, posicion 10 de /archivo1.txt
 /archivo1.txt
 
-1: An error saepe.              An error saepe.   1:  1:  1: Omnesque philosophia eum an, ius tale.Vis omnis legere   
+1: An error saepe.              An error saepe.   
+2: 
+3: 
+4: Omnesque philosophia eum an, ius tale.Vis omnis legere  
+
 -!-73::0-OK-OK-Se muestra /archivo1.txt
 
 -!-74::0-OK-NO_IMPLEMENTADA-Se borran 60 caracteres, de la linea 3, posicion 1 de /archivo1.txt
 /archivo1.txt
 
-1: An error saepe.              An error saepe.   1:  1:  1: Omnesque philosophia eum an, ius tale.Vis omnis legere   
+1: An error saepe.              An error saepe.   
+2: 
+3: 
+4: Omnesque philosophia eum an, ius tale.Vis omnis legere  
+
 -!-75::0-OK-OK-Se muestra /archivo1.txt
 -!-Fin::PRUEBAS DeleteText
 -!-Ini::PRUEBAS Error Mkdir
@@ -528,15 +565,15 @@ ERROR: La ruta no comienza con /.
 -!-91::0-ERROR-ERROR-La ruta no comienza con /.
 ERROR: No se encuentra la ruta.
 -!-92::0-ERROR-ERROR-No se encuentra la ruta.
-Ya existe un archivo con el mismo nombre en esa ruta.
+ERROR: Ya existe un archivo con el mismo nombre en esa ruta.
 -!-93::0-ERROR-ERROR-Ya existe un archivo con el mismo nombre en esa ruta.
 -!-Fin::PRUEBAS Error CreateFile
 -!-Ini::PRUEBAS Error Delete
-No existe un archivo con ese nombre en esa ruta.
+ERROR: No existe un archivo con ese nombre en esa ruta.
 -!-94::0-ERROR-ERROR-La ruta no comienza con /.
 ERROR: No se encuentra la ruta.
 -!-95::0-ERROR-ERROR-No se encuentra la ruta.
-No existe un archivo con ese nombre en esa ruta.
+ERROR: No existe un archivo con ese nombre en esa ruta.
 -!-96::0-ERROR-ERROR-No existe un archivo con ese nombre en esa ruta.
 -!-Fin::PRUEBAS Error Delete
 -!-Ini::PRUEBAS Error Attrib
@@ -554,7 +591,7 @@ ERROR: La ruta no comienza con /.
 -!-101::0-ERROR-ERROR-La ruta no comienza con /.
 ERROR: No se encuentra la ruta.
 -!-102::0-ERROR-ERROR-No se encuentra la ruta.
-No existe un archivo con ese nombre en esa ruta.
+ERROR: No existe un archivo con ese nombre en esa ruta.
 -!-103::0-ERROR-ERROR-No existe un archivo con ese nombre en esa ruta.
 
 -!-104::0-ERROR-ERROR-La linea 0 no es valida.
@@ -578,7 +615,7 @@ ERROR: La ruta no comienza con /.
 -!-111::0-ERROR-ERROR-La ruta no comienza con /.
 ERROR: No se encuentra la ruta.
 -!-112::0-ERROR-ERROR-No se encuentra la ruta.
-No existe un archivo con ese nombre en esa ruta.
+ERROR: No existe un archivo con ese nombre en esa ruta.
 -!-113::0-ERROR-ERROR-No existe un archivo con ese nombre en esa ruta.
 -!-Fin::PRUEBAS Error Type
 -!-Ini::PRUEBAS Opcional
@@ -627,7 +664,7 @@ No existe un archivo con ese nombre en esa ruta.
 -!-116::0-OK-OK-Se muestra contenido de todo el filesystem
 
 -!-117::0-OK-NO_IMPLEMENTADA-Se recupera /archivo1.txt
-No existe un archivo con ese nombre en esa ruta.
+ERROR: No existe un archivo con ese nombre en esa ruta.
 -!-118::0-OK-ERROR-Se muestra /archivo1.txt
 /
 /directorio1
@@ -691,7 +728,7 @@ No existe un archivo con ese nombre en esa ruta.
 /directorio2/directorio22/archivo22.txt
 
 -!-123::0-OK-OK-Se muestra contenido de todo el filesystem
-No existe un archivo con ese nombre en esa ruta.
+ERROR: No existe un archivo con ese nombre en esa ruta.
 -!-124::0-OK-ERROR-Se muestra /directorio1/directorio11/archivo11.txt
 -!-Fin::PRUEBAS Opcional
 -!-Ini::PRUEBAS Error Opcional

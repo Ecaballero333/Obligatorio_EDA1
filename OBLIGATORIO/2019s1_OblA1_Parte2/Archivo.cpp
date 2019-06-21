@@ -121,7 +121,7 @@ void Archivo::InsertarTexto(unsigned int nroLinea, unsigned int posLinea, Cadena
 {
 	
 	while (nroLinea > lineas->CantidadElementos()) {
-		lineas->AgregarFin(" ");
+		lineas->AgregarFin(Cadena());
 	}
 	
 	Cadena &aux = lineas->ElementoPos(nroLinea-1);
@@ -201,8 +201,9 @@ void Archivo::MostrarContenido() const
 	int n = 1;	
 	for (Iterador<Cadena> i = this->lineas->GetIterador(); !i.EsFin();) {
 		Cadena c = i.Elemento();		
-		cout << n <<": " << c; // empieza en 0 y n en 1
+		cout << n <<": " << c << endl; // empieza en 0 y n en 1
 		i++;
+		n++;
 	}	
 }
 
