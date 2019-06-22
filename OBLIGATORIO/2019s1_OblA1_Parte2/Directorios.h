@@ -8,7 +8,7 @@ using namespace std;
 #include "ListaOrdImp.h"
 #include "TipoOperacion.h"
 #include "TipoError.h"
-#include "PilaImp2.h"
+#include "PilaAcotadaEspecial.h"
 
 
 class Directorios {
@@ -85,11 +85,17 @@ public:
 	//POS: Elimina un archivo de la ruta especificada sin importar si está oculto o no.
 	TipoError Delete(Cadena rutaArchivo);
 
+	//PRE: 
+	//POS: Recupera el último archivo eliminado con la operación delete.
+	//El archivo lo recupera en la misma ruta que se encontraba, 
+	//a menos que en dicha ruta ya exista otro archivo con el mismo nombre o la ruta ya no exista más.
+	//Solo en caso que no hayan archivos para recuperar se devuelve un mensaje de error indicandolo.
+	TipoError Undelete();
+
 
 private:
 	const char* barra = "/";
 	NodoAG<Directorio>* arbolDirectorios;
-	int maximoRecupera;
 	Pila<Asociacion<Cadena, Archivo>> *listaUndeleteArchivos;
 
 	//PRE:

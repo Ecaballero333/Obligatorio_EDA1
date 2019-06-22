@@ -185,7 +185,7 @@
     <ClInclude Include="NodoLista.h" />
     <ClInclude Include="Pila.h" />
     <ClInclude Include="PilaImp.h" />
-    <ClInclude Include="PilaImp2.h" />
+    <ClInclude Include="PilaAcotadaEspecial.h" />
     <ClInclude Include="Prueba.h" />
     <ClInclude Include="PruebasCorreccion.h" />
     <ClInclude Include="PruebasEjemploDeUso.h" />
@@ -218,7 +218,7 @@
     <ClCompile Include="ManejadorImpresionPrueba.cpp" />
     <ClCompile Include="ManejadorSalidaPrueba.cpp" />
     <ClCompile Include="PilaImp.cpp" />
-    <ClCompile Include="PilaImp2.cpp" />
+    <ClCompile Include="PilaAcotadaEspecial.cpp" />
     <ClCompile Include="Prueba.cpp" />
     <ClCompile Include="PruebasCorreccion.cpp" />
     <ClCompile Include="PruebasEjemploDeUso.cpp" />

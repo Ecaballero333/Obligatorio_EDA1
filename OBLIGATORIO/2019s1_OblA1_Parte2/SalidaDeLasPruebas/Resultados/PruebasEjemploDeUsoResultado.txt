@@ -772,14 +772,11 @@ Se imprimio (el numero de linea fue agregado, no se debe imprimir):
 19: /directorio2/directorio22/archivo22.txt
 20: 
 -----------------------------------
-Prueba 61: Se oculta archivo /directorio1/directorio11/archivo11.txt
- -> ERROR PRUEBA NO_IMPLEMENTADA
+Prueba 61: Se oculta archivo /directorio1/directorio11/archivo11.txt -> OK
 -----------------------------------
-Prueba 62: Se oculta archivo /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
- -> ERROR PRUEBA NO_IMPLEMENTADA
+Prueba 62: Se oculta archivo /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt -> OK
 -----------------------------------
-Prueba 63: Se oculta archivo /directorio2/directorio21/directorio211/archivo212.ppt
- -> ERROR PRUEBA NO_IMPLEMENTADA
+Prueba 63: Se oculta archivo /directorio2/directorio21/directorio211/archivo212.ppt -> OK
 -----------------------------------
 Prueba 64: Se muestra contenido de todo el filesystem, incluyendo archivos ocultos
  -> ERROR impresión incorrecta
@@ -812,7 +809,7 @@ Se imprimio (el numero de linea fue agregado, no se debe imprimir):
 2 ! //archivo1.txt
 3 : /directorio1
 4 : /directorio1/directorio11
-5 ! /directorio1/directorio11/archivo11.txt
+5 : /directorio1/directorio11/archivo11.txt (H)
 6 : /directorio1/directorio11/archivo12.txt
 7 : /directorio1/directorio11/archivo13.txt
 8 : /directorio1/directorio12
@@ -820,17 +817,16 @@ Se imprimio (el numero de linea fue agregado, no se debe imprimir):
 10: /directorio2/directorio21
 11: /directorio2/directorio21/directorio211
 12: /directorio2/directorio21/directorio211/archivo211.h
-13! /directorio2/directorio21/directorio211/archivo212.ppt
+13: /directorio2/directorio21/directorio211/archivo212.ppt (H)
 14: /directorio2/directorio21/directorio211/directorio2111
-15! /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
+15: /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt (H)
 16: /directorio2/directorio22
 17: /directorio2/directorio22/Archivo22.txt
 18: /directorio2/directorio22/Archivo23.txt
 19: /directorio2/directorio22/archivo22.txt
 20: 
 -----------------------------------
-Prueba 65: Se vuelve visible archivo /directorio2/directorio21/directorio211/archivo212.ppt
- -> ERROR PRUEBA NO_IMPLEMENTADA
+Prueba 65: Se vuelve visible archivo /directorio2/directorio21/directorio211/archivo212.ppt -> OK
 -----------------------------------
 Prueba 66: Se muestra contenido de todo el filesystem, incluyendo archivos ocultos
  -> ERROR impresión incorrecta
@@ -863,7 +859,7 @@ Se imprimio (el numero de linea fue agregado, no se debe imprimir):
 2 ! //archivo1.txt
 3 : /directorio1
 4 : /directorio1/directorio11
-5 ! /directorio1/directorio11/archivo11.txt
+5 : /directorio1/directorio11/archivo11.txt (H)
 6 : /directorio1/directorio11/archivo12.txt
 7 : /directorio1/directorio11/archivo13.txt
 8 : /directorio1/directorio12
@@ -873,7 +869,7 @@ Se imprimio (el numero de linea fue agregado, no se debe imprimir):
 12: /directorio2/directorio21/directorio211/archivo211.h
 13: /directorio2/directorio21/directorio211/archivo212.ppt
 14: /directorio2/directorio21/directorio211/directorio2111
-15! /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
+15: /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt (H)
 16: /directorio2/directorio22
 17: /directorio2/directorio22/Archivo22.txt
 18: /directorio2/directorio22/Archivo23.txt
@@ -881,7 +877,7 @@ Se imprimio (el numero de linea fue agregado, no se debe imprimir):
 20: 
 ********* FIN PRUEBAS Attrib*******
 
-PRUEBAS FUNCION PRUEBAS Attrib                                     HAY 7 PRUEBAS INCORRECTAS
+PRUEBAS FUNCION PRUEBAS Attrib                                     HAY 3 PRUEBAS INCORRECTAS
 
 ********* INICIO PRUEBAS DeleteText*******
 -----------------------------------
@@ -1071,40 +1067,27 @@ PRUEBAS FUNCION PRUEBAS Error CreateFile                           PRUEBAS CORRE
 
 ********* INICIO PRUEBAS Error Delete*******
 -----------------------------------
-Prueba 94: La ruta no comienza con /.
- -> ERROR impresión incorrecta
-Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir): 
-1 : ERROR: La ruta no comienza con /.
-2 : 
-3 : 
-
-Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
-(Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! ERROR: No existe un archivo con ese nombre en esa ruta.
+Prueba 94: La ruta no comienza con /. -> OK
 -----------------------------------
 Prueba 95: No se encuentra la ruta. -> OK
 -----------------------------------
 Prueba 96: No existe un archivo con ese nombre en esa ruta. -> OK
 ********* FIN PRUEBAS Error Delete*******
 
-PRUEBAS FUNCION PRUEBAS Error Delete                               HAY 1 PRUEBAS INCORRECTAS
+PRUEBAS FUNCION PRUEBAS Error Delete                               PRUEBAS CORRECTAS
 
 ********* INICIO PRUEBAS Error Attrib*******
 -----------------------------------
-Prueba 97: La ruta no comienza con /.
- -> ERROR PRUEBA NO_IMPLEMENTADA
+Prueba 97: La ruta no comienza con /. -> OK
 -----------------------------------
-Prueba 98: No se encuentra la ruta.
- -> ERROR PRUEBA NO_IMPLEMENTADA
+Prueba 98: No se encuentra la ruta. -> OK
 -----------------------------------
-Prueba 99: No existe un archivo con ese nombre en esa ruta.
- -> ERROR PRUEBA NO_IMPLEMENTADA
+Prueba 99: No existe un archivo con ese nombre en esa ruta. -> OK
 -----------------------------------
-Prueba 100: Parametro desconocido.
- -> ERROR PRUEBA NO_IMPLEMENTADA
+Prueba 100: Parametro desconocido. -> OK
 ********* FIN PRUEBAS Error Attrib*******
 
-PRUEBAS FUNCION PRUEBAS Error Attrib                               HAY 4 PRUEBAS INCORRECTAS
+PRUEBAS FUNCION PRUEBAS Error Attrib                               PRUEBAS CORRECTAS
 
 ********* INICIO PRUEBAS Error InsertText*******
 -----------------------------------
@@ -1224,8 +1207,7 @@ Prueba 115: Se borra archivo /archivo1.txt -> OK
 -----------------------------------
 Prueba 116: Se muestra contenido de todo el filesystem -> OK
 -----------------------------------
-Prueba 117: Se recupera /archivo1.txt
- -> ERROR PRUEBA NO_IMPLEMENTADA
+Prueba 117: Se recupera /archivo1.txt -> OK
 -----------------------------------
 Prueba 118: Se muestra /archivo1.txt
  -> ERROR retorno incorrecto
@@ -1342,8 +1324,7 @@ Se imprimio (el numero de linea fue agregado, no se debe imprimir):
 17! /directorio2/directorio22/archivo22.txt
 18! 
 -----------------------------------
-Prueba 122: Se recupera /directorio1/directorio11/archivo11.txt
- -> ERROR PRUEBA NO_IMPLEMENTADA
+Prueba 122: Se recupera /directorio1/directorio11/archivo11.txt -> OK
 -----------------------------------
 Prueba 123: Se muestra contenido de todo el filesystem
  -> ERROR impresión incorrecta
@@ -1419,19 +1400,18 @@ Se imprimio (el numero de linea fue agregado, no se debe imprimir):
 1 ! ERROR: No existe un archivo con ese nombre en esa ruta.
 ********* FIN PRUEBAS Opcional*******
 
-PRUEBAS FUNCION PRUEBAS Opcional                                   HAY 8 PRUEBAS INCORRECTAS
+PRUEBAS FUNCION PRUEBAS Opcional                                   HAY 6 PRUEBAS INCORRECTAS
 
 ********* INICIO PRUEBAS Error Opcional*******
 -----------------------------------
-Prueba 125: No hay archivos para recuperar
- -> ERROR PRUEBA NO_IMPLEMENTADA
+Prueba 125: No hay archivos para recuperar -> OK
 ********* FIN PRUEBAS Error Opcional*******
 
-PRUEBAS FUNCION PRUEBAS Error Opcional                             HAY 1 PRUEBAS INCORRECTAS
+PRUEBAS FUNCION PRUEBAS Error Opcional                             PRUEBAS CORRECTAS
 
 
 
 ----------------
 PRUEBAS FUNCIONES 
-PRUEBAS FUNCIONES RESULTADO ../PruebasEjemploDeUso.txt          => CORRECTAS:  7 INCORRECTAS: 15
+PRUEBAS FUNCIONES RESULTADO ../PruebasEjemploDeUso.txt          => CORRECTAS: 10 INCORRECTAS: 12
 PRUEBAS FUNCIONES 

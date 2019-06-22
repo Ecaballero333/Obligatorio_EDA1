@@ -161,14 +161,13 @@ TipoRetorno FileSystem::Type(Cadena rutaArchivo) const
 
 TipoRetorno FileSystem::Undelete()
 {
-	return NO_IMPLEMENTADA;
-	/*TipoRetorno retorno = OK;
-	//TipoError resultado = this->raiz->Undelete();
+	TipoRetorno retorno = OK;
+	TipoError resultado = this->raiz->Undelete();
 	if (resultado != NO_HAY_ERROR) {
 		retorno = ERROR;
 		this->ImprimirError(resultado);
 	}
-	return retorno;*/
+	return retorno;
 }
 
 
@@ -211,6 +210,9 @@ void FileSystem::ImprimirError(TipoError tipoError) const {
 		break;
 	case ERROR_YA_EXISTE_ARCHIVO:
 		cout << "ERROR: Ya existe un archivo con el mismo nombre en esa ruta.";
+		break;
+	case ERROR_NO_HAY_ARCHIVOS_PARA_RECUPERAR:
+		cout << "ERROR: No hay archivos para recuperar.";
 		break;
 	default:
 		break;

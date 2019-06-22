@@ -9,8 +9,7 @@ Directorios::Directorios()
 	Cadena* nombreDirectorioRaiz = new Cadena("/");
 	Directorio* directorioRaiz = new Directorio(*nombreDirectorioRaiz, 0);
 	this->arbolDirectorios = new NodoAG<Directorio>(*directorioRaiz, nullptr, nullptr);
-	this->maximoRecupera = 0;
-	this->listaUndeleteArchivos = new PilaImp2<Asociacion<Cadena,Archivo>>();
+	this->listaUndeleteArchivos = new PilaAcotadaEspecial<Asociacion<Cadena,Archivo>>(1);
 }
 
 Directorios::Directorios(unsigned int MAX_RECUPERAR)
@@ -18,8 +17,7 @@ Directorios::Directorios(unsigned int MAX_RECUPERAR)
 	Cadena* nombreDirectorioRaiz = new Cadena("/");
 	Directorio* directorioRaiz = new Directorio(*nombreDirectorioRaiz, 0);
 	this->arbolDirectorios = new NodoAG<Directorio>(*directorioRaiz, nullptr, nullptr);
-	this->maximoRecupera = MAX_RECUPERAR;
-	this->listaUndeleteArchivos = new PilaImp2<Asociacion<Cadena, Archivo>>();
+	this->listaUndeleteArchivos = new PilaAcotadaEspecial<Asociacion<Cadena, Archivo>>(MAX_RECUPERAR);
 }
 
 Directorios::~Directorios()
@@ -316,16 +314,17 @@ TipoError Directorios::Attrib(Cadena ruta, Cadena parametro) {
 	if (retorno == NO_HAY_ERROR) {
 		if (!ExisteDirectorio(ruta, true)) {
 			retorno = ERROR_NO_SE_ENCUENTRA_RUTA;
-		}
-		Cadena nombreArchivo = "";
-		NodoAG<Directorio>* nodoDirectorio = this->BuscarNodoDirectorio(ruta, true, nombreArchivo);
-		
-		if (!nodoDirectorio->dato.ExisteArchivo(nombreArchivo)) {
-			retorno = ERROR_NO_EXISTE_ARCHIVO_NOMBRE_EN_RUTA;
-		}
-		else {
-			Archivo& archivo = nodoDirectorio->dato.BuscarArchivo(nombreArchivo);
-			archivo.ModificarVisibilidad(parametro);
+		} else {
+			Cadena nombreArchivo = "";
+			NodoAG<Directorio>* nodoDirectorio = this->BuscarNodoDirectorio(ruta, true, nombreArchivo);
+
+			if (!nodoDirectorio->dato.ExisteArchivo(nombreArchivo)) {
+				retorno = ERROR_NO_EXISTE_ARCHIVO_NOMBRE_EN_RUTA;
+			}
+			else {
+				Archivo& archivo = nodoDirectorio->dato.BuscarArchivo(nombreArchivo);
+				archivo.ModificarVisibilidad(parametro);
+			}
 		}
 	}
 
@@ -334,20 +333,22 @@ TipoError Directorios::Attrib(Cadena ruta, Cadena parametro) {
 
 TipoError Directorios::Delete(Cadena rutaArchivo) {
 	TipoError retorno = this->ValidacionesPorOperacion(DELETE, rutaArchivo, "", "");
-	if (!ExisteDirectorio(rutaArchivo,true)) {
-		retorno = ERROR_NO_SE_ENCUENTRA_RUTA;
-	}
-	else {
-		Cadena nombreArchivo = "";
-		NodoAG<Directorio> *nodoDirectorio = BuscarNodoDirectorio(rutaArchivo, true, nombreArchivo);
-		if (!nodoDirectorio->dato.ExisteArchivo(nombreArchivo)) {
-			retorno = ERROR_NO_EXISTE_ARCHIVO_NOMBRE_EN_RUTA;
+	if (retorno == NO_HAY_ERROR) {
+		if (!ExisteDirectorio(rutaArchivo, true)) {
+			retorno = ERROR_NO_SE_ENCUENTRA_RUTA;
 		}
 		else {
-			Archivo archivo = nodoDirectorio->dato.BuscarArchivo(nombreArchivo);
-			Asociacion<Cadena, Archivo>* asociacionRutaArchivo = new Asociacion<Cadena, Archivo>(rutaArchivo, archivo);
-			this->listaUndeleteArchivos->Push(*asociacionRutaArchivo);
-			nodoDirectorio->dato.EliminarArchivo(nombreArchivo);
+			Cadena nombreArchivo = "";
+			NodoAG<Directorio> *nodoDirectorio = BuscarNodoDirectorio(rutaArchivo, true, nombreArchivo);
+			if (!nodoDirectorio->dato.ExisteArchivo(nombreArchivo)) {
+				retorno = ERROR_NO_EXISTE_ARCHIVO_NOMBRE_EN_RUTA;
+			}
+			else {
+				Archivo archivo = nodoDirectorio->dato.BuscarArchivo(nombreArchivo);
+				Asociacion<Cadena, Archivo>* asociacionRutaArchivo = new Asociacion<Cadena, Archivo>(rutaArchivo, archivo);
+				this->listaUndeleteArchivos->Push(*asociacionRutaArchivo);
+				nodoDirectorio->dato.EliminarArchivo(nombreArchivo);
+			}
 		}
 	}
 	return retorno;
@@ -509,6 +510,11 @@ TipoError Directorios::ValidacionesPorOperacion(TipoOperacion nombreOperacion, C
 			retorno = ERROR_PARAMETRO_DESCONOCIDO;
 		}
 	}
+	if (nombreOperacion == UNDELETE) {
+		if (this->listaUndeleteArchivos->EsVacia()) {
+			retorno = ERROR_NO_HAY_ARCHIVOS_PARA_RECUPERAR;
+		}
+	}
 	return retorno;
 }
 
@@ -605,6 +611,14 @@ NodoAG<Directorio> *Directorios::ClonarNodoDirectorio(NodoAG<Directorio>* nodo) 
 	else {
 		return new NodoAG<Directorio>(nodo->dato, ClonarNodoDirectorio(nodo->ph), ClonarNodoDirectorio(nodo->sh));
 	}
+}
+
+TipoError Directorios::Undelete() {
+	TipoError retorno = this->ValidacionesPorOperacion(UNDELETE, "", "", "");
+	if (retorno == NO_HAY_ERROR) {
+		//
+	}
+	return retorno;
 }
 
 #endif
