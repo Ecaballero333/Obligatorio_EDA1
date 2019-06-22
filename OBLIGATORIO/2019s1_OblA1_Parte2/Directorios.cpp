@@ -616,7 +616,18 @@ NodoAG<Directorio> *Directorios::ClonarNodoDirectorio(NodoAG<Directorio>* nodo) 
 TipoError Directorios::Undelete() {
 	TipoError retorno = this->ValidacionesPorOperacion(UNDELETE, "", "", "");
 	if (retorno == NO_HAY_ERROR) {
-		//
+		Asociacion<Cadena,Archivo> rutaYArchivo = this->listaUndeleteArchivos->Pop();
+		Cadena ruta = rutaYArchivo.GetDominio();
+		Cadena nombreArchivo = "";
+		NodoAG<Directorio> *nodoDirectorio = this->BuscarNodoDirectorio(ruta, true, nombreArchivo);
+		//Si existe el directorio y no hay un archivo con el mismo nombre, recupero el archivo
+		if (nodoDirectorio != NULL) {
+			if (!nodoDirectorio->dato.ExisteArchivo(nombreArchivo)) {
+				Archivo archivo = rutaYArchivo.GetRango();
+				nodoDirectorio->dato.AgregarArchivo(archivo);
+			}
+		}
+
 	}
 	return retorno;
 }

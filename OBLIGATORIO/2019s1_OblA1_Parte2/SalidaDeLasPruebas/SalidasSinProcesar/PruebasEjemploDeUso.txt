@@ -664,9 +664,16 @@ ERROR: No existe un archivo con ese nombre en esa ruta.
 -!-116::0-OK-OK-Se muestra contenido de todo el filesystem
 
 -!-117::0-OK-OK-Se recupera /archivo1.txt
-ERROR: No existe un archivo con ese nombre en esa ruta.
--!-118::0-OK-ERROR-Se muestra /archivo1.txt
+/archivo1.txt
+
+1: An error saepe.              An error saepe.   
+2: 
+3: 
+4: Omnesque philosophia eum an, ius tale.Vis omnis legere  
+
+-!-118::0-OK-OK-Se muestra /archivo1.txt
 /
+//archivo1.txt
 /directorio1
 /directorio1/directorio11
 /directorio1/directorio11/archivo11.txt
@@ -689,6 +696,7 @@ ERROR: No existe un archivo con ese nombre en esa ruta.
 
 -!-120::0-OK-OK-Se borra archivo /directorio1/directorio11/archivo11.txt
 /
+//archivo1.txt
 /directorio1
 /directorio1/directorio11
 /directorio1/directorio11/archivo12.txt
@@ -710,8 +718,10 @@ ERROR: No existe un archivo con ese nombre en esa ruta.
 
 -!-122::0-OK-OK-Se recupera /directorio1/directorio11/archivo11.txt
 /
+//archivo1.txt
 /directorio1
 /directorio1/directorio11
+/directorio1/directorio11/archivo11.txt
 /directorio1/directorio11/archivo12.txt
 /directorio1/directorio11/archivo13.txt
 /directorio1/directorio12
@@ -728,8 +738,24 @@ ERROR: No existe un archivo con ese nombre en esa ruta.
 /directorio2/directorio22/archivo22.txt
 
 -!-123::0-OK-OK-Se muestra contenido de todo el filesystem
-ERROR: No existe un archivo con ese nombre en esa ruta.
--!-124::0-OK-ERROR-Se muestra /directorio1/directorio11/archivo11.txt
+/directorio1/directorio11/archivo11.txt
+
+1: An error saepe.              An error saepe.   
+2: 
+3: 
+4: Omnesque philosophia eum an, ius tale.Vis omnis legere  
+5: Eos nibh regione.Ius invidunt convenire at, has in atqui probatus deserunt.  
+6: 
+7: 
+8: Mel et illum sententiae, vix inani. 
+9: 
+10: 
+11: 
+12: 
+13: 
+14: Sed fabulas laoreet appellantur. 
+
+-!-124::0-OK-OK-Se muestra /directorio1/directorio11/archivo11.txt
 -!-Fin::PRUEBAS Opcional
 -!-Ini::PRUEBAS Error Opcional
 ERROR: No hay archivos para recuperar.

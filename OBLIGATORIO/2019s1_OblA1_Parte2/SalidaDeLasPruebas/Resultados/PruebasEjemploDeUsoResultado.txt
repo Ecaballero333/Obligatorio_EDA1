@@ -1209,26 +1209,7 @@ Prueba 116: Se muestra contenido de todo el filesystem -> OK
 -----------------------------------
 Prueba 117: Se recupera /archivo1.txt -> OK
 -----------------------------------
-Prueba 118: Se muestra /archivo1.txt
- -> ERROR retorno incorrecto
-	 Se esperaba: OK
-	 Se obtuvo: ERROR
-
- -> ERROR impresión incorrecta
-Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir): 
-1 : /archivo1.txt
-2 : 
-3 : 1: An error saepe.              An error saepe.
-4 : 2: 
-5 : 3: 
-6 : 4: Omnesque philosophia eum an, ius tale.Vis omnis legere
-7 : 
-8 : 
-9 : 
-
-Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
-(Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! ERROR: No existe un archivo con ese nombre en esa ruta.
+Prueba 118: Se muestra /archivo1.txt -> OK
 -----------------------------------
 Prueba 119: Se muestra contenido de todo el filesystem
  -> ERROR impresión incorrecta
@@ -1258,24 +1239,25 @@ Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir):
 Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
 1 : /
-2 ! /directorio1
-3 ! /directorio1/directorio11
-4 ! /directorio1/directorio11/archivo11.txt
-5 ! /directorio1/directorio11/archivo12.txt
-6 ! /directorio1/directorio11/archivo13.txt
-7 ! /directorio1/directorio12
-8 ! /directorio2
-9 ! /directorio2/directorio21
-10! /directorio2/directorio21/directorio211
-11! /directorio2/directorio21/directorio211/archivo211.h
-12! /directorio2/directorio21/directorio211/archivo212.ppt
-13! /directorio2/directorio21/directorio211/directorio2111
-14! /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
-15! /directorio2/directorio22
-16! /directorio2/directorio22/Archivo22.txt
-17! /directorio2/directorio22/Archivo23.txt
-18! /directorio2/directorio22/archivo22.txt
-19! 
+2 ! //archivo1.txt
+3 : /directorio1
+4 : /directorio1/directorio11
+5 : /directorio1/directorio11/archivo11.txt
+6 : /directorio1/directorio11/archivo12.txt
+7 : /directorio1/directorio11/archivo13.txt
+8 : /directorio1/directorio12
+9 : /directorio2
+10: /directorio2/directorio21
+11: /directorio2/directorio21/directorio211
+12: /directorio2/directorio21/directorio211/archivo211.h
+13: /directorio2/directorio21/directorio211/archivo212.ppt
+14: /directorio2/directorio21/directorio211/directorio2111
+15: /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
+16: /directorio2/directorio22
+17: /directorio2/directorio22/Archivo22.txt
+18: /directorio2/directorio22/Archivo23.txt
+19: /directorio2/directorio22/archivo22.txt
+20: 
 -----------------------------------
 Prueba 120: Se borra archivo /directorio1/directorio11/archivo11.txt -> OK
 -----------------------------------
@@ -1306,23 +1288,24 @@ Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir):
 Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
 1 : /
-2 ! /directorio1
-3 ! /directorio1/directorio11
-4 ! /directorio1/directorio11/archivo12.txt
-5 ! /directorio1/directorio11/archivo13.txt
-6 ! /directorio1/directorio12
-7 ! /directorio2
-8 ! /directorio2/directorio21
-9 ! /directorio2/directorio21/directorio211
-10! /directorio2/directorio21/directorio211/archivo211.h
-11! /directorio2/directorio21/directorio211/archivo212.ppt
-12! /directorio2/directorio21/directorio211/directorio2111
-13! /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
-14! /directorio2/directorio22
-15! /directorio2/directorio22/Archivo22.txt
-16! /directorio2/directorio22/Archivo23.txt
-17! /directorio2/directorio22/archivo22.txt
-18! 
+2 ! //archivo1.txt
+3 : /directorio1
+4 : /directorio1/directorio11
+5 : /directorio1/directorio11/archivo12.txt
+6 : /directorio1/directorio11/archivo13.txt
+7 : /directorio1/directorio12
+8 : /directorio2
+9 : /directorio2/directorio21
+10: /directorio2/directorio21/directorio211
+11: /directorio2/directorio21/directorio211/archivo211.h
+12: /directorio2/directorio21/directorio211/archivo212.ppt
+13: /directorio2/directorio21/directorio211/directorio2111
+14: /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
+15: /directorio2/directorio22
+16: /directorio2/directorio22/Archivo22.txt
+17: /directorio2/directorio22/Archivo23.txt
+18: /directorio2/directorio22/archivo22.txt
+19: 
 -----------------------------------
 Prueba 122: Se recupera /directorio1/directorio11/archivo11.txt -> OK
 -----------------------------------
@@ -1354,29 +1337,27 @@ Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir):
 Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
 1 : /
-2 ! /directorio1
-3 ! /directorio1/directorio11
-4 ! /directorio1/directorio11/archivo12.txt
-5 ! /directorio1/directorio11/archivo13.txt
-6 ! /directorio1/directorio12
-7 ! /directorio2
-8 ! /directorio2/directorio21
-9 ! /directorio2/directorio21/directorio211
-10! /directorio2/directorio21/directorio211/archivo211.h
-11! /directorio2/directorio21/directorio211/archivo212.ppt
-12! /directorio2/directorio21/directorio211/directorio2111
-13! /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
-14! /directorio2/directorio22
-15! /directorio2/directorio22/Archivo22.txt
-16! /directorio2/directorio22/Archivo23.txt
-17! /directorio2/directorio22/archivo22.txt
-18! 
+2 ! //archivo1.txt
+3 : /directorio1
+4 : /directorio1/directorio11
+5 : /directorio1/directorio11/archivo11.txt
+6 : /directorio1/directorio11/archivo12.txt
+7 : /directorio1/directorio11/archivo13.txt
+8 : /directorio1/directorio12
+9 : /directorio2
+10: /directorio2/directorio21
+11: /directorio2/directorio21/directorio211
+12: /directorio2/directorio21/directorio211/archivo211.h
+13: /directorio2/directorio21/directorio211/archivo212.ppt
+14: /directorio2/directorio21/directorio211/directorio2111
+15: /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
+16: /directorio2/directorio22
+17: /directorio2/directorio22/Archivo22.txt
+18: /directorio2/directorio22/Archivo23.txt
+19: /directorio2/directorio22/archivo22.txt
+20: 
 -----------------------------------
 Prueba 124: Se muestra /directorio1/directorio11/archivo11.txt
- -> ERROR retorno incorrecto
-	 Se esperaba: OK
-	 Se obtuvo: ERROR
-
  -> ERROR impresión incorrecta
 Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir): 
 1 : /directorio1/directorio11/archivo11.txt
@@ -1397,10 +1378,26 @@ Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir):
 
 Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! ERROR: No existe un archivo con ese nombre en esa ruta.
+1 : /directorio1/directorio11/archivo11.txt
+2 : 
+3 ! 1: An error saepe.              An error saepe.   
+4 : 2: 
+5 : 3: 
+6 ! 4: Omnesque philosophia eum an, ius tale.Vis omnis legere  
+7 ! 5: Eos nibh regione.Ius invidunt convenire at, has in atqui probatus deserunt.  
+8 : 6: 
+9 : 7: 
+10! 8: Mel et illum sententiae, vix inani. 
+11: 9: 
+12! 10: 
+13! 11: 
+14! 12: 
+15! 13: 
+16! 14: Sed fabulas laoreet appellantur. 
+17! 
 ********* FIN PRUEBAS Opcional*******
 
-PRUEBAS FUNCION PRUEBAS Opcional                                   HAY 6 PRUEBAS INCORRECTAS
+PRUEBAS FUNCION PRUEBAS Opcional                                   HAY 5 PRUEBAS INCORRECTAS
 
 ********* INICIO PRUEBAS Error Opcional*******
 -----------------------------------

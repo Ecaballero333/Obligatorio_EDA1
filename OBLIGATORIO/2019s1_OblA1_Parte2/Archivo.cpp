@@ -209,12 +209,13 @@ void Archivo::MostrarContenido() const
 
 void Archivo::EliminarLineas(){
 	if (this->lineas != NULL) {
-		Iterador<Cadena> itCadena = this->lineas->GetIterador();
+		/*Iterador<Cadena> itCadena = this->lineas->GetIterador();
 		while (!itCadena.EsFin())
 		{
 			Cadena cadenaCopia = itCadena.Elemento();
 			itCadena++;
-		}
+		}*/
+		this->lineas->Vaciar();
 	}
 }
 

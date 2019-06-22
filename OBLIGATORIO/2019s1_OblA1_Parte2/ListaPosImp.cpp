@@ -113,20 +113,21 @@ void ListaPosImp<T>::BorrarPpio()
 template <class T>
 void ListaPosImp<T>::BorrarFin()
 {
-	if (this->cantElem > 0) {
-		this->cantElem--;
-	}
+	if(this->cantElem>0)
+		BorrarPos(cantElem - 1);
 }
 
 template <class T>
 void ListaPosImp<T>::BorrarPos(unsigned int pos)
 {
 	if (pos < this->tamanoVec) {
+		/*T* e = &(this->vec[pos]);
+		delete e;*/
 		for (int i = pos; i < this->cantElem - 1; i++)
 		{
 			this->vec[i] = this->vec[i + 1];
 		}
-		this->BorrarFin();
+		this->cantElem--;
 	}
 }
 
@@ -180,6 +181,9 @@ bool ListaPosImp<T>::Existe(const T &e) const
 template <class T>
 void ListaPosImp<T>::Vaciar()
 {
+	for (int i = 0; i < this->cantElem; i++) {
+		this->BorrarPos(i);
+	}
 	this->cantElem = 0;
 }
 template <class T>
