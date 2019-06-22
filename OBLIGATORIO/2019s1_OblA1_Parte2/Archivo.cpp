@@ -215,7 +215,7 @@ void Archivo::EliminarLineas(){
 			Cadena cadenaCopia = itCadena.Elemento();
 			itCadena++;
 		}*/
-		this->lineas->Vaciar();
+		//this->lineas->Vaciar();
 	}
 }
 
