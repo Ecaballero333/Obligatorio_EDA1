@@ -103,9 +103,9 @@ void Archivo::ModificarVisibilidad(Cadena nuevaVisibilidad)
 
 }
 
-bool Archivo::CantidadValidaLineas(int k){
+bool Archivo::CantidadValidaLineas(int nroLinea){
 
-	if(lineas->CantidadElementos() >= k){
+	if(lineas->CantidadElementos() >= nroLinea){
 		return true;
 	}
 	else {
@@ -140,49 +140,19 @@ bool Archivo::TieneLineas() const
 void Archivo::EliminarTexto(unsigned int nroLinea, unsigned int posLinea, unsigned int k)
 {
 	bool llegueAlFinal = false;
-	Cadena aux = lineas->ElementoPos(nroLinea);
-
-	if (nroLinea <= lineas->CantidadElementos()) {
-		if (aux.Length() < posLinea) {
-
-			if (k + posLinea > aux.Length()){
-				while (aux[posLinea] != '\0') {
-					//delete &aux[posLinea];
-					char* nuevo = aux.GetNewCharPtr();
-					borrarPosicion(nuevo, posLinea);
-					Cadena nuevaAux = *new Cadena(nuevo, false);
-					aux = nuevaAux;
-
-					delete& nuevaAux;
-					delete nuevo;
-					posLinea++;
-				}
-			}
-			else{
-				while (k != 0){
-					//delete &aux[posLinea];
-					char* nuevo = aux.GetNewCharPtr();
-					borrarPosicion(nuevo, posLinea);
-					Cadena nuevaAux = *new Cadena(nuevo, false);
-					aux = nuevaAux;
-					
-					delete &nuevaAux;
-					delete nuevo;
-					k--;
-					posLinea++;
-				}
-
-			}
-
-
-		}
-		if (posLinea == 0 && llegueAlFinal) {
-			lineas->BorrarPos(nroLinea);
-		}
+	Cadena &aux = lineas->ElementoPos(nroLinea-1);//Las líneas empiezan en 1, por eso resto 1
+	//caso 1: Hay que borrar la línea entera porque se borraron todos los caracteres
+	if (posLinea == 1 && k >= aux.Length()) {
+		lineas->BorrarPos(nroLinea);
 	}
 	else {
-		//ERROR
+		//Caso 2: No hay que hacer nada porque la posLinea es superior al largo del texto de la línea
+		if (posLinea < aux.Length()) {
+			//Caso 3: Borro una parte del texto de la línea (no todo completo)		
+			aux.EliminarTexto(posLinea,k);
+		}
 	}
+
 }
 
 void Archivo::borrarPosicion(char str[], int n) {

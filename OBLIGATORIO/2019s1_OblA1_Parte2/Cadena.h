@@ -37,8 +37,8 @@ public:
 	bool operator==(const Cadena &c) const;
 	bool operator!=(const Cadena &c) const;
 	bool operator<(const Cadena &c) const;
-    bool operator>(const Cadena &c) const;
-    bool operator<=(const Cadena &c) const;
+	bool operator>(const Cadena &c) const;
+	bool operator<=(const Cadena &c) const;
 	bool operator>=(const Cadena &c) const;
 
 	// Retorna un nuevo vector de caracteres sin compartir memoria con this
@@ -59,9 +59,18 @@ public:
 	//POS: retorna true si el string no tiene caracteres
 	bool esVacia();
 
+	//PRE:
+	//POS: Borra el último caracter de la línea
 	void QuitarUltimoCaracter();
 
+	//PRE:
+	//POS: Inserta el texto (pasado por parámetro) a partir de la posición posLinea, 
+	//desplazando el texto existente (si hay) hacia el final del texto insertado
 	void InsertarTexto(unsigned int posLinea, Cadena texto);
+
+	//PRE: posLinea es una posición con texto dentro de la cadena
+	//POS: Elimina los k carácteres (si hay k caracteres, si no los que existan) de la cadena a partir de la posición posLinea. 
+	void EliminarTexto(int posLinea, int k);
 
 protected:
 	char *s;
@@ -70,8 +79,6 @@ protected:
 	//PRE: -
 	//POS: Agranda el vector con cantPosiciones más. Las nuevas pocisiónes tendran el valor " "
 	void AgrandarNPosiciones(int cantPosiciones);
-
-	void agrandarSiLleno();
 };
 
 #endif

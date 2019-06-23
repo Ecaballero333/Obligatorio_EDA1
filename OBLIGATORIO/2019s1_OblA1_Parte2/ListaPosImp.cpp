@@ -121,8 +121,6 @@ template <class T>
 void ListaPosImp<T>::BorrarPos(unsigned int pos)
 {
 	if (pos < this->tamanoVec) {
-		/*T* e = &(this->vec[pos]);
-		delete e;*/
 		for (int i = pos; i < this->cantElem - 1; i++)
 		{
 			this->vec[i] = this->vec[i + 1];

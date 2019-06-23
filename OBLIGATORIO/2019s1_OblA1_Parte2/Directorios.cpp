@@ -121,12 +121,14 @@ TipoError Directorios::DeleteText(Cadena rutaArchivo, unsigned int linea, unsign
 				retorno = ERROR_NO_EXISTE_ARCHIVO_NOMBRE_EN_RUTA;
 			}
 			else {
-				Archivo archivo = nodoDirectorio->dato.BuscarArchivo(nombreArchivo);
-				if (archivo.CantidadValidaLineas(k)) {
+				Archivo &archivo = nodoDirectorio->dato.BuscarArchivo(nombreArchivo);
+				if (!archivo.CantidadValidaLineas(linea)) {
 					retorno = ERROR_LINEA_NO_EXISTE;
 				}
 				else {
-					archivo.EliminarTexto(linea, posicion, k);
+					if (k > 0) {
+						archivo.EliminarTexto(linea, posicion, k);
+					}
 				}
 			}
 		}

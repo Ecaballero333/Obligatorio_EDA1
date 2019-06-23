@@ -482,43 +482,39 @@ El archivo no posee contenido
 
 -!-67::0-OK-OK-Se muestra /archivo1.txt
 
--!-68::0-OK-NO_IMPLEMENTADA-Se borran 10 caracteres, de la linea 1, posicion 3 de /archivo1.txt
+-!-68::0-OK-OK-Se borran 10 caracteres, de la linea 1, posicion 3 de /archivo1.txt
 /archivo1.txt
 
-1: An error saepe.              An error saepe.   
+1: Anpe.              An error saepe.   
 2: 
 3: 
 4: Omnesque philosophia eum an, ius tale.Vis omnis legere  
 
 -!-69::0-OK-OK-Se muestra /archivo1.txt
 
--!-70::0-OK-NO_IMPLEMENTADA-Se borran 100 caracteres, de la linea 2, posicion 1 de /archivo1.txt
+-!-70::0-OK-OK-Se borran 100 caracteres, de la linea 2, posicion 1 de /archivo1.txt
 /archivo1.txt
 
-1: An error saepe.              An error saepe.   
+1: Anpe.              An error saepe.   
 2: 
-3: 
-4: Omnesque philosophia eum an, ius tale.Vis omnis legere  
+3: Omnesque philosophia eum an, ius tale.Vis omnis legere  
 
 -!-71::0-OK-OK-Se muestra /archivo1.txt
 
--!-72::0-OK-NO_IMPLEMENTADA-Se borran 60 caracteres, de la linea 3, posicion 10 de /archivo1.txt
+-!-72::0-OK-OK-Se borran 60 caracteres, de la linea 3, posicion 10 de /archivo1.txt
 /archivo1.txt
 
-1: An error saepe.              An error saepe.   
+1: Anpe.              An error saepe.   
 2: 
-3: 
-4: Omnesque philosophia eum an, ius tale.Vis omnis legere  
+3: Omnesque 
 
 -!-73::0-OK-OK-Se muestra /archivo1.txt
 
--!-74::0-OK-NO_IMPLEMENTADA-Se borran 60 caracteres, de la linea 3, posicion 1 de /archivo1.txt
+-!-74::0-OK-OK-Se borran 60 caracteres, de la linea 3, posicion 1 de /archivo1.txt
 /archivo1.txt
 
-1: An error saepe.              An error saepe.   
+1: Anpe.              An error saepe.   
 2: 
-3: 
-4: Omnesque philosophia eum an, ius tale.Vis omnis legere  
 
 -!-75::0-OK-OK-Se muestra /archivo1.txt
 -!-Fin::PRUEBAS DeleteText
@@ -599,16 +595,16 @@ ERROR: No existe un archivo con ese nombre en esa ruta.
 -!-105::0-ERROR-ERROR-La posicion 0 no es valida.
 -!-Fin::PRUEBAS Error InsertText
 -!-Ini::PRUEBAS Error DeleteText
+ERROR: La ruta no comienza con /.
+-!-106::0-ERROR-ERROR-La ruta no comienza con /.
+ERROR: No se encuentra la ruta.
+-!-107::0-ERROR-ERROR-No se encuentra la ruta.
+ERROR: No existe un archivo con ese nombre en esa ruta.
+-!-108::0-ERROR-ERROR-No existe un archivo con ese nombre en esa ruta.
 
--!-106::0-ERROR-NO_IMPLEMENTADA-La ruta no comienza con /.
+-!-109::0-ERROR-ERROR-La linea 0 no es valida.
 
--!-107::0-ERROR-NO_IMPLEMENTADA-No se encuentra la ruta.
-
--!-108::0-ERROR-NO_IMPLEMENTADA-No existe un archivo con ese nombre en esa ruta.
-
--!-109::0-ERROR-NO_IMPLEMENTADA-La linea 0 no es valida.
-
--!-110::0-ERROR-NO_IMPLEMENTADA-La posicion 0 no es valida.
+-!-110::0-ERROR-ERROR-La posicion 0 no es valida.
 -!-Fin::PRUEBAS Error DeleteText
 -!-Ini::PRUEBAS Error Type
 ERROR: La ruta no comienza con /.

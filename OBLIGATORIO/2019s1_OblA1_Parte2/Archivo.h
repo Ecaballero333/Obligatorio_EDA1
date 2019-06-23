@@ -47,7 +47,7 @@ class Archivo{
 		//POS: Si los parametros son validos se agrega texto al archivo 
 		void InsertarTexto(unsigned int nroLinea, unsigned int posLinea, Cadena texto);
 
-		//PRE:
+		//PRE: El número de línea es valido. k > 0
 		//POS: Si los parametros son validos se elimina texto del archivo
 		void EliminarTexto(unsigned int nroLinea, unsigned int posLinea, unsigned int k);
 
@@ -73,7 +73,7 @@ class Archivo{
 
 		//PRE:
 		//POS: Retorna si el archivo tiene k o mas lineas
-		bool CantidadValidaLineas(int k);
+		bool CantidadValidaLineas(int nroLinea);
 
 		//metodo propio
 		//PRE:

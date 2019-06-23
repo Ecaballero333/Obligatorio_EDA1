@@ -239,23 +239,42 @@ void Cadena::AgrandarNPosiciones(int cantPosiciones) {
 	}
 
 	delete[] aux;
-	/*char* aux = new char[nuevoTamano-1]();
-	for (int i = 0; i < this->Length(); i++)
-	{
-		aux[i] = this->s[i];
-	}
-	for (int i = this->Length(); i <= nuevoTamano; i++)
-	{
-		if (i == nuevoTamano) {
-			aux[i] = '\0';
-		}
-		else {
-			aux[i] = ' ';
-		}
+	
+}
 
+void Cadena::EliminarTexto(int posLinea, int k) {
+	char* aux = this->GetNewCharPtr();
+	int largoInicial = this->Length();
+	int posHasta = (posLinea-1) + k;
+	if (posHasta > largoInicial) {
+		posHasta = largoInicial;
 	}
-	this->s = aux;*/
-	//delete aux;
+	int sobraDerecha = largoInicial - posLinea;
+	bool borraEnElMedio = sobraDerecha - k > 0;
+	sobraDerecha = borraEnElMedio ? sobraDerecha - k : 0;
+	int tamanoNuevo = posLinea + sobraDerecha;
+	this->s = new char[tamanoNuevo]();
+	int posNuevo = 0;
+	for (int i = 0; i < posLinea-1; i++)
+	{
+		s[posNuevo] = aux[i];
+		posNuevo++;
+	}
+	if (!borraEnElMedio) {
+		s[posNuevo] = '\0';
+	} else {
+		for (int i = posLinea - 1 + k; i <= largoInicial; i++)
+		{
+			if (i == largoInicial) {
+				s[posNuevo] = '\0';
+			}
+			else {
+				s[posNuevo] = aux[i];
+				posNuevo++;
+			}
+		}
+	}
+	delete[] aux;
 }
 
 

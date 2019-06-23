@@ -135,9 +135,6 @@ TipoRetorno FileSystem::InsertText(Cadena rutaArchivo, unsigned int nroLinea, un
 
 TipoRetorno FileSystem::DeleteText(Cadena rutaArchivo, unsigned int nroLinea, unsigned int posLinea, unsigned int k)
 {
-
-	return NO_IMPLEMENTADA;
-
 	TipoRetorno retorno = OK;
 	TipoError resultado = this->raiz->DeleteText(rutaArchivo, nroLinea, posLinea, k);
 	if (resultado != NO_HAY_ERROR) {
