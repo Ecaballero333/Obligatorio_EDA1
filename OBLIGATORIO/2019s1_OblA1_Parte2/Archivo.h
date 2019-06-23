@@ -75,15 +75,9 @@ class Archivo{
 		//POS: Retorna si el archivo tiene k o mas lineas
 		bool CantidadValidaLineas(int nroLinea);
 
-		//metodo propio
-		//PRE:
-		//POS: Elimina todas las lineas de un archivo
-		/*void EliminarLineas();*/
-
 		//PRE:
 		//POS: Borra posición de la cadena
 		void borrarPosicion(char str[], int n);
-
 
     private:
 		Cadena nombre;

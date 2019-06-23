@@ -116,14 +116,12 @@ bool Archivo::CantidadValidaLineas(int nroLinea){
 
 void Archivo::InsertarTexto(unsigned int nroLinea, unsigned int posLinea, Cadena texto)
 {
-	
 	while (nroLinea > lineas->CantidadElementos()) {
-		lineas->AgregarFin(Cadena());
+		lineas->AgregarFin("");
 	}
 	
 	Cadena &aux = lineas->ElementoPos(nroLinea-1);
 	(&aux)->InsertarTexto(posLinea, texto);
-
 }
 
 
@@ -160,7 +158,6 @@ void Archivo::borrarPosicion(char str[], int n) {
 
 	for (n; n <= slen; n++)
 		str[n] = str[n + 1];
-
 }
 
 void Archivo::MostrarContenido() const

@@ -211,7 +211,7 @@ void Cadena::InsertarTexto(unsigned int posLinea, Cadena texto) {
 		s[i] = texto[posTexto];
 		posTexto++;
 	}
-	for (int i = hasta-1; i < this->Length()-1; i++) {
+	for (int i = hasta-1; i < this->Length(); i++) {
 		s[i] = aux[posAux];
 		posAux++;
 	}
@@ -220,7 +220,7 @@ void Cadena::InsertarTexto(unsigned int posLinea, Cadena texto) {
 
 void Cadena::AgrandarNPosiciones(int cantPosiciones) {
 	int tamanoInicial = this->Length();
-	int nuevoTamano = this->Length() + cantPosiciones+1;
+	int nuevoTamano = this->Length() + cantPosiciones;
 	char* aux = this->GetNewCharPtr();
 	this->s = new char[nuevoTamano];
 	for (int i = 0; i < tamanoInicial; i++)

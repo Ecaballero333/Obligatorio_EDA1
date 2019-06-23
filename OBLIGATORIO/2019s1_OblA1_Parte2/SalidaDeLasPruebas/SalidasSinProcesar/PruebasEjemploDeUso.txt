@@ -135,31 +135,31 @@ No contiene archivos ni directorios.
 -!-Ini::PRUEBAS Type
 /archivo1.txt
 
-1: An error saepe.              An error saepe.   
+1: An error saepe.              An error saepe. 
 2: 
 3: 
-4: Omnesque philosophia eum an, ius tale.Vis omnis legere  
+4: Omnesque philosophia eum an, ius tale.Vis omnis legere
 
 -!-36::0-OK-OK-Se muestra /archivo1.txt
 /directorio1/directorio11/archivo11.txt
 
-1: Eos nibh regione.Ius invidunt convenire at, has in atqui probatus deserunt.  
+1: Eos nibh regione.Ius invidunt convenire at, has in atqui probatus deserunt.
 2: 
 3: 
-4: Mel et illum sententiae, vix inani. 
+4: Mel et illum sententiae, vix inani.
 5: 
 6: 
 7: 
 8: 
 9: 
-10: Sed fabulas laoreet appellantur. 
+10: Sed fabulas laoreet appellantur.
 
 -!-37::0-OK-OK-Se muestra /directorio1/directorio11/archivo11.txt
 /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
 
-1: Usu rebum virtute. 
-2: Eam habeo. 
-3: His no putant vivendo. 
+1: Usu rebum virtute.
+2: Eam habeo.
+3: His no putant vivendo.
 
 -!-38::0-OK-OK-Se muestra /directorio2/directorio21/directorio211/directorio2111/archivo2111.txt
 /directorio1/directorio11/archivo13.txt
@@ -475,36 +475,36 @@ El archivo no posee contenido
 -!-Ini::PRUEBAS DeleteText
 /archivo1.txt
 
-1: An error saepe.              An error saepe.   
+1: An error saepe.              An error saepe. 
 2: 
 3: 
-4: Omnesque philosophia eum an, ius tale.Vis omnis legere  
+4: Omnesque philosophia eum an, ius tale.Vis omnis legere
 
 -!-67::0-OK-OK-Se muestra /archivo1.txt
 
 -!-68::0-OK-OK-Se borran 10 caracteres, de la linea 1, posicion 3 de /archivo1.txt
 /archivo1.txt
 
-1: Anpe.              An error saepe.   
+1: Anpe.              An error saepe. 
 2: 
 3: 
-4: Omnesque philosophia eum an, ius tale.Vis omnis legere  
+4: Omnesque philosophia eum an, ius tale.Vis omnis legere
 
 -!-69::0-OK-OK-Se muestra /archivo1.txt
 
 -!-70::0-OK-OK-Se borran 100 caracteres, de la linea 2, posicion 1 de /archivo1.txt
 /archivo1.txt
 
-1: Anpe.              An error saepe.   
+1: Anpe.              An error saepe. 
 2: 
-3: Omnesque philosophia eum an, ius tale.Vis omnis legere  
+3: Omnesque philosophia eum an, ius tale.Vis omnis legere
 
 -!-71::0-OK-OK-Se muestra /archivo1.txt
 
 -!-72::0-OK-OK-Se borran 60 caracteres, de la linea 3, posicion 10 de /archivo1.txt
 /archivo1.txt
 
-1: Anpe.              An error saepe.   
+1: Anpe.              An error saepe. 
 2: 
 3: Omnesque 
 
@@ -513,7 +513,7 @@ El archivo no posee contenido
 -!-74::0-OK-OK-Se borran 60 caracteres, de la linea 3, posicion 1 de /archivo1.txt
 /archivo1.txt
 
-1: Anpe.              An error saepe.   
+1: Anpe.              An error saepe. 
 2: 
 
 -!-75::0-OK-OK-Se muestra /archivo1.txt
@@ -662,10 +662,10 @@ ERROR: No existe un archivo con ese nombre en esa ruta.
 -!-117::0-OK-OK-Se recupera /archivo1.txt
 /archivo1.txt
 
-1: An error saepe.              An error saepe.   
+1: An error saepe.              An error saepe. 
 2: 
 3: 
-4: Omnesque philosophia eum an, ius tale.Vis omnis legere  
+4: Omnesque philosophia eum an, ius tale.Vis omnis legere
 
 -!-118::0-OK-OK-Se muestra /archivo1.txt
 /
@@ -736,16 +736,16 @@ ERROR: No existe un archivo con ese nombre en esa ruta.
 -!-123::0-OK-OK-Se muestra contenido de todo el filesystem
 /directorio1/directorio11/archivo11.txt
 
-1: Eos nibh regione.Ius invidunt convenire at, has in atqui probatus deserunt.  
+1: Eos nibh regione.Ius invidunt convenire at, has in atqui probatus deserunt.
 2: 
 3: 
-4: Mel et illum sententiae, vix inani. 
+4: Mel et illum sententiae, vix inani.
 5: 
 6: 
 7: 
 8: 
 9: 
-10: Sed fabulas laoreet appellantur. 
+10: Sed fabulas laoreet appellantur.
 
 -!-124::0-OK-OK-Se muestra /directorio1/directorio11/archivo11.txt
 -!-Fin::PRUEBAS Opcional
