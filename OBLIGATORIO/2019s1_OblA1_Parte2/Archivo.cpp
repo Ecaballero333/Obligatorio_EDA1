@@ -23,10 +23,7 @@ Archivo::Archivo()
 
 Archivo::~Archivo()
 {
-	this->nombre = *new Cadena();
-	this->oculto = false;
-	this->EliminarLineas();
-
+	//delete this->lineas;
 }
 
 Archivo::Archivo(const Archivo &a)
@@ -41,7 +38,7 @@ Archivo &Archivo::operator=(const Archivo &a)
 {
 	if (this != &a)
 	{		
-		this->EliminarLineas();
+		this->lineas->Vaciar();
 		this->nombre = a.nombre;
 		this->oculto = a.EstaOculto();
 		if(a.lineas!=NULL){
@@ -207,17 +204,6 @@ void Archivo::MostrarContenido() const
 	}	
 }
 
-void Archivo::EliminarLineas(){
-	if (this->lineas != NULL) {
-		/*Iterador<Cadena> itCadena = this->lineas->GetIterador();
-		while (!itCadena.EsFin())
-		{
-			Cadena cadenaCopia = itCadena.Elemento();
-			itCadena++;
-		}*/
-		//this->lineas->Vaciar();
-	}
-}
 
 bool Archivo::EstaOculto() const
 {

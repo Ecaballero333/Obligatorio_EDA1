@@ -23,8 +23,6 @@ Directorios::Directorios(unsigned int MAX_RECUPERAR)
 Directorios::~Directorios()
 {
 	this->Vaciar();
-	delete this->arbolDirectorios;
-	delete this->listaUndeleteArchivos;
 }
 
 
@@ -261,6 +259,10 @@ void Directorios::Vaciar()
 	this->arbolDirectorios->dato.EliminarArchivos();
 	this->EliminarTodo(this->arbolDirectorios->ph);
 	this->listaUndeleteArchivos->Vaciar();
+	delete this->arbolDirectorios;
+	this->arbolDirectorios = NULL;
+	delete this->listaUndeleteArchivos;
+	this->listaUndeleteArchivos = NULL;
 }
 
 TipoError Directorios::CopiarDirectorio(Cadena rutaOrigen, Cadena rutaDestino)
@@ -547,7 +549,8 @@ void Directorios::ListarDirectorios(NodoAG<Directorio>* nodoDirectorio, Cadena r
 		nodoDirectorio->dato.ListarArchivos(ruta, parametro);
 		nodoDirectorio = nodoDirectorio->ph;//Lo avanzo uno para que busque solo directorios descendientes, no hermanos
 		ListaOrd<Asociacion<Cadena, Directorio>>* listaRutasDirectorios = new ListaOrdImp<Asociacion<Cadena, Directorio>>();
-		this->obtenerListaOrdenadaTodoslLosDirectorios(nodoDirectorio, ruta, listaRutasDirectorios);
+		Cadena rutaArreglada = ruta != "/" ? ruta + "/" : ruta;
+		this->obtenerListaOrdenadaTodoslLosDirectorios(nodoDirectorio, rutaArreglada, listaRutasDirectorios);
 		Iterador<Asociacion<Cadena, Directorio>> itListaDirectorios = listaRutasDirectorios->GetIterador();
 		while (!itListaDirectorios.EsFin()) {
 			Cadena ruta = itListaDirectorios.Elemento().GetDominio();

@@ -78,7 +78,7 @@ class Archivo{
 		//metodo propio
 		//PRE:
 		//POS: Elimina todas las lineas de un archivo
-		void EliminarLineas();
+		/*void EliminarLineas();*/
 
 		//PRE:
 		//POS: Borra posición de la cadena

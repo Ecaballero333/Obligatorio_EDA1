@@ -201,13 +201,14 @@ void Directorio::ListarArchivos(Cadena ruta, Cadena parametro) const
 		Iterador<Archivo> itArchivosThis = this->archivos->GetIterador();
 		while (!itArchivosThis.EsFin())
 		{
+			Cadena separadorInicio = ruta == "/" ? "" : "/";
 			if (parametro == "-H") {
 				if (itArchivosThis.Elemento().EstaOculto()) {
-					cout << ruta << "/" << itArchivosThis.Elemento().GetNombre() << " (H)" << endl;
+					cout << ruta << separadorInicio << itArchivosThis.Elemento().GetNombre() << " (H)" << endl;
 				}
 			}
 			if (!itArchivosThis.Elemento().EstaOculto()) {
-				cout << ruta << "/" << itArchivosThis.Elemento().GetNombre() << endl;
+				cout << ruta << separadorInicio << itArchivosThis.Elemento().GetNombre() << endl;
 			}
 			itArchivosThis++;
 		}

@@ -20,7 +20,6 @@ FileSystem::FileSystem(unsigned int MAX_RECUPERAR)
 
 FileSystem::~FileSystem()
 {
-	this->raiz->Vaciar();
 	delete this->raiz;
 	this->raiz = NULL;
 }
