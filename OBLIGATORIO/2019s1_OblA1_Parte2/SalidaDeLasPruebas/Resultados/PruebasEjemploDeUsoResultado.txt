@@ -224,21 +224,12 @@ PRUEBAS FUNCION PRUEBAS Error Mkdir                                HAY 1 PRUEBAS
 
 ********* INICIO PRUEBAS Error Rmdir*******
 -----------------------------------
-Prueba 80: La ruta no comienza con /.
- -> ERROR impresión incorrecta
-Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir): 
-1 : ERROR: La ruta no comienza con /.
-2 : 
-3 : 
-
-Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
-(Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! ERROR: No se encuentra la ruta.
+Prueba 80: La ruta no comienza con /. -> OK
 -----------------------------------
 Prueba 81: No se encuentra la ruta. -> OK
 ********* FIN PRUEBAS Error Rmdir*******
 
-PRUEBAS FUNCION PRUEBAS Error Rmdir                                HAY 1 PRUEBAS INCORRECTAS
+PRUEBAS FUNCION PRUEBAS Error Rmdir                                PRUEBAS CORRECTAS
 
 ********* INICIO PRUEBAS Error CopyDir*******
 -----------------------------------
@@ -311,30 +302,12 @@ Prueba 102: No se encuentra la ruta. -> OK
 -----------------------------------
 Prueba 103: No existe un archivo con ese nombre en esa ruta. -> OK
 -----------------------------------
-Prueba 104: La linea 0 no es valida.
- -> ERROR impresión incorrecta
-Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir): 
-1 : ERROR: La linea cero no es valida.
-2 : 
-3 : 
-
-Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
-(Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! 
+Prueba 104: La linea 0 no es valida. -> OK
 -----------------------------------
-Prueba 105: La posicion 0 no es valida.
- -> ERROR impresión incorrecta
-Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir): 
-1 : ERROR: La posicion cero no es valida.
-2 : 
-3 : 
-
-Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
-(Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! 
+Prueba 105: La posicion 0 no es valida. -> OK
 ********* FIN PRUEBAS Error InsertText*******
 
-PRUEBAS FUNCION PRUEBAS Error InsertText                           HAY 2 PRUEBAS INCORRECTAS
+PRUEBAS FUNCION PRUEBAS Error InsertText                           PRUEBAS CORRECTAS
 
 ********* INICIO PRUEBAS Error DeleteText*******
 -----------------------------------
@@ -344,30 +317,12 @@ Prueba 107: No se encuentra la ruta. -> OK
 -----------------------------------
 Prueba 108: No existe un archivo con ese nombre en esa ruta. -> OK
 -----------------------------------
-Prueba 109: La linea 0 no es valida.
- -> ERROR impresión incorrecta
-Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir): 
-1 : ERROR: La linea cero no es valida.
-2 : 
-3 : 
-
-Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
-(Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! 
+Prueba 109: La linea 0 no es valida. -> OK
 -----------------------------------
-Prueba 110: La posicion 0 no es valida.
- -> ERROR impresión incorrecta
-Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir): 
-1 : ERROR: La posicion cero no es valida.
-2 : 
-3 : 
-
-Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
-(Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
-1 ! 
+Prueba 110: La posicion 0 no es valida. -> OK
 ********* FIN PRUEBAS Error DeleteText*******
 
-PRUEBAS FUNCION PRUEBAS Error DeleteText                           HAY 2 PRUEBAS INCORRECTAS
+PRUEBAS FUNCION PRUEBAS Error DeleteText                           PRUEBAS CORRECTAS
 
 ********* INICIO PRUEBAS Error Type*******
 -----------------------------------
@@ -418,5 +373,5 @@ PRUEBAS FUNCION PRUEBAS Error Opcional                             PRUEBAS CORRE
 
 ----------------
 PRUEBAS FUNCIONES 
-PRUEBAS FUNCIONES RESULTADO ../PruebasEjemploDeUso.txt          => CORRECTAS: 18 INCORRECTAS:  4
+PRUEBAS FUNCIONES RESULTADO ../PruebasEjemploDeUso.txt          => CORRECTAS: 21 INCORRECTAS:  1
 PRUEBAS FUNCIONES 

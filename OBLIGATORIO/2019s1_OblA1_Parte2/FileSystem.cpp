@@ -210,6 +210,12 @@ void FileSystem::ImprimirError(TipoError tipoError) const {
 	case ERROR_NO_HAY_ARCHIVOS_PARA_RECUPERAR:
 		cout << "ERROR: No hay archivos para recuperar.";
 		break;
+	case ERROR_LINEA_CERO_NO_VALIDA:
+		cout << "ERROR: La linea cero no es valida.";
+		break;
+	case ERROR_POSICION_CERO_NO_VALIDA:
+		cout << "ERROR: La posicion cero no es valida.";
+		break;
 	default:
 		break;
 	}

@@ -529,7 +529,7 @@ ERROR: No se puede volver a crear el directorio raiz.
 -!-79::0-ERROR-ERROR-No se puede volver a crear el directorio raiz.
 -!-Fin::PRUEBAS Error Mkdir
 -!-Ini::PRUEBAS Error Rmdir
-ERROR: No se encuentra la ruta.
+ERROR: La ruta no comienza con /.
 -!-80::0-ERROR-ERROR-La ruta no comienza con /.
 ERROR: No se encuentra la ruta.
 -!-81::0-ERROR-ERROR-No se encuentra la ruta.
@@ -589,9 +589,9 @@ ERROR: No se encuentra la ruta.
 -!-102::0-ERROR-ERROR-No se encuentra la ruta.
 ERROR: No existe un archivo con ese nombre en esa ruta.
 -!-103::0-ERROR-ERROR-No existe un archivo con ese nombre en esa ruta.
-
+ERROR: La linea cero no es valida.
 -!-104::0-ERROR-ERROR-La linea 0 no es valida.
-
+ERROR: La posicion cero no es valida.
 -!-105::0-ERROR-ERROR-La posicion 0 no es valida.
 -!-Fin::PRUEBAS Error InsertText
 -!-Ini::PRUEBAS Error DeleteText
@@ -601,9 +601,9 @@ ERROR: No se encuentra la ruta.
 -!-107::0-ERROR-ERROR-No se encuentra la ruta.
 ERROR: No existe un archivo con ese nombre en esa ruta.
 -!-108::0-ERROR-ERROR-No existe un archivo con ese nombre en esa ruta.
-
+ERROR: La linea cero no es valida.
 -!-109::0-ERROR-ERROR-La linea 0 no es valida.
-
+ERROR: La posicion cero no es valida.
 -!-110::0-ERROR-ERROR-La posicion 0 no es valida.
 -!-Fin::PRUEBAS Error DeleteText
 -!-Ini::PRUEBAS Error Type

@@ -70,14 +70,12 @@ TipoError Directorios::Type(Cadena ruta) {
 	if (retorno == NO_HAY_ERROR) {	
 		if (!ExisteDirectorio(ruta, true)) {
 			retorno = ERROR_NO_SE_ENCUENTRA_RUTA;
-		}
-		if (retorno == NO_HAY_ERROR) {
+		} else {
 			Cadena nombreArchivo = "";
 			NodoAG<Directorio> *nodoDirectorio = this->BuscarNodoDirectorio(ruta, true, nombreArchivo);
 			if (!nodoDirectorio->dato.ExisteArchivo(nombreArchivo)) {
 				retorno = ERROR_NO_EXISTE_ARCHIVO_NOMBRE_EN_RUTA;
-			}
-			else {
+			} else {
 				Archivo archivo = nodoDirectorio->dato.BuscarArchivo(nombreArchivo);
 				cout << ruta << endl;
 				cout << "" << endl;
@@ -106,15 +104,11 @@ TipoError Directorios::DeleteText(Cadena rutaArchivo, unsigned int linea, unsign
 	if (retorno == NO_HAY_ERROR) {
 		if (!ExisteDirectorio(rutaArchivo, true)) {
 			retorno = ERROR_NO_SE_ENCUENTRA_RUTA;
-		}
-		if (linea == 0) {
+		} else if (linea == 0) {
 			retorno = ERROR_LINEA_CERO_NO_VALIDA;
-		}
-		if (posicion == 0) {
+		} else if (posicion == 0) {
 			retorno = ERROR_POSICION_CERO_NO_VALIDA;
-		}
-		if (retorno == NO_HAY_ERROR) {
-
+		} else {
 			Cadena nombreArchivo = "";
 			NodoAG<Directorio> *nodoDirectorio = BuscarNodoDirectorio(rutaArchivo, true, nombreArchivo);
 			if (!nodoDirectorio->dato.ExisteArchivo(nombreArchivo)) {
@@ -143,25 +137,20 @@ TipoError Directorios::InsertText(Cadena rutaArchivo, unsigned int linea, unsign
 	if (retorno == NO_HAY_ERROR) {
 		if (!ExisteDirectorio(rutaArchivo, true)) {
 			retorno = ERROR_NO_SE_ENCUENTRA_RUTA;
-		}	
-		if (linea == 0) {
+		} else if (linea == 0) {
 			retorno = ERROR_LINEA_CERO_NO_VALIDA;
-		}
-		if (posicion == 0) {
+		} else if (posicion == 0) {
 			retorno = ERROR_POSICION_CERO_NO_VALIDA;
-		}
-		if (retorno == NO_HAY_ERROR) {
-
+		} else {
 			Cadena nombreArchivo = "";
 			NodoAG<Directorio> *nodoDirectorio = this->BuscarNodoDirectorio(rutaArchivo, true, nombreArchivo);
 			if (!nodoDirectorio->dato.ExisteArchivo(nombreArchivo)) {
 				retorno = ERROR_NO_EXISTE_ARCHIVO_NOMBRE_EN_RUTA;
-			}
-			else {
+			} else {
 				Archivo &archivo = nodoDirectorio->dato.BuscarArchivo(nombreArchivo);
 				archivo.InsertarTexto(linea, posicion, texto);
-			}
-		}
+			}			
+		}					
 	}
 	return retorno;
 }
@@ -175,18 +164,16 @@ TipoError Directorios::AgregarDirectorio(Cadena ruta)
 		NodoAG<Directorio>* nodoDirectorio = buscarRuta(this->arbolDirectorios, listaRuta);
 		if (nodoDirectorio == NULL) {
 			retorno = ERROR_NO_SE_ENCUENTRA_RUTA;
+		} else if (this->ExisteHijoEnRuta(nodoDirectorio, nombreDirectorioACrear)) {
+			retorno = ERROR_YA_EXISTE_SUBDIRECTORIO;
 		} else {
-			if (this->ExisteHijoEnRuta(nodoDirectorio, nombreDirectorioACrear)) {
-				retorno = ERROR_YA_EXISTE_SUBDIRECTORIO;
-			} else {
-				int nivelNuevoDirectorio = listaRuta->Length();
-				Directorio* nuevoDirectorio = new Directorio(nombreDirectorioACrear, nivelNuevoDirectorio);
-				NodoAG<Directorio>* nuevoNodoDirectorio = new NodoAG<Directorio>(*nuevoDirectorio, nullptr, nullptr);
-				if (nodoDirectorio->ph != NULL) {
-					nuevoNodoDirectorio->sh = nodoDirectorio->ph;
-				}
-				nodoDirectorio->ph = nuevoNodoDirectorio;
+			int nivelNuevoDirectorio = listaRuta->Length();
+			Directorio* nuevoDirectorio = new Directorio(nombreDirectorioACrear, nivelNuevoDirectorio);
+			NodoAG<Directorio>* nuevoNodoDirectorio = new NodoAG<Directorio>(*nuevoDirectorio, nullptr, nullptr);
+			if (nodoDirectorio->ph != NULL) {
+				nuevoNodoDirectorio->sh = nodoDirectorio->ph;
 			}
+			nodoDirectorio->ph = nuevoNodoDirectorio;
 		}
 	}
 	return retorno;
@@ -195,25 +182,25 @@ TipoError Directorios::AgregarDirectorio(Cadena ruta)
 TipoError Directorios::EliminarDirectorio(Cadena ruta)
 {
 	TipoError retorno = this->ValidacionesPorOperacion(RMDIR, ruta, "", "");
-	NodoLista<Cadena>* listaRuta = rutaALista(&ruta);
-	if (listaRuta->Length() == 1) {
-		//Se eligió eliminar todos los directorios (y sus archivos) excepto el raiz "/"
-		this->Vaciar();
-	}
-	else {
-		NodoAG<Directorio>* nodoEliminar = buscarRuta(this->arbolDirectorios, listaRuta);
-		Cadena nombreDirectorioAEliminar = obtenerYBorrarUltimaCadena(listaRuta);
-		NodoAG<Directorio>* nodoPadre = buscarRuta(this->arbolDirectorios, listaRuta);
-		if (nodoEliminar == NULL) {
-			retorno = ERROR_NO_SE_ENCUENTRA_RUTA;
-		}
-		else {
-			//El nodo a eliminar puede ser el primer hijo del nodo padre
-			if (nodoPadre->ph->dato == nodoEliminar->dato) {
-				this->EliminarDirectorioPrimerHijo(nodoPadre);
-			}
-			else {
-				this->EliminarDirectorioSiguienteHermano(nodoPadre, nombreDirectorioAEliminar);
+	if (retorno == NO_HAY_ERROR) {
+		NodoLista<Cadena>* listaRuta = rutaALista(&ruta);
+		if (listaRuta->Length() == 1) {
+			//Se eligió eliminar todos los directorios (y sus archivos) excepto el raiz "/"
+			this->Vaciar();
+		} else {
+			NodoAG<Directorio>* nodoEliminar = buscarRuta(this->arbolDirectorios, listaRuta);
+			Cadena nombreDirectorioAEliminar = obtenerYBorrarUltimaCadena(listaRuta);
+			NodoAG<Directorio>* nodoPadre = buscarRuta(this->arbolDirectorios, listaRuta);
+			if (nodoEliminar == NULL) {
+				retorno = ERROR_NO_SE_ENCUENTRA_RUTA;
+			} else {
+				//El nodo a eliminar puede ser el primer hijo del nodo padre
+				if (nodoPadre->ph->dato == nodoEliminar->dato) {
+					this->EliminarDirectorioPrimerHijo(nodoPadre);
+				}
+				else {
+					this->EliminarDirectorioSiguienteHermano(nodoPadre, nombreDirectorioAEliminar);
+				}
 			}
 		}
 	}
@@ -229,7 +216,6 @@ bool Directorios::ExisteDirectorio(Cadena ruta, bool descartarUltimaParte)
 	NodoAG<Directorio>* nodoDirectorio = buscarRuta(this->arbolDirectorios, listaRuta);
 	return(nodoDirectorio != NULL);
 }
-
 
 NodoAG<Directorio> *Directorios::BuscarNodoDirectorio(Cadena ruta, bool descartarUltimaParte, Cadena& ultimParte)
 {
@@ -282,46 +268,38 @@ TipoError Directorios::CopiarDirectorio(Cadena rutaOrigen, Cadena rutaDestino)
 			if (nodoDirectorioDestino != NULL) {
 				retorno = ERROR_YA_EXISTE_RUTA_DESTINO;
 			}
-			else {
-				//if (this->DestinoEsSubdirectorioOrigen(listaRutaOrigen, listaRutaDestino)) {
-				if(*listaRutaOrigen <= *listaRutaDestino){
-					retorno = ERROR_RUTA_DESTINO_ES_SUBDIR_DE_ORIGEN;
-				}
-				else {
-					Cadena nombreDirectorioACrear = obtenerYBorrarUltimaCadena(listaRutaDestino);
-					NodoAG<Directorio>* nodoPadreDestino = buscarRuta(this->arbolDirectorios, listaRutaDestino);
-					if (nodoPadreDestino == NULL) {
-						retorno = ERROR_NO_SE_ENCUENTRA_PADRE_RUTA_DESTINO;
-					}
-					else {
-						//Se puede hacer la copia
-						Directorio* nuevoDir = new Directorio();
-						*nuevoDir = nodoDirectorioOrigen->dato;
-						nuevoDir->SetNombre(nombreDirectorioACrear);
-						NodoAG<Directorio>* nodosDescendientes = this->ClonarNodoDirectorio(nodoDirectorioOrigen->ph);
-						NodoAG<Directorio>* nuevoNodo = new NodoAG<Directorio>(*nuevoDir, NULL, NULL);
-						nuevoNodo->ph = nodosDescendientes;
-						nuevoNodo->sh = nodoPadreDestino->ph;
-						nodoPadreDestino->ph = nuevoNodo;
-					}
+			else if(*listaRutaOrigen <= *listaRutaDestino){
+				retorno = ERROR_RUTA_DESTINO_ES_SUBDIR_DE_ORIGEN;
+			} else {
+				Cadena nombreDirectorioACrear = obtenerYBorrarUltimaCadena(listaRutaDestino);
+				NodoAG<Directorio>* nodoPadreDestino = buscarRuta(this->arbolDirectorios, listaRutaDestino);
+				if (nodoPadreDestino == NULL) {
+					retorno = ERROR_NO_SE_ENCUENTRA_PADRE_RUTA_DESTINO;
+				} else {
+					//Se puede hacer la copia
+					Directorio* nuevoDir = new Directorio();
+					*nuevoDir = nodoDirectorioOrigen->dato;
+					nuevoDir->SetNombre(nombreDirectorioACrear);
+					NodoAG<Directorio>* nodosDescendientes = this->ClonarNodoDirectorio(nodoDirectorioOrigen->ph);
+					NodoAG<Directorio>* nuevoNodo = new NodoAG<Directorio>(*nuevoDir, NULL, NULL);
+					nuevoNodo->ph = nodosDescendientes;
+					nuevoNodo->sh = nodoPadreDestino->ph;
+					nodoPadreDestino->ph = nuevoNodo;
 				}
 			}
 		}
-
 	}
 	return retorno;
 }
 
 TipoError Directorios::Attrib(Cadena ruta, Cadena parametro) {
 	TipoError retorno = this->ValidacionesPorOperacion(ATTRIB, ruta, "", parametro);
-
 	if (retorno == NO_HAY_ERROR) {
 		if (!ExisteDirectorio(ruta, true)) {
 			retorno = ERROR_NO_SE_ENCUENTRA_RUTA;
 		} else {
 			Cadena nombreArchivo = "";
 			NodoAG<Directorio>* nodoDirectorio = this->BuscarNodoDirectorio(ruta, true, nombreArchivo);
-
 			if (!nodoDirectorio->dato.ExisteArchivo(nombreArchivo)) {
 				retorno = ERROR_NO_EXISTE_ARCHIVO_NOMBRE_EN_RUTA;
 			}
@@ -331,7 +309,6 @@ TipoError Directorios::Attrib(Cadena ruta, Cadena parametro) {
 			}
 		}
 	}
-
 	return retorno;
 }
 
@@ -340,14 +317,12 @@ TipoError Directorios::Delete(Cadena rutaArchivo) {
 	if (retorno == NO_HAY_ERROR) {
 		if (!ExisteDirectorio(rutaArchivo, true)) {
 			retorno = ERROR_NO_SE_ENCUENTRA_RUTA;
-		}
-		else {
+		} else {
 			Cadena nombreArchivo = "";
 			NodoAG<Directorio> *nodoDirectorio = BuscarNodoDirectorio(rutaArchivo, true, nombreArchivo);
 			if (!nodoDirectorio->dato.ExisteArchivo(nombreArchivo)) {
 				retorno = ERROR_NO_EXISTE_ARCHIVO_NOMBRE_EN_RUTA;
-			}
-			else {
+			} else {
 				Archivo archivo = nodoDirectorio->dato.BuscarArchivo(nombreArchivo);
 				Asociacion<Cadena, Archivo>* asociacionRutaArchivo = new Asociacion<Cadena, Archivo>(rutaArchivo, archivo);
 				this->listaUndeleteArchivos->Push(*asociacionRutaArchivo);
@@ -361,8 +336,7 @@ TipoError Directorios::Delete(Cadena rutaArchivo) {
 NodoAG<Directorio>* Directorios::CopiarArbolDirectorios(NodoAG<Directorio>* d) {
 	if (d == NULL) {
 		return NULL;
-	}
-	else {
+	} else {
 		NodoAG<Directorio>* aux = new NodoAG<Directorio>(d->dato,NULL,NULL);
 		aux->ph = CopiarArbolDirectorios(d->ph);
 		aux->sh = CopiarArbolDirectorios(d->sh);
@@ -388,8 +362,7 @@ void Directorios::AgregarNombreDirectorioAlFinal(NodoLista<Cadena>*& lista,const
 	NodoLista<Cadena>* nuevo = new NodoLista<Cadena>(*cadenaDir,nullptr, nullptr);
 	if (lista == nullptr) {
 		lista = nuevo;
-	}
-	else {
+	} else {
 		NodoLista<Cadena>* copiaLista = lista;
 		while (copiaLista->sig != NULL) {
 			copiaLista = copiaLista->sig;
@@ -436,8 +409,7 @@ bool Directorios::ExisteHijoEnRuta(NodoAG<Directorio>* nodoDirectorio, Cadena no
 		nodoDirectorio = nodoDirectorio->ph;
 		if (nodoDirectorio->dato.GetNombre() == nombreDirectorio) {
 			existe = true;
-		}
-		else {
+		} else {
 			while (nodoDirectorio->sh!=NULL && !existe) {
 				nodoDirectorio = nodoDirectorio->sh;
 				if (nodoDirectorio->dato.GetNombre() == nombreDirectorio) {
@@ -452,72 +424,70 @@ bool Directorios::ExisteHijoEnRuta(NodoAG<Directorio>* nodoDirectorio, Cadena no
 TipoError Directorios::ValidacionesPorOperacion(TipoOperacion nombreOperacion, Cadena rutaOrigen, Cadena rutaDestino="", Cadena parametro= "")
 {
 	TipoError retorno = NO_HAY_ERROR;
-	if (nombreOperacion == MKDIR) {
-		if (this->rutaComienzaMal(rutaOrigen)) {
-			retorno = ERROR_RUTA_COMIENZA_MAL;
-		}
-		else if (this->directorioRaizDuplicado(rutaOrigen)) {
-			retorno = ERROR_NO_SE_PUEDE_CREAR_DIR_RAIZ;
-		}
-		else if (this->directorioNombreIncorrecto(rutaOrigen)) {
-			retorno = ERROR_DIRECTORIO_NOMBRE_INCORRECTO;
-		}
-	}
-	if (nombreOperacion == DIR) {
-		if (this->rutaComienzaMal(rutaOrigen)) {
-			retorno = ERROR_RUTA_COMIENZA_MAL;
-		}
-		if (parametro != "" && parametro != "-H") {
-			retorno = ERROR_PARAMETRO_DESCONOCIDO;
-		}
-	}
-	if (nombreOperacion == RMDIR) {
-		if (this->rutaComienzaMal(rutaOrigen)) {
-			retorno = ERROR_RUTA_COMIENZA_MAL;
-		}
-	}
-	if (nombreOperacion == COPYDIR) {
-		if (this->rutaComienzaMal(rutaOrigen) || this->rutaComienzaMal(rutaDestino)) {
-			retorno = ERROR_RUTA_COMIENZA_MAL;
-		}
-	}
-	if (nombreOperacion == DELETE) {
-		if (this->rutaComienzaMal(rutaOrigen)) {
-			retorno = ERROR_RUTA_COMIENZA_MAL;
-		}
-	}
-	if (nombreOperacion == CREATEFILE) {
-		if (this->rutaComienzaMal(rutaOrigen)) {
-			retorno = ERROR_RUTA_COMIENZA_MAL;
-		}
-	}
-	if (nombreOperacion == INSERTTEXT) {
-		if (this->rutaComienzaMal(rutaOrigen)) {
-			retorno = ERROR_RUTA_COMIENZA_MAL;
-		}
-	}
-	if (nombreOperacion == TYPE) {
-		if (this->rutaComienzaMal(rutaOrigen)) {
-			retorno = ERROR_RUTA_COMIENZA_MAL;
-		}
-	}
-	if (nombreOperacion == DELETETEXT) {
-		if (this->rutaComienzaMal(rutaOrigen)) {
-			retorno = ERROR_RUTA_COMIENZA_MAL;
-		}
-	}
-	if (nombreOperacion == ATTRIB) {
-		if (this->rutaComienzaMal(rutaOrigen)) {
-			retorno = ERROR_RUTA_COMIENZA_MAL;
-		}
-		if (parametro != "-H" && parametro != "+H") {
-			retorno = ERROR_PARAMETRO_DESCONOCIDO;
-		}
-	}
-	if (nombreOperacion == UNDELETE) {
-		if (this->listaUndeleteArchivos->EsVacia()) {
-			retorno = ERROR_NO_HAY_ARCHIVOS_PARA_RECUPERAR;
-		}
+	switch (nombreOperacion) {
+		case MKDIR:
+			if (this->rutaComienzaMal(rutaOrigen)) {
+				retorno = ERROR_RUTA_COMIENZA_MAL;
+			} else if (this->directorioRaizDuplicado(rutaOrigen)) {
+				retorno = ERROR_NO_SE_PUEDE_CREAR_DIR_RAIZ;
+			} else if (this->directorioNombreIncorrecto(rutaOrigen)) {
+				retorno = ERROR_DIRECTORIO_NOMBRE_INCORRECTO;
+			}
+			break;
+		case DIR:
+			if (this->rutaComienzaMal(rutaOrigen)) {
+				retorno = ERROR_RUTA_COMIENZA_MAL;
+			} else if (parametro != "" && parametro != "-H") {
+				retorno = ERROR_PARAMETRO_DESCONOCIDO;
+			}
+			break;
+		case RMDIR:
+			if (this->rutaComienzaMal(rutaOrigen)) {
+				retorno = ERROR_RUTA_COMIENZA_MAL;
+			}
+			break;
+		case COPYDIR:
+			if (this->rutaComienzaMal(rutaOrigen) || this->rutaComienzaMal(rutaDestino)) {
+				retorno = ERROR_RUTA_COMIENZA_MAL;
+			}
+			break;
+		case DELETE: 
+			if (this->rutaComienzaMal(rutaOrigen)) {
+				retorno = ERROR_RUTA_COMIENZA_MAL;
+			}
+			break;
+		case CREATEFILE:
+			if (this->rutaComienzaMal(rutaOrigen)) {
+				retorno = ERROR_RUTA_COMIENZA_MAL;
+			}
+			break;
+		case INSERTTEXT:
+			if (this->rutaComienzaMal(rutaOrigen)) {
+				retorno = ERROR_RUTA_COMIENZA_MAL;
+			}
+			break;
+		case TYPE: 
+			if (this->rutaComienzaMal(rutaOrigen)) {
+				retorno = ERROR_RUTA_COMIENZA_MAL;
+			}
+			break;
+		case DELETETEXT:
+			if (this->rutaComienzaMal(rutaOrigen)) {
+				retorno = ERROR_RUTA_COMIENZA_MAL;
+			}
+			break;
+		case ATTRIB:
+			if (this->rutaComienzaMal(rutaOrigen)) {
+				retorno = ERROR_RUTA_COMIENZA_MAL;
+			} else if (parametro != "-H" && parametro != "+H") {
+				retorno = ERROR_PARAMETRO_DESCONOCIDO;
+			}
+			break;
+		case UNDELETE:
+			if (this->listaUndeleteArchivos->EsVacia()) {
+				retorno = ERROR_NO_HAY_ARCHIVOS_PARA_RECUPERAR;
+			}
+			break;
 	}
 	return retorno;
 }
@@ -546,8 +516,7 @@ void Directorios::ListarDirectorios(NodoAG<Directorio>* nodoDirectorio, Cadena r
 	cout << ruta << endl;
 	if (!nodoDirectorio->dato.ContieneArchivos() && nodoDirectorio->ph == NULL) {
 		cout << "No contiene archivos ni directorios." << endl;
-	}
-	else {
+	} else {
 		nodoDirectorio->dato.ListarArchivos(ruta, parametro);
 		nodoDirectorio = nodoDirectorio->ph;//Lo avanzo uno para que busque solo directorios descendientes, no hermanos
 		ListaOrd<Asociacion<Cadena, Directorio>>* listaRutasDirectorios = new ListaOrdImp<Asociacion<Cadena, Directorio>>();
@@ -607,7 +576,6 @@ void Directorios::EliminarTodo(NodoAG<Directorio>*& raiz) {
 		raiz = NULL;
 	}
 }
-
 
 NodoAG<Directorio> *Directorios::ClonarNodoDirectorio(NodoAG<Directorio>* nodo) {
 	if (nodo == NULL) {
