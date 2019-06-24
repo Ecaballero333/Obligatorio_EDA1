@@ -50,7 +50,7 @@ public:
 
 private:
 	ListaPos<T>* lista;
-	int maximaCantidadElementos;
+	int maximaCantidadElementos;// Máxima cantidad de elementos que puede guardar
 };
 
 #include "PilaAcotadaEspecial.cpp"

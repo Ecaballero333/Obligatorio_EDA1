@@ -104,7 +104,7 @@ private:
 
 	//PRE:
 	//POS: Convierte una ruta en una lista de nombres de directorios.
-	//La ruta la separa por / y cada nombrees un nodo de la lista.
+	//La ruta la separa por / y cada nombre es un nodo de la lista.
 	NodoLista<Cadena>* rutaALista(Cadena* ruta);
 
 	//PRE:
@@ -119,8 +119,7 @@ private:
 	//PRE: La lista tiene por lo menos 2 nodos
 	//POS: Borra el último nodo y devuelve la cadena de ese último nodo
 	Cadena obtenerYBorrarUltimaCadena(NodoLista<Cadena>* listaRuta);
-
-
+	
 	//PRE:
 	//POS: Valida que no exista un nodo hijo de nodoDirectorio con nombre: nombreDirectorio
 	bool ExisteHijoEnRuta(NodoAG<Directorio>* nodoDirectorio, Cadena nombreDirectorio);
@@ -130,11 +129,11 @@ private:
 	bool rutaComienzaMal(Cadena ruta);
 
 	//PRE:
-	//POS: Devuelve true si la ruta no comienza con /
+	//POS: Devuelve true la ruta tiene un solo caracter que es /
 	bool directorioRaizDuplicado(Cadena ruta);
 
 	//PRE:
-	//POS: Devuelve true si la ruta no comienza con /
+	//POS: Devuelve true si la ruta contiene // o un .
 	bool directorioNombreIncorrecto(Cadena ruta);
 
 	//PRE:
@@ -147,9 +146,7 @@ private:
 	void ListarDirectorios(NodoAG<Directorio>* nodoDirectorio, Cadena ruta, Cadena parametro);
 
 	//PRE: listaDirectorios es vacía
-	//POS: Obtiene una lista ordenada de todos los directorios que posee el arbol general.
-	//El orden está definido en el operador < de Directorio. Cuanto menor sea el nivel, antes aparece en la lista.
-	//Los directorios que esten en el mismo nivel se ordenan por nombre
+	//POS: Obtiene una lista ordenada alfabeticamente de todos los directorios que posee el arbol general.
 	void obtenerListaOrdenadaTodoslLosDirectorios(NodoAG<Directorio>* nodoDirectorio, Cadena ruta, ListaOrd<Asociacion<Cadena, Directorio>>*& listaRutasDirectorios);
 
 	//PRE: 
@@ -161,11 +158,11 @@ private:
 	void EliminarDirectorioSiguienteHermano(NodoAG<Directorio>*& nodoPadre, Cadena nombreNodoEliminar);
 
 	//PRE: 
-	//POS:Elimina todos el contenido del nodo raíz, de sus descendientes, sus hermanos y de los descendientes de sus hermanos
+	//POS: Elimina todo el contenido del nodo raíz, de sus descendientes, sus hermanos y de los descendientes de sus hermanos
 	void EliminarTodo(NodoAG<Directorio>*& raiz);
 
 	//PRE: 
-	//POS:
+	//POS: Clona completamente el Arbol General pasado por parámetro y devuleve uno identico que no comparte memoria
 	NodoAG<Directorio> *ClonarNodoDirectorio(NodoAG<Directorio>* n);
 
 };

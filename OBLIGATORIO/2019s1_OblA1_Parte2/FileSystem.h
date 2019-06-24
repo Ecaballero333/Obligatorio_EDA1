@@ -57,9 +57,9 @@ class FileSystem {
 
 		Directorios* raiz;
 
-		//PRE: !cadenaError.esVacia()
-		//POS: Imprime el error que recibe por parámetro.
-		//Si el error que recibe es vacío, no imprime nada.
+		//PRE: 
+		//POS: Imprime con determinado texto el TipoError que recibe por parámetro.
+		// Si TipoError == NO_HAY_ERROR, no debe imprimir nada
 		void ImprimirError(TipoError tipoError) const;
 		
 

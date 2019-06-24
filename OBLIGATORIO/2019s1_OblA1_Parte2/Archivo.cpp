@@ -18,7 +18,6 @@ Archivo::Archivo()
 	this->oculto = false;
 	this->lineas = new ListaPosImp<Cadena>();
 
-
 }
 
 Archivo::~Archivo()

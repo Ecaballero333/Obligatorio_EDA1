@@ -1,0 +1,750 @@
+/**************MKDIR***************/
+#####################################################
+Se crean 8 directorios (desordenados) y se muestran. Pruebo que el orden en el que se muestran esté ok
+/
+/directorio1
+/directorio1/directorio2
+/directorio1/directorio2/directorio1
+/directorio2
+/directorio2/directorio1
+/directorio3
+/directorio3/directorio1
+/directorio3/directorio2
+
+#####################################################
+Prueba Mkdir ERROR: La ruta no comienza con /.
+ERROR: La ruta no comienza con /.
+
+#####################################################
+Prueba Mkdir ERROR: No se encuentra la ruta.
+ERROR: No se encuentra la ruta.
+
+#####################################################
+Prueba Mkdir ERROR: Ya existe un subdirectorio con el mismo nombre en esa ruta.
+ERROR: Ya existe un subdirectorio con el mismo nombre en esa ruta.
+
+#####################################################
+Prueba Mkdir ERROR: No se puede volver a crear el directorio raíz.
+ERROR: No se puede volver a crear el directorio raiz.
+
+/**************CREATEFILE***************/
+
+#####################################################
+Se crean 10 archivos desordenados y se muestran. Pruebo que se creen bien todos y se muestren ordenados en sus directorios
+/
+/Archivo1.txt
+/archivo1.txt
+/directorio1
+/directorio1/archivo10.txt
+/directorio1/archivo11.txt
+/directorio1/directorio2
+/directorio1/directorio2/directorio1
+/directorio2
+/directorio2/documento.txt
+/directorio2/directorio1
+/directorio2/directorio1/archivo11.pdf
+/directorio2/directorio1/archivo11.txt
+/directorio2/directorio1/b.pdf
+/directorio3
+/directorio3/directorio1
+/directorio3/directorio1/archivo11.txt
+/directorio3/directorio2
+/directorio3/directorio2/documento.txt
+
+#####################################################
+Prueba 1 CreateFile ERROR: La ruta no comienza con /.
+ERROR: La ruta no comienza con /.
+
+#####################################################
+Prueba 2 CreateFile ERROR: La ruta no comienza con /.
+ERROR: La ruta no comienza con /.
+
+#####################################################
+Prueba 1 CreateFile ERROR: No se encuentra la ruta.
+ERROR: No se encuentra la ruta.
+
+#####################################################
+Prueba 2 CreateFile ERROR: No se encuentra la ruta.
+ERROR: No se encuentra la ruta.
+
+#####################################################
+Prueba 2 CreateFile ERROR: Ya existe un archivo con el mismo nombre en esa ruta.
+ERROR: Ya existe un archivo con el mismo nombre en esa ruta.
+
+#####################################################
+Prueba 2 CreateFile ERROR: Ya existe un archivo con el mismo nombre en esa ruta.
+ERROR: Ya existe un archivo con el mismo nombre en esa ruta.
+
+/**************ATTRIB***************/
+
+#####################################################
+Se ocultan todos los archivos y se muestan solo los visibles
+/
+/directorio1
+/directorio1/directorio2
+/directorio1/directorio2/directorio1
+/directorio2
+/directorio2/directorio1
+/directorio3
+/directorio3/directorio1
+/directorio3/directorio2
+
+Se ocultan todos los archivos y se muestan todos los archivos
+/
+/Archivo1.txt (H)
+/archivo1.txt (H)
+/directorio1
+/directorio1/archivo10.txt (H)
+/directorio1/archivo11.txt (H)
+/directorio1/directorio2
+/directorio1/directorio2/directorio1
+/directorio2
+/directorio2/documento.txt (H)
+/directorio2/directorio1
+/directorio2/directorio1/archivo11.pdf (H)
+/directorio2/directorio1/archivo11.txt (H)
+/directorio2/directorio1/b.pdf (H)
+/directorio3
+/directorio3/directorio1
+/directorio3/directorio1/archivo11.txt (H)
+/directorio3/directorio2
+/directorio3/directorio2/documento.txt (H)
+
+#####################################################
+Se vuelven a mostrar 3 archivos y se muestan solo los visibles
+/
+/directorio1
+/directorio1/directorio2
+/directorio1/directorio2/directorio1
+/directorio2
+/directorio2/directorio1
+/directorio2/directorio1/archivo11.pdf
+/directorio2/directorio1/archivo11.txt
+/directorio3
+/directorio3/directorio1
+/directorio3/directorio2
+/directorio3/directorio2/documento.txt
+
+Se vuelven a mostrar 2 archivos y se muestan todos los archivos
+/
+/Archivo1.txt (H)
+/archivo1.txt (H)
+/directorio1
+/directorio1/archivo10.txt (H)
+/directorio1/archivo11.txt (H)
+/directorio1/directorio2
+/directorio1/directorio2/directorio1
+/directorio2
+/directorio2/documento.txt (H)
+/directorio2/directorio1
+/directorio2/directorio1/archivo11.pdf
+/directorio2/directorio1/archivo11.txt
+/directorio2/directorio1/b.pdf (H)
+/directorio3
+/directorio3/directorio1
+/directorio3/directorio1/archivo11.txt (H)
+/directorio3/directorio2
+/directorio3/directorio2/documento.txt
+
+#####################################################
+Prueba Attrib ERROR: La ruta no comienza con /.
+ERROR: La ruta no comienza con /.
+
+#####################################################
+Prueba Attrib ERROR: No se encuentra la ruta.
+ERROR: No se encuentra la ruta.
+
+#####################################################
+Prueba Attrib ERROR: No existe un archivo con ese nombre en esa ruta.
+ERROR: No existe un archivo con ese nombre en esa ruta.
+
+#####################################################
+Prueba 1 Attrib ERROR: Parametro desconocido.
+ERROR: Parametro desconocido.
+
+#####################################################
+Prueba 2 Attrib ERROR: Parametro desconocido.
+ERROR: Parametro desconocido.
+
+/**************INSERTTEXT***************/
+
+#####################################################
+Prueba InsertText ERROR: La ruta no comienza con /.
+ERROR: La ruta no comienza con /.
+
+#####################################################
+Prueba InsertText ERROR: No se encuentra la ruta.
+ERROR: No se encuentra la ruta.
+
+#####################################################
+Prueba InsertText No existe un archivo con ese nombre en esa ruta. 
+ERROR: No existe un archivo con ese nombre en esa ruta.
+
+#####################################################
+Prueba InsertText ERROR: La linea cero no es valida.
+ERROR: La linea cero no es valida.
+
+#####################################################
+Prueba InsertText ERROR: La posicion cero no es valida.
+ERROR: La posicion cero no es valida.
+
+/**************TYPE***************/
+
+#####################################################
+Se muestra el contenido de cada archivo
+/archivo1.txt
+
+El archivo esta oculto
+
+/directorio3/directorio1/archivo11.txt
+
+El archivo esta oculto
+
+/directorio2/directorio1/archivo11.txt
+
+1: Usu rebum virtute.
+2: Eam habeo.
+3: His no putant vivendo.
+
+
+#####################################################
+Se muestran los archivos ocultos y vuelve a mostrar el texto
+/archivo1.txt
+
+1: An error saepe.              An error saepe. 
+2: 
+3: 
+4: Omnesque philosophia eum an, ius tale.
+5: 
+6: 
+7: 
+8: 
+9: 
+10: 
+11: 
+12: 
+13: 
+14: 
+15: 
+16: 
+17: 
+18: 
+19: 
+20: 
+21: 
+22: 
+23: 
+24: 
+25: 
+26: 
+27: 
+28: 
+29: 
+30: 
+31: 
+32: 
+33: 
+34: 
+35: 
+36: 
+37: 
+38: 
+39: 
+40: Vis omnis legere
+
+/directorio3/directorio1/archivo11.txt
+
+1: Eos nibh regione.Ius invidunt convenire at, has in atqui probatus deserunt.
+2: 
+3: 
+4: Mel et illum sententiae, vix inani.
+5: 
+6: 
+7: 
+8: 
+9: 
+10: Sed fabulas laoreet appellantur.
+
+
+#####################################################
+Se inserta texto en un archivo vacío y se muestra
+/directorio1/archivo10.txt
+
+1: 
+2: Esto es una prueba type 
+3:          Hola, todo bien? 
+4: 
+5:    Esto es una Pruba de texto 
+
+#####################################################
+Prueba Type ERROR: La ruta no comienza con /.
+ERROR: La ruta no comienza con /.
+
+#####################################################
+Prueba Type ERROR: No se encuentra la ruta.
+ERROR: No se encuentra la ruta.
+
+#####################################################
+Prueba Type ERROR: No existe un archivo con ese nombre en esa ruta.
+ERROR: No existe un archivo con ese nombre en esa ruta.
+
+/**************DeleteText***************/
+
+#####################################################
+Se borra texto de un archivo y se muestra
+/directorio1/archivo10.txt
+
+1: 
+2: type 
+3:      todo bien? 
+4: 
+5:    Esto una Pruba de texto 
+
+#####################################################
+Prueba DeleteText ERROR: La ruta no comienza con /.
+ERROR: La ruta no comienza con /.
+
+#####################################################
+Prueba DeleteText ERROR: No se encuentra la ruta.
+ERROR: No se encuentra la ruta.
+
+#####################################################
+Prueba DeleteText ERROR: No existe un archivo con ese nombre en esa ruta.
+ERROR: No existe un archivo con ese nombre en esa ruta.
+
+#####################################################
+Prueba DeleteText ERROR: La linea cero no es valida.
+ERROR: La linea cero no es valida.
+
+#####################################################
+Prueba DeleteText ERROR: La linea no existe.
+ERROR: La linea no existe.
+
+#####################################################
+Prueba DeleteText ERROR: La posicion cero no es valida.
+ERROR: La posicion cero no es valida.
+/**************delete***************/
+
+#####################################################
+Se  muestra el directorio raíz completo
+
+/
+/Archivo1.txt (H)
+/archivo1.txt
+/directorio1
+/directorio1/archivo10.txt
+/directorio1/archivo11.txt (H)
+/directorio1/directorio2
+/directorio1/directorio2/directorio1
+/directorio2
+/directorio2/documento.txt (H)
+/directorio2/directorio1
+/directorio2/directorio1/archivo11.pdf
+/directorio2/directorio1/archivo11.txt
+/directorio2/directorio1/b.pdf (H)
+/directorio3
+/directorio3/directorio1
+/directorio3/directorio1/archivo11.txt
+/directorio3/directorio2
+/directorio3/directorio2/documento.txt
+Se borran 3 archivos y se muestra el directorio raíz completo
+
+/
+/directorio1
+/directorio1/archivo10.txt
+/directorio1/directorio2
+/directorio1/directorio2/directorio1
+/directorio2
+/directorio2/documento.txt (H)
+/directorio2/directorio1
+/directorio2/directorio1/archivo11.pdf
+/directorio2/directorio1/archivo11.txt
+/directorio2/directorio1/b.pdf (H)
+/directorio3
+/directorio3/directorio1
+/directorio3/directorio1/archivo11.txt
+/directorio3/directorio2
+/directorio3/directorio2/documento.txt
+
+Se intenta ver el contenido de los 3 archivos borrados
+
+ERROR: No existe un archivo con ese nombre en esa ruta.
+ERROR: No existe un archivo con ese nombre en esa ruta.
+ERROR: No existe un archivo con ese nombre en esa ruta.
+
+#####################################################
+Prueba delete ERROR: La ruta no comienza con /.
+ERROR: La ruta no comienza con /.
+
+#####################################################
+Prueba delete ERROR: No se encuentra la ruta.
+ERROR: No se encuentra la ruta.
+
+#####################################################
+Prueba delete ERROR: No existe un archivo con ese nombre en esa ruta.
+ERROR: No existe un archivo con ese nombre en esa ruta.
+/**************UNDELETE***************/
+
+#####################################################
+Se  muestra el directorio raíz completo
+
+/
+/directorio1
+/directorio1/archivo10.txt
+/directorio1/directorio2
+/directorio1/directorio2/directorio1
+/directorio2
+/directorio2/documento.txt (H)
+/directorio2/directorio1
+/directorio2/directorio1/archivo11.pdf
+/directorio2/directorio1/archivo11.txt
+/directorio2/directorio1/b.pdf (H)
+/directorio3
+/directorio3/directorio1
+/directorio3/directorio1/archivo11.txt
+/directorio3/directorio2
+/directorio3/directorio2/documento.txt
+
+El máximo de archivos a recuperar es 2
+
+1- Se recupera un archivo y se muestra el directorio raíz completo
+/
+/directorio1
+/directorio1/archivo10.txt
+/directorio1/archivo11.txt (H)
+/directorio1/directorio2
+/directorio1/directorio2/directorio1
+/directorio2
+/directorio2/documento.txt (H)
+/directorio2/directorio1
+/directorio2/directorio1/archivo11.pdf
+/directorio2/directorio1/archivo11.txt
+/directorio2/directorio1/b.pdf (H)
+/directorio3
+/directorio3/directorio1
+/directorio3/directorio1/archivo11.txt
+/directorio3/directorio2
+/directorio3/directorio2/documento.txt
+
+2 - Se recupera un archivo y se muestra el directorio raíz completo
+/
+/Archivo1.txt (H)
+/directorio1
+/directorio1/archivo10.txt
+/directorio1/archivo11.txt (H)
+/directorio1/directorio2
+/directorio1/directorio2/directorio1
+/directorio2
+/directorio2/documento.txt (H)
+/directorio2/directorio1
+/directorio2/directorio1/archivo11.pdf
+/directorio2/directorio1/archivo11.txt
+/directorio2/directorio1/b.pdf (H)
+/directorio3
+/directorio3/directorio1
+/directorio3/directorio1/archivo11.txt
+/directorio3/directorio2
+/directorio3/directorio2/documento.txt
+
+#####################################################
+Prueba UNDELETE ERROR: No hay archivos para recuperar.
+ERROR: No hay archivos para recuperar.
+
+/
+/Archivo1.txt (H)
+/directorio1
+/directorio1/archivo10.txt
+/directorio1/archivo11.txt (H)
+/directorio1/directorio2
+/directorio1/directorio2/directorio1
+/directorio2
+/directorio2/documento.txt (H)
+/directorio2/directorio1
+/directorio2/directorio1/archivo11.pdf
+/directorio2/directorio1/archivo11.txt
+/directorio2/directorio1/b.pdf (H)
+/directorio3
+/directorio3/directorio1
+/directorio3/directorio1/archivo11.txt
+/directorio3/directorio2
+/directorio3/directorio2/documento.txt
+
+Se elimina un archivo y se muestra el directorio raíz completo
+/
+/directorio1
+/directorio1/archivo10.txt
+/directorio1/archivo11.txt (H)
+/directorio1/directorio2
+/directorio1/directorio2/directorio1
+/directorio2
+/directorio2/documento.txt (H)
+/directorio2/directorio1
+/directorio2/directorio1/archivo11.pdf
+/directorio2/directorio1/archivo11.txt
+/directorio2/directorio1/b.pdf (H)
+/directorio3
+/directorio3/directorio1
+/directorio3/directorio1/archivo11.txt
+/directorio3/directorio2
+/directorio3/directorio2/documento.txt
+
+Se crea el mismo archivo y se muestra el directorio raíz completo
+/
+/Archivo1.txt
+/directorio1
+/directorio1/archivo10.txt
+/directorio1/archivo11.txt (H)
+/directorio1/directorio2
+/directorio1/directorio2/directorio1
+/directorio2
+/directorio2/documento.txt (H)
+/directorio2/directorio1
+/directorio2/directorio1/archivo11.pdf
+/directorio2/directorio1/archivo11.txt
+/directorio2/directorio1/b.pdf (H)
+/directorio3
+/directorio3/directorio1
+/directorio3/directorio1/archivo11.txt
+/directorio3/directorio2
+/directorio3/directorio2/documento.txt
+
+Se intenta recuperar el archivo y se muestra el directorio raíz completo
+/
+/Archivo1.txt
+/directorio1
+/directorio1/archivo10.txt
+/directorio1/archivo11.txt (H)
+/directorio1/directorio2
+/directorio1/directorio2/directorio1
+/directorio2
+/directorio2/documento.txt (H)
+/directorio2/directorio1
+/directorio2/directorio1/archivo11.pdf
+/directorio2/directorio1/archivo11.txt
+/directorio2/directorio1/b.pdf (H)
+/directorio3
+/directorio3/directorio1
+/directorio3/directorio1/archivo11.txt
+/directorio3/directorio2
+/directorio3/directorio2/documento.txt
+Se elimina un archivo y se muestra el directorio raíz completo
+/
+/Archivo1.txt
+/directorio1
+/directorio1/archivo10.txt
+/directorio1/archivo11.txt (H)
+/directorio1/directorio2
+/directorio1/directorio2/directorio1
+/directorio2
+/directorio2/documento.txt (H)
+/directorio2/directorio1
+/directorio2/directorio1/archivo11.pdf
+/directorio2/directorio1/archivo11.txt
+/directorio2/directorio1/b.pdf (H)
+/directorio3
+/directorio3/directorio1
+/directorio3/directorio1/archivo11.txt
+/directorio3/directorio2
+
+Se elimina el directorio del archivo y se muestra el directorio raíz completo
+/
+/Archivo1.txt
+/directorio1
+/directorio1/archivo10.txt
+/directorio1/archivo11.txt (H)
+/directorio1/directorio2
+/directorio1/directorio2/directorio1
+/directorio2
+/directorio2/documento.txt (H)
+/directorio2/directorio1
+/directorio2/directorio1/archivo11.pdf
+/directorio2/directorio1/archivo11.txt
+/directorio2/directorio1/b.pdf (H)
+/directorio3
+/directorio3/directorio1
+/directorio3/directorio1/archivo11.txt
+
+Se intenta recuperar el archivo y se muestra el directorio raíz completo
+/
+/Archivo1.txt
+/directorio1
+/directorio1/archivo10.txt
+/directorio1/archivo11.txt (H)
+/directorio1/directorio2
+/directorio1/directorio2/directorio1
+/directorio2
+/directorio2/documento.txt (H)
+/directorio2/directorio1
+/directorio2/directorio1/archivo11.pdf
+/directorio2/directorio1/archivo11.txt
+/directorio2/directorio1/b.pdf (H)
+/directorio3
+/directorio3/directorio1
+/directorio3/directorio1/archivo11.txt
+
+/**************copydir***************/
+
+#####################################################
+Se muestra el direcorio raíz completo, se copia un directorio y se vuelve a mostrar el raíz
+
+/
+/Archivo1.txt
+/directorio1
+/directorio1/archivo10.txt
+/directorio1/archivo11.txt (H)
+/directorio1/directorio2
+/directorio1/directorio2/directorio1
+/directorio2
+/directorio2/documento.txt (H)
+/directorio2/directorio1
+/directorio2/directorio1/archivo11.pdf
+/directorio2/directorio1/archivo11.txt
+/directorio2/directorio1/b.pdf (H)
+/directorio3
+/directorio3/directorio1
+/directorio3/directorio1/archivo11.txt
+
+/
+/Archivo1.txt
+/directorio1
+/directorio1/archivo10.txt
+/directorio1/archivo11.txt (H)
+/directorio1/directorio2
+/directorio1/directorio2/directorio1
+/directorio2
+/directorio2/documento.txt (H)
+/directorio2/directorio1
+/directorio2/directorio1/archivo11.pdf
+/directorio2/directorio1/archivo11.txt
+/directorio2/directorio1/b.pdf (H)
+/directorio3
+/directorio3/directorio1
+/directorio3/directorio1/archivo11.txt
+/directorio3/directorio2
+/directorio3/directorio2/archivo10.txt
+/directorio3/directorio2/archivo11.txt (H)
+/directorio3/directorio2/directorio2
+/directorio3/directorio2/directorio2/directorio1
+
+#####################################################
+Prueba copydir 1 ERROR: La ruta no comienza con /.
+ERROR: La ruta no comienza con /.
+
+#####################################################
+Prueba copydir 2 ERROR: La ruta no comienza con /.
+ERROR: La ruta no comienza con /.
+
+#####################################################
+Prueba copydir ERROR: No se encuentra la ruta origen.
+ERROR: No se encuentra la ruta origen.
+
+#####################################################
+Prueba copydir ERROR: Ya existe la ruta destino.
+ERROR: Ya existe la ruta destino.
+
+#####################################################
+Prueba copydir 1 ERROR: La ruta destino no puede ser un subdirectorio de origen.
+ERROR: Ya existe la ruta destino.
+
+#####################################################
+Prueba copydir 2 ERROR: La ruta destino no puede ser un subdirectorio de origen.
+ERROR: Ya existe la ruta destino.
+
+#####################################################
+Prueba copydir ERROR: No se encuentra el padre de la ruta destino.
+ERROR: No se encuentra el padre de la ruta destino.
+
+/**************RMDIR***************/
+
+#####################################################
+Se borran 2 directorios y se muestra el directorio raíz completo
+
+/
+/Archivo1.txt
+/directorio1
+/directorio1/archivo10.txt
+/directorio1/archivo11.txt (H)
+/directorio1/directorio2
+/directorio1/directorio2/directorio1
+/directorio2
+/directorio2/documento.txt (H)
+/directorio2/directorio1
+/directorio2/directorio1/archivo11.pdf
+/directorio2/directorio1/archivo11.txt
+/directorio2/directorio1/b.pdf (H)
+/directorio3
+/directorio3/directorio1
+/directorio3/directorio1/archivo11.txt
+
+/
+/Archivo1.txt
+/directorio2
+/directorio2/documento.txt (H)
+/directorio2/directorio1
+/directorio2/directorio1/archivo11.pdf
+/directorio2/directorio1/archivo11.txt
+/directorio2/directorio1/b.pdf (H)
+/directorio3
+/directorio3/directorio1
+/directorio3/directorio1/archivo11.txt
+
+#####################################################
+Prueba RMDIR ERROR: La ruta no comienza con /.
+ERROR: La ruta no comienza con /.
+
+#####################################################
+Prueba RMDIR ERROR: No se encuentra la ruta.
+ERROR: No se encuentra la ruta.
+
+/**************DIR***************/
+
+#####################################################
+Se muestra un subdirectorio con archivos
+/directorio2/directorio1
+/directorio2/directorio1/archivo11.pdf
+/directorio2/directorio1/archivo11.txt
+/directorio2/directorio1/b.pdf (H)
+
+Se crea un subdirectorio vacío y se muestra
+
+/directorio3/directorio1/directorio5
+No contiene archivos ni directorios.
+
+
+#####################################################
+Prueba DIR ERROR: La ruta no comienza con /.
+ERROR: La ruta no comienza con /.
+
+#####################################################
+Prueba DIR ERROR: No se encuentra la ruta.
+ERROR: No se encuentra la ruta.
+
+#####################################################
+Prueba DIR 1 ERROR: Parametro desconocido.
+ERROR: Parametro desconocido.
+
+#####################################################
+Prueba DIR 2 ERROR: Parametro desconocido.
+ERROR: Parametro desconocido.
+
+#####################################################
+Prueba DIR 3 ERROR: Parametro desconocido.
+ERROR: Parametro desconocido.
+/**************DIR***************/
+Se muestra el directorio raíz completo, se borra la raíz y se vuelve a mostrar
+
+/
+/Archivo1.txt
+/directorio2
+/directorio2/documento.txt (H)
+/directorio2/directorio1
+/directorio2/directorio1/archivo11.pdf
+/directorio2/directorio1/archivo11.txt
+/directorio2/directorio1/b.pdf (H)
+/directorio3
+/directorio3/directorio1
+/directorio3/directorio1/archivo11.txt
+/directorio3/directorio1/directorio5
+
+/
+No contiene archivos ni directorios.

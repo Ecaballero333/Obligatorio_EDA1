@@ -218,6 +218,7 @@ Se esperaba imprimir (el numero de linea fue agregado, no se debe imprimir):
 Se imprimio (el numero de linea fue agregado, no se debe imprimir): 
 (Los numeros de linea aparecen con : si coinciden y ! si no coinciden)
 1 ! ERROR: No se puede volver a crear el directorio raiz.
+2 : 
 ********* FIN PRUEBAS Error Mkdir*******
 
 PRUEBAS FUNCION PRUEBAS Error Mkdir                                HAY 1 PRUEBAS INCORRECTAS

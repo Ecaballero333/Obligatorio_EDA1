@@ -248,13 +248,13 @@ template<class T>
 void ListaPosImp<T>::agrandarSiLleno()
 {
 	if (this->cantElem == this->tamanoVec) {
-		this->tamanoVec++;//Agrandar en proporcxión
+		this->tamanoVec = this->tamanoVec*2;
 		T* aux = new T[this->tamanoVec]();
 		for (int i = 0; i < this->tamanoVec; i++)
 		{
 			aux[i] = *(new T());
 		}
-		for (int i = 0; i < this->tamanoVec - 1; i++)
+		for (int i = 0; i < this->cantElem; i++)
 		{
 			aux[i] = this->vec[i];
 		}

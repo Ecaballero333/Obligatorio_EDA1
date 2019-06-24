@@ -69,7 +69,7 @@ protected:
 	void desplazar(int pos);
 
 	//PRE: -
-	//POS: Si el vector está lleno lo agranda un lugar
+	//POS: Si el vector está lleno (cantElem == tamanoVec), se agranda al doble del tamaño actual.
 	void agrandarSiLleno();
 
 };

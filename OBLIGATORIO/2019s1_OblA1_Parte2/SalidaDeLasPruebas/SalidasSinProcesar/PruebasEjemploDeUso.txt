@@ -520,98 +520,136 @@ El archivo no posee contenido
 -!-Fin::PRUEBAS DeleteText
 -!-Ini::PRUEBAS Error Mkdir
 ERROR: La ruta no comienza con /.
+
 -!-76::0-ERROR-ERROR-La ruta no comienza con /.
 ERROR: No se encuentra la ruta.
+
 -!-77::0-ERROR-ERROR-No se encuentra la ruta.
 ERROR: Ya existe un subdirectorio con el mismo nombre en esa ruta.
+
 -!-78::0-ERROR-ERROR-Ya Existe un subdirectorio con el mismo nombre en esa ruta.
 ERROR: No se puede volver a crear el directorio raiz.
+
 -!-79::0-ERROR-ERROR-No se puede volver a crear el directorio raiz.
 -!-Fin::PRUEBAS Error Mkdir
 -!-Ini::PRUEBAS Error Rmdir
 ERROR: La ruta no comienza con /.
+
 -!-80::0-ERROR-ERROR-La ruta no comienza con /.
 ERROR: No se encuentra la ruta.
+
 -!-81::0-ERROR-ERROR-No se encuentra la ruta.
 -!-Fin::PRUEBAS Error Rmdir
 -!-Ini::PRUEBAS Error CopyDir
 ERROR: La ruta no comienza con /.
+
 -!-82::0-ERROR-ERROR-La ruta no comienza con /.
 ERROR: La ruta no comienza con /.
+
 -!-83::0-ERROR-ERROR-La ruta no comienza con /.
 ERROR: No se encuentra la ruta origen.
+
 -!-84::0-ERROR-ERROR-No se encuentra la ruta de origen.
 ERROR: Ya existe la ruta destino.
+
 -!-85::0-ERROR-ERROR-Ya existe la ruta de destino.
 ERROR: Ya existe la ruta destino.
+
 -!-86::0-ERROR-ERROR-La ruta de destino no puede ser un subdirectorio de origen.
 ERROR: No se encuentra el padre de la ruta destino.
+
 -!-87::0-ERROR-ERROR-No se encuentra el padre de la ruta destino.
 -!-Fin::PRUEBAS Error CopyDir
 -!-Ini::PRUEBAS Error Dir
 ERROR: La ruta no comienza con /.
+
 -!-88::0-ERROR-ERROR-La ruta no comienza con /.
 ERROR: No se encuentra la ruta.
+
 -!-89::0-ERROR-ERROR-No se encuentra la ruta.
 ERROR: Parametro desconocido.
+
 -!-90::0-ERROR-ERROR-Parametro desconocido
 -!-Fin::PRUEBAS Error Dir
 -!-Ini::PRUEBAS Error CreateFile
 ERROR: La ruta no comienza con /.
+
 -!-91::0-ERROR-ERROR-La ruta no comienza con /.
 ERROR: No se encuentra la ruta.
+
 -!-92::0-ERROR-ERROR-No se encuentra la ruta.
 ERROR: Ya existe un archivo con el mismo nombre en esa ruta.
+
 -!-93::0-ERROR-ERROR-Ya existe un archivo con el mismo nombre en esa ruta.
 -!-Fin::PRUEBAS Error CreateFile
 -!-Ini::PRUEBAS Error Delete
 ERROR: La ruta no comienza con /.
+
 -!-94::0-ERROR-ERROR-La ruta no comienza con /.
 ERROR: No se encuentra la ruta.
+
 -!-95::0-ERROR-ERROR-No se encuentra la ruta.
 ERROR: No existe un archivo con ese nombre en esa ruta.
+
 -!-96::0-ERROR-ERROR-No existe un archivo con ese nombre en esa ruta.
 -!-Fin::PRUEBAS Error Delete
 -!-Ini::PRUEBAS Error Attrib
 ERROR: La ruta no comienza con /.
+
 -!-97::0-ERROR-ERROR-La ruta no comienza con /.
 ERROR: No se encuentra la ruta.
+
 -!-98::0-ERROR-ERROR-No se encuentra la ruta.
 ERROR: No existe un archivo con ese nombre en esa ruta.
+
 -!-99::0-ERROR-ERROR-No existe un archivo con ese nombre en esa ruta.
 ERROR: Parametro desconocido.
+
 -!-100::0-ERROR-ERROR-Parametro desconocido.
 -!-Fin::PRUEBAS Error Attrib
 -!-Ini::PRUEBAS Error InsertText
 ERROR: La ruta no comienza con /.
+
 -!-101::0-ERROR-ERROR-La ruta no comienza con /.
 ERROR: No se encuentra la ruta.
+
 -!-102::0-ERROR-ERROR-No se encuentra la ruta.
 ERROR: No existe un archivo con ese nombre en esa ruta.
+
 -!-103::0-ERROR-ERROR-No existe un archivo con ese nombre en esa ruta.
 ERROR: La linea cero no es valida.
+
 -!-104::0-ERROR-ERROR-La linea 0 no es valida.
 ERROR: La posicion cero no es valida.
+
 -!-105::0-ERROR-ERROR-La posicion 0 no es valida.
 -!-Fin::PRUEBAS Error InsertText
 -!-Ini::PRUEBAS Error DeleteText
 ERROR: La ruta no comienza con /.
+
 -!-106::0-ERROR-ERROR-La ruta no comienza con /.
 ERROR: No se encuentra la ruta.
+
 -!-107::0-ERROR-ERROR-No se encuentra la ruta.
 ERROR: No existe un archivo con ese nombre en esa ruta.
+
 -!-108::0-ERROR-ERROR-No existe un archivo con ese nombre en esa ruta.
 ERROR: La linea cero no es valida.
+
 -!-109::0-ERROR-ERROR-La linea 0 no es valida.
 ERROR: La posicion cero no es valida.
+
 -!-110::0-ERROR-ERROR-La posicion 0 no es valida.
 -!-Fin::PRUEBAS Error DeleteText
 -!-Ini::PRUEBAS Error Type
 ERROR: La ruta no comienza con /.
+
 -!-111::0-ERROR-ERROR-La ruta no comienza con /.
 ERROR: No se encuentra la ruta.
+
 -!-112::0-ERROR-ERROR-No se encuentra la ruta.
 ERROR: No existe un archivo con ese nombre en esa ruta.
+
 -!-113::0-ERROR-ERROR-No existe un archivo con ese nombre en esa ruta.
 -!-Fin::PRUEBAS Error Type
 -!-Ini::PRUEBAS Opcional
@@ -751,5 +789,6 @@ ERROR: No existe un archivo con ese nombre en esa ruta.
 -!-Fin::PRUEBAS Opcional
 -!-Ini::PRUEBAS Error Opcional
 ERROR: No hay archivos para recuperar.
+
 -!-125::0-ERROR-ERROR-No hay archivos para recuperar
 -!-Fin::PRUEBAS Error Opcional

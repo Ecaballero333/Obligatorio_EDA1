@@ -186,7 +186,8 @@ TipoError Directorios::EliminarDirectorio(Cadena ruta)
 		NodoLista<Cadena>* listaRuta = rutaALista(&ruta);
 		if (listaRuta->Length() == 1) {
 			//Se eligió eliminar todos los directorios (y sus archivos) excepto el raiz "/"
-			this->Vaciar();
+			this->arbolDirectorios->dato.EliminarArchivos();
+			this->EliminarTodo(this->arbolDirectorios->ph);
 		} else {
 			NodoAG<Directorio>* nodoEliminar = buscarRuta(this->arbolDirectorios, listaRuta);
 			Cadena nombreDirectorioAEliminar = obtenerYBorrarUltimaCadena(listaRuta);
@@ -493,7 +494,7 @@ TipoError Directorios::ValidacionesPorOperacion(TipoOperacion nombreOperacion, C
 }
 
 bool Directorios::rutaComienzaMal(Cadena ruta) {
-	return ruta[0] != *barra;
+	return ruta.esVacia() || ruta[0] != *barra;
 }
 
 bool Directorios::directorioRaizDuplicado(Cadena ruta) {
